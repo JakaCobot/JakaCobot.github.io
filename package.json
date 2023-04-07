@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "github_build":"export NODE_OPTIONS=--openssl-legacy-provider;vuepress build docs"
+    "github_build": "export NODE_OPTIONS=--openssl-legacy-provider;vuepress build docs"
   },
   "author": "",
   "license": "MIT",

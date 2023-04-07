@@ -1,9393 +1,9410 @@
----
-pageAnchor:
-  isDisabled: false
-  anchorDepth: 1
----
+# Event code and meaning
 
-# Event Info
+## 0x0F0001 The robot body is not powered on 
+ Type: Error 
 
-## 0x0F0001 robot is now powered off please power on it first
+ IsShowConfirm：Yes  
 
-Type: Error
+### Description 
+ The robot body is currently not powered on
 
-IsShowConfirm：Yes
+### Reason
+ A power state shutdown was detected while the controller was executing the state
 
-### Description
+### Action
+ Confirm whether the power of the robot body is turned on; if the power of the robot body is not turned on, please turn on the power of the robot body first
 
-robot is now powered off please power on it first
+## 0x0F0002 The robot is not enabled 
+ Type: Error 
 
-### Reason
+ IsShowConfirm：Yes  
 
-### Action
+### Description 
+ The robot is currently not enabled
 
-## 0x0F0002 robot is not enabled
+### Reason
+ When the controller executes the command, it detects that the robot is not enabled
 
-Type: Error
+### Action
+ Confirm whether the robot is enabled; if not, please enable the robot first
 
-IsShowConfirm：Yes
+## 0x0F0003 This operation cannot be performed in the current mode 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-robot is not enabled
+### Description 
+ This operation cannot be performed in the current mode. Currently in  mode,  command is not allowed
 
 ### Reason
+ There are multiple modes inside the controller, and specific operations are allowed to run in specific modes. The mode switch is automatically completed internally, and when this problem occurs, it is caused by improperly handled operation permissions.
 
 ### Action
-
-## 0x0F0003 operation is not supported in current mode
-
-Type: Warning
+ Exit the current mode first, and then operate, for example, enable the robot before continuing to operate.
 
-IsShowConfirm：Yes
+## 0x0F0004 Kinematics inverse calculation failed 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-operation is not supported in current mode
+### Description 
+ Kinematics inverse calculation failed
 
 ### Reason
+ The calculation of inverse kinematics solution fails for the following reasons: (1) The given Cartesian space pose exceeds the reachable space of the robot; (2) The given Cartesian space pose has no solution in the solution space determined by the given reference angle.
 
 ### Action
+ (1) Enter the coordinate editing interface in the manual interface, and enter the point information for verification; (2) Manual jog, check whether the robot target point or target path pose is reachable, if reachable, please change the pose and perform kinematic inverse solution calculate.
 
-## 0x0F0004 failed to do the inverse kinematics
+## 0x0F0005 Position set too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Position set too large
 
-### Description
-
-failed to do the inverse kinematics
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F0005 infinite joint position command was given
-
-Type: Error
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x0F0006 Robot joint reaches positive hard limit 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-infinite joint position command was given
+### Description 
+ The robot joint cannot move when it reaches the positive hard limit
 
 ### Reason
+ Generally, during JOG movement, the robot has reached the limit, but the command still moves in the direction of the limit and an error prompt is reported.
 
 ### Action
+ Check whether the current position of the robot has reached the limit, and the robot cannot move beyond the limit.
 
-## 0x0F0006 cannot move on since it hits the joint's positive hard limit
+## 0x0F0007 Robot joint reaches negative hard limit 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The robot joint reaches the negative hard limit and cannot move
 
-### Description
-
-cannot move on since it hits the joint's positive hard limit
-
 ### Reason
+ Generally, during JOG movement, the robot has reached the limit, but the command still moves in the direction of the limit and an error prompt is reported.
 
 ### Action
-
-## 0x0F0007 cannot move on since it hits the joint's negative hard limit
-
-Type: Error
+ Check whether the current position of the robot has reached the limit, and the robot cannot move beyond the limit.
 
-IsShowConfirm：Yes
+## 0x0F0008 Robot joint reaches positive soft limit 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-cannot move on since it hits the joint's negative hard limit
+### Description 
+ The robot joints cannot move when they reach the positive soft limit
 
 ### Reason
+ Generally, during JOG movement, the robot has reached the limit, but the command still moves in the direction of the limit and an error prompt is reported.
 
 ### Action
+ Check whether the current position of the robot has reached the limit, and the robot cannot move beyond the limit.
 
-## 0x0F0008 cannot move on since it hits the joint's positive soft limit
+## 0x0F0009 Robot joint reaches negative soft limit 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The robot joint reaches the negative soft limit and cannot move
 
-### Description
-
-cannot move on since it hits the joint's positive soft limit
-
 ### Reason
+ Generally, during JOG movement, the robot has reached the limit, but the command still moves in the direction of the limit and an error prompt is reported.
 
 ### Action
-
-## 0x0F0009 cannot move on since it hits the joint's negative soft limit
-
-Type: Error
+ Check whether the current position of the robot has reached the limit, and the robot cannot move beyond the limit.
 
-IsShowConfirm：Yes
+## 0x0F000A Cartesian target position exceeds positive max position limit 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-cannot move on since it hits the joint's negative soft limit
+### Description 
+ Target position exceeds positive max position limit
 
 ### Reason
+ This error is generally prompted when the command position given by Cartesian space motion exceeds the maximum limit of the axis.
 
 ### Action
+ Please check if the given Cartesian space object is beyond the arm span.
 
-## 0x0F000A he target position exceeds the axis positive limit
+## 0x0F000B Cartesian target position exceeds negative max position limit 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Target position exceeds negative max position limit
 
-### Description
-
-he target position exceeds the axis positive limit
-
 ### Reason
+ This error is generally prompted when the command position given by Cartesian space motion exceeds the maximum limit of the axis.
 
 ### Action
-
-## 0x0F000B the target position exceeds the axis negative limit
-
-Type: Error
+ Please check if the given Cartesian space object is beyond the arm span.
 
-IsShowConfirm：Yes
+## 0x0F000E Manual operations cannot be performed during the joint zero return process 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-the target position exceeds the axis negative limit
+### Description 
+ Manual operation is not possible during the Home process
 
 ### Reason
+  This error is generally prompted when the manual motion control of the robot is performed during the robot zero return setting process.
 
 ### Action
+ Confirm whether the robot is currently returning to zero, and if so, wait for the robot to return to zero before continuing.
 
-## 0x0F000E cannot do jog operation when homing is in progress
+## 0x0F000F Command joint index is invalid 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Command joint index is invalid
 
-### Description
-
-cannot do jog operation when homing is in progress
-
 ### Reason
+ This problem is generally caused by an invalid given axis/joint index when controlling a single axis in Cartesian space or a single joint in joint space.
 
 ### Action
-
-## 0x0F000F the commanded joint number is invalid
-
-Type: Error
+ Please check whether the index given in the command is correct; if the command is correct, please export the log and contact JAKA technical service personnel.
 
-IsShowConfirm：Yes
+## 0x0F0010 Invalid motion command speed 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-the commanded joint number is invalid
+### Description 
+ Invalid motion command speed
 
 ### Reason
+ Internal reserved
 
 ### Action
+ Internal reserved
 
-## 0x0F0010 the commanded velocity is invalid
+## 0x0F0011  The target position of the motion instruction exceeds the machine limit 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The target position of the motion instruction exceeds the machine limit
 
-### Description
-
-the commanded velocity is invalid
-
 ### Reason
+  The target position of joint motion or linear motion exceeds the limit of the robot.
 
 ### Action
-
-## 0x0F0011 the target position exceeds the mechine's limits
-
-Type: Error
+ Manual jog, check whether the target position is reachable and whether it will exceed the joint limit.
 
-IsShowConfirm：Yes
+## 0x0F0012 Non-joint mode cannot perform home operation 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-the target position exceeds the mechine's limits
+### Description 
+ Non-joint mode cannot perform home operation
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x0F0012 cannot do home operation since it's not in joint mode now
+## 0x0F0013 home in progress 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ home in progress
 
-### Description
-
-cannot do home operation since it's not in joint mode now
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F0013 homing is already in pregress
-
-Type: Error
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x0F0014 Failed to exit protected mode 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-homing is already in pregress
+### Description 
+ Failed to exit protected mode
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x0F0014 failed to exit protective mode
+## 0x0F0015 The robot does not start 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The robot does not start
 
-### Description
-
-failed to exit protective mode
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F0015 failed to do the operaion since the machine is now not turned on
-
-Type: Error
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x0F0016 The robot joint is at the soft limit 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-failed to do the operaion since the machine is now not turned on
+### Description 
+ The robot joint is at the soft limit
 
 ### Reason
+ The robot joints are in the soft limit and cannot complete the instruction operation.
 
 ### Action
+ Check the current state of the joints of the robot, whether it has reached the joint limit, if it has reached the limit, it cannot continue to move towards the overrun direction, but can only move in the non-overrun direction, please jog the overrun joint back to the joint limit range on the teaching page or modify the limit on the setting page.
 
-## 0x0F0016 the robot is now on soft limit
+## 0x0F0017 The target position of the motion instruction is unreachable 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The target position of the motion instruction is unreachable
 
-### Description
-
-the robot is now on soft limit
-
 ### Reason
+ The target position of the motion instruction is not reachable.
 
 ### Action
-
-## 0x0F0017 the target position is out of reach
-
-Type: Error
+ The target position is outside the working range or at a singularity point. Manual operation checks whether the joint can move to the target point, if possible, consider changing the current robot pose to reach the target point from other paths or poses.
 
-IsShowConfirm：Yes
+## 0x0F0018 Singularity reached protective stop 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-the target position is out of reach
+### Description 
+ Singularity reached protective stop
 
 ### Reason
+ The robot is about to reach a singular configuration in the motion path and cannot continue to move in Cartesian space. This error is generally reported when an error occurs when calculating the inverse solution or when the calculated inverse solution is in a different solution space from the previous cycle.
 
 ### Action
+ Check whether the current path and posture of the robot are reachable. If not, replace the initial posture or path to reach the target position. If you confirm that there is no problem with the command path, please collect relevant data and contact JAKA technical service personnel.
 
-## 0x0F0018 Singularity position protective stop
+## 0x0F0019 CAN device initialization failed 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ CAN device initialization failed
 
-### Description
-
-Singularity position protective stop
-
 ### Reason
+ CAN device initialization failed.
 
 ### Action
-
-## 0x0F0019 failed to initialize the CAN devcie
-
-Type: Error
+ In the offline simulation environment, if there is no CAN device, an error will be reported, and subsequent optimization will be performed. In the actual machine environment, please restart the robot, if it persists, please contact JAKA technical service personnel.
 
-IsShowConfirm：Yes
+## 0x0F001A One-click upgrade timeout 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-failed to initialize the CAN devcie
+### Description 
+ One-click upgrade timeout
 
 ### Reason
+ One-click upgrade takes too long
 
 ### Action
+ Please check the network conditions and equipment conditions before proceeding.
 
-## 0x0F001A onekey upgrade timeout
+## 0x0F001B One-click upgrade exception 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ One-click upgrade exception
 
-### Description
-
-onekey upgrade timeout
-
 ### Reason
+ One-click upgrade failed
 
 ### Action
-
-## 0x0F001B onekey upgrade err
-
-Type: Error
+ Please check the source and validity of the one-key upgrade package.
 
-IsShowConfirm：Yes
+## 0x0F0020 Linear motion to target position failed 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-onekey upgrade err
+### Description 
+ Linear motion to target position failed
 
 ### Reason
+ Linear motion to target position failed. It is reported when the singular point is passed during the general Cartesian motion (straight line or arc motion), especially when the initial point or end point is a singular point.
 
 ### Action
+ If the linear motion path point or target point is unreachable or passes through a singular point, manually check whether the joint can move to the target point. If possible, consider changing the current robot posture to reach the target point from other paths or postures. Note: Since the program pointer will be ahead of the actual action pointer, the error message may be triggered in advance, that is, it will be reported when it is parsed but not executed to the corresponding line. When dealing with this problem, please check whether the subsequent commands in the operating program are reachable based on the current location.
 
-## 0x0F0020 failed to move line to the target position
+## 0x0F0021 Robot model does not support 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Robot model does not support
 
-### Description
-
-failed to move line to the target position
-
 ### Reason
+ Robot model not supported. Generally speaking, the latest controller software will support all existing robot models, but this problem will occur when connecting new models of robots to the old controller software. When this problem occurs, the DH parameters, dynamic parameters and various restrictions of the robot may be wrong, so enable the control carefully.
 
 ### Action
-
-## 0x0F0021 unsupported robot model
-
-Type: Error
+ Check the serial number of the robot on the APP information page, and contact JAKA to obtain the supported software version.
 
-IsShowConfirm：Yes
+## 0x0F0022 Invalid robot serial number 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-unsupported robot model
+### Description 
+ Invalid robot serial number
 
 ### Reason
+ Robot serial number is invalid. The controller software supports specific robot models, and specific robot models have specific coding rules. The serial number of the robot on the actual machine is read from the servo. If the serial number does not meet the supported models and rules, an error will be reported.
 
 ### Action
+ Check the robot serial number on the APP information page, check the actual serial number of the robot body, and check whether the serial number is configured correctly. If the serial number is correct, please contact JAKA to obtain the latest version.
 
-## 0x0F0022 invalid robot serial number
+## 0x0F0023 Invalid load identification track index 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Invalid load identification track index
 
-### Description
-
-invalid robot serial number
-
 ### Reason
+ System internal sending error
 
 ### Action
-
-## 0x0F0023 invalid payload identification trajectory index
-
-Type: Error
+ Re-identify the load; update the controller; contact JAKA for support
 
-IsShowConfirm：Yes
+## 0x0F0024 The magnification cannot be set in the magnification mode 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-invalid payload identification trajectory index
+### Description 
+ The magnification cannot be set in the magnification mode
 
 ### Reason
+ The magnification cannot be set in the magnification mode. This error is generally prompted when the robot is in the override mode or in the protective stop mode to set the override.
 
 ### Action
+ Please check whether the robot is currently in the magnification mode, if so, please exit the magnification mode first, and then set the magnification; if the robot is not in the magnification mode, please confirm the current software version and contact JAKA technical service personnel.
 
-## 0x0F0024 cannot set rapid rate in percentage mode
+## 0x0F0025 Load identification trajectory definition does not meet specification 
+ Type: Error 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Load identification trajectory definition does not meet specification
 
-### Description
-
-cannot set rapid rate in percentage mode
-
 ### Reason
+ The load identification trajectory definition does not meet specification. Robot load identification needs to meet certain constraints to ensure the accuracy of the identification results. When the user input does not meet the prompt requirements, the question will be prompted.
 
 ### Action
-
-## 0x0F0025 non-compliant payload identification trajectory
-
-Type: Error
+ Please operate according to the trajectory specification prompted on the APP load identification interface, and perform load identification again.
 
-IsShowConfirm：Yes
+## 0x0F0026 Please enable it before turning off the power 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-non-compliant payload identification trajectory
+### Description 
+ Please enable it before turning off the power
 
 ### Reason
+ Please enable it before turning off the power
 
 ### Action
+ Please enable it first and then turn off the power.
 
-## 0x0F0026 please servo off first before powering off the robot
+## 0x0F0027 Cannot be enabled during program running 
+ Type: Warning 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Cannot be enabled during program running
 
-### Description
-
-please servo off first before powering off the robot
-
 ### Reason
+ It cannot be enabled during program running.
 
 ### Action
-
-## 0x0F0027 cannot disable the robot when a program is running
-
-Type: Warning
+ Please stop the program first, and then enable it.
 
-IsShowConfirm：Yes
+## 0x0F0028 There is a deviation in the load setting 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-cannot disable the robot when a program is running
+### Description 
+ There is a deviation in the load setting, please check
 
 ### Reason
+ Please check if there is a deviation in the load setting. This error prompt is generally checked when the enable is completed. If the deviation between the actual output torque of the robot and the feed-forward torque exceeds a certain range, this error will be reported and enabled.
 
 ### Action
+ 1) Please check whether the load mass and center of mass are set correctly; 2) Please check whether the robot model and serial number are correctly identified.
 
-## 0x0F0028 cannot servo on the robot when servo torque overrun
+## 0x0F0029 Failed to add circular movement command 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Failed to add circular movement command
 
-### Description
-
-cannot servo on the robot when servo torque overrun
-
 ### Reason
+ Add three collinear or singular positions for circular motion teaching
 
 ### Action
-
-## 0x0F0029 failed to add movc command
-
-Type: Error
+ 1). Please check whether the start point, middle point and end point of the arc movement are coincident; 2), please check whether the start point, middle point and end point of the arc movement are singular positions;
 
-IsShowConfirm：Yes
+## 0x0F0030 Joint speed limit is set to 0 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-failed to add movc command
+### Description 
+ Joint speed limit is set to 0
 
 ### Reason
+ The limit value of the joint speed is 0
 
 ### Action
+ Check whether the "joint speed limit" value in the APP security setting interface is set to 0°/s
 
-## 0x0F0030 joint velocity limit is zero
+## 0x0F0031 Three position enable limit 
+ Type: Info 
 
-Type: Error
+ IsShowConfirm：No  
 
-IsShowConfirm：Yes
+### Description 
+ Three position enable limit
 
-### Description
-
-joint velocity limit is zero
-
 ### Reason
+ Configure and enable the three-position enable safety function in the safety settings.
 
 ### Action
-
-## 0x0F0031 three position enabling limit
-
-Type: Info
+ The three-position enabling safety function has restrictions on robot control, please check the status of the three-position switch, or choose to disable the three-position enabling function according to the safety situation.
 
-IsShowConfirm：No
+## 0x0F0032 Motion types other than linear or arc motion cannot be tracked 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-three position enabling limit
+### Description 
+ Motion types other than linear or arc motion cannot be tracked
 
 ### Reason
+ Conveyor belt tracking can only track the Cartesian space motion type, while other motion types of non-linear motion and smooth motion are nested in the conveyor belt tracking module.
 
 ### Action
+ Please check whether other motion type modules of non-linear motion and smooth motion are nested in the conveyor belt tracking;
 
-## 0x0F0032
+## 0x0F0038 Failed to add joint movement instruction 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Failed to add joint movement instruction
 
-### Description
-
 ### Reason
+ Unreasonable setting of joint motion segment
 
 ### Action
-
-## 0x0F0038 joint move cannot reach the target position
+ 1) Please confirm whether the current robot joint position and the target joint position are correct
 
-Type: Error
+## 0x000030 Joint one movement speed exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one movement speed exceeds the limit
 
-joint move cannot reach the target position
-
 ### Reason
+ The movement speed of joint one exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x000030 joint 1 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x010030 The movement speed of joint 2 exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The movement speed of joint 2 exceeds the limit
 
-joint 1 velocity exceed the limit
-
 ### Reason
+ The movement speed of joint 2 exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x010030 joint 2 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x020030 Joint 3 movement speed exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 3 movement speed exceeds the limit
 
-joint 2 velocity exceed the limit
-
 ### Reason
+ The movement speed of joint 3 exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x020030 joint 3 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x030030 Joint 4 movement speed exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 movement speed exceeds the limit
 
-joint 3 velocity exceed the limit
-
 ### Reason
+ The movement speed of joint 4 exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x030030 joint 4 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x040030 Joint five movement speed exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five movement speed exceeds the limit
 
-joint 4 velocity exceed the limit
-
 ### Reason
+ The movement speed of joint five exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x040030 joint 5 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x050030 Movement speed of joint 6 exceeds the limit 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Movement speed of joint 6 exceeds the limit
 
-joint 5 velocity exceed the limit
-
 ### Reason
+ The movement speed of joint six exceeds the limit. This error is generally reported when the command issued by the controller exceeds the actual speed limit of the joint.
 
 ### Action
-
-## 0x050030 joint 6 velocity exceed the limit
+ 1) Please confirm whether the speed constraint of the current robot has been artificially modified and improved, if yes, contact JAKA technical staff 2) If it has not been modified but an error is reported, please confirm whether reducing the speed or acceleration constraint can eliminate the phenomenon; if it still occurs, please contact the corresponding Export the diagnostic information and contact JAKA technical service personnel.
 
-Type: Warning
+## 0x000031 As soon as the joint reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ As soon as the joint reaches the positive soft limit
 
-joint 6 velocity exceed the limit
-
 ### Reason
+ Once the joint reaches the positive soft limit, this error generally appears when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x000031 hits the joint 1's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x010031 Joint 2 reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 reaches the positive soft limit
 
-hits the joint 1's positive soft limit
-
 ### Reason
+ Joint 2 reaches the positive soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x010031 hits the joint 2's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x020031 Joint 3 reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 3 reaches the positive soft limit
 
-hits the joint 2's positive soft limit
-
 ### Reason
+ Joint 3 reaches the positive soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x020031 hits the joint 3's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x030031 Joint 4 reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 reaches the positive soft limit
 
-hits the joint 3's positive soft limit
-
 ### Reason
+ Joint 4 reaches the positive soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x030031 hits the joint 4's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x040031 Joint 5 reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 reaches the positive soft limit
 
-hits the joint 4's positive soft limit
-
 ### Reason
+ Joint 5 reaches the positive soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x040031 hits the joint 5's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x050031 Joint 6 reaches the positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 reaches the positive soft limit
 
-hits the joint 5's positive soft limit
-
 ### Reason
+ Joint 6 reaches the positive soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x050031 hits the joint 6's positive soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x000032 As soon as the joint reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ As soon as the joint reaches the negative soft limit
 
-hits the joint 6's positive soft limit
-
 ### Reason
+ Once the joint reaches the negative soft limit, this error generally appears when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x000032 hits the joint 1's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x010032 Joint 2 reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 reaches the negative soft limit
 
-hits the joint 1's negative soft limit
-
 ### Reason
+ Joint 2 reaches the negative soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x010032 hits the joint 2's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x020032 Joint 3 reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 3 reaches the negative soft limit
 
-hits the joint 2's negative soft limit
-
 ### Reason
+ Joint 3 reaches the negative soft limit. This error generally occurs when the robot limit is triggered during the robot movement.
 
 ### Action
-
-## 0x020032 hits the joint 3's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x030032 Joint 4 reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 reaches the negative soft limit
 
-hits the joint 3's negative soft limit
-
 ### Reason
+ Joint 4 reaches the negative soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x030032 hits the joint 4's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x040032 Joint 5 reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 reaches the negative soft limit
 
-hits the joint 4's negative soft limit
-
 ### Reason
+ Joint 5 reaches the negative soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x040032 hits the joint 5's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x050032 Joint 6 reaches the negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 reaches the negative soft limit
 
-hits the joint 5's negative soft limit
-
 ### Reason
+ Joint 6 has reached the negative soft limit. This error generally occurs when the robot limit is triggered during the movement of the robot.
 
 ### Action
-
-## 0x050032 hits the joint 6's negative soft limit
+ Please check whether the corresponding joint angle value of the robot has reached the limit. If so, please modify the job path.
 
-Type: Error
+## 0x0F0033 Singularity reached protective stop 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Singularity reached protective stop
 
-hits the joint 6's negative soft limit
-
 ### Reason
+ The robot is about to reach a singular configuration in the motion path and cannot continue to move in Cartesian space. This error generally appears when the inverse solution is abnormal during the movement. When there is external tracking or compensation, such as compliance control or conveyor belt tracking, this error may also be caused by abnormal external input.
 
 ### Action
-
-## 0x0F0033 protective stop due to sigularity position
+ 1) Check whether the current path and attitude of the robot are reachable. If not, replace the initial attitude or path to reach the target position or change the attitude of the target point; 2) If it is currently under force control compliance control, please check whether there is any abnormal external force to eliminate Impact; 3) If the conveyor belt is currently in the tracking state, please check whether the conveyor belt speed and encoder feedback are normal, large fluctuations will cause this problem
 
-Type: Error
+## 0x0F0034 Collision detected protective stop 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Collision detected protective stop
 
-protective stop due to sigularity position
-
 ### Reason
+ collision-protective stop has been detected. This question is usually prompted when the system detects a collision.
 
 ### Action
-
-## 0x0F0034 pretective stop since collision is detected
+ 1) Check whether there is interference around the robot and whether there is a collision; 2) Check whether the serial number and model of the robot are correctly identified; 3) Check whether the robot load and installation angle are set correctly.
 
-Type: Error
+## 0x0F0035 Protective stop beyond attitude limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective stop beyond attitude limit
 
-pretective stop since collision is detected
-
 ### Reason
+ A protective stop has been detected out of attitude limits. This problem is generally prompted when the end of the robot triggers to the tool limit.
 
 ### Action
-
-## 0x0F0035 pretective stop since attitude out of limit
+ Please check whether the current robot motion trajectory is within the tool limit setting range. Or try to modify the size of the active range in the tool limit.
 
-Type: Error
+## 0x0F0036 Tool end exceeds maximum position deviation limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Tool end exceeds maximum position deviation limit
 
-pretective stop since attitude out of limit
-
 ### Reason
+ The deviation between the actual position of the robot tool end and the command position exceeds the set deviation limit value;
 
 ### Action
-
-## 0x0F0036
+ Please check whether the robot movement deviates from the command position;
 
-Type: Error
+## 0x0F0037 Tool end line speed exceeds maximum speed limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Tool end line speed exceeds maximum speed limit
 
 ### Reason
+ The linear velocity at the end of the robot exceeds the set maximum linear velocity limit at the end during joint movement;
 
 ### Action
+ Please check whether the TCP speed limit on the APP "Security Settings"--"Collision Protection" interface is correct; if there is no problem with the TCP speed limit value, please reduce the joint motion command speed and acceleration;
 
-## 0x0F0037
+## 0x000035 The JOG target position exceeds the positive soft limit of joint 1 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The JOG target position exceeds the positive soft limit of joint 1
 
-### Description
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x000035 cannot jog joint 1 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x010035 JOG target position exceeds joint 2 positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ JOG target position exceeds joint 2 positive soft limit
 
-cannot jog joint 1 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x010035 cannot jog joint 2 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x020035 The JOG target position exceeds the three positive soft limits of the joint 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the three positive soft limits of the joint
 
-cannot jog joint 2 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x020035 cannot jog joint 3 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x030035 The JOG target position exceeds the positive soft limit of joint four 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the positive soft limit of joint four
 
-cannot jog joint 3 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x030035 cannot jog joint 4 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x040035 The JOG target position exceeds the five positive soft limit of the joint 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the five positive soft limit of the joint
 
-cannot jog joint 4 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x040035 cannot jog joint 5 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x050035 The JOG target position exceeds the joint six positive soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the joint six positive soft limit
 
-cannot jog joint 5 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x050035 cannot jog joint 6 further past max soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x000036 The JOG target position exceeds the negative soft limit of joint 1 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the negative soft limit of joint 1
 
-cannot jog joint 6 further past max soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x000036 cannot jog joint 1 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x010036 JOG target position exceeds joint 2 negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ JOG target position exceeds joint 2 negative soft limit
 
-cannot jog joint 1 further past min soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x010036 cannot jog joint 2 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x020036 The JOG target position exceeds the joint three negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the joint three negative soft limit
 
-cannot jog joint 2 further past min soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x020036 cannot jog joint 3 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x030036 The JOG target position exceeds the joint four negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the joint four negative soft limit
 
-cannot jog joint 3 further past min soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x030036 cannot jog joint 4 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x040036 The JOG target position exceeds the joint five negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the joint five negative soft limit
 
-cannot jog joint 4 further past min soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x040036 cannot jog joint 5 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x050036 The JOG target position exceeds the joint six negative soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The JOG target position exceeds the joint six negative soft limit
 
-cannot jog joint 5 further past min soft limit
-
 ### Reason
+ Manually control (JOG) the robot to move, when the target point of the movement exceeds the limit value set by the robot joint, this alarm will appear
 
 ### Action
-
-## 0x050036 cannot jog joint 6 further past min soft limit
+ 1) Please check whether the joint limit value has been modified in the robot safety settings. 2) Please check whether the target point is reasonable, if not, please modify the position of the target point.
 
-Type: Error
+## 0x0F0040 Unable to enter drag mode on soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Unable to enter drag mode on soft limit
 
-cannot jog joint 6 further past min soft limit
-
 ### Reason
+ It is not possible to enter the dragging mode on the soft limit.
 
 ### Action
-
-## 0x0F0040 cannot enter free-drive mode when it's on soft limit
+ Check the current state of the joints of the robot, whether it has reached the joint limit, if it has reached the limit, it cannot continue to move towards the overrun direction, but can only move in the non-overrun direction, please jog the overrun joint back to the joint limit range on the teaching page or modify the limit on the setting page.
 
-Type: Error
+## 0x0F0041 Dragging beyond the soft limit will quit dragging 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Dragging beyond the soft limit will quit dragging
 
-cannot enter free-drive mode when it's on soft limit
-
 ### Reason
+ Dragging beyond the soft limit will quit dragging. This prompt is generally prompted when the drag exceeds the limit.
 
 ### Action
-
-## 0x0F0041 exiting from free-drive mode since it exceeds soft limit
+ Check the current state of the robot joints. The robot cannot continue to move towards the overrun direction, but can only move in the non-overrun direction. You can drag the overrun back to the joint limit range, or exit the drag mode, and modify the software on the setting page. Limit, increase the soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x000042 Joint one is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one is about to reach the soft limit
 
-exiting from free-drive mode since it exceeds soft limit
-
 ### Reason
+ Joint one is about to reach the soft limit.
 
 ### Action
-
-## 0x000042 joint 1 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x010042 Joint 2 is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 is about to reach the soft limit
 
-joint 1 is now nearby the soft limit
-
 ### Reason
+ Joint 2 is about to reach the soft limit.
 
 ### Action
-
-## 0x010042 joint 2 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x020042 Joint 3 is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 3 is about to reach the soft limit
 
-joint 2 is now nearby the soft limit
-
 ### Reason
+ Joint three is about to reach the soft limit.
 
 ### Action
-
-## 0x020042 joint 3 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x030042 Joint 4 is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 is about to reach the soft limit
 
-joint 3 is now nearby the soft limit
-
 ### Reason
+ Joint four is about to reach the soft limit.
 
 ### Action
-
-## 0x030042 joint 4 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x040042 Joint 5 is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 is about to reach the soft limit
 
-joint 4 is now nearby the soft limit
-
 ### Reason
+ Joint five is about to reach the soft limit.
 
 ### Action
-
-## 0x040042 joint 5 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x050042 Joint 6 is about to reach the soft limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 is about to reach the soft limit
 
-joint 5 is now nearby the soft limit
-
 ### Reason
+ Joint six is about to reach the soft limit.
 
 ### Action
-
-## 0x050042 joint 6 is now nearby the soft limit
+ Check the current joint state of the robot, whether it is about to reach the joint limit, it is recommended to move in the direction of non-overrunning, please jog the joint that is about to exceed the limit range on the teaching page, or modify the soft limit on the setting page, increase The soft limit range of the joint, but the setting range of the soft limit cannot exceed the hard limit.
 
-Type: Error
+## 0x0F0043 The robot is not enabled and cannot enter the drag 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The robot is not enabled and cannot enter the drag
 
-joint 6 is now nearby the soft limit
-
 ### Reason
+ The robot cannot be dragged if it is not enabled. This problem is generally prompted when the robot detects that the drag command is triggered when the robot is not enabled.
 
 ### Action
-
-## 0x0F0043 cannot enter free-drive mode when robot is disabled
+ Please check whether the robot is powered on and enabled; please check whether it is due to external false triggering of the drag button.
 
-Type: Error
+## 0x0F0044 The robot is moving and cannot enter the drag 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The robot is moving and cannot enter the drag
 
-cannot enter free-drive mode when robot is disabled
-
 ### Reason
+ The robot is moving and cannot enter the drag. The drag mode requires the robot to be switched in when it is in manual mode and in a stationary state.
 
 ### Action
-
-## 0x0F0044 cannot enter free-drive mode when robot is in movement
+ If the robot is running a program, stop the current program first, and then start dragging. If the robot is moving manually, stop and try again.
 
-Type: Warning
+## 0x0F0045 If the joint torque exceeds the limit, it cannot be dragged 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ If the joint torque exceeds the limit, it cannot be dragged
 
-cannot enter free-drive mode when robot is in movement
-
 ### Reason
+ If the joint torque exceeds the limit, it cannot be dragged. Generally speaking, it is caused by dragging too fast or the collision is too sensitive.
 
 ### Action
-
-## 0x0F0045 cannot enter free-drive mode when servo torque overrun
+ Reduce the dragging speed or set the collision level higher in the settings interface.
 
-Type: Error
+## 0x0F0046 The drag button is blocked and cannot enter the drag 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The drag button is blocked and cannot enter the drag
 
-cannot enter free-drive mode when servo torque overrun
-
 ### Reason
+ The function of the drag button (FREE) at the end of the robot is disabled, and the drag operation cannot be performed using the end button (FREE).
 
 ### Action
-
-## 0x0F0046 cannot enter drage mode when turn off tio free button
+ Please check whether the drag and drop function is disabled in the software hardware and communication-auxiliary hardware settings, if disabled, please enable this function.
 
-Type: Warning
+## 0x0F0047 Program pause/resume button blocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Program pause/resume button blocked
 
-cannot enter drage mode when turn off tio free button
-
 ### Reason
+ The program pause/resume function of the top button on the end of the robot is disabled, and the program pause/resume operation cannot be performed using the top button.
 
 ### Action
-
-## 0x0F0047 can not pause or resume program when turn off the button
+ Please check whether the program suspend/resume function is disabled in the software hardware and communication-auxiliary hardware settings, if disabled, please enable this function.
 
-Type: Warning
+## 0x0F0048 The point button is blocked and cannot record the point 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The point button is blocked and cannot record the point
 
-can not pause or resume program when turn off the button
-
 ### Reason
+ The robot end point teaching button (POINT) function is disabled, and the end button (POINT) cannot be used for point teaching operations.
 
 ### Action
-
-## 0x0F0048 can not record point when turn off the point button
+ Please check whether the point recording function is disabled in the software hardware and communication-auxiliary hardware settings, if disabled, please enable this function.
 
-Type: Warning
+## 0x0F0050 Torque sensor not ready 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Torque sensor not ready Cannot enable traction control
 
-can not record point when turn off the point button
-
 ### Reason
+ The torque sensor is not ready to enable power-controlled traction control. This problem generally occurs when the admittance control or operating program compliance control is turned on and it is detected that the state of the torque sensor is not running.
 
 ### Action
-
-## 0x0F0050 cannot enable force control since sensor is not ready
+ Please check that the torque sensor is turned on.
 
-Type: Error
+## 0x0F0051 The torque sensor mode cannot be switched in force control traction mode 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The torque sensor mode cannot be switched in force control traction mode
 
-cannot enable force control since sensor is not ready
-
 ### Reason
+ After the force control drag is turned on, the torque sensor cannot be turned off directly to avoid unexpected results.
 
 ### Action
-
-## 0x0F0051 cannot switch senor mode when it's in force control mode
+ If you need to turn off the sensor, please exit the force control drag first, and then turn off the sensor
 
-Type: Warning
+## 0x0F0052 Torque sensor failure during force control traction 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Torque sensor failure during force control traction
 
-cannot switch senor mode when it's in force control mode
-
 ### Reason
+ The torque sensor is faulty during force control traction. The possible reason is that the communication link between the controller and the external torque sensor is disconnected.
 
 ### Action
-
-## 0x0F0052 torque sensor fault detected during force control
+ Please check whether the communication status of the torque sensor is normal, including the hardware connection line and software configuration.
 
-Type: Error
+## 0x0F0054 Unable to perform single-step operation while the program is running 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Unable to perform single-step operation while the program is running
 
-torque sensor fault detected during force control
-
 ### Reason
+ Single step operations cannot be performed while the program is running.
 
 ### Action
-
-## 0x0F0054 cannot step program while it's already executing
+ If you want to use the single-step debugging function, you can first stop running the current program, and then perform single-step debugging.
 
-Type: Warning
+## 0x0F0055 Collision sensitivity cannot be set during dragging 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Collision sensitivity cannot be set during dragging
 
-cannot step program while it's already executing
-
 ### Reason
+ Collision sensitivity cannot be set during dragging.
 
 ### Action
-
-## 0x0F0055 cannot set collision sensitivity in free-drive or active-drive mode
+ Exit the drag mode first, and then set the sensitivity.
 
-Type: Warning
+## 0x0F0056 Expansion IO module is not running 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The extended IO module is not running and cannot be accessed
 
-cannot set collision sensitivity in free-drive or active-drive mode
-
 ### Reason
+ The extended IO module is not running and cannot be accessed.
 
 ### Action
-
-## 0x0F0056 cannot access extended IO module since it's not running
+ Check whether the extended IO module is running on the IO monitoring interface.
 
-Type: Error
+## 0x0F0057 Unable to set dynamics feedforward 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Dynamics feedforward cannot be enabled or disabled when the robot is in motion
 
-cannot access extended IO module since it's not running
-
 ### Reason
+ The dynamics feedforward cannot be enabled or disabled when the robot is moving. This error will only appear when using the secondary development interface.
 
 ### Action
-
-## 0x0F0057 cannot set torque forward option when robot is moving
+ Stop the current robot's motion first, and then set the dynamics feedforward of the robot.
 
-Type: Warning
+## 0x0F0058 Feature license not detected 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Feature license not detected
 
-cannot set torque forward option when robot is moving
-
 ### Reason
+ No feature usage license detected. The activation of some functions requires software authorization. If the software is detected to be unauthorized during the use of the function, this error will be prompted.
 
 ### Action
-
-## 0x0F0058 licence is not found for this function.
+ Contact JAKA staff to purchase a function license.
 
-Type: Error
+## 0x0F0059 Protective stop reset failed 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective stop reset failed
 
-licence is not found for this function.
-
 ### Reason
+ Protective stop reset failed. This error is generally prompted when it is detected that the protective stop function input is still in the trigger state during the protective stop reset operation.
 
 ### Action
-
-## 0x0F0059 failed to reset safety guard
+ Please check whether the function IO triggers the protective stop, if so, please exit the protective stop mode first and then reset the protective stop.
 
-Type: Warning
+## 0x0F0060 The override cannot be set in protective stop mode 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The override cannot be set in protective stop mode
 
-failed to reset safety guard
-
 ### Reason
+ Override cannot be set in protective stop mode.
 
 ### Action
-
-## 0x0F0060 cannot set rapid rate in safety guard mode
+ Exit the protective stop mode first, and then set the speed multiplier of the robot.
 
-Type: Warning
+## 0x000061 Protective stop joints as soon as a collision is detected 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective stop joints as soon as a collision is detected
 
-cannot set rapid rate in safety guard mode
-
 ### Reason
+ Protective stop joints as soon as a collision is detected
 
 ### Action
-
-## 0x000061 pretective stop since collision detected on joint 1
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x010061 Protective stop joint two detected collision 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective stop joint two detected collision
 
-pretective stop since collision detected on joint 1
-
 ### Reason
+ Protective stop joint two detected collision
 
 ### Action
-
-## 0x010061 pretective stop since collision detected on joint 2
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x020061 Protective Stop Joint Three Collision Detected 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective Stop Joint Three Collision Detected
 
-pretective stop since collision detected on joint 2
-
 ### Reason
+ Protective Stop Joint Three Collision Detected
 
 ### Action
-
-## 0x020061 pretective stop since collision detected on joint 3
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x030061 Protective Stop Joint Four Collision Detected 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective Stop Joint Four Collision Detected
 
-pretective stop since collision detected on joint 3
-
 ### Reason
+ Protective Stop Joint Four Collision Detected
 
 ### Action
-
-## 0x030061 pretective stop since collision detected on joint 4
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x040061 Protective Stop Joint Five Collision Detected 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective Stop Joint Five Collision Detected
 
-pretective stop since collision detected on joint 4
-
 ### Reason
+ Protective Stop Joint Five Collision Detected
 
 ### Action
-
-## 0x040061 pretective stop since collision detected on joint 5
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x050061 Protective Stop Joint Six Collision Detected 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective Stop Joint Six Collision Detected
 
-pretective stop since collision detected on joint 5
-
 ### Reason
+ Protective Stop Joint Six Collision Detected
 
 ### Action
-
-## 0x050061 pretective stop since collision detected on joint 6
+ 1) Check the on-site environment to see if a real collision has occurred. If yes, please optimize the operation procedure; 2) If a false collision occurs, please check whether the load and installation angle are set correctly; 3) Manually control the movement of the joint that reports the error and check whether there is an internal jam in the corresponding joint.
 
-Type: Warning
+## 0x0F0062  TIO RS485 channel torque sensor mode is not enabled 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ TIO RS485 channel torque sensor mode is not enabled
 
-pretective stop since collision detected on joint 6
-
 ### Reason
+  TIO RS485 channel torque sensor mode is not enabled. This problem is generally prompted when an abnormal pin multiplexing configuration is detected when the TIO+ torque sensor is enabled.
 
 ### Action
-
-## 0x0F0062 no TIO RS485 channel is configured as torque sensor
+ When the sensor type VI is selected in the torque sensor settings, enabling the torque sensor at this time will detect whether any channel of the TIO is correctly set to the torque sensor mode. If it is not set correctly, the above information will be wrong, please check the relevant configuration.
 
-Type: Warning
+## 0x0F0063 Support at most one TIO RS485 channel to enable torque sensor mode 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Support at most one TIO RS485 channel to enable torque sensor mode
 
-no TIO RS485 channel is configured as torque sensor
-
 ### Reason
+ It supports at most one TIO RS485 channel to be enabled as a torque sensor mode. Due to the bandwidth limitation of the CAN channel, only one of the two RS485 channels of TIO+ can be used as a torque sensor at most.
 
 ### Action
-
-## 0x0F0063 only one TIO RS485 channel at most can be configured as torque sensor
+ Limited by CAN communication bandwidth, TIO's two reusable RS485 channels only allow one of them to be used as a torque sensor mode. If you need to modify the channel configuration of the torque sensor, please change the mode of the RS485 channel that is currently set as the torque sensor mode before proceeding.
 
-Type: Warning
+## 0x0F0064 Failed to modify communication parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Communication parameter modification failed The torque sensor using this channel is running
 
-only one TIO RS485 channel at most can be configured as torque sensor
-
 ### Reason
+ Modification of TIO RS485 communication parameters failed. The torque sensor using this channel is running.
 
 ### Action
-
-## 0x0F0064 failed to modify TIO RS485 channle settings since a torque sensor is running
+ It is forbidden to modify its communication parameters when the torque sensor is running. Please stop running first, and then modify the communication parameters.
 
-Type: Error
+## 0x0F0065 Invalid semaphore definition 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Invalid semaphore definition
 
-failed to modify TIO RS485 channle settings since a torque sensor is running
-
 ### Reason
+ Invalid semaphore definition. The state of the Modbus gripper at the end is queried through the semaphore mechanism, and the definition of the semaphore needs to meet certain specifications, including name, function code, address, etc. This error will be prompted when the definition specification is not met.
 
 ### Action
-
-## 0x0F0065 invalid signal definition
+ Please check whether the current TIO RS485 channel ID is correct, whether the specified channel mode setting is Modbus RTU, and whether the function code is supported (currently only function codes 01, 02, 03, and 04 are supported).
 
-Type: Error
+## 0x0F0066 The semaphore exceeds the maximum supported number 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The semaphore exceeds the maximum supported number (8)
 
-invalid signal definition
-
 ### Reason
+ Limited by the bandwidth, there is a limit to the number of semaphores supported, a maximum of 8 is supported, and an error will be reported if the number exceeds this number.
 
 ### Action
-
-## 0x0F0066 signals defined exceed the maximum numbers
+ Currently, a maximum of 8 semaphores can be defined, please delete unnecessary semaphore definitions.
 
-Type: Error
+## 0x0F0067 The specified semaphore does not exist 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The specified semaphore does not exist
 
-signals defined exceed the maximum numbers
-
 ### Reason
+ The specified semaphore does not exist. This error generally refers to a semaphore that does not exist in the job program.
 
 ### Action
-
-## 0x0F0067 specified signal doesn't exist
+ Please check the semaphore-related program calls and semaphore definitions to see if there is any reference to an undefined semaphore.
 
-Type: Warning
+## 0x0F0068  Failed to send TIO RS485 command 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to send TIO RS485 command The command queue is full
 
-specified signal doesn't exist
-
 ### Reason
+ The command queue is full, and sending the TIO RS485 command failed. This problem generally occurs when calling semaphore refresh with high frequency or sending instructions.
 
 ### Action
-
-## 0x0F0068 failed to send RS485 command since command queue was full
+ Limited by CAN communication bandwidth, TIO+ related query and setting commands will be buffered. If the refresh rate of the application layer is higher than the bandwidth, this information will be prompted. Please reduce the command calling frequency of the operating program or application.
 
-Type: Warning
+## 0x0F0069  Receiving TIO RS485 command feedback timeout 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Receiving TIO RS485 command feedback timeout
 
-failed to send RS485 command since command queue was full
-
 ### Reason
+ Receiving TIO RS485 command feedback timed out. This problem usually occurs when the controller sends the RS 485 command and waits for the feedback to time out.
 
 ### Action
-
-## 0x0F0069 tio RS485 command response timeout
+ Please check whether the relevant communication settings of TIO+ are correct; check whether the communication link between the controller and the robot is normal.
 
-Type: Error
+## 0x0F0070 Robot DH parameter read verification exception 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Ontology DH parameter read verification exception
 
-tio RS485 command response timeout
-
 ### Reason
+ CRC error in reading the DH parameter of the server when powering on
 
 ### Action
-
-## 0x0F0070 invalid CRC of D-H parameters from servo side
+ Please power on again, if it cannot be resolved or occurs frequently, please upgrade the servo
 
-Type: Warning
+## 0x0F0071 The reading and verification of robot dynamic parameters is abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Kinetic parameter reading verification exception
 
-invalid CRC of D-H parameters from servo side
-
 ### Reason
+ CRC error in reading the dynamic parameters of the servo end when powering on
 
 ### Action
-
-## 0x0F0071 invalid CRC of dynamics parameters from servo side
+ Please power on again, if it cannot be resolved or occurs frequently, please upgrade the servo
 
-Type: Warning
+## 0x0F0072 Reading parameters from servo 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Reading DH or Kinetic parameters from servo can't enable robot
 
-invalid CRC of dynamics parameters from servo side
-
 ### Reason
+ Reading DH or Kinetic parameters from the servo cannot enable the robot. This problem generally occurs when the robot is powered on immediately after it is powered on. If the DH parameters are stored and enabled in the servo at this time, there is a high probability that this error will be reported.
 
 ### Action
-
-## 0x0F0072 cannot enable robot when reading D-H or dynamics parameters from servo side
+ After turning on the power, the controller will read the DH parameters from the servo, during which the robot is disabled. If it still appears when enabling after waiting, please check the communication link between the controller and the robot. If the fault persists, contact JAKA technical personnel.
 
-Type: Warning
+## 0x0F0073 Robot momentum limit reached 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Robot momentum limit reached
 
-cannot enable robot when reading D-H or dynamics parameters from servo side
-
 ### Reason
+ Robot momentum limit reached. The robot safety interface can set the robot momentum limit, and an alarm will be triggered when the limit is reached.
 
 ### Action
-
-## 0x0F0073 robot velocity momentum exceed the limit
+ This error is a warning and does not need to be dealt with. When the absolute value of the robot's momentum is greater than the threshold set by the user, the robot will automatically decelerate.
 
-Type: Warning
+## 0x0F0074  Robot TCP speed limit reached 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Robot TCP speed limit reached
 
-robot velocity momentum exceed the limit
-
 ### Reason
+ Robot TCP speed limit reached. The robot safety interface can set the robot TCP speed limit, and an alarm will be triggered when the limit is reached.
 
 ### Action
-
-## 0x0F0074 robot tcp velocity exceed the limit
+ This is a notification pop-up warning, which can be ignored. You can check whether the TCP speed limit has been implemented in the collision protection under the security setting interface.
 
-Type: Error
+## 0x0F0075 About to exceed the safe plane 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ About to exceed the safe plane
 
-robot tcp velocity exceed the limit
-
 ### Reason
+ It is about to exceed the safety plane, and the robot can only work within the set safety plane range.
 
 ### Action
-
-## 0x0F0075 robot is now nearby the safety zone
+ Please confirm whether the setting of the safety plane is in line with reality; during the investigation, the safety plane function can be turned off or the controller robot moves towards the safety plane.
 
-Type: Warning
+## 0x0F0076 The version number of the DH parameter on the server side is invalid 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The version number of the DH parameter on the server side is invalid
 
-robot is now nearby the safety zone
-
 ### Reason
+ The robot kinematics parameter version is not compatible with the controller
 
 ### Action
-
-## 0x0F0076 unsupported D-H parameter version from servo side
+ Please upgrade the servo or downgrade the controller
 
-Type: Error
+## 0x0F0077 The version number of the dynamic parameters of the server is invalid 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The version number of the dynamic parameters of the server is invalid
 
-unsupported D-H parameter version from servo side
-
 ### Reason
+ Robot dynamics parameter version incompatible with controller
 
 ### Action
-
-## 0x0F0077 unsupported dynamics parameter version from servo side
+ Please upgrade the servo or downgrade the controller
 
-Type: Error
+## 0x0F0078 Servo enable operation is too frequent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Servo enable operation is too frequent
 
-unsupported dynamics parameter version from servo side
-
 ### Reason
+ Continuously click the enable button on the App main interface body
 
 ### Action
-
-## 0x0F0078 servo enable too frequently
+ After pressing the enable button on the main interface of the app, observe whether the breathing light at the end of the main body changes from blue to green after 1 second. Normally, it changes from blue to green, and the brake sound is released with the joint "snap"
 
-Type: Error
+## 0x0F0079 Unable to switch emulation/real machine mode, please turn off the power 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Unable to switch emulation/real machine mode, please turn off the power
 
-servo enable too frequently
-
 ### Reason
+ When the robot is powered on and enabled, use the APP to switch the robot simulation/real machine mode function, prompting an error
 
 ### Action
-
-## 0x0F0079 please turn off the power before switching between simulation/real mode
+ Please modify the simulation/real machine mode switching function after the robot is powered off and enabled.
 
-Type: Warning
+## 0x0F007A It is not supported to set the IPs of the two network ports in the same network segment 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ It is not supported to set the IPs of the two network ports in the same network segment
 
-please turn off the power before switching between simulation/real mode
-
 ### Reason
+ The IP address of the network configuration interface of the App setting interface is set to the 10.5.5.X network segment, which conflicts with the network segment of the controller's own network IP address.
 
 ### Action
-
-## 0x0F007A can not set both net interfaces ip in the same network
+ The IP setting of the network configuration interface of the App setting interface is not allowed in the 10.5.5.X network IP segment. The modified IP address of the bottom network port of the standard controller and the LAN2 port of the MinCab is a static IP address after modification: Network configuration reference setting format: IP: 192.168.10.120 Submask: 255.255.255.0 Default gateway: 192.168.10.1
 
-Type: Warning
+## 0x0F007B  Posture security limit about to be exceeded 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+  Posture security limit about to be exceeded
 
-can not set both net interfaces ip in the same network
-
 ### Reason
+ Approaching the singular point attitude of the robot or the maximum working radius of this type of robot
 
 ### Action
-
-## 0x0F007B robot is now nearby the safety attitude limit
+ The robot attitude point returns and moves towards the position close to the robot base
 
-Type: Warning
+## 0x0F0080 Switching robot models is not allowed in the power-on state 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Switching robot models is not allowed in the power-on state
 
-robot is now nearby the safety attitude limit
-
 ### Reason
+ When the robot is powered on, use the APP robot simulation/real machine mode function to switch the robot model model, prompting an error
 
 ### Action
-
-## 0x0F0080 can not switch robot model with power on
+ After the robot is powered off and enabled, perform the simulation/real machine mode function model switching operation.
 
-Type: Warning
+## 0x0F0081 Password reset is not allowed during robot movement 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Password reset is not allowed during robot movement
 
-can not switch robot model with power on
-
 ### Reason
+ When the robot is in the running state of the program, the operation of modifying the user authority password will prompt an error
 
 ### Action
-
-## 0x0F0081 can not reset password while program is running
+ Please stop the motion state of the robot program, and then try to modify the user authority password.
 
-Type: Warning
+## 0x0F0082 Please check whether the password reset button is normal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Please check whether the password reset button is normal
 
-can not reset password while program is running
-
 ### Reason
+ The password reset button is not functioning properly.
 
 ### Action
-
-## 0x0F0082 reset-password button error, check it please!
+ Please check whether the password reset button is normal, or contact technical service personnel.
 
-Type: Warning
+## 0x0F0083 Joint deceleration failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint deceleration failed
 
-reset-password button error, check it please!
-
 ### Reason
+ Unable to automatically correct joint speed for current motion below limit speed
 
 ### Action
-
-## 0x0F0083 Joint deceleration failed
+ Please increase the limit speed in the safety settings or reduce the command speed
 
-Type: Error
+## 0x0F0100 Robot power limit exceeded 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Robot power limit exceeded
 
-Joint deceleration failed
-
 ### Reason
+ The power setting of the app collision setting interface is less than the power required by the robot movement
 
 ### Action
-
-## 0x0F0100 robot power exceeds the limit
-
-Type: Error
+ App collision setting interface power increase power setting value, JAKA model load 3KG reference value 1000, load 5KG\7KG reference value 1500, load 12KG reference value 2000, load 18KG reference value 2000
 
-IsShowConfirm：Yes
+## 0x0F0101 Robot momentum exceeded 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-robot power exceeds the limit
+### Description 
+ Robot momentum exceeded
 
 ### Reason
+ The momentum setting of the App collision setting interface is less than the momentum required by the robot movement
 
 ### Action
+ The App collision setting interface increases the momentum setting value. The JAKA model load 3KG reference value is 5, the load 5KG\7KG reference value is 10, the load 12KG reference value is 30, and the load 18KG reference value is 50.
 
-## 0x0F0101 robot momentum exceeds the limit
+## 0x0F0102 The base sensor detected a collision 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The base sensor detected a collision
 
-### Description
-
-robot momentum exceeds the limit
-
 ### Reason
+ For the SP model robot, when the robot is in the enabled state, the base sensor signal increases abnormally and exceeds the set threshold, prompting an alarm.
 
 ### Action
-
-## 0x0F0102 robot detectes collision by base sensor
-
-Type: Error
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-IsShowConfirm：Yes
+## 0x0F0103 End force exceeded, 1 axis detected collision 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-robot detectes collision by base sensor
+### Description 
+ End force exceeded, 1 axis detected collision
 
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-## 0x0F0103 End force excced the limit, collision detected by thr 1st joint
+## 0x0F0104 End force exceeded, 2-axis collision detected 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ End force exceeded, 2-axis collision detected
 
-### Description
-
-End force excced the limit, collision detected by thr 1st joint
-
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
-
-## 0x0F0104 End force excced the limit, collision detected by thr 2nd joint
-
-Type: Error
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-IsShowConfirm：Yes
+## 0x0F0105 End force exceeded, 3 axis detected collision 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-End force excced the limit, collision detected by thr 2nd joint
+### Description 
+ End force exceeded, 3 axis detected collision
 
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-## 0x0F0105 End force excced the limit, collision detected by thr 3rd joint
+## 0x0F0106 End force exceeded, 4 axis detected collision 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ End force exceeded, 4 axis detected collision
 
-### Description
-
-End force excced the limit, collision detected by thr 3rd joint
-
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
-
-## 0x0F0106 End force excced the limit, collision detected by thr 4th joint
-
-Type: Error
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-IsShowConfirm：Yes
+## 0x0F0107 End force exceeded, 5-axis detected collision 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-End force excced the limit, collision detected by thr 4th joint
+### Description 
+ End force exceeded, 5-axis detected collision
 
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-## 0x0F0107 End force excced the limit, collision detected by thr 5th joint
+## 0x0F0108 The end force exceeds the limit, and the 6-axis detects a collision 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The end force exceeds the limit, and the 6-axis detects a collision
 
-### Description
-
-End force excced the limit, collision detected by thr 5th joint
-
 ### Reason
+ When the robot is in the program running state, the joint current suddenly increases and exceeds the set threshold, and an alarm is prompted.
 
 ### Action
-
-## 0x0F0108 End force excced the limit, collision detected by thr 6th joint
-
-Type: Error
+ 1. Check whether the machine has collided with peripheral equipment. 2. Check whether the robot is pulled by the cable during the movement. 3. Properly reduce the acceleration of the robot 4. Check whether the load at the end of the robot is correct 5. Try to increase the collision level of the robot
 
-IsShowConfirm：Yes
+## 0x0F0109 Safety plane point setting error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-End force excced the limit, collision detected by thr 6th joint
+### Description 
+ Safe plane set points are not allowed to be collinear or coincident
 
 ### Reason
+ The safety plane setting requires three surface points and one safety point. These three points are Cartesian coordinates. When the three surface points coincide or are collinear, an error will be reported. When the safety point is on the safety plane, an error will be reported.
 
 ### Action
+ Please check whether the safety points are coincident or collinear, and whether the safety points are on the safety plane.
 
-## 0x0F0109 fety plane point set error: no colinear or coincide is permitted
+## 0x0F1001 Enable timeout, please turn on the power again 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Enable timeout, please turn on the power again
 
-### Description
-
 ### Reason
+ When the robot is in the process of being enabled, the joint electromagnet is not engaged, and an error is prompted
 
 ### Action
-
-## 0x0F1001 robot enabling timed out
+ 1. Please try to power off the robot, and then power on and enable again. 2. Please check whether there is any abnormality in the electromagnet of the robot joint, or contact a technician.
 
-Type: Error
+## 0x0F1002 Server version number query timed out 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Server version number query timed out
 
-robot enabling timed out
-
 ### Reason
+ When there is an abnormality in the CAN communication between the robot and the electric control cabinet, an error message will be prompted
 
 ### Action
-
-## 0x0F1002 servo version query timed out
+ 1. Please try to power off the robot and then enable it again. 2. Please check whether there is any connection abnormality in the heavy-duty connection line between the robot and the electric control cabinet.
 
-Type: Error
+## 0x001002 Joint-CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-CAN connection is abnormal
 
-servo version query timed out
-
 ### Reason
+ Joint one CAN bus abnormality leads to data acquisition failure or timeout leads to error prompt
 
 ### Action
-
-## 0x001002 joint 1 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x011002 Joint 2 CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 CAN connection is abnormal
 
-joint 1 CAN connection error
-
 ### Reason
+ Joint 2 CAN bus abnormality leads to data acquisition failure or timeout leads to error prompt
 
 ### Action
-
-## 0x011002 joint 2 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x021002 Joint 3 CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 3 CAN connection is abnormal
 
-joint 2 CAN connection error
-
 ### Reason
+ Joint three CAN bus abnormalities lead to data acquisition failure or timeout lead to error prompts
 
 ### Action
-
-## 0x021002 joint 3 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x031002 Joint 4 CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 CAN connection is abnormal
 
-joint 3 CAN connection error
-
 ### Reason
+ Joint 4 CAN bus abnormality leads to data acquisition failure or timeout leads to error prompt
 
 ### Action
-
-## 0x031002 joint 4 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x041002 Joint 5 CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 CAN connection is abnormal
 
-joint 4 CAN connection error
-
 ### Reason
+ Joint 5 CAN bus abnormality leads to data acquisition failure or timeout leads to error prompt
 
 ### Action
-
-## 0x041002 joint 5 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x051002 Joint 6 CAN connection is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 CAN connection is abnormal
 
-joint 5 CAN connection error
-
 ### Reason
+ Joint six CAN bus abnormalities lead to data acquisition failure or timeout lead to error prompts
 
 ### Action
-
-## 0x051002 joint 6 CAN connection error
+ 1. Power off the robot and enable it, open the cover of the joint that reported the error, and check whether there is any abnormality in the CAN line inside the joint. 2. Please contact technical personnel for consultation.
 
-Type: Error
+## 0x001003 joint-drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint-drive failure
 
-joint 6 CAN connection error
-
 ### Reason
+ After the main body is powered on, there is no signal from the drive board of joint one to return to the controller
 
 ### Action
-
-## 0x001003 joint 1 amplifier fault detected
+ On the App monitoring interface, check whether the monitoring voltage, current, and temperature of joint 1 have data display. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x011003 Joint 2 drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 drive failure
 
-joint 1 amplifier fault detected
-
 ### Reason
+ After the main body is powered on, there is no signal from the second drive board of the joint to return to the controller
 
 ### Action
-
-## 0x011003 joint 2 amplifier fault detected
+ On the App monitoring interface, check whether there is data display for the monitoring voltage, current, and temperature of joint 2. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x021003 Joint three drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three drive failure
 
-joint 2 amplifier fault detected
-
 ### Reason
+ After the main body is powered on, there is no signal from the joint three drive boards to return to the controller
 
 ### Action
-
-## 0x021003 joint 3 amplifier fault detected
+ On the App monitoring interface, check whether the monitoring voltage, current, and temperature of joint 3 have data display. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x031003 Joint quad drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint quad drive failure
 
-joint 3 amplifier fault detected
-
 ### Reason
+ After the main body is powered on, the four-joint drive board has no signal and returns to the controller
 
 ### Action
-
-## 0x031003 joint 4 amplifier fault detected
+ On the App monitoring interface, check whether the monitoring voltage, current, and temperature of joint 4 have data display. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x041003 Joint five drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five drive failure
 
-joint 4 amplifier fault detected
-
 ### Reason
+ After the main body is powered on, there is no signal from the five-joint drive board to return to the controller
 
 ### Action
-
-## 0x041003 joint 5 amplifier fault detected
+ On the App monitoring interface, check whether the monitoring voltage, current, and temperature of joint 5 have data display. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x051003 Joint six drive failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six drive failure
 
-joint 5 amplifier fault detected
-
 ### Reason
+ After the main body is powered on, there is no signal from the six-joint drive board to return to the controller
 
 ### Action
-
-## 0x051003 joint 6 amplifier fault detected
+ On the App monitoring interface, check whether the monitoring voltage, current, and temperature of joint 6 have data display. When the main body is powered on normally, there is a numerical display. If there is no numerical display, please contact the technical staff for assistance.
 
-Type: Error
+## 0x001004 Joint 1 following error is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 following error is too large
 
-joint 6 amplifier fault detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x001004 joint 1 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x011004 Joint 2 following error is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 following error is too large
 
-joint 1 following error detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x011004 joint 2 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x021004 The following error of joint 3 is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The following error of joint 3 is too large
 
-joint 2 following error detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x021004 joint 3 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x031004 The following error of joint 4 is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The following error of joint 4 is too large
 
-joint 3 following error detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x031004 joint 4 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x041004 Joint 5 following error is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 following error is too large
 
-joint 4 following error detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x041004 joint 5 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x051004 The following error of joint 6 is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The following error of joint 6 is too large
 
-joint 5 following error detected
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x051004 joint 6 following error detected
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2000 programming file syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ programming file syntax error
 
-joint 6 following error detected
-
 ### Reason
+ There is an abnormal or undefined parameter in the program, which causes the controller to process abnormally
 
 ### Action
-
-## 0x0F2000 syntax error detected in the program file
+ 1. Please check whether the initial value of the variable definition used in the current program is abnormal. 2. Please check whether there is any abnormality in the interactive data of the communication connection variables.
 
-Type: Error
+## 0x0F2001 no programming file open 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ no programming file open
 
-syntax error detected in the program file
-
 ### Reason
+ no running program loaded
 
 ### Action
-
-## 0x0F2001 no program file is opened
+ 1. Set the default loading program at startup 2. Open the corresponding program on the programming interface, and click to run
 
-Type: Error
+## 0x0F2002 Failed to open programming file 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to open programming file
 
-no program file is opened
-
 ### Reason
+ Programs loaded by default at startup are missing
 
 ### Action
-
-## 0x0F2002 failed to open the program file
+ 1. Re-select the boot default loader in the setting interface. 2. Re-open the program in the programming interface.
 
-Type: Error
+## 0x0F2003 Programming file close failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Programming file close failed
 
-failed to open the program file
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2003 failed to close the program file
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2010 parsing error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ parsing error
 
-failed to close the program file
-
 ### Reason
+ Unmatched if, while, end, break, continue and other keywords. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2010 Error
+ Examine script files, especially manually written script subroutines, for unmatched keywords.
 
-Type: Error
+## 0x0F2011 PyCall() failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ PyCall() failed
 
-Error
-
 ### Reason
+ The called Python script has a syntax error. The error file is:  The line number of the error is: 
 
 ### Action
-
-## 0x0F2011 PyCall()Error
+ Check the called Python script program.
 
-Type: Error
+## 0x0F2012 parsing assertion failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ parsing assertion failed
 
-PyCall()Error
-
 ### Reason
+ The motion parameter setting is unreasonable. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2012 Asset Error
+ Check motion parameter settings
 
-Type: Error
+## 0x0F2013 Parse failed, arc radius is zero 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Parse failed, arc radius is zero
 
-Asset Error
-
 ### Reason
+ There is an exception in the setting of the arc motion point, and the robot motion trajectory planning fails. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2013 Error Radius is zero
+ Please check whether there is any abnormality in the point setting of the robot during the circular motion, and please reconfigure the point information of the circular motion
 
-Type: Error
+## 0x0F2014 parsing failed, syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ parsing failed, syntax error
 
-Error Radius is zero
-
 ### Reason
+ There is a data format exception in the variable interaction instruction (assignment instruction). Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2014 Syntax Error
+ Please check whether there is any abnormal data format in the variable interaction instruction (assignment instruction) involved in the program.
 
-Type: Error
+## 0x0F2015 network connection failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ network connection failed
 
-Syntax Error
-
 ### Reason
+ Failed to create socket. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2015 Net Connect Error
+ Check the script command corresponding to the error according to the error message
 
-Type: Error
+## 0x0F2016 Failed to connect to server 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to connect to server
 
-Net Connect Error
-
 ### Reason
+ The server disconnects during Socket communication. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2016 Connect Server Error
+ 1. Please check whether the Socket communication server is closed. 2. Please try to perform a network connection (ping pass) test with the Socket communication server. 3. Please check whether there is any abnormality in the network cable connection between the electric control cabinet and the Socket communication server. 4. Please check whether the firewall of the Socket communication server is closed.
 
-Type: Error
+## 0x0F2017 Communication failed not connected to the server 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Communication failed not connected to the server
 
-Connect Server Error
-
 ### Reason
+ The camera is not connected when executing the read vision parameter command. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2017 communication failure since no connection is established
+ 1. Please check whether the Socket communication server is closed. 2. Please try to perform a network connection (ping pass) test with the Socket communication server. 3. Please check whether there is any abnormality in the network cable connection between the electric control cabinet and the Socket communication server. 4. Please check whether the firewall of the Socket communication server is closed.
 
-Type: Error
+## 0x0F2018 TCP/IP failed to receive data 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ TCP/IP failed to receive data
 
-communication failure since no connection is established
-
 ### Reason
+ The controller failed to receive data from the camera. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2018 failed to receive data via tcp/ip connection
+ 1. The camera is disconnected; 2. Check the physical connection between the controller and the camera;
 
-Type: Error
+## 0x0F2019 TCP/IP failed to send data 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ TCP/IP failed to send data
 
-failed to receive data via tcp/ip connection
-
 ### Reason
+ The controller failed to send data to the camera. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2019 failed to send data via tcp/ip connection
+ 1. Please check whether the Socket communication server is closed. 2. Please try to perform a network connection (ping pass) test with the Socket communication server. 3. Please check whether there is any abnormality in the network cable connection between the electric control cabinet and the Socket communication server. 4. Please check whether the firewall of the Socket communication server is closed.
 
-Type: Error
+## 0x0F201A Failed to load 2D vision configuration 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to load 2D vision configuration
 
-failed to send data via tcp/ip connection
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F201A load 2D Vision config failed!
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F201B internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ internal error
 
-load 2D Vision config failed!
-
 ### Reason
+ Internal error in script parser. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F201B internal error
+ Check the following situations according to the error log information: 1. sscanf command parameter exception 2. Write operation to read-only variables
 
-Type: Error
+## 0x0F201C Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F201C Named parameter not terminated
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F201D Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Named parameter not terminated
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F201D File ended with no percent sign or program end
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F201E Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-File ended with no percent sign or program end
-
 ### Reason
+ Wrong code parameter. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F201E invalid P-word with M66
+ Please check whether the code parameters are correct before proceeding with the operation.
 
-Type: Error
+## 0x0F201F Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-invalid P-word with M66
-
 ### Reason
+ Unrecognized motion command. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F201F unknown motion code
+ Check scripts, especially manually written scripts, for Move commands
 
-Type: Error
+## 0x0F2020 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-unknown motion code
-
 ### Reason
+ The parameters of the motion command are wrong. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2020 trying to index incorrect axis
+ Check the corresponding motion command according to the error message
 
-Type: Error
+## 0x0F2021 method should not be called 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ method should not be called
 
-trying to index incorrect axis
-
 ### Reason
+ An unsupported G code command is used in circular motion. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2021 function should not have been called
+ Please check whether the function io is always connected. Generally, the external function button can be disconnected after 1 second.
 
-Type: Error
+## 0x0F2022 unknown operation 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ unknown operation
 
-function should not have been called
-
 ### Reason
+ An unsupported operator was used in a script. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2022 unknown operation
+  Check whether symbols other than the following operators are used according to the error message: +, -, /, *, **, and, mod, or, xor,]
 
-Type: Error
+## 0x0F2023 wrong data format 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ wrong data format
 
-unknown operation
-
 ### Reason
+ The defined variable data format is incorrect. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2023 bad number format
+ Please check the data format of the variable, and proceed with the operation after correct modification.
 
-Type: Error
+## 0x0F2024 parameter is undefined 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ parameter is undefined
 
-bad number format
-
 ### Reason
+ 1. The socket defined during socket communication is inconsistent with the socket used during sending. 2. The file in which the error is not in the specified format during data assignment is:  and the error line number is: 
 
 ### Action
-
-## 0x0F2024 parameter not defined
+ 1. Check the communication instructions in the program. Make sure that the ports used are all opened. 2. Check the data assignment instruction. Strings need to add double quotes, and arrays need to add square brackets
 
-Type: Error
+## 0x0F2025 fail to open the file 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ fail to open the file
 
-parameter not defined
-
 ### Reason
+ 1. The file format is abnormal. 2. The wrong file name is set too long:  The error line number is: 
 
 ### Action
-
-## 0x0F2025 open file failed
+ 1. Check whether the file format is correct, if not, please set it to the correct file format. 2. Please check whether the file name is too long, if it is too long, please set it within a reasonable range
 
-Type: Error
+## 0x0F2026 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-open file failed
-
 ### Reason
+ The ini parameter in the program is not defined in the ini file. The error file is:  The error line number is: 
 
 ### Action
-
-## 0x0F2026 key not found in INI file
+ Check whether the ini parameter name in the program is correct according to the error message
 
-Type: Error
+## 0x0F2027 Not enough storage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Not enough storage
 
-key not found in INI file
-
 ### Reason
+ Insufficient memory, error storing string. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2027 Out of memory
+ 1. Restart the operating program of the control cabinet. 2. If this error occurs frequently: 1) Confirm whether there is a memory leak, record the problem and contact the manufacturer; 2) Contact the administrator to increase the swap space capacity of the system;
 
-Type: Error
+## 0x0F2028 wrong return type 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ wrong return type
 
-Out of memory
-
 ### Reason
+ Function return type mismatch. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2028 Error of return value type
+ Please check the variable definition type and return value type to ensure that the return value type is correct before proceeding.
 
-Type: Error
+## 0x0F2029 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Error of return value type
-
 ### Reason
+ There are too many layers of subroutine nested calls. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2029 Too many subroutine levels
+ Check whether the subroutine calls in the job program are nested layer by layer (it is recommended that the number of nesting layers be less than 10)
 
-Type: Error
+## 0x0F202a cannot add parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ cannot add parameters
 
-Too many subroutine levels
-
 ### Reason
+ Parameter assignment exception. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F202a can not add parameter
+ Check according to the error message: 1. Whether the parameter name is correct; 2. Whether the parameter type is correct
 
-Type: Error
+## 0x0F202B user defined error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ user defined error
 
-can not add parameter
-
 ### Reason
+ User defined variable error. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F202B user defined error
+ Please check the variable parameters according to the error.
 
-Type: Error
+## 0x0F202C Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-user defined error
-
 ### Reason
+ An integer was expected to be read (such as an array index), but a non-integer parameter was actually given in the script. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F202C non integer value for integer
+ There is an abnormal step value parameter setting in the character-related instructions, please set a reasonable step value. (The step value can only be set as an integer)
 
-Type: Error
+## 0x0F202D Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-non integer value for integer
-
 ### Reason
+ An unknown character appears after the operation word. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F202D unexpect character after o-word
+ Check the keywords in the operating program according to the error message.
 
-Type: Error
+## 0x0F202E Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-unexpect character after o-word
-
 ### Reason
+ Unknown operator error in file:  Error line number is: 
 
 ### Action
-
-## 0x0F202E Unknown operation name starting
+ Please check the job program syntax: Expressions in () do not support individual &, |, !, = must be: &&, ||, !=, ==
 
-Type: Error
+## 0x0F202F Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Unknown operation name starting
-
 ### Reason
+ Incomplete expression. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F202F unclosed expression
+ Check whether the expression corresponding to the wrong line is written correctly
 
-Type: Error
+## 0x0F2030 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-unclosed expression
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2030 Unknown word starting
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2031 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Unknown word starting
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2031 Unknown word where unary operation could be
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2032 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Unknown word where unary operation could be
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2032 Unknown control command in o word
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2033 command too long 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ command too long
 
-Unknown control command in o word
-
 ### Reason
+ The script command and parameters are too long. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2033 Command too long
+ Single-line script instructions and parameters, the total length of which should not exceed 255 bytes (the latest version should not exceed 512 bytes)
 
-Type: Error
+## 0x0F2034 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Command too long
-
 ### Reason
+ An error occurred while saving system variables. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2034 Parameter file out of order
+ 1. Check the system variable file jaka_user.var 2. Check the system variable file, whether the variable indexes are stored in order;
 
-Type: Error
+## 0x0F2035 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-Parameter file out of order
-
 ### Reason
+ Undefined directive parameter. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2035 unhandled index
+ Check whether the script command parameters at the error location are correct
 
-Type: Error
+## 0x0F2036 file not open 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ file not open
 
-unhandled index
-
 ### Reason
+ Failed to open file or folder. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2036 file not opened
+ 1. Whether the folder or file name path is correct; 2. Whether the permission to open the folder or file is correct; 3. Whether the file is damaged.
 
-Type: Error
+## 0x0F2037 Duplicate definition 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Duplicate definition
 
-file not opened
-
 ### Reason
+ Error in script interpreter keyword mapping. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2037 redefined
+ Internal System Error. Record error logs and operating procedures and contact the manufacturer
 
-Type: Error
+## 0x0F2038 Job program syntax error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Job program syntax error
 
-redefined
-
 ### Reason
+ Error in script interpreter keyword mapping. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2038 Unknown o-word number
+ Internal System Error. Record error logs and operating procedures and contact the manufacturer
 
-Type: Error
+## 0x0F2039 open file repeatedly 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ open file repeatedly
 
-Unknown o-word number
-
 ### Reason
+ Unable to open file. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2039 can not reopen file
+ 1. Whether the folder or file name path is correct; 2. Whether the permission to open the folder or file is correct; 3. Whether the file is damaged.
 
-Type: Error
+## 0x0F2050 invalid socket id 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ invalid socket id
 
-can not reopen file
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2050 invalid socket id
+ 
 
-Type: Error
+## 0x0F2051 Inverse solution failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Inverse solution failed
 
-invalid socket id
-
 ### Reason
+ Inversion failed. This problem usually occurs when the inverse solution calculation fails in the job program. It may be related to the given reference joint angle and the solved end pose. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2051 failed to do the inverse kinematics
+ Manual jog checks whether the reference joint motion can move to the target point through Cartesian space. If possible, consider changing the current robot pose, reaching the target point from other paths or poses, or changing the pose of the target point.
 
-Type: Error
+## 0x0F2052 Correct solution failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Correct solution failed
 
-failed to do the inverse kinematics
-
 ### Reason
+  Correct solution failed. This problem usually occurs when the positive solution calculation fails in the job program. It may be related to the joint angle value setting parameters. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2052 failed to do the forward kinematics
+ Manual jog checks whether the reference joint motion can move to the target point through Cartesian space. If possible, consider changing the current robot pose, reaching the target point from other paths or poses, or changing the pose of the target point.
 
-Type: Error
+## 0x0F2053 TCP/IP communication received wrong data 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ TCP/IP communication received wrong data
 
-failed to do the forward kinematics
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0F2053 wrong data received via tcp/ip connection
+ Please check whether the controller is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0F2054 Invalid array variable 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Invalid array variable
 
-wrong data received via tcp/ip connection
-
 ### Reason
+ Array variable is undefined or variable is not of type array. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2054 invalid array variable
+ Please check whether the use of the array variable corresponding to the error line of the script program is correct
 
-Type: Error
+## 0x0F2055 Invalid array element index 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Invalid array element index
 
-invalid array variable
-
 ### Reason
+ Array index value is out of array bounds. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2055 invalid array element index
+ Please check whether the array index corresponding to the error line in the script program is correct
 
-Type: Error
+## 0x0F2056 Invalid pose interpolation coefficients 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Invalid pose interpolation coefficients
 
-invalid array element index
-
 ### Reason
+ The interpolation coefficient passed in by the pose interpolation command is invalid. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2056 invalid coefficiency for pose interpolation
+ Check positional interpolation command parameters for error positions
 
-Type: Error
+## 0x0F2057 control block terminator mismatch 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ control block terminator mismatch
 
-invalid coefficiency for pose interpolation
-
 ### Reason
+ The if and while control blocks lack matching end terminators. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2057 end token in control block does not match correctly
+ Check whether the if and while statement blocks in the custom script subroutine have end terminators
 
-Type: Error
+## 0x0F2058 Unsupported escape character 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Unsupported escape character
 
-end token in control block does not match correctly
-
 ### Reason
+ An unsupported translation character input was used in a script. Currently only supported: \n, \r, \t, \", \', \\, the error file is:  the error line number is: 
 
 ### Action
-
-## 0x0F2058 unsupported escape characters
+ Currently supported escape characters are: \\ backslash \' single quote \" double quote \n newline \t horizontal tab \r carriage return
 
-Type: Error
+## 0x0F2059 Invalid array cut spacing parameter 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Invalid array cut spacing parameter
 
-unsupported escape characters
-
 ### Reason
+ Invalid stride used when accessing voxels in slice mode. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2059 invalid array slice step
+ Check the script program according to the error message: When accessing the element group in slice mode, the step size should be an integer greater than 0
 
-Type: Error
+## 0x0F2060 Array nesting is not supported 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Array nesting is not supported
 
-invalid array slice step
-
 ### Reason
+ Array variables do not support arrays as elements. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2060 nesting of array is not supported
+ Check the script program according to the error message: Array variables do not support arrays as elements
 
-Type: Error
+## 0x0F2061 String arrays are not supported 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ String arrays are not supported
 
-nesting of array is not supported
-
 ### Reason
+ Strings are not supported in array variables. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2061 string array is not supported
+ Check the script program according to the error message: Strings are not supported in array variables
 
-Type: Error
+## 0x0F2062 Too many socket resources are allocated but not released 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Too many socket resources are allocated but not released
 
-string array is not supported
-
 ### Reason
+ Too many sockets were created and not closed. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2062 too many sockets are allocated but not released
+ 1. Please ensure that after using the open socket command, close it in time when not in use; 2. Avoid opening the socket in a loop statement. If you open it, you must close it in time before the next creation; 3. If it is not closed, the current maximum allowed to create 256 sockets
 
-Type: Error
+## 0x0F2063 The socket received invalid data 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The socket received invalid data
 
-too many sockets are allocated but not released
-
 ### Reason
+ The socket receives variable instructions, and the format of the received data is incorrect. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2063 Socket received data is invalid
+ When the script program uses the socket to receive variables and receive array instructions, please ensure that the data format sent by the server is combined with the return data format defined in the script programming instructions.
 
-Type: Error
+## 0x0F2064  The length of the array received by Socket does not match 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+  The length of the array received by Socket does not match
 
-Socket received data is invalid
-
 ### Reason
+ The length of the array of data received by the Socket does not match the length of the array sent by the server. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2064 Socket received an array with unmathed size
+ When the socket is used in the script program to receive array instructions, please ensure that the length of the array returned by the server is correct
 
-Type: Error
+## 0x0F2065  The data type received by Socket does not match 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+  The data type received by Socket does not match
 
-Socket received an array with unmathed size
-
 ### Reason
+ The variable type of the data received by the Socket does not match the data type sent by the server. Error file is:  Error line number is: 
 
 ### Action
-
-## 0x0F2065 Socket received a paramater with unmathed data type.
+ When using the socket to receive variables and receive array commands in the script, please ensure that the data type sent back by the server is correct.
 
-Type: Error
+## 0x0F3001 Failed to connect to the specified visual device 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to connect to the specified visual device
 
-Socket received a paramater with unmathed data type.
-
 ### Reason
+ Controller fails to connect to vision device
 
 ### Action
-
-## 0x0F3001 failed to connect with specified vision device
+ Check whether the visual hardware wiring is normal, and check whether the visual power supply DC24V positive and negative wiring harness is correct. If you still can't connect, please contact the supplier engineer to deal with it!
 
-Type: Error
+## 0x0F3002 no vision device connected 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ no vision device connected
 
-failed to connect with specified vision device
-
 ### Reason
+ The controller cannot detect that the vision is online
 
 ### Action
-
-## 0x0F3002 no vision device is now connected
+ Check whether the visual hardware wiring is normal, and check whether the visual power supply DC24V positive and negative wiring harness is correct. If you still can't connect, please contact the supplier engineer to deal with it!
 
-Type: Error
+## 0x0F4001 Servo state machine error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Servo state machine error
 
-no vision device is now connected
-
 ### Reason
+ 
 
 ### Action
-
-## 0x0F4001 state machine error in servo side
+ 
 
-Type: Error
+## 0x0F4002 Firmware upgrade failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Firmware upgrade failed
 
-state machine error in servo side
-
 ### Reason
+ Robot firmware package upgrade failed
 
 ### Action
-
-## 0x0F4002 failed to upgrade the firmware
+ Check whether the suffix of the firmware file name is in .tar.gz format, and there is no redundant content. Do not power off or shut down the app during the upgrade process of the App interface.
 
-Type: Error
+## 0x0F4003 The current hardware does not support this function 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The current hardware does not support this function
 
-failed to upgrade the firmware
-
 ### Reason
+ The robot body or controller cannot support the functions currently used
 
 ### Action
-
-## 0x0F4003 this function is not supported by current hardware.
+ Please take a photo of the function that uses the abnormal error report and the version information of the controller currently in use, and contact the technical support engineer for processing.
 
-Type: Error
+## 0x102230 Joint 1 bus overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 bus overcurrent
 
-this function is not supported by current hardware.
-
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
-
-## 0x102230
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-Type: Error
+## 0x112230 Joint 2 bus overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 bus overcurrent
 
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-## 0x112230
+## 0x122230 Joint 3 busbar overcurrent 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 3 busbar overcurrent
 
-### Description
-
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
-
-## 0x122230
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-Type: Error
+## 0x132230 Joint 4 bus overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 bus overcurrent
 
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-## 0x132230
+## 0x142230 Joint 5 busbar overcurrent 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 5 busbar overcurrent
 
-### Description
-
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
-
-## 0x142230
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-Type: Error
+## 0x152230 Joint 6 busbar overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 busbar overcurrent
 
 ### Reason
+ Motor Feedback Current Exceeds Threshold
 
 ### Action
+ Please take a picture of the function that uses the abnormal error report and the version information of the controller currently in use, and save the diagnosis log of the fault and contact the technical support engineer for processing.
 
-## 0x152230
+## 0x102320 Joint 1 output overcurrent 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 1 output overcurrent
 
-### Description
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x102320 joint 1 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. The robot joint drive board or the reducer is abnormal, please contact the technical support personnel; 3. The communication is abnormal: please replace the heavy-duty connecting wire or the electric control cabinet, or contact the technical support personnel;
 
-Type: Error
+## 0x112320 Joint 2 output overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 output overcurrent
 
-joint 1 phase current over limit
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x112320 joint 2 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. The robot joint drive board or the reducer is abnormal, please contact the technical support personnel; 3. The communication is abnormal: please replace the heavy-duty connecting wire or the electric control cabinet, or contact the technical support personnel;
 
-Type: Error
+## 0x122320 Joint three output overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three output overcurrent
 
-joint 2 phase current over limit
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x122320 joint 3 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. The robot joint drive board or the reducer is abnormal, please contact the technical support personnel; 3. The communication is abnormal: please replace the heavy-duty connecting wire or the electric control cabinet, or contact the technical support personnel;
 
-Type: Error
+## 0x132320 Joint four output overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four output overcurrent
 
-joint 3 phase current over limit
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x132320 joint 4 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. The robot joint drive board or the reducer is abnormal, please contact the technical support personnel; 3. The communication is abnormal: please replace the heavy-duty connecting wire or the electric control cabinet, or contact the technical support personnel;
 
-Type: Error
+## 0x142320 Joint five output overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five output overcurrent
 
-joint 4 phase current over limit
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x142320 joint 5 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. The robot joint drive board or the reducer is abnormal, please contact the technical support personnel; 3. The communication is abnormal: please replace the heavy-duty connecting wire or the electric control cabinet, or contact the technical support personnel;
 
-Type: Error
+## 0x152320 Joint six output overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six output overcurrent
 
-joint 5 phase current over limit
-
 ### Reason
+ The current of the motor UVW is detected, which exceeds the overcurrent threshold of the hardware driver board
 
 ### Action
-
-## 0x152320 joint 6 phase current over limit
+  1. Please reduce the load on the robot before using it. 2. Please reduce the speed or acceleration of the robot. 2. If the robot joint drive board or reducer is abnormal, please contact technical support personnel; 3. Please replace the heavy-duty connecting wire or electric control cabinet, or contact technical support personnel;
 
-Type: Error
+## 0x102321 Joint one self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one self-learning overcurrent
 
-joint 6 phase current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x102321 joint 1 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x112321 Joint 2 self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 self-learning overcurrent
 
-joint 1 auto tune current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x112321 joint 2 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x122321 Joint three self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three self-learning overcurrent
 
-joint 2 auto tune current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x122321 joint 3 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x132321 Joint four self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four self-learning overcurrent
 
-joint 3 auto tune current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x132321 joint 4 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x142321 Joint five self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five self-learning overcurrent
 
-joint 4 auto tune current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x142321 joint 5 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x152321 Joint six self-learning overcurrent 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six self-learning overcurrent
 
-joint 5 auto tune current over limit
-
 ### Reason
+ In the process of enabling the joint, a large current is output, but the motor rotation is not detected
 
 ### Action
-
-## 0x152321 joint 6 auto tune current over limit
+ 1. Please enable the robot, manually release the joint electromagnet, and check whether the alarming joint can be pushed. 2. After powering off the main body of the robot, remove the back cover, check whether the cable is in abnormal contact, or contact technical support personnel.
 
-Type: Error
+## 0x108480 Joint One Forward Velocity Tracking Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint One Forward Velocity Tracking Error
 
-joint 6 auto tune current over limit
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x108480 joint 1 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x118480 Joint 2 forward velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 forward velocity tracking error
 
-joint 1 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x118480 joint 2 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x128480 Joint three forward velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three forward velocity tracking error
 
-joint 2 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x128480 joint 3 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x138480 Joint four forward velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four forward velocity tracking error
 
-joint 3 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x138480 joint 4 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x148480 Joint Five Forward Velocity Tracking Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Five Forward Velocity Tracking Error
 
-joint 4 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x148480 joint 5 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x158480 Joint six forward speed tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six forward speed tracking error
 
-joint 5 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is in the same direction as the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x158480 joint 6 positive direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x108481 Joint one negative velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one negative velocity tracking error
 
-joint 6 positive direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x108481 joint 1 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x118481 Joint 2 Negative Velocity Tracking Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 Negative Velocity Tracking Error
 
-joint 1 negative direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x118481 joint 2 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x128481 Joint three negative velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three negative velocity tracking error
 
-joint 2 negative direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x128481 joint 3 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x138481 Joint 4 Negative Velocity Tracking Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 Negative Velocity Tracking Error
 
-joint 3 negative direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x138481 joint 4 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x148481 Joint five negative velocity tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five negative velocity tracking error
 
-joint 4 negative direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x148481 joint 5 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x158481 Joint six negative speed tracking error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six negative speed tracking error
 
-joint 5 negative direction speed tracking error
-
 ### Reason
+ When the actual speed is opposite to the set speed, the speed error exceeds the set alarm threshold
 
 ### Action
-
-## 0x158481 joint 6 negative direction speed tracking error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct.
 
-Type: Error
+## 0x108482 joint speed limit 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint speed limit
 
-joint 6 negative direction speed tracking error
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x108482 joint 1 over max speed
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x118482 Joint 2 speed overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 speed overrun
 
-joint 1 over max speed
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x118482 joint 2 over max speed
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x128482 Joint three speed overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three speed overrun
 
-joint 2 over max speed
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x128482 joint 3 over max speed
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x138482 Joint four speed overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four speed overrun
 
-joint 3 over max speed
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x138482 joint 4 over max speed
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x148482 Joint 5 speed overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 speed overrun
 
-joint 4 over max speed
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x148482 joint 5 over max speed
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x158482 Joint six speed overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six speed overrun
 
-joint 5 over max speed
-
 ### Reason
+ Joint actual speed exceeds joint rated speed
 
 ### Action
-
-## 0x158482 joint 6 over max speed
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x108483 Joint-speed tracking error is too large 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 over max speed
+### Description 
+ Joint-speed tracking error is too large
 
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x108483 joint 1 speed err too large
+## 0x118483 Joint 2 speed tracking error is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 speed tracking error is too large
 
-### Description
-
-joint 1 speed err too large
-
-### Reason
-
-### Action
-
-## 0x118483 joint 2 speed err too large
-
-Type: Error
-
-IsShowConfirm：Yes
-
-### Description
-
-joint 2 speed err too large
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x128483 joint 3 speed err too large
+## 0x128483 Joint three speed tracking error is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three speed tracking error is too large
 
-### Description
-
-joint 3 speed err too large
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
-
-## 0x138483 joint 4 speed err too large
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x138483 Joint 4 speed tracking error is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 speed tracking error is too large
 
-joint 4 speed err too large
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
-
-## 0x148483 joint 5 speed err too large
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x148483 Joint 5 speed tracking error is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 speed tracking error is too large
 
-joint 5 speed err too large
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
-
-## 0x158483 joint 6 speed err too large
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x158483 Joint 6 speed tracking error is too large 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 speed err too large
+### Description 
+ Joint 6 speed tracking error is too large
 
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the alarm threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x108484 joint 1 over max acceleration
+## 0x108484 joint-acceleration out-of-tolerance 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ joint-acceleration out-of-tolerance
 
-### Description
-
-joint 1 over max acceleration
-
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x118484 joint 2 over max acceleration
+## 0x118484 Joint 2 acceleration out of tolerance 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 acceleration out of tolerance
 
-### Description
-
-joint 2 over max acceleration
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x128484 joint 3 over max acceleration
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x128484 Acceleration of three joints is out of tolerance 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Acceleration of three joints is out of tolerance
 
-joint 3 over max acceleration
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x138484 joint 4 over max acceleration
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x138484 Acceleration of four joints is out of tolerance 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Acceleration of four joints is out of tolerance
 
-joint 4 over max acceleration
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x148484 joint 5 over max acceleration
-
-Type: Error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x148484 Acceleration of five joints out of tolerance 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 5 over max acceleration
+### Description 
+ Acceleration of five joints out of tolerance
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x158484 joint 6 over max acceleration
+## 0x158484 Acceleration of six joints is out of tolerance 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Acceleration of six joints is out of tolerance
 
-### Description
-
-joint 6 over max acceleration
-
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x108485 joint 1 speed stall error
+## 0x108485 Abnormal joint speed control 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Abnormal joint speed control
 
-### Description
-
-joint 1 speed stall error
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
-
-## 0x118485 joint 2 speed stall error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x118485 Abnormal speed control of joint 2 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal speed control of joint 2
 
-joint 2 speed stall error
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
-
-## 0x128485 joint 3 speed stall error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x128485 Abnormal joint three-speed control 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal joint three-speed control
 
-joint 3 speed stall error
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
-
-## 0x138485 joint 4 speed stall error
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x138485 Abnormal joint four speed control 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 4 speed stall error
+### Description 
+ Abnormal joint four speed control
 
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x148485 joint 5 speed stall error
+## 0x148485 Abnormal joint five speed control 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Abnormal joint five speed control
 
-### Description
-
-joint 5 speed stall error
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x158485 joint 6 speed stall error
+## 0x158485 Abnormal joint six speed control 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Abnormal joint six speed control
 
-### Description
-
-joint 6 speed stall error
-
 ### Reason
+ The deviation between the actual joint speed and the command speed exceeds the threshold
 
 ### Action
-
-## 0x107380 joint 1 encoder connetion time out
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x107380 Joint-encoder connection timeout 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-encoder connection timeout
 
-joint 1 encoder connetion time out
-
 ### Reason
+ Absolute encoder read status error
 
 ### Action
-
-## 0x117380 joint 2 encoder connetion time out
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-Type: Error
+## 0x117380 Joint 2 encoder connection timed out 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 encoder connection timed out
 
-joint 2 encoder connetion time out
-
 ### Reason
+ Absolute encoder read status error
 
 ### Action
-
-## 0x127380 joint 3 encoder connetion time out
-
-Type: Error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-IsShowConfirm：Yes
+## 0x127380 Joint three encoder connection timeout 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 3 encoder connetion time out
+### Description 
+ Joint three encoder connection timeout
 
 ### Reason
+ Absolute encoder read status error
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-## 0x137380 joint 4 encoder connetion time out
+## 0x137380 Joint four encoder connection timeout 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four encoder connection timeout
 
-### Description
-
-joint 4 encoder connetion time out
-
 ### Reason
+ Absolute encoder read status error
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-## 0x147380 joint 5 encoder connetion time out
+## 0x147380 Joint five encoder connection timeout 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five encoder connection timeout
 
-### Description
-
-joint 5 encoder connetion time out
-
 ### Reason
+ Absolute encoder read status error
 
 ### Action
-
-## 0x157380 joint 6 encoder connetion time out
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-Type: Error
+## 0x157380 Joint six encoder connection timeout 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder connection timeout
 
-joint 6 encoder connetion time out
-
 ### Reason
+ Absolute encoder read status error
 
 ### Action
-
-## 0x107381 joint 1 encoder battery low
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to replace the encoder connection cable to check whether the fault is eliminated. 3. Please contact the technician to check whether the encoder status light is abnormal.
 
-Type: Error
+## 0x107381 Joint-encoder battery undervoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-encoder battery undervoltage
 
-joint 1 encoder battery low
-
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
-
-## 0x117381 joint 2 encoder battery low
-
-Type: Error
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-IsShowConfirm：Yes
+## 0x117381 Joint 2 encoder battery undervoltage 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 encoder battery low
+### Description 
+ Joint 2 encoder battery undervoltage
 
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-## 0x127381 joint 3 encoder battery low
+## 0x127381 Joint three encoder battery undervoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three encoder battery undervoltage
 
-### Description
-
-joint 3 encoder battery low
-
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-## 0x137381 joint 4 encoder battery low
+## 0x137381 Joint four encoder battery undervoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four encoder battery undervoltage
 
-### Description
-
-joint 4 encoder battery low
-
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
-
-## 0x147381 joint 5 encoder battery low
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-Type: Error
+## 0x147381 Joint five encoder battery undervoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder battery undervoltage
 
-joint 5 encoder battery low
-
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
-
-## 0x157381 joint 6 encoder battery low
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-Type: Error
+## 0x157381 Joint six encoder battery undervoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder battery undervoltage
 
-joint 6 encoder battery low
-
 ### Reason
+ Encoder internal battery undervoltage
 
 ### Action
-
-## 0x107382 joint 1 encoder battery disconnected
-
-Type: Error
+  1. Confirmation of production parameters: Contact technicians to check whether the production parameters of the alarm joint are correct. 2. Check wiring: Remove the joint end cover, check whether the encoder wiring is loose, and contact technicians to replace it. 3. If the encoder is faulty, replace the joint code device or joint replacement
 
-IsShowConfirm：Yes
+## 0x107382 Joint one encoder battery disconnected 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 encoder battery disconnected
+### Description 
+ Joint one encoder battery disconnected
 
 ### Reason
+ Encoder power supply error
 
 ### Action
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-## 0x117382 joint 2 encoder battery disconnected
+## 0x117382 Joint 2 encoder battery disconnected 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 encoder battery disconnected
 
-### Description
-
-joint 2 encoder battery disconnected
-
 ### Reason
+ Encoder power supply error
 
 ### Action
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-## 0x127382 joint 3 encoder battery disconnected
+## 0x127382 Joint Three Encoder Battery Disconnected 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint Three Encoder Battery Disconnected
 
-### Description
-
-joint 3 encoder battery disconnected
-
 ### Reason
+ Encoder power supply error
 
 ### Action
-
-## 0x137382 joint 4 encoder battery disconnected
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-Type: Error
+## 0x137382 Joint four encoder battery disconnected 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four encoder battery disconnected
 
-joint 4 encoder battery disconnected
-
 ### Reason
+ Encoder power supply error
 
 ### Action
-
-## 0x147382 joint 5 encoder battery disconnected
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-Type: Error
+## 0x147382 Joint five encoder battery disconnected 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder battery disconnected
 
-joint 5 encoder battery disconnected
-
 ### Reason
+ Encoder power supply error
 
 ### Action
-
-## 0x157382 joint 6 encoder battery disconnected
-
-Type: Error
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-IsShowConfirm：Yes
+## 0x157382 Joint six encoder battery disconnected 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 encoder battery disconnected
+### Description 
+ Joint six encoder battery disconnected
 
 ### Reason
+ Encoder power supply error
 
 ### Action
+  1. If the error occurs only during the power-on and power-off process of the robot, it will not affect the use and no further treatment is required. 2. The encoder is damaged. If the fault continues to affect the use, contact a technician to replace it.
 
-## 0x107383 joint 1 encoder e2prom error
+## 0x107383 Joint 1 encoder storage angle error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 1 encoder storage angle error
 
-### Description
-
-joint 1 encoder e2prom error
-
 ### Reason
+ Joint motor position calibration error
 
 ### Action
-
-## 0x117383 joint 2 encoder e2prom error
-
-Type: Error
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-IsShowConfirm：Yes
+## 0x117383 Joint 2 encoder storage angle error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 encoder e2prom error
+### Description 
+ Joint 2 encoder storage angle error
 
 ### Reason
+ Joint motor position calibration error
 
 ### Action
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-## 0x127383 joint 3 encoder e2prom error
+## 0x127383 Joint three encoder storage angle error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three encoder storage angle error
 
-### Description
-
-joint 3 encoder e2prom error
-
 ### Reason
+ Joint motor position calibration error
 
 ### Action
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-## 0x137383 joint 4 encoder e2prom error
+## 0x137383 Joint four encoder storage angle error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four encoder storage angle error
 
-### Description
-
-joint 4 encoder e2prom error
-
 ### Reason
+ Joint motor position calibration error
 
 ### Action
-
-## 0x147383 joint 5 encoder e2prom error
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-Type: Error
+## 0x147383 Joint five encoder storage angle error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder storage angle error
 
-joint 5 encoder e2prom error
-
 ### Reason
+ Joint motor position calibration error
 
 ### Action
-
-## 0x157383 joint 6 encoder e2prom error
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-Type: Error
+## 0x157383 Joint six encoder storage angle error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder storage angle error
 
-joint 6 encoder e2prom error
-
 ### Reason
+ Joint motor position calibration error
 
 ### Action
-
-## 0x107384 joint 1 encoder count error
-
-Type: Error
+  1. Please contact a technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to re-calibrate the Z value of the joint.
 
-IsShowConfirm：Yes
+## 0x107384 Joint 1 encoder count error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 encoder count error
+### Description 
+ Joint 1 encoder count error
 
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-## 0x117384 joint 2 encoder count error
+## 0x117384 Joint 2 encoder count error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 encoder count error
 
-### Description
-
-joint 2 encoder count error
-
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-## 0x127384 joint 3 encoder count error
+## 0x127384 Joint three encoder count error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three encoder count error
 
-### Description
-
-joint 3 encoder count error
-
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
-
-## 0x137384 joint 4 encoder count error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-Type: Error
+## 0x137384 Joint four encoder count error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four encoder count error
 
-joint 4 encoder count error
-
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
-
-## 0x147384 joint 5 encoder count error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-Type: Error
+## 0x147384 Joint five encoder count error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder count error
 
-joint 5 encoder count error
-
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
-
-## 0x157384 joint 6 encoder count error
-
-Type: Error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-IsShowConfirm：Yes
+## 0x157384 Joint six encoder count error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 encoder count error
+### Description 
+ Joint six encoder count error
 
 ### Reason
+ Abnormal relative encoder count
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check the installation of the encoder or check the dirtiness of the code disc
 
-## 0x107385 joint 1 bi-encoder ECC error
+## 0x107385 Joint one double encoder verification error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint one double encoder verification error
 
-### Description
-
-joint 1 bi-encoder ECC error
-
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-## 0x117385 joint 2 bi-encoder ECC error
+## 0x117385 Joint 2 double encoder verification error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 double encoder verification error
 
-### Description
-
-joint 2 bi-encoder ECC error
-
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
-
-## 0x127385 joint 3 bi-encoder ECC error
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-Type: Error
+## 0x127385 Joint triple double encoder verification error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint triple double encoder verification error
 
-joint 3 bi-encoder ECC error
-
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
-
-## 0x137385 joint 4 bi-encoder ECC error
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-Type: Error
+## 0x137385 Joint four double encoder verification error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four double encoder verification error
 
-joint 4 bi-encoder ECC error
-
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
-
-## 0x147385 joint 5 bi-encoder ECC error
-
-Type: Error
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-IsShowConfirm：Yes
+## 0x147385 Joint five double encoder verification error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 5 bi-encoder ECC error
+### Description 
+ Joint five double encoder verification error
 
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-## 0x157385 joint 6 bi-encoder ECC error
+## 0x157385 Joint six double encoder verification error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six double encoder verification error
 
-### Description
-
-joint 6 bi-encoder ECC error
-
 ### Reason
+ The position recorded by the joint dual encoder deviates and exceeds a certain threshold
 
 ### Action
+ 1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please confirm whether there is a serious collision or mechanical failure, and contact the technician. 3. Please contact a technician to check the encoder installation or check the dirtiness of the code disc.
 
-## 0x107387 joint 1 Z catching error
+## 0x107387 Joint-Z line snap failure 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint-Z line snap failure
 
-### Description
-
-joint 1 Z catching error
-
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
-
-## 0x117387 joint 2 Z catching error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-Type: Error
+## 0x117387 Joint 2 Z line capture failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 Z line capture failure
 
-joint 2 Z catching error
-
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
-
-## 0x127387 joint 3 Z catching error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-Type: Error
+## 0x127387 Joint Triple Z Line Snap Failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Triple Z Line Snap Failure
 
-joint 3 Z catching error
-
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
-
-## 0x137387 joint 4 Z catching error
-
-Type: Error
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-IsShowConfirm：Yes
+## 0x137387 Joint 4 Z line snap failure 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 4 Z catching error
+### Description 
+ Joint 4 Z line snap failure
 
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-## 0x147387 joint 5 Z catching error
+## 0x147387 Joint five Z-line snap failure 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five Z-line snap failure
 
-### Description
-
-joint 5 Z catching error
-
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-## 0x157387 joint 6 Z catching error
+## 0x157387 Joint six Z line capture failure 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six Z line capture failure
 
-### Description
-
-joint 6 Z catching error
-
 ### Reason
+ Relative encoder Z line capture exception
 
 ### Action
-
-## 0x108611 joint 1 position error too large
+  1. Please contact the technician to check whether the production parameters of the alarm joint are correct. 2. Please contact the technician to check and repair the relative encoder of the joint
 
-Type: Error
+## 0x108611 Joint position deviation is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint position deviation is too large
 
-joint 1 position error too large
-
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
-
-## 0x118611 joint 2 position error too large
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x118611 Joint 2 position deviation is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 position deviation is too large
 
-joint 2 position error too large
-
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
-
-## 0x128611 joint 3 position error too large
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x128611 Joint three position deviation is too large 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 3 position error too large
+### Description 
+ Joint three position deviation is too large
 
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x138611 joint 4 position error too large
+## 0x138611 Joint four position deviation is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four position deviation is too large
 
-### Description
-
-joint 4 position error too large
-
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x148611 joint 5 position error too large
+## 0x148611 Joint five position deviation is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five position deviation is too large
 
-### Description
-
-joint 5 position error too large
-
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
-
-## 0x158611 joint 6 position error too large
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x158611 Joint six position deviation is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six position deviation is too large
 
-joint 6 position error too large
-
 ### Reason
+ The deviation between the actual position feedback and the command position exceeds the set threshold
 
 ### Action
-
-## 0x108612 joint 1 position increment over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please check whether there is a collision and whether the load setting is correct. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x108612 Joint 1 position command increment is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 position command increment is too large
 
-joint 1 position increment over limit
-
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
-
-## 0x118612 joint 2 position increment over limit
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x118612 Joint 2 position command increment is too large 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 position increment over limit
+### Description 
+ Joint 2 position command increment is too large
 
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x128612 joint 3 position increment over limit
+## 0x128612 Joint three-position command increment is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three-position command increment is too large
 
-### Description
-
-joint 3 position increment over limit
-
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x138612 joint 4 position increment over limit
+## 0x138612 Joint four position command increment is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four position command increment is too large
 
-### Description
-
-joint 4 position increment over limit
-
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
-
-## 0x148612 joint 5 position increment over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x148612 Joint five position command increment is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five position command increment is too large
 
-joint 5 position increment over limit
-
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
-
-## 0x158612 joint 6 position increment over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x158612 Joint six position command increment is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six position command increment is too large
 
-joint 6 position increment over limit
-
 ### Reason
+ The position command increment is too large, exceeding the threshold
 
 ### Action
-
-## 0x108613 joint 1 acceleration over limit
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x108613 Excessive joint acceleration 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 acceleration over limit
+### Description 
+ Excessive joint acceleration
 
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x118613 joint 2 acceleration over limit
+## 0x118613 Joint two acceleration is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint two acceleration is too large
 
-### Description
-
-joint 2 acceleration over limit
-
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x128613 joint 3 acceleration over limit
+## 0x128613 Excessive acceleration of three joints 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Excessive acceleration of three joints
 
-### Description
-
-joint 3 acceleration over limit
-
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
-
-## 0x138613 joint 4 acceleration over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x138613 Excessive acceleration of four joints 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Excessive acceleration of four joints
 
-joint 4 acceleration over limit
-
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
-
-## 0x148613 joint 5 acceleration over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x148613 Joint five acceleration is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five acceleration is too large
 
-joint 5 acceleration over limit
-
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
-
-## 0x158613 joint 6 acceleration over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x158613 Joint six acceleration is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six acceleration is too large
 
-joint 6 acceleration over limit
-
 ### Reason
+ Position command acceleration is too large, exceeding the threshold
 
 ### Action
-
-## 0x108614 joint 1 command position over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x108614 Joint 1 position command is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 position command is too large
 
-joint 1 command position over limit
-
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
-
-## 0x118614 joint 2 command position over limit
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x118614 Joint 2 position command is too large 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 command position over limit
+### Description 
+ Joint 2 position command is too large
 
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x128614 joint 3 command position over limit
+## 0x128614 Joint three-position command is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three-position command is too large
 
-### Description
-
-joint 3 command position over limit
-
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-## 0x138614 joint 4 command position over limit
+## 0x138614 Joint four position command is too large 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four position command is too large
 
-### Description
-
-joint 4 command position over limit
-
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
-
-## 0x148614 joint 5 command position over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x148614 Joint five position command is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five position command is too large
 
-joint 5 command position over limit
-
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
-
-## 0x158614 joint 6 command position over limit
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-Type: Error
+## 0x158614 Joint six position command is too large 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six position command is too large
 
-joint 6 command position over limit
-
 ### Reason
+ The position command issued by the controller is wrong
 
 ### Action
-
-## 0x108615 joint 1 CAN off line
-
-Type: Error
+  1. Please check whether the program acceleration is set too high. 2. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 3. Please contact a technician to check whether the robot bus communication is abnormal. 4. If the servo mode was used at that time, please check whether the sending command is continuous or abnormal, and whether the position inverse solution is continuous or abnormal.
 
-IsShowConfirm：Yes
+## 0x108615 Joint-CAN communication abnormality 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 CAN off line
+### Description 
+ Joint-CAN communication abnormality
 
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-## 0x118615 joint 2 CAN off line
+## 0x118615 Joint 2 CAN communication abnormality 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 CAN communication abnormality
 
-### Description
-
-joint 2 CAN off line
-
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-## 0x128615 joint 3 CAN off line
+## 0x128615 Joint 3 CAN communication abnormality 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 3 CAN communication abnormality
 
-### Description
-
-joint 3 CAN off line
-
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
-
-## 0x138615 joint 4 CAN off line
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-Type: Error
+## 0x138615 Joint 4 CAN communication abnormality 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 4 CAN communication abnormality
 
-joint 4 CAN off line
-
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
-
-## 0x148615 joint 5 CAN off line
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-Type: Error
+## 0x148615 Joint 5 CAN communication abnormality 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 CAN communication abnormality
 
-joint 5 CAN off line
-
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
-
-## 0x158615 joint 6 CAN off line
-
-Type: Error
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-IsShowConfirm：Yes
+## 0x158615 Joint 6 CAN communication abnormality 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 CAN off line
+### Description 
+ Joint 6 CAN communication abnormality
 
 ### Reason
+ Abnormal robot bus communication
 
 ### Action
+ Please contact a technician to check whether the robot bus communication is abnormal.
 
-## 0x103220 joint 1 servo under voltage
+## 0x103220 Joint-Servo Undervoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint-Servo Undervoltage
 
-### Description
-
-joint 1 servo under voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-## 0x113220 joint 2 servo under voltage
+## 0x113220 Joint 2 servo undervoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 servo undervoltage
 
-### Description
-
-joint 2 servo under voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x123220 joint 3 servo under voltage
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-Type: Error
+## 0x123220 Joint Three Servo Undervoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Three Servo Undervoltage
 
-joint 3 servo under voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x133220 joint 4 servo under voltage
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-Type: Error
+## 0x133220 Joint Four Servo Undervoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Four Servo Undervoltage
 
-joint 4 servo under voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x143220 joint 5 servo under voltage
-
-Type: Error
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-IsShowConfirm：Yes
+## 0x143220 Joint Five Servo Undervoltage 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 5 servo under voltage
+### Description 
+ Joint Five Servo Undervoltage
 
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-## 0x153220 joint 6 servo under voltage
+## 0x153220 Joint six servo undervoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six servo undervoltage
 
-### Description
-
-joint 6 servo under voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the undervoltage threshold of the hardware driver board
 
 ### Action
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the robot heavy-duty cable is connected abnormally. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal. 4. Please contact technical personnel to assist in checking whether the communication or the power supply of the electric control cabinet is abnormal.
 
-## 0x103210 joint 1 servo over voltage
+## 0x103210 joint-servo overvoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ joint-servo overvoltage
 
-### Description
-
-joint 1 servo over voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x113210 joint 2 servo over voltage
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-Type: Error
+## 0x113210 Joint 2 servo overvoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 servo overvoltage
 
-joint 2 servo over voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x123210 joint 3 servo over voltage
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-Type: Error
+## 0x123210 Joint Triple Servo Overvoltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Triple Servo Overvoltage
 
-joint 3 servo over voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x133210 joint 4 servo over voltage
-
-Type: Error
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-IsShowConfirm：Yes
+## 0x133210 Joint Four Servo Overpressure 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 4 servo over voltage
+### Description 
+ Joint Four Servo Overpressure
 
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-## 0x143210 joint 5 servo over voltage
+## 0x143210 Joint Five Servo Overvoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint Five Servo Overvoltage
 
-### Description
-
-joint 5 servo over voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-## 0x153210 joint 6 servo over voltage
+## 0x153210 Joint six servo overvoltage 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six servo overvoltage
 
-### Description
-
-joint 6 servo over voltage
-
 ### Reason
+ The bus voltage is detected and exceeds the overvoltage threshold of the hardware driver board
 
 ### Action
-
-## 0x104310 joint 1 servo over temperature
+  1. Please check whether the robot load or motion acceleration is set too high, please try to reduce the operating conditions. 2. Please try to check whether the discharge plate of the electric control cabinet is abnormal. 3. Please contact technical personnel to help check whether the hardware of the driver board is abnormal.
 
-Type: Error
+## 0x104310 joint-servo overheating 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint-servo overheating
 
-joint 1 servo over temperature
-
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
-
-## 0x114310 joint 2 servo over temperature
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-Type: Error
+## 0x114310 Joint 2 servo over temperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 servo over temperature
 
-joint 2 servo over temperature
-
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
-
-## 0x124310 joint 3 servo over temperature
-
-Type: Error
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-IsShowConfirm：Yes
+## 0x124310 Joint three servo over temperature 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 3 servo over temperature
+### Description 
+ Joint three servo over temperature
 
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-## 0x134310 joint 4 servo over temperature
+## 0x134310 Joint four servo over temperature 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four servo over temperature
 
-### Description
-
-joint 4 servo over temperature
-
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-## 0x144310 joint 5 servo over temperature
+## 0x144310 Joint five servo over temperature 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five servo over temperature
 
-### Description
-
-joint 5 servo over temperature
-
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
-
-## 0x154310 joint 6 servo over temperature
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-Type: Error
+## 0x154310 Joint six servo over temperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six servo over temperature
 
-joint 6 servo over temperature
-
 ### Reason
+ The temperature detected on the driver board exceeds the over-temperature threshold of the hardware driver board
 
 ### Action
-
-## 0x102350 joint 1 power module overload
+ 1. Please check whether the current ambient temperature of the robot exceeds the temperature range of the robot. 2. Please check whether the temperature of the outer surface of the joint is higher than 50°C. If it is higher than 50°C, please reduce the operating conditions. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate or the joint reducer.
 
-Type: Error
+## 0x102350 Joint 1 module overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 module overload (I2T)
 
-joint 1 power module overload
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x112350 joint 2 power module overload
-
-Type: Error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x112350 Joint 2 module overload (I2T) 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 power module overload
+### Description 
+ Joint 2 module overload (I2T)
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x122350 joint 3 power module overload
+## 0x122350 Joint three module overload (I2T) 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three module overload (I2T)
 
-### Description
-
-joint 3 power module overload
-
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x132350 joint 4 power module overload
+## 0x132350 Joint Four Module Overload (I2T) 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint Four Module Overload (I2T)
 
-### Description
-
-joint 4 power module overload
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x142350 joint 5 power module overload
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x142350 Joint Five Module Overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Five Module Overload (I2T)
 
-joint 5 power module overload
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x152350 joint 6 power module overload
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x152350 Joint Six Module Overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Six Module Overload (I2T)
 
-joint 6 power module overload
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x105480 joint 1 servo over power
-
-Type: Error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x105480 Joint-Servo Overpower 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 servo over power
+### Description 
+ Joint-Servo Overpower
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x115480 joint 2 servo over power
+## 0x115480 Joint 2 servo overpower 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 servo overpower
 
-### Description
-
-joint 2 servo over power
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x125480 joint 3 servo over power
-
-Type: Error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x125480 Joint three servo overpower 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 3 servo over power
+### Description 
+ Joint three servo overpower
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x135480 joint 4 servo over power
+## 0x135480 Joint Four Servo Overpower 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint Four Servo Overpower
 
-### Description
-
-joint 4 servo over power
-
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x145480 joint 5 servo over power
+## 0x145480 Joint five servo overpower 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five servo overpower
 
-### Description
-
-joint 5 servo over power
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x155480 joint 6 servo over power
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x155480 Joint six servo overpower 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six servo overpower
 
-joint 6 servo over power
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x103380 joint 1 encoder auto-turn eror
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x103380 Joint 1 encoder zero calibration failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 encoder zero calibration failed
 
-joint 1 encoder auto-turn eror
-
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
-
-## 0x113380 joint 2 encoder auto-turn eror
-
-Type: Error
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-IsShowConfirm：Yes
+## 0x113380 Joint 2 encoder zero calibration failed 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 encoder auto-turn eror
+### Description 
+ Joint 2 encoder zero calibration failed
 
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-## 0x123380 joint 3 encoder auto-turn eror
+## 0x123380 Joint three encoder zero calibration failed 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three encoder zero calibration failed
 
-### Description
-
-joint 3 encoder auto-turn eror
-
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-## 0x133380 joint 4 encoder auto-turn eror
+## 0x133380 Joint four encoder zero calibration failed 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint four encoder zero calibration failed
 
-### Description
-
-joint 4 encoder auto-turn eror
-
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
-
-## 0x143380 joint 5 encoder auto-turn eror
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-Type: Error
+## 0x143380 Joint five encoder zero calibration failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder zero calibration failed
 
-joint 5 encoder auto-turn eror
-
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
-
-## 0x153380 joint 6 encoder auto-turn eror
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-Type: Error
+## 0x153380 Joint six encoder zero calibration failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder zero calibration failed
 
-joint 6 encoder auto-turn eror
-
 ### Reason
+ During the process of enabling the joint, the motor rotation is inconsistent with the expected
 
 ### Action
-
-## 0x103381 joint 1 out lack of phase
-
-Type: Error
+  1. Please contact the technical personnel to check whether the relevant parameters of the alarm joint are abnormal. 2. Please try to enable the joint up and down to check whether the brake is abnormal. 3. Please contact a technician to check whether there is any abnormality in the ABZ wiring of the joint or the ABZ code disc.
 
-IsShowConfirm：Yes
+## 0x103381 Joint one output phase loss 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 1 out lack of phase
+### Description 
+ Joint one output phase loss
 
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x113381 joint 2 out lack of phase
+## 0x113381 Joint 2 output phase loss 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 2 output phase loss
 
-### Description
-
-joint 2 out lack of phase
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x123381 joint 3 out lack of phase
+## 0x123381 Joint three output phase loss 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three output phase loss
 
-### Description
-
-joint 3 out lack of phase
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x133381 joint 4 out lack of phase
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-Type: Error
+## 0x133381 Joint four output phase loss 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four output phase loss
 
-joint 4 out lack of phase
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x143381 joint 5 out lack of phase
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-Type: Error
+## 0x143381 Joint five output phase loss 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five output phase loss
 
-joint 5 out lack of phase
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x153381 joint 6 out lack of phase
-
-Type: Error
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-IsShowConfirm：Yes
+## 0x153381 Joint six output phase loss 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 6 out lack of phase
+### Description 
+ Joint six output phase loss
 
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x103130 joint 1 AC phase lack
+## 0x103130 Joint-input phase loss 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint-input phase loss
 
-### Description
-
-joint 1 AC phase lack
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x113130 joint 2 AC phase lack
+## 0x113130 Joint two input phase loss 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint two input phase loss
 
-### Description
-
-joint 2 AC phase lack
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x123130 joint 3 AC phase lack
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-Type: Error
+## 0x123130 Joint three input phase loss 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three input phase loss
 
-joint 3 AC phase lack
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x133130 joint 4 AC phase lack
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-Type: Error
+## 0x133130 Joint four input phase loss 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four input phase loss
 
-joint 4 AC phase lack
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
-
-## 0x143130 joint 5 AC phase lack
-
-Type: Error
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-IsShowConfirm：Yes
+## 0x143130 Joint five input phase loss 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 5 AC phase lack
+### Description 
+ Joint five input phase loss
 
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x153130 joint 6 AC phase lack
+## 0x153130 Joint six input phase loss 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six input phase loss
 
-### Description
-
-joint 6 AC phase lack
-
 ### Reason
+ During the enable process, the three-phase current output is abnormal
 
 ### Action
+ 1. Please contact a technician to check whether there is any abnormality in the three-phase wiring of the joint. 2. Please contact a technician to check whether there is any abnormality in the joint motor circuit. 3. Please contact a technician to check whether there is any abnormality in the joint drive plate.
 
-## 0x105441 joint 1 internal connection error
+## 0x105441 joint one internal connection error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ joint one internal connection error
 
-### Description
-
-joint 1 internal connection error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x115441 joint 2 internal connection error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x115441 Joint 2 internal connection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 internal connection error
 
-joint 2 internal connection error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x125441 joint 3 internal connection error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x125441 Joint three internal connection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three internal connection error
 
-joint 3 internal connection error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x135441 joint 4 internal connection error
-
-Type: Error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x135441 joint four internal connection error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 4 internal connection error
+### Description 
+ joint four internal connection error
 
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x145441 joint 5 internal connection error
+## 0x145441 joint five internal connection error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ joint five internal connection error
 
-### Description
-
-joint 5 internal connection error
-
 ### Reason
+ Unused
 
 ### Action
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x155441 joint 6 internal connection error
+## 0x155441 Joint six internal connection error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint six internal connection error
 
-### Description
-
-joint 6 internal connection error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x105280 joint 1 internal parameter error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x105280 Joint one internal parameter error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one internal parameter error
 
-joint 1 internal parameter error
-
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
-
-## 0x115280 joint 2 internal parameter error
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-Type: Error
+## 0x115280 Joint 2 internal parameter error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 internal parameter error
 
-joint 2 internal parameter error
-
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
-
-## 0x125280 joint 3 internal parameter error
-
-Type: Error
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-IsShowConfirm：Yes
+## 0x125280 Joint 3 internal parameter error 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 3 internal parameter error
+### Description 
+ Joint 3 internal parameter error
 
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-## 0x135280 joint 4 internal parameter error
+## 0x135280 Joint 4 internal parameter error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint 4 internal parameter error
 
-### Description
-
-joint 4 internal parameter error
-
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-## 0x145280 joint 5 internal parameter error
+## 0x145280 Joint five internal parameter error 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint five internal parameter error
 
-### Description
-
-joint 5 internal parameter error
-
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
-
-## 0x155280 joint 6 internal parameter error
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-Type: Error
+## 0x155280 Joint six internal parameter error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six internal parameter error
 
-joint 6 internal parameter error
-
 ### Reason
+ The servo parameter exceeds the threshold, and this fault will only be reported when the power is turned on.
 
 ### Action
-
-## 0x105281 joint 1 drive PID overflow
+ Please contact a technician to check whether the internal parameters of the joint are abnormal.
 
-Type: Error
+## 0x105281 Joint-PID calculation overflow 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-PID calculation overflow
 
-joint 1 drive PID overflow
-
 ### Reason
+ Servo PID operation exceeds the limit
 
 ### Action
-
-## 0x115281 joint 2 drive PID overflow
-
-Type: Error
+ Contact the R&D staff to deal with
 
-IsShowConfirm：Yes
+## 0x115281 Joint 2 PID calculation overflow 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 2 drive PID overflow
+### Description 
+ Joint 2 PID calculation overflow
 
 ### Reason
+ Servo PID operation exceeds the limit
 
 ### Action
+ Contact the R&D staff to deal with
 
-## 0x125281 joint 3 drive PID overflow
+## 0x125281 Joint three PID operation overflow 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Joint three PID operation overflow
 
-### Description
-
-joint 3 drive PID overflow
-
 ### Reason
-
-### Action
-
-## 0x135281 joint 4 drive PID overflow
+ Servo PID operation exceeds the limit
 
-Type: Error
+### Action
+ Contact the R&D staff to deal with
 
-IsShowConfirm：Yes
+## 0x135281 Joint 4 PID calculation overflow 
+ Type: Error 
 
-### Description
+ IsShowConfirm：Yes  
 
-joint 4 drive PID overflow
+### Description 
+ Joint 4 PID calculation overflow
 
 ### Reason
+ Servo PID operation exceeds the limit
 
 ### Action
-
-## 0x145281 joint 5 drive PID overflow
+ Contact the R&D staff to deal with
 
-Type: Error
+## 0x145281 Joint 5 PID calculation overflow 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 5 PID calculation overflow
 
-joint 5 drive PID overflow
-
 ### Reason
+ Servo PID operation exceeds the limit
 
 ### Action
-
-## 0x155281 joint 6 drive PID overflow
+ Contact the R&D staff to deal with
 
-Type: Error
+## 0x155281 Joint 6 PID calculation overflow 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 6 PID calculation overflow
 
-joint 6 drive PID overflow
-
 ### Reason
+ Servo PID operation exceeds the limit
 
 ### Action
-
-## 0x105211 joint 1 type selection error
+ Contact the R&D staff to deal with
 
-Type: Error
+## 0x105211 Joint one model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one model selection error
 
-joint 1 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x115211 joint 2 type selection error
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x115211 Joint 2 model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 model selection error
 
-joint 2 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x125211 joint 3 type selection error
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x125211 Joint three model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three model selection error
 
-joint 3 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x135211 joint 4 type selection error
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x135211 Joint four model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four model selection error
 
-joint 4 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x145211 joint 5 type selection error
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x145211 Joint five model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five model selection error
 
-joint 5 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x155211 joint 6 type selection error
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x155211 Joint six model selection error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six model selection error
 
-joint 6 type selection error
-
 ### Reason
+ The hardware driver board does not match the servo Zu product series
 
 ### Action
-
-## 0x104210 joint 1 motor overheating
+ Please contact the technical personnel to check whether there is any abnormality in the joint hardware version and servo group parameters.
 
-Type: Error
+## 0x104210 Joint-motor overheating 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-motor overheating
 
-joint 1 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x114210 joint 2 motor overheating
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x114210 Joint 2 motor over temperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 motor over temperature
 
-joint 2 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x124210 joint 3 motor overheating
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x124210 Joint three motor overheating 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three motor overheating
 
-joint 3 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x134210 joint 4 motor overheating
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x134210 Joint four motor overheating 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four motor overheating
 
-joint 4 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x144210 joint 5 motor overheating
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x144210 Joint five motor over temperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five motor over temperature
 
-joint 5 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x154210 joint 6 motor overheating
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x154210 Joint six motor over temperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six motor over temperature
 
-joint 6 motor overheating
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x105210 parameter settings of joint 1 do not match with power driver
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x105210 The parameter setting of joint one does not match the power of the hardware 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The parameter setting of joint one does not match the power of the hardware
 
-parameter settings of joint 1 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x115210 parameter settings of joint 2 do not match with power driver
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x115210 Joint 2 parameter setting does not match hardware power 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 parameter setting does not match hardware power
 
-parameter settings of joint 2 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x125210 parameter settings of joint 3 do not match with power driver
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x125210 Joint three parameter setting does not match hardware power 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three parameter setting does not match hardware power
 
-parameter settings of joint 3 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x135210 parameter settings of joint 4 do not match with power driver
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x135210 The joint four parameter setting does not match the hardware power 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The joint four parameter setting does not match the hardware power
 
-parameter settings of joint 4 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x145210 parameter settings of joint 5 do not match with power driver
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x145210 The joint five parameter setting does not match the hardware power 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The joint five parameter setting does not match the hardware power
 
-parameter settings of joint 5 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x155210 parameter settings of joint 6 do not match with power driver
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x155210 Joint six parameter settings do not match hardware power 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six parameter settings do not match hardware power
 
-parameter settings of joint 6 do not match with power driver
-
 ### Reason
+ Hardware driver board, motor brand model, servo group product series, these three do not match
 
 ### Action
-
-## 0x105282 joint 1 eeprom error
+ 1. Please contact a technician to check whether there is any abnormality in the production parameters of the joint. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x105282 joint one EEPROM error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint one EEPROM error
 
-joint 1 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x115282 joint 2 eeprom error
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x115282 joint two EEPROM error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint two EEPROM error
 
-joint 2 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x125282 joint 3 eeprom error
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x125282 Joint Three EEPROM Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Three EEPROM Error
 
-joint 3 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x135282 joint 4 eeprom error
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x135282 Joint Quad EEPROM Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Quad EEPROM Error
 
-joint 4 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x145282 joint 5 eeprom error
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x145282 Joint Five EEPROM Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Five EEPROM Error
 
-joint 5 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x155282 joint 6 eeprom error
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x155282 Joint Six EEPROM Error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Six EEPROM Error
 
-joint 6 eeprom error
-
 ### Reason
+ Hardware EEPROM chip read and write error
 
 ### Action
-
-## 0x105283 joint 1 failed to power on
+  1. Please try to power on and off the robot several times to check whether there are timing fluctuations. If the problem still exists, please contact the technical staff. 2. Please contact a technician to check whether the joint drive board is abnormal.
 
-Type: Error
+## 0x105283 Failed to enable on joint 1 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable on joint 1
 
-joint 1 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x115283 joint 2 failed to power on
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Error
+## 0x115283 Failed to enable on joint 2 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable on joint 2
 
-joint 2 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x125283 joint 3 failed to power on
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Error
+## 0x125283 Failed to enable on joint 3 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable on joint 3
 
-joint 3 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x135283 joint 4 failed to power on
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Error
+## 0x135283 Failed to enable joint four 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable joint four
 
-joint 4 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x145283 joint 5 failed to power on
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Error
+## 0x145283 Failed to enable on joint 5 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable on joint 5
 
-joint 5 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x155283 joint 6 failed to power on
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Error
+## 0x155283 Failed to enable on joint 6 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to enable on joint 6
 
-joint 6 failed to power on
-
 ### Reason
+ During the enabling process, the enabling failed due to other system failures
 
 ### Action
-
-## 0x106010 joint 1 encoder over temperature
+ Please check whether there are other error messages in the system, and then perform the enabling operation after processing other error messages.
 
-Type: Warning
+## 0x106010 Encoder temperature of joint one is overheated 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Encoder temperature of joint one is overheated
 
-joint 1 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x116010 joint 2 encoder over temperature
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Warning
+## 0x116010 The temperature of joint 2 encoder is overheated 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The temperature of joint 2 encoder is overheated
 
-joint 2 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x126010 joint 3 encoder over temperature
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Warning
+## 0x126010 Joint three encoder temperature overheating 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three encoder temperature overheating
 
-joint 3 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x136010 joint 4 encoder over temperature
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Warning
+## 0x136010 The joint four encoder temperature is overheated 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The joint four encoder temperature is overheated
 
-joint 4 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x146010 joint 5 encoder over temperature
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Warning
+## 0x146010 Joint five encoder temperature overheating 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder temperature overheating
 
-joint 5 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x156010 joint 6 encoder over temperature
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Warning
+## 0x156010 Joint six encoder temperature is overheated 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder temperature is overheated
 
-joint 6 encoder over temperature
-
 ### Reason
+ Encoder temperature status is abnormal
 
 ### Action
-
-## 0x107180 joint 1 motor I2T
+  1. Please check whether the temperature of the joint exceeds the requirements of the operating range, and please reduce the operating conditions. 2. Please contact a technician to check whether there is any abnormality in the joint or encoder.
 
-Type: Error
+## 0x107180 Joint-motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-motor overload (I2T)
 
-joint 1 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x117180 joint 2 motor I2T
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x117180 Joint 2 motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 motor overload (I2T)
 
-joint 2 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x127180 joint 3 motor I2T
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x127180 Joint three motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three motor overload (I2T)
 
-joint 3 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x137180 joint 4 motor I2T
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x137180 Joint four motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four motor overload (I2T)
 
-joint 4 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x147180 joint 5 motor I2T
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x147180 Joint five motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five motor overload (I2T)
 
-joint 5 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x157180 joint 6 motor I2T
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x157180 Joint six motor overload (I2T) 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six motor overload (I2T)
 
-joint 6 motor I2T
-
 ### Reason
+ The motor outputs a large current and it lasts for a while
 
 ### Action
-
-## 0x107181 joint 1 brake error
+ 1. Please check whether there is a collision before the robot alarms for overload. 2. Please check whether the actual load of the joint has seriously exceeded the nominal load of the robot. 3. Please contact a technician to check the parameters of the alarm joint. 4. Please check whether the joint brake mechanism is abnormal by dragging mode. 5. Please contact a technician to check whether the joint is mechanically stuck. 6. Please contact a technician to check whether the reading of the rotor ABZ encoder is abnormal.
 
-Type: Error
+## 0x107181 Joint one motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one motor brake failure
 
-joint 1 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x117181 joint 2 brake error
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x117181 Joint 2 motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 motor brake failure
 
-joint 2 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x127181 joint 3 brake error
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x127181 Joint three motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three motor brake failure
 
-joint 3 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x137181 joint 4 brake error
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x137181 Joint four motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four motor brake failure
 
-joint 4 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x147181 joint 5 brake error
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x147181 Joint five motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five motor brake failure
 
-joint 5 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x157181 joint 6 brake error
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x157181 Joint six motor brake failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six motor brake failure
 
-joint 6 brake error
-
 ### Reason
+ Solenoid not detected
 
 ### Action
-
-## 0x107182 joint 1 high frequency injection failed
+ 1. Please check whether the wiring of the joint solenoid is abnormal. 2. Please check whether the resistance value of the measuring electromagnet is normal.
 
-Type: Error
+## 0x107182 joint-high-frequency injection reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint-high-frequency injection reverse
 
-joint 1 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x117182 joint 2 high frequency injection failed
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x117182 joint two high frequency injection reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint two high frequency injection reverse
 
-joint 2 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x127182 joint 3 high frequency injection failed
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x127182 Joint three high frequency injection reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three high frequency injection reverse
 
-joint 3 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x137182 joint 4 high frequency injection failed
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x137182 Joint Four High Frequency Injection Reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Four High Frequency Injection Reverse
 
-joint 4 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x147182 joint 5 high frequency injection failed
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x147182 Joint Five High Frequency Injection Reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Five High Frequency Injection Reverse
 
-joint 5 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x157182 joint 6 high frequency injection failed
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x157182 Joint Six High Frequency Injection Reverse 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Six High Frequency Injection Reverse
 
-joint 6 high frequency injection failed
-
 ### Reason
+ The actual magnetic pole direction of the motor is inconsistent with the pulse injection calculation, and the control abnormality occurs
 
 ### Action
-
-## 0x107386 joint 1 encoder internal error
+  1. Please contact technical personnel to check whether the motor parameters are correct. 2. Please check whether the phase sequence wiring of the motor is correct. 3. Please contact a technician to check whether the joint drive plate is abnormal.
 
-Type: Error
+## 0x107386 Joint one encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one encoder internal error
 
-joint 1 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x117386 joint 2 encoder internal error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x117386 Joint 2 encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 encoder internal error
 
-joint 2 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x127386 joint 3 encoder internal error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x127386 Joint three encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three encoder internal error
 
-joint 3 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x137386 joint 4 encoder internal error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x137386 Joint four encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four encoder internal error
 
-joint 4 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x147386 joint 5 encoder internal error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x147386 Joint five encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five encoder internal error
 
-joint 5 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x157386 joint 6 encoder internal error
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x157386 Joint six encoder internal error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six encoder internal error
 
-joint 6 encoder internal error
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x107580 joint 1 dynamic over limit
+ Please check whether the servo is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x107580 joint-kinetic overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ joint-kinetic overrun
 
-joint 1 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x117580 joint 2 dynamic over limit
+ Contact the controller for processing
 
-Type: Error
+## 0x117580 Kinetic limit of joint 2 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Kinetic limit of joint 2
 
-joint 2 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x127580 joint 3 dynamic over limit
+ Contact the controller for processing
 
-Type: Error
+## 0x127580 Joint Trikinetic Overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint Trikinetic Overrun
 
-joint 3 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x137580 joint 4 dynamic over limit
+ Contact the controller for processing
 
-Type: Error
+## 0x137580 Joint four dynamics overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four dynamics overrun
 
-joint 4 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x147580 joint 5 dynamic over limit
+ Contact the controller for processing
 
-Type: Error
+## 0x147580 Joint five dynamics overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five dynamics overrun
 
-joint 5 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x157580 joint 6 dynamic over limit
+ Contact the controller for processing
 
-Type: Error
+## 0x157580 Joint six dynamics overrun 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six dynamics overrun
 
-joint 6 dynamic over limit
-
 ### Reason
+ Torque Feedforward Exceeded Servo Threshold
 
 ### Action
-
-## 0x103211 joint 1 power supply error
+ Contact the controller for processing
 
-Type: Error
+## 0x103211 Joint-drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint-drive board power supply failure
 
-joint 1 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x113211 joint 2 power supply error
+ Contact Electrical Handling
 
-Type: Error
+## 0x113211 Joint 2 drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 drive board power supply failure
 
-joint 2 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x123211 joint 3 power supply error
+ Contact Electrical Handling
 
-Type: Error
+## 0x123211 Joint three drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three drive board power supply failure
 
-joint 3 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x133211 joint 4 power supply error
+ Contact Electrical Handling
 
-Type: Error
+## 0x133211 Joint four drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four drive board power supply failure
 
-joint 4 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x143211 joint 5 power supply error
+ Contact Electrical Handling
 
-Type: Error
+## 0x143211 Joint five drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five drive board power supply failure
 
-joint 5 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x153211 joint 6 power supply error
+ Contact Electrical Handling
 
-Type: Error
+## 0x153211 Joint six drive board power supply failure 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six drive board power supply failure
 
-joint 6 power supply error
-
 ### Reason
+ The hardware driver board is damaged
 
 ### Action
-
-## 0x107388 joint 1 encoder magnetic signal is error
+ Contact Electrical Handling
 
-Type: Error
+## 0x107388 Joint 1 encoder magnetic signal is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 encoder magnetic signal is abnormal
 
-joint 1 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x117388 joint 2 encoder magnetic signal is error
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Error
+## 0x117388 The magnetic signal of the second encoder of the joint is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The magnetic signal of the second encoder of the joint is abnormal
 
-joint 2 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x127388 joint 3 encoder magnetic signal is error
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Error
+## 0x127388 The magnetic signal of joint three encoder is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The magnetic signal of joint three encoder is abnormal
 
-joint 3 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x137388 joint 4 encoder magnetic signal is error
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Error
+## 0x137388 The magnetic signal of the four encoders of the joint is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The magnetic signal of the four encoders of the joint is abnormal
 
-joint 4 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x147388 joint 5 encoder magnetic signal is error
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Error
+## 0x147388 The magnetic signal of joint five encoder is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The magnetic signal of joint five encoder is abnormal
 
-joint 5 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x157388 joint 6 encoder magnetic signal is error
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Error
+## 0x157388 The magnetic signal of joint six encoder is abnormal 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The magnetic signal of joint six encoder is abnormal
 
-joint 6 encoder magnetic signal is error
-
 ### Reason
+ Encoder signal amplitude error, magnetic mode error, signal loss, signal abnormality
 
 ### Action
-
-## 0x108000 joint 1 position deviation stop
+  1. Please check whether the error is reported for the fixed joint, and please contact the technical personnel to check whether the joint or the encoder is abnormal. 2. Please check whether there is any external signal or magnetic signal interference in the working environment or body of the robot.
 
-Type: Warning
+## 0x108000 Joint one position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint one position deviation - protective stop
 
-joint 1 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x118000 joint 2 position deviation stop
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x118000 Joint 2 position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 position deviation - protective stop
 
-joint 2 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x128000 joint 3 position deviation stop
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x128000 Joint three position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three position deviation - protective stop
 
-joint 3 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x138000 joint 4 position deviation stop
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x138000 Joint four position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four position deviation - protective stop
 
-joint 4 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x148000 joint 5 position deviation stop
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x148000 Joint five position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five position deviation - protective stop
 
-joint 5 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x158000 joint 6 position deviation stop
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x158000 Joint six position deviation - protective stop 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six position deviation - protective stop
 
-joint 6 position deviation stop
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x108001 joint 1 position deviation warning
+ 1. Please check whether the robot has collided. 2. Please check whether the program acceleration is set too high. 3. Please check whether there is any abnormality in the parameter setting of the movement segment transfer. 4. Please check whether the robot load setting is correct.
 
-Type: Warning
+## 0x108001 Joint position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint position deviation alarm
 
-joint 1 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x118001 joint 2 position deviation warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x118001 Joint 2 position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 position deviation alarm
 
-joint 2 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x128001 joint 3 position deviation warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x128001 Joint three position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three position deviation alarm
 
-joint 3 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x138001 joint 4 position deviation warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x138001 Joint four position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four position deviation alarm
 
-joint 4 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x148001 joint 5 position deviation warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x148001 Joint five position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five position deviation alarm
 
-joint 5 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x158001 joint 6 position deviation warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x158001 Joint six position deviation alarm 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six position deviation alarm
 
-joint 6 position deviation warning
-
 ### Reason
+ Collision detection based on servo position following error
 
 ### Action
-
-## 0x105201 joint 1 parameter locked warning
+  1. Please check if the robot sends a collision. 2. Please check whether the robot motion acceleration is set too high. 3. Please check whether the load of the robot exceeds the required range. 2. Please check whether the installation posture of the robot in the software is consistent with the actual posture. 3. Please check whether the movement segment transition is used incorrectly during the movement.
 
-Type: Warning
+## 0x105201 Joint 1 parameter is not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 parameter is not unlocked
 
-joint 1 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x115201 joint 2 parameter locked warning
+ If this fault occurs, please contact the technical personnel to check the joint parameters.
 
-Type: Warning
+## 0x115201 Joint 2 parameters are not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 parameters are not unlocked
 
-joint 2 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x125201 joint 3 parameter locked warning
+ Please contact a technician for a joint parameter check.
 
-Type: Warning
+## 0x125201 Joint three parameters are not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three parameters are not unlocked
 
-joint 3 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x135201 joint 4 parameter locked warning
+ Please contact a technician for a joint parameter check.
 
-Type: Warning
+## 0x135201 Joint four parameters are not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four parameters are not unlocked
 
-joint 4 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x145201 joint 5 parameter locked warning
+ Please contact a technician for a joint parameter check.
 
-Type: Warning
+## 0x145201 Joint five parameters are not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five parameters are not unlocked
 
-joint 5 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x155201 joint 6 parameter locked warning
+ Please contact a technician for a joint parameter check.
 
-Type: Warning
+## 0x155201 Joint six parameters are not unlocked 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six parameters are not unlocked
 
-joint 6 parameter locked warning
-
 ### Reason
+ From the R176 version, the key parameters of the servo have added a write protection function to avoid errors in the servo parameters caused by misoperation.
 
 ### Action
-
-## 0x105202 joint 1 zero calibration and DH parameter conflict
+ Please contact a technician for a joint parameter check.
 
-Type: Error
+## 0x105202 Joint 1 zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 1 zero calibration conflicts with DH parameters
 
-joint 1 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x115202 joint 2 zero calibration and DH parameter conflict
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x115202 Joint 2 zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 zero calibration conflicts with DH parameters
 
-joint 2 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x125202 joint 2 zero calibration and DH parameter conflict
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x125202 Joint three zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three zero calibration conflicts with DH parameters
 
-joint 2 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x135202 joint 4 zero calibration and DH parameter conflict
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x135202 Joint four zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint four zero calibration conflicts with DH parameters
 
-joint 4 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x145202 joint 5 zero calibration and DH parameter conflict
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x145202 Joint five zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint five zero calibration conflicts with DH parameters
 
-joint 5 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x155202 joint 6 zero calibration and DH parameter conflict
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x155202 Joint six zero calibration conflicts with DH parameters 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint six zero calibration conflicts with DH parameters
 
-joint 6 zero calibration and DH parameter conflict
-
 ### Reason
+ When performing mechanical zero calibration, the servo will detect whether the current model has been calibrated with DH parameters before leaving the factory. If the calibrated model uses the mechanical zero calibration function, DH errors will occur, and eventually the robot’s accuracy will be lost.
 
 ### Action
-
-## 0x108616 joint 1 temperature sensor communication failure
+ Reserved fault, if this fault occurs, please update the software of the host computer and contact the technical staff to update the software of the host computer
 
-Type: Error
+## 0x108616 Abnormal joint-temperature sensor communication 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal joint-temperature sensor communication
 
-joint 1 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x118616 joint 2 temperature sensor communication failure
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x118616 Joint 2 temperature sensor communication abnormality 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint 2 temperature sensor communication abnormality
 
-joint 2 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x128616 joint 3 temperature sensor communication failure
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x128616 Joint three temperature sensor communication abnormality 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Joint three temperature sensor communication abnormality
 
-joint 3 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x138616 joint 4 temperature sensor communication failure
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x138616 Abnormal communication of joint four temperature sensors 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal communication of joint four temperature sensors
 
-joint 4 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x148616 joint 5 temperature sensor communication failure
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x148616 Abnormal communication of joint five temperature sensor 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal communication of joint five temperature sensor
 
-joint 5 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x158616 joint 6 temperature sensor communication failure
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x158616 Abnormal communication of joint six temperature sensor 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal communication of joint six temperature sensor
 
-joint 6 temperature sensor communication failure
-
 ### Reason
+ Abnormal temperature sensor inside the joint
 
 ### Action
-
-## 0x201102 filed to create Modbus RTU connection during extended IO initialization
+ Please check whether the IIC interface temperature sensor is abnormal.
 
-Type: Error
+## 0x201102 Failed to create Modbus RTU connection during extended IO initialization 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to create Modbus Rtu connection during extended IO initialization
 
-filed to create Modbus RTU connection during extended IO initialization
-
 ### Reason
+ An error occurred while connecting the Modbus slave IO module according to the given configuration during initialization.
 
 ### Action
-
-## 0x201202 filed to create Modbus TCP connection during extended IO initialization
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x201202 Failed to create Modbus TCP connection during extended IO initialization 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to create Modbus Tcp connection during extended IO initialization
 
-filed to create Modbus TCP connection during extended IO initialization
-
 ### Reason
+ An error occurred while connecting the Modbus slave IO module according to the given configuration during initialization.
 
 ### Action
-
-## 0x201304 unknown error during extended IO initialization
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x201304 Unknown error during extended IO initialization 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Unknown error during initialization
 
-unknown error during extended IO initialization
-
 ### Reason
+ An error occurred while connecting the Modbus slave IO module according to the given configuration during initialization.
 
 ### Action
-
-## 0x201101 extended IO initialization failed since Modbus-rtu paramters are inconsistent
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x201101  Modbus RTU configuration error during extended IO initialization 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Extended IO initialization failed Modbus RTU communication parameters do not match
 
-extended IO initialization failed since Modbus-rtu paramters are inconsistent
-
 ### Reason
+ An error occurred while connecting the Modbus slave IO module according to the given configuration during initialization.
 
 ### Action
-
-## 0x201201 extended IO initialization failed since tcp format error during initialization
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x201201 Modbus TCP configuration error during extended IO initialization 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Extended IO initialization failed Modbus TCP communication parameter format error
 
-extended IO initialization failed since tcp format error during initialization
-
 ### Reason
+ An error occurred while connecting the Modbus slave IO module according to the given configuration during initialization.
 
 ### Action
-
-## 0x202103 Modbus RTU node offline when extended IO is running
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x202103 Modbus RTU node goes offline when extended IO is running 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The Modbus RTU node is disconnected when the extended IO operation fails.
 
-Modbus RTU node offline when extended IO is running
-
 ### Reason
+ During operation, the Modbus RTU extended IO module is disconnected from the controller.
 
 ### Action
-
-## 0x202102 Modbus TCP node offline when extended IO is running
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x202102 Modbus TCP node goes offline when extended IO is running 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The Modbus TCP node is disconnected when the extended IO operation fails.
 
-Modbus TCP node offline when extended IO is running
-
 ### Reason
+ During operation, the Modbus TCP extended IO module is disconnected from the controller.
 
 ### Action
-
-## 0x3F0001 failed to initialize the connection with torque sensor
+ 1) Please confirm the type and communication configuration of the extended IO module; 2) Please confirm that the communication physical connection between the control cabinet interface and the external extended IO module is normal; 3) Please confirm that the power supply of the extended IO module is normal; 4) You can try to use the Modbus Poll tool to connect Extended IO checks whether the extended IO module is abnormal.
 
-Type: Error
+## 0x3F0001 Torque sensor communication initialization failed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Torque sensor connection initialization failed
 
-failed to initialize the connection with torque sensor
-
 ### Reason
+ When opening with the sensor, a connection will be established with the sensor according to the communication configuration. This error will be returned when the communication connection between the controller and the sensor fails.
 
 ### Action
-
-## 0x3F1001 cannot receive data from torque sensor
+ 1) Please confirm the torque sensor type and communication configuration; 2) Please confirm that the communication physical connection between the control cabinet interface and the torque sensor is normal; 3) Please confirm that the power supply of the torque sensor is normal; 4) You can try to use the Modbus debugging tool or the network debugging assistant tool to connect Torque sensor Check whether the torque sensor is abnormal.
 
-Type: Error
+## 0x3F1001 Failed to receive torque sensor data 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Failed to receive torque sensor data
 
-cannot receive data from torque sensor
-
 ### Reason
+ This error will be reported when the communication between the controller and the sensor is established and the connection is established normally, but the data is disconnected during operation.
 
 ### Action
-
-## 0x3F1002 wrong data is received from torque sensor
+ 1) Please confirm the torque sensor type and communication configuration; 2) Please confirm that the communication physical connection between the control cabinet interface and the torque sensor is normal; 3) Please confirm that the power supply of the torque sensor is normal; 4) You can try to use the Modbus debugging tool or the network debugging assistant tool to connect Torque sensor Check whether the torque sensor is abnormal.
 
-Type: Error
+## 0x3F1002 Received torque sensor data format error 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Received torque sensor data format error
 
-wrong data is received from torque sensor
-
 ### Reason
+ This error generally occurs when the torque sensor is extended through TIO, and an error is reported when the format of the received torque sensor data is wrong.
 
 ### Action
-
-## 0x304281 PDU temperature is abnormal
+ 1) Please confirm the torque sensor type and communication protocol; 2) You can try to use the Modbus debugging tool, network debugging assistant tool or serial port debugging tool to analyze the received torque sensor data to determine whether it conforms to the communication protocol of JAKA+ torque sensor .
 
-Type: Warning
+## 0x304281 Abnormal PDU temperature 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal PDU temperature
 
-PDU temperature is abnormal
-
 ### Reason
+ The temperature inside the control cabinet exceeds 70°C
 
 ### Action
-
-## 0x304282 braking resister is over temperature
+ 1) Please check whether the temperature inside the control cabinet exceeds 70°C; 2) Please check whether the fan inside the control cabinet is working normally.
 
-Type: Error
+## 0x304282 Brake resistor overtemperature 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Brake resistor overtemperature
 
-braking resister is over temperature
-
 ### Reason
+ The temperature of the internal braking resistor of MiniCAB exceeds 80°C
 
 ### Action
-
-## 0x303281 5V voltage is abnomal(the fluctuation range of the supply voltage)
+  1) Please check the internal temperature of MiniCAB; 2) Please reduce the acceleration of the robot; 3) Please add a cooling fan;
 
-Type: Warning
+## 0x303281 Abnormal 5V power supply voltage 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal 5V (fluctuation range of power supply voltage)
 
-5V voltage is abnomal(the fluctuation range of the supply voltage)
-
 ### Reason
+ The 5V signal voltage value inside the control cabinet exceeds the internal preset value (3.5~6.1V), you can use a multimeter to test the 5V signal voltage value.
 
 ### Action
-
-## 0x303282 12V voltage is abnomal(the fluctuation range of the supply voltage)
+ 1) Please check whether the firmware version is the latest version, if it is not updated to the latest version, check whether the problem still exists; 2) After the input power supply of the control cabinet is disconnected and powered on again, check whether the problem still exists, if it exists, please contact the technical staff 3) For the standard 220V power supply control cabinet, the fault will be reported when the 220V power supply is unplugged, which is a normal phenomenon.
 
-Type: Warning
+## 0x303282  12V power supply voltage is abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ 12V abnormality (fluctuation range of power supply voltage)
 
-12V voltage is abnomal(the fluctuation range of the supply voltage)
-
 ### Reason
+ The 12V signal voltage value inside the control cabinet exceeds the internal preset value (9~14V), and the 12V signal voltage value can be measured with a multimeter.
 
 ### Action
-
-## 0x303283 24V voltage is abnomal(the fluctuation range of the supply voltage)
+ 1) Please check whether the firmware version is the latest version, if it is not updated to the latest version, check whether the problem still exists; 2) After the input power supply of the control cabinet is disconnected and powered on again, check whether the problem still exists, if it exists, please contact the technical staff 3) For the standard 220V power supply control cabinet, the fault will be reported when the 220V power supply is unplugged, which is a normal phenomenon.
 
-Type: Error
+## 0x303283 Abnormal 24V power supply voltage 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ 24V abnormality (fluctuation range of power supply voltage)
 
-24V voltage is abnomal(the fluctuation range of the supply voltage)
-
 ### Reason
+ The 12V signal voltage inside the control cabinet exceeds the internal preset value (15~31V), you can use a multimeter to measure the 12V signal voltage value.
 
 ### Action
-
-## 0x303181 220V power supply is abnormal
+ 1) Please check whether the firmware version is the latest version, if it is not updated to the latest version, check whether the problem still exists; 2) After the input power supply of the control cabinet is disconnected and powered on again, check whether the problem still exists, if it exists, please contact the technical staff 3) For the standard 220V power supply control cabinet, the fault will be reported when the 220V power supply is unplugged, which is a normal phenomenon.
 
-Type: Warning
+## 0x303181 Abnormal 220V power supply voltage 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Abnormal 220V power supply
 
-220V power supply is abnormal
-
 ### Reason
+ The control cabinet detects that the amplitude and frequency of the 220V signal are abnormal
 
 ### Action
-
-## 0x303182 main supply relay is abnormal
+ 1) Please confirm the current power supply voltage and frequency of the control cabinet. Only the AC power above 110V and 50~60Hz can have the 220V power failure detection function. The control cabinet powered by 90~110V AC must use the firmware version with the words dis220v; 2) Please update to the latest version of the firmware to check whether the problem still exists; 3) If neither 1 nor 2 solves the problem, it is necessary to determine the amplitude and frequency of the power supply and the changes in amplitude and frequency during operation; 4) If 1 Neither 2 nor 2 solve this problem, and 3 cannot be measured. It is necessary to determine whether the power supply of the control cabinet will be cut off directly when the robot is running (including but not limited to unplugging the 220V plug, power failure in the factory, etc.), if not It is possible to update the firmware to a version with dis220V for temporary use.
 
-Type: Warning
+## 0x303182 The main power supply relay is abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The main power supply relay is abnormal
 
-main supply relay is abnormal
-
 ### Reason
+ The relay that controls the 48V output detects an output signal when it is not powered on, that is, the relay that controls the input signal of the 48V power supply is stuck.
 
 ### Action
-
-## 0x303381 robot voltage or voltage configuration is abnormal
-
-Type: Warning
+ 1) Please update the SCB firmware to the latest version to see if the problem still exists; 2) Please confirm the amplitude and frequency of the power supply voltage of the control cabinet, the control cabinet powered by 90~110V AC must use the firmware version with the words dis220v ; 3) After the previous two steps, the fault is still reported, please contact the technician to check whether the relay controlling the 48V power supply in the electric control cabinet is damaged.
 
-IsShowConfirm：Yes
+## 0x303381 The main body output power supply voltage is abnormal 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-robot voltage or voltage configuration is abnormal
+### Description 
+ Body voltage or voltage configuration is abnormal
 
 ### Reason
+ The discharge voltage value set by MiniCAB is smaller than the input voltage value of MiniCAB.
 
 ### Action
+ Please use the APP to reset the discharge voltage.
 
-## 0x303387 PSCB relay is abnormal
+## 0x303387 PSCB relay abnormal 
+ Type: Warning 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ PSCB relay abnormal
 
-### Description
-
-PSCB relay is abnormal
-
 ### Reason
+ After the main body power is turned off, the voltage values of the two relays that control the main body power detected by the PSCB are inconsistent.
 
 ### Action
-
-## 0x302384 current supply of user IO (2.3A) is abnormal
-
-Type: Warning
+ 1) Please update to the latest version of the firmware to check whether the problem still exists; 2) If the problem still exists after the previous operation, please contact a technician to check whether the internal relay of the PSCB is damaged.
 
-IsShowConfirm：Yes
+## 0x302384 User IO power supply current is abnormal 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-current supply of user IO (2.3A) is abnormal
+### Description 
+ User IO power supply current is abnormal (2.3A)
 
 ### Reason
+ The total current value of the 24V output on the control cabinet panel exceeds 1.5A
 
 ### Action
+ 1) Please remove the components on the panel of the control cabinet and check whether the fault is still reported; 2) If the fault is not reported after the first step, the user equipment cannot use the control cabinet for power supply and needs to be powered separately; 3) If the error is still reported after the first step, And if the error is still reported after shutdown and restart, please contact a technician to check whether the hardware is damaged.
 
-## 0x302385 IPC current is abnormal (ipc short-circuit fault will be reported if IPC current exceeds 1.5A)
+## 0x302385 Abnormal IPC current 
+ Type: Warning 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ The current of the industrial computer is abnormal (the current of the industrial computer exceeds 1.5A, it is considered that the industrial computer is short-circuited, and an error is reported)
 
-### Description
-
-IPC current is abnormal (ipc short-circuit fault will be reported if IPC current exceeds 1.5A)
-
 ### Reason
+ The industrial computer is not connected after starting up or the current of the industrial computer exceeds 1.5A;
 
 ### Action
-
-## 0x302380 fan current is abnormal
-
-Type: Warning
+ Please contact a technician to check whether the hardware of the industrial computer is abnormal.
 
-IsShowConfirm：Yes
+## 0x302380  Abnormal fan current 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-fan current is abnormal
+### Description 
+ Abnormal fan current
 
 ### Reason
+ The control cabinet fan is not connected or the fan is short-circuited;
 
 ### Action
+ Please check the fan failure status.
 
-## 0x302381 Output body supply current abnormal level 1 warning:25A
+## 0x302381 Level 1 alarm for body current abnormality 
+ Type: Warning 
 
-Robot arm current consumption is abnormal
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Output body power supply current abnormal level 1 warning: 25A robot body current consumption is abnormal
 
-### Description
-
-Output body supply current abnormal level 1 warning:25A
-Robot arm current consumption is abnormal
-
 ### Reason
+ The current collected by the SCB exceeds the set threshold
 
 ### Action
-
-## 0x302382 Output body supply current abnormal level 2 warning:31.25A
-
-Type: Warning
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-IsShowConfirm：Yes
+## 0x302382 Body current abnormal secondary alarm 
+ Type: Warning 
 
-### Description
+ IsShowConfirm：Yes  
 
-Output body supply current abnormal level 2 warning:31.25A
+### Description 
+ Output body power supply current abnormal level 2 early warning: 31.25A
 
 ### Reason
+ The current collected by the SCB exceeds the set threshold
 
 ### Action
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x302383 Output body supply current abnormal level 3 warning:37.25A
+## 0x302383 Three-level alarm for body current abnormality 
+ Type: Warning 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Output body power supply current abnormal level 3 early warning: 37.25A
 
-### Description
-
-Output body supply current abnormal level 3 warning:37.25A
-
 ### Reason
+ The current collected by the SCB exceeds the set threshold
 
 ### Action
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-## 0x302391
+## 0x302391 Abnormal body power 
+ Type: Warning 
 
-Type: Warning
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Abnormal body power
 
-### Description
-
 ### Reason
+ The power of the main body calculated by the safety control board exceeds the set limit value
 
 ### Action
-
-## 0x309081 TCP is drived over speed
+ 1. Please re-adjust the power setting in the security settings in the APP. 2. Please contact technical service personnel to check whether there is a problem of power exceeding the limit on the hardware.
 
-Type: Warning
+## 0x309081 The end of the robot is dragging and overspeeding 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Drag and drop TCP speed exceeded
 
-TCP is drived over speed
-
 ### Reason
+ The TCP dragging speed of the main body exceeds 1m/s.
 
 ### Action
-
-## 0x309082 Emergency Stop!!
+ Please reduce the dragging speed, this alarm does not affect other functions, it is only a reminder.
 
-Type: Warning
+## 0x309082 emergency stop trigger 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ emergency stop
 
-Emergency Stop!!
-
 ### Reason
+ Any one of the handle emergency stop, user emergency stop, and safety function IO emergency stop signals is triggered.
 
 ### Action
-
-## 0x308181 button panel communication is interrupted
+ Please check which one of the handle emergency stop, user emergency stop, and safety function IO emergency stop signal is triggered.
 
-Type: Warning
+## 0x308181 Handle CAN communication interrupted 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Handle CAN communication interrupted
 
-button panel communication is interrupted
-
 ### Reason
+ The data of the safety control board and the handle bus are wrong.
 
 ### Action
-
-## 0x308182 controller communication is interrupted
+ 1. Please check whether the cable connection between the handle and the electric control cabinet is normal. 2. Please contact a technician to check whether the CAN bus between SCB/PSCB and CAN2 of the control cabinet is abnormal.
 
-Type: Warning
+## 0x308182 Controller CAN communication interrupted 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Controller CAN communication interrupted
 
-controller communication is interrupted
-
 ### Reason
+ After turning on the power of the robot, the command sent by the controller to the main body has not been received for a period of time.
 
 ### Action
-
-## 0x308183 robot CAN communication is interrupted
+ 1) Please update the SCB and PSCB firmware to the latest version and check whether the fault exists; 2) Check whether the data of joints 1~6 has been refreshed on the APP monitoring or servo host computer monitoring page; 3) Please check whether the indicator light at the end of the body is On, if not on, please check whether the wiring is normal.
 
-Type: Warning
+## 0x308183 Main body CAN communication interrupted 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Main body CAN communication interrupted
 
-robot CAN communication is interrupted
-
 ### Reason
+ After turning on the power of the robot, the command sent by the controller to the main body has not been received for a period of time.
 
 ### Action
-
-## 0x308184 TIO CAN communication is interrupted
+ 1) Please update the SCB and PSCB firmware to the latest version and check whether the fault exists; 2) Check whether the data of joints 1~6 has been refreshed on the APP monitoring or servo host computer monitoring page; 3) Please check whether the indicator light at the end of the body is On, if not on, please check whether the wiring is normal.
 
-Type: Warning
+## 0x308184 TIO CAN communication interrupted 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ TIO CAN communication interrupted
 
-TIO CAN communication is interrupted
-
 ### Reason
+ After turning on the power of the robot, the command sent by the controller to the main body has not been received for a period of time.
 
 ### Action
-
-## 0x308185 timed out to wait for normal CAN communication
+ 1) Please update the SCB and PSCB firmware to the latest version and check whether the fault exists; 2) Check whether the data of joints 1~6 has been refreshed on the APP monitoring or servo host computer monitoring page; 3) Please check whether the indicator light at the end of the body is On, if not on, please check whether the wiring is normal.
 
-Type: Warning
+## 0x308185 Waiting for CAN communication to time out normally 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Waiting for CAN communication to time out normally
 
-timed out to wait for normal CAN communication
-
 ### Reason
+ After turning on the power of the robot, the command sent by the controller to the main body has not been received for a period of time.
 
 ### Action
-
-## 0x305081 inconsistent stick emergency stop signal input
+ 1) Please update the SCB and PSCB firmware to the latest version and check whether the fault exists; 2) Check whether the data of joints 1~6 has been refreshed on the APP monitoring or servo host computer monitoring page; 3) Please check whether the indicator light at the end of the body is On, if not on, please check whether the wiring is normal.
 
-Type: Warning
+## 0x305081 The emergency stop signal of the handle is inconsistent 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ The emergency stop signal of the handle is inconsistent
 
-inconsistent stick emergency stop signal input
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x305082 inconsistent user emergency stop signal input
+ Please try to replace the handle, or contact a technician to check the cabinet SCB circuit.
 
-Type: Warning
+## 0x305082 Inconsistent user emergency stop signal input 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Inconsistent user emergency stop signal input
 
-inconsistent user emergency stop signal input
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x305083 inconsistent protective stop signal input
+ Please check whether the p8 terminal on the panel is in poor contact, and check whether the external circuit is normal
 
-Type: Warning
+## 0x305083 Inconsistent input of protective stop signal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Inconsistent input of protective stop signal
 
-inconsistent protective stop signal input
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x305084 SCB relay abnormal
+ Please check whether the p8 terminal on the panel is in poor contact, and check whether the external circuit is normal
 
-Type: Warning
+## 0x305084 SCB relay abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ SCB relay abnormal
 
-SCB relay abnormal
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x305085 Braking resister is over temperature
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Warning
+## 0x305085 Brake resistor overtemperature 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Brake resistor overtemperature
 
-Braking resister is over temperature
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x305086 Servo enable input on stick is abnormal
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Warning
+## 0x305086 Handle enable input is abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Handle enable input is abnormal
 
-Servo enable input on stick is abnormal
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x305087 Additional emergency stop loop is abnormal
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Warning
+## 0x305087 Additional emergency stop input abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Additional emergency stop input abnormal
 
-Additional emergency stop loop is abnormal
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x305088 Additional protective stop loop is abnormal
+ Please check whether the DI interface terminals configured on the panel are in poor contact, and check whether the external circuit is normal.
 
-Type: Warning
+## 0x305088 Additional protective stop input exception 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Additional protective stop input exception
 
-Additional protective stop loop is abnormal
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x305089 Protective stop reset loop is abnormal
+ Please check whether the DI interface terminals configured on the panel are in poor contact, and check whether the external circuit is normal.
 
-Type: Warning
+## 0x305089 Protective stop reset input abnormal 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Protective stop reset input abnormal
 
-Protective stop reset loop is abnormal
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x30508A Reduce-mode input is abnormal
+ Please check whether the DI interface terminals configured on the panel are in poor contact, and check whether the external circuit is normal.
 
-Type: Warning
+## 0x30508A Reduced mode input exception 
+ Type: Warning 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Reduced mode input exception
 
-Reduce-mode input is abnormal
-
 ### Reason
+ The signal is a dual-link redundant channel, and an error will be reported if the two signals are inconsistent.
 
 ### Action
-
-## 0x309083 Robot power exceed the limit
+ Please check whether the DI interface terminals configured on the panel are in poor contact, and check whether the external circuit is normal.
 
-Type: Error
+## 0x309083 Robot machine power alarm threshold 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Robot machine power alarm threshold
 
-Robot power exceed the limit
-
 ### Reason
+ Unused
 
 ### Action
-
-## 0x0FFFFE miscellaneous error
+ Please check whether the SCB is a debugging version, or contact technical service personnel to provide relevant error code description information.
 
-Type: Error
+## 0x0FFFFE other errors 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ other errors
 
-miscellaneous error
-
 ### Reason
+ 
 
 ### Action
-
-## 0x0FFFFF unknown error
+ 
 
-Type: Error
+## 0x0FFFFF unknown mistake 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ unknown mistake
 
-unknown error
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0000 system emergency stopped
+ 
 
-Type: Info
+## 0x10F0000 System emergency stop trigger 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ System emergency stop trigger
 
-system emergency stopped
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0001 system emergency stop reset
+ 
 
-Type: Info
+## 0x10F0001 System emergency stop reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ System emergency stop reset
 
-system emergency stop reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0002 robot powered on
+ 
 
-Type: Info
+## 0x10F0002 The robot is powered on 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot is powered on
 
-robot powered on
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0003 robot powered off
+ 
 
-Type: Info
+## 0x10F0003 The robot is powered off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot is powered off
 
-robot powered off
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0004 robot servo enabled
+ 
 
-Type: Info
+## 0x10F0004 Robot servo enable complete 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot servo enable complete
 
-robot servo enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0005 robot servo disabled
+ 
 
-Type: Info
+## 0x10F0005 Robot servo enable off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot servo enable off
 
-robot servo disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0006 robot exit from percentage mode
+ 
 
-Type: Info
+## 0x10F0006 Robot exits magnification mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot exits magnification mode
 
-robot exit from percentage mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0007 robot in percentage mode (leve 1)
+ 
 
-Type: Info
+## 0x10F0007 The robot enters the first-level magnification mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters the first-level magnification mode
 
-robot in percentage mode (leve 1)
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0008 robot in percentage mode (leve 2)
+ 
 
-Type: Info
+## 0x10F0008 The robot enters the secondary magnification mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters the secondary magnification mode
 
-robot in percentage mode (leve 2)
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0009 robot in protective stop
+ 
 
-Type: Info
+## 0x10F0009 The robot enters a protective stop 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters a protective stop
 
-robot in protective stop
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000a robot exit from collision protective stop
+ 
 
-Type: Info
+## 0x10F000a Robot exits collision protective stop 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot exits collision protective stop
 
-robot exit from collision protective stop
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000b robot in collision protective stop
+ 
 
-Type: Info
+## 0x10F000b The robot enters a crash-protective stop 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters a crash-protective stop
 
-robot in collision protective stop
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000c robot recover from joint limit state
+ 
 
-Type: Info
+## 0x10F000c Robot joint limit state recovery 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot joint limit state recovery
 
-robot recover from joint limit state
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000d conveyor track function enabled
+ 
 
-Type: Info
+## 0x10F000d Carousel feature is on 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Carousel feature is on
 
-conveyor track function enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000e conveyor track function disabled
+ 
 
-Type: Info
+## 0x10F000e Carousel feature is off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Carousel feature is off
 
-conveyor track function disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F000f compliance control function enabled
+ 
 
-Type: Info
+## 0x10F000f Soft control is on 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Soft control is on
 
-compliance control function enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0010 compliance control function disabled
+ 
 
-Type: Info
+## 0x10F0010 Softness control is off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Softness control is off
 
-compliance control function disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0011 robot enter free-drive mode
+ 
 
-Type: Info
+## 0x10F0011 The robot enters drag mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters drag mode
 
-robot enter free-drive mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0012 robot exit from free-drive mode
+ 
 
-Type: Info
+## 0x10F0012 The robot exits drag mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot exits drag mode
 
-robot exit from free-drive mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0013 robot enter active-dirve mode
+ 
 
-Type: Info
+## 0x10F0013 The robot enters force-controlled traction mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot enters force-controlled traction mode
 
-robot enter active-dirve mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0014 robot exit from active-drive mode
+ 
 
-Type: Info
+## 0x10F0014 The robot exits force control traction mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot exits force control traction mode
 
-robot exit from active-drive mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0015 robot servo move enabled
+ 
 
-Type: Info
+## 0x10F0015 Robot SERVO motion mode is on 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot SERVO motion mode is on
 
-robot servo move enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0016 robot servo move disabled
+ 
 
-Type: Info
+## 0x10F0016 Robot SERVO motion mode is off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot SERVO motion mode is off
 
-robot servo move disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0017 robot violate safe zone
+ 
 
-Type: Info
+## 0x10F0017 The robot is outside the safety boundary 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The robot is outside the safety boundary
 
-robot violate safe zone
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0018 robot back to safe zone
+ 
 
-Type: Info
+## 0x10F0018 Robot returns within safe perimeter 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot returns within safe perimeter
 
-robot back to safe zone
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0019 start to limit cartesian velocity to comply with joint velocity limit
+ 
 
-Type: Info
+## 0x10F0019 Start Cartesian space rate limiting 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Start Cartesian space rate limiting
 
-start to limit cartesian velocity to comply with joint velocity limit
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0020 robot in reduced mode
+ 
 
-Type: Info
+## 0x10F0020 Robot goes into reduced mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot goes into reduced mode
 
-robot in reduced mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0021 robot exit from reduced mode
+ 
 
-Type: Info
+## 0x10F0021 Robot exits reduced mode 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Robot exits reduced mode
 
-robot exit from reduced mode
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F001a stop limiting cartesian velocity to comply with joint velocity limit
+ 
 
-Type: Info
+## 0x10F001a Stop Cartesian space rate limiting 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Stop Cartesian space rate limiting
 
-stop limiting cartesian velocity to comply with joint velocity limit
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F001b user program started
+ 
 
-Type: Info
+## 0x10F001b The job program starts to execute 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The job program starts to execute
 
-user program started
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F001c user program paused
+ 
 
-Type: Info
+## 0x10F001c The operating program is suspended 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The operating program is suspended
 
-user program paused
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F001d user program resumed
+ 
 
-Type: Info
+## 0x10F001d Job program resumes execution 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Job program resumes execution
 
-user program resumed
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F001e user program stopped
+ 
 
-Type: Info
+## 0x10F001e The operating program stops executing 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The operating program stops executing
 
-user program stopped
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0100 torque sensor enabled
+ 
 
-Type: Info
+## 0x10F0100 Torque sensor is on 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Torque sensor is on
 
-torque sensor enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0101 torque sensor disabled
+ 
 
-Type: Info
+## 0x10F0101 Torque sensor is off 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Torque sensor is off
 
-torque sensor disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0102 extended IO modules enabled
+ 
 
-Type: Info
+## 0x10F0102 Expansion IO module is enabled 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Expansion IO module is enabled
 
-extended IO modules enabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0103 extended IO modules disabled
+ 
 
-Type: Info
+## 0x10F0103 Expansion IO module is closed 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Expansion IO module is closed
 
-extended IO modules disabled
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0104 controller stick locked
+ 
 
-Type: Info
+## 0x10F0104 Control handle lock 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Control handle lock
 
-controller stick locked
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0200 function DI(program run) triggered
+ 
 
-Type: Info
+## 0x10F0200 Function DI (execute program) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (execute program) triggered
 
-function DI(program run) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0201 function DI(program pause) triggered
+ 
 
-Type: Info
+## 0x10F0201 Function DI (pause program) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (pause program) triggered
 
-function DI(program pause) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0202 function DI(program resume) triggered
+ 
 
-Type: Info
+## 0x10F0202 Function DI (resume procedure) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (resume procedure) triggered
 
-function DI(program resume) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0203 function DI(program stop) triggered
+ 
 
-Type: Info
+## 0x10F0203 Function DI (stop program) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (stop program) triggered
 
-function DI(program stop) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0204 function DI(power on) triggered
+ 
 
-Type: Info
+## 0x10F0204 Function DI (power on) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (power on) triggered
 
-function DI(power on) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0205 function DI(power off) triggered
+ 
 
-Type: Info
+## 0x10F0205 Function DI (power off) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (power off) triggered
 
-function DI(power off) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0206 function DI(servo enable) triggered
+ 
 
-Type: Info
+## 0x10F0206 Function DI (servo enable on) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (servo enable on) triggered
 
-function DI(servo enable) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0207 function DI(servo disable) triggered
+ 
 
-Type: Info
+## 0x10F0207 Function DI (servo enable off) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (servo enable off) triggered
 
-function DI(servo disable) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0208 function DI(percentage mode level 1) triggered
+ 
 
-Type: Info
+## 0x10F0208 Function DI (enter 1st override mode) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (enter 1st override mode) triggered
 
-function DI(percentage mode level 1) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0209 function DI(percentage mode level 2) triggered
+ 
 
-Type: Info
+## 0x10F0209 Function DI (Enter secondary override mode) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (Enter secondary override mode) triggered
 
-function DI(percentage mode level 2) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020a function DI(protective stop) triggered
+ 
 
-Type: Info
+## 0x10F020a Function DI (entering protective stop) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (entering protective stop) triggered
 
-function DI(protective stop) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020b function DI(to initial position) triggered
+ 
 
-Type: Info
+## 0x10F020b Function DI (return to initial position) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (return to initial position) triggered
 
-function DI(to initial position) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020c function DI(clear error) triggered
+ 
 
-Type: Info
+## 0x10F020c Function DI (clear error) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (clear error) triggered
 
-function DI(clear error) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020d function DI(enable free-drive mode) triggered
+ 
 
-Type: Info
+## 0x10F020d Function DI (Enter Drag Mode) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (Enter Drag Mode) triggered
 
-function DI(enable free-drive mode) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020e function DI(disable free-drive mode) triggered
+ 
 
-Type: Info
+## 0x10F020e Function DI (exit drag mode) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DI (exit drag mode) triggered
 
-function DI(disable free-drive mode) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F020f function DI(program pause or program stop) triggered,(program run) should not be executed.
+ 
 
-Type: Error
+## 0x10F020f Function DI (stop program or suspend program) has been triggered, (run program) should not be executed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Function DI (stop program or suspend program) has been triggered, (run program) should not be executed
 
-function DI(program pause or program stop) triggered,(program run) should not be executed.
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0210 function DI(program pause) triggered,(program resume) should not be executed.
+ 
 
-Type: Error
+## 0x10F0210 Function DI (pause program) triggered, (resume program) should not be executed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Function DI (pause program) triggered, (resume program) should not be executed
 
-function DI(program pause) triggered,(program resume) should not be executed.
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0211 function DI(power off) triggered,(power on) should not be executed.
+ 
 
-Type: Error
+## 0x10F0211 Function DI (power off) is triggered, (power on) should not be executed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Function DI (power off) is triggered, (power on) should not be executed
 
-function DI(power off) triggered,(power on) should not be executed.
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0212 function DI(servo off) triggered,(servo on) should not be executed.
+ 
 
-Type: Error
+## 0x10F0212 Function DI (Enable Down) has been triggered, (Enable Up) should not be executed 
+ Type: Error 
 
-IsShowConfirm：Yes
+ IsShowConfirm：Yes  
 
-### Description
+### Description 
+ Function DI (Enable Down) has been triggered, (Enable Up) should not be executed
 
-function DI(servo off) triggered,(servo on) should not be executed.
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0220 function DO(program idle) set
+ 
 
-Type: Info
+## 0x10F0220 Function DO (job idle) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (job idle) is set
 
-function DO(program idle) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0221 function DO(program idle) reset
+ 
 
-Type: Info
+## 0x10F0221 Function DO (job idle) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (job idle) reset
 
-function DO(program idle) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0222 function DO(program paused) set
+ 
 
-Type: Info
+## 0x10F0222 Function DO (job program pause) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (job program pause) set
 
-function DO(program paused) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0223 function DO(program paused) reset
+ 
 
-Type: Info
+## 0x10F0223 Function DO (job program pause) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (job program pause) reset
 
-function DO(program paused) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0224 function DO(program running) set
+ 
 
-Type: Info
+## 0x10F0224 Function DO (work program running) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (work program running) set
 
-function DO(program running) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0225 function DO(program running) reset
+ 
 
-Type: Info
+## 0x10F0225 Function DO (working program running) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (working program running) reset
 
-function DO(program running) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0226 function DO(motion fault) set
+ 
 
-Type: Info
+## 0x10F0226 Function DO (control system failure) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (control system failure) is set
 
-function DO(motion fault) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0227 function DO(motion fault) reset
+ 
 
-Type: Info
+## 0x10F0227 Function DO (control system failure) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (control system failure) reset
 
-function DO(motion fault) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0228 function DO(powered on) set
+ 
 
-Type: Info
+## 0x10F0228 Function DO (robot powered on) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot powered on) is set
 
-function DO(powered on) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0229 function DO(powered on) reset
+ 
 
-Type: Info
+## 0x10F0229 Function DO (robot powered on) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot powered on) reset
 
-function DO(powered on) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022a function DO(servo enabled) set
+ 
 
-Type: Info
+## 0x10F022a Function DO (servo enable is on) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (servo enable is on) is set
 
-function DO(servo enabled) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022b function DO(servo enabled) reset
+ 
 
-Type: Info
+## 0x10F022b Function DO (servo enable is on) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (servo enable is on) reset
 
-function DO(servo enabled) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022c function DO(robot moving) set
+ 
 
-Type: Info
+## 0x10F022c Function DO (robot in motion) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in motion) set
 
-function DO(robot moving) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022d function DO(robot moving) reset
+ 
 
-Type: Info
+## 0x10F022d Function DO (during robot motion) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (during robot motion) reset
 
-function DO(robot moving) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022e function DO(robot in position) set
+ 
 
-Type: Info
+## 0x10F022e Function DO (robot stationary) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot stationary) set
 
-function DO(robot in position) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F022f function DO(robot in position) reset
+ 
 
-Type: Info
+## 0x10F022f Function DO (robot stationary) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot stationary) reset
 
-function DO(robot in position) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0230 function DO(robot system on) set
+ 
 
-Type: Info
+## 0x10F0230 Function DO (control system ready) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (control system ready) is set
 
-function DO(robot system on) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0231 function DO(robot system on) reset
+ 
 
-Type: Info
+## 0x10F0231 Function DO (control system ready) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (control system ready) reset
 
-function DO(robot system on) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0232 function DO(robot estop) set
+ 
 
-Type: Info
+## 0x10F0232 Function DO (robot emergency stop) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot emergency stop) set
 
-function DO(robot estop) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0233 function DO(robot estop) reset
+ 
 
-Type: Info
+## 0x10F0233 Function DO (robot emergency stop) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot emergency stop) reset
 
-function DO(robot estop) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0234 function DO(percentage mode level 2) set
+ 
 
-Type: Info
+## 0x10F0234 Function DO (robot is in secondary override mode) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot is in secondary override mode) is set
 
-function DO(percentage mode level 2) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0235 function DO(percentage mode level 2) reset
+ 
 
-Type: Info
+## 0x10F0235 Function DO (robot in secondary override mode) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in secondary override mode) reset
 
-function DO(percentage mode level 2) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0236 function DO(protective stop) set
+ 
 
-Type: Info
+## 0x10F0236 Function DO (robot in protective stop) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in protective stop) is set
 
-function DO(protective stop) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0237 function DO(protective stop) reset
+ 
 
-Type: Info
+## 0x10F0237 Function DO (robot in protective stop) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in protective stop) reset
 
-function DO(protective stop) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0238 function DO(at initial position) set
+ 
 
-Type: Info
+## 0x10F0238 Function DO (robot in initial position) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in initial position) is set
 
-function DO(at initial position) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0239 function DO(at initial position) reset
+ 
 
-Type: Info
+## 0x10F0239 Function DO (robot in initial position) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot in initial position) reset
 
-function DO(at initial position) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0240 function DO(percentage mode level 1) set
+ 
 
-Type: Info
+## 0x10F0240 Function DO (robot is in primary override mode) set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot is in primary override mode) set
 
-function DO(percentage mode level 1) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0241 function DO(percentage mode level 1) reset
+ 
 
-Type: Info
+## 0x10F0241 Function DO (robot is in primary override mode) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Function DO (robot is in primary override mode) reset
 
-function DO(percentage mode level 1) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0250 safety function DI(additial estop) triggered
+ 
 
-Type: Info
+## 0x10F0250 Safety function DI (additional emergency stop) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DI (additional emergency stop) triggered
 
-safety function DI(additial estop) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0251 safety function DI(additial protective stop) triggered
+ 
 
-Type: Info
+## 0x10F0251 Safety function DI (additional protective stop) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DI (additional protective stop) triggered
 
-safety function DI(additial protective stop) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0252 safety function DI(reset protective stop) triggered
+ 
 
-Type: Info
+## 0x10F0252 Safety function DI (protective stop reset) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DI (protective stop reset) triggered
 
-safety function DI(reset protective stop) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0253 safety function DI(reduce mode) triggered
+ 
 
-Type: Info
+## 0x10F0253 Safety function DI (Reduced Mode) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DI (Reduced Mode) triggered
 
-safety function DI(reduce mode) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0254 safety function DI(three position enabling) triggered
+ 
 
-Type: Info
+## 0x10F0254 Safety function DI (three-position enable) triggered 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DI (three-position enable) triggered
 
-safety function DI(three position enabling) triggered
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0260 safety function DO(button estop) set
+ 
 
-Type: Info
+## 0x10F0260 Safety function DO (emergency stop triggered by pushbutton) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DO (emergency stop triggered by pushbutton) is set
 
-safety function DO(button estop) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0261 safety function DO(button estop) reset
+ 
 
-Type: Info
+## 0x10F0261 Safety function DO (button emergency stop triggered) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DO (button emergency stop triggered) reset
 
-safety function DO(button estop) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0262 safety function DO(system estop) set
+ 
 
-Type: Info
+## 0x10F0262 The safety function DO (system emergency stop triggered) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The safety function DO (system emergency stop triggered) is set
 
-safety function DO(system estop) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0263 safety function DO(system estop) reset
+ 
 
-Type: Info
+## 0x10F0263 Safety function DO (system emergency stop triggered) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DO (system emergency stop triggered) reset
 
-safety function DO(system estop) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0264 safety function DO(protective stop) set
+ 
 
-Type: Info
+## 0x10F0264 The safety function DO (robot in protective stop) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The safety function DO (robot in protective stop) is set
 
-safety function DO(protective stop) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0265 safety function DO(protective stop) reset
+ 
 
-Type: Info
+## 0x10F0265 Safety function DO (robot in protective stop) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DO (robot in protective stop) reset
 
-safety function DO(protective stop) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0266 safety function DO(robot moving) set
+ 
 
-Type: Info
+## 0x10F0266 The safety function DO (robot in motion) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The safety function DO (robot in motion) is set
 
-safety function DO(robot moving) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0267 safety function DO(robot moving) reset
+ 
 
-Type: Info
+## 0x10F0267 The safety function DO (robot in motion) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The safety function DO (robot in motion) is set
 
-safety function DO(robot moving) reset
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0268 safety function DO(reduced mode) set
+ 
 
-Type: Info
+## 0x10F0268 The safety function DO (robot in reduced mode) is set 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ The safety function DO (robot in reduced mode) is set
 
-safety function DO(reduced mode) set
-
 ### Reason
+ 
 
 ### Action
-
-## 0x10F0269 safety function DO(reduced mode) reset
+ 
 
-Type: Info
+## 0x10F0269 Safety function DO (robot in reduced mode) reset 
+ Type: Info 
 
-IsShowConfirm：No
+ IsShowConfirm：No  
 
-### Description
+### Description 
+ Safety function DO (robot in reduced mode) reset
 
-safety function DO(reduced mode) reset
-
 ### Reason
+ 
 
 ### Action
+ 
 
-## 0x10F0300
+## 0x10F0300 Login initialization failed 
+ Type: Error 
 
-Type: Error
+ IsShowConfirm：Yes  
 
-IsShowConfirm：Yes
+### Description 
+ Login initialization failed
 
-### Description
-
 ### Reason
+ There is an exception in reading data when logging in to the connection
 
 ### Action
+ 1. Please check whether there is a version mismatch between the current software APP version and the controller version. 2. Please check whether there is any abnormality in the network connection. 3. Please try to reconnect the robot or restart the APP operation.
+
