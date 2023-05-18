@@ -14,5 +14,7 @@ features:
     details: jks编程脚本语法与函数说明
   - title: 异常信息说明
     details: 控制器等异常信息详细说明
+  - title: JAKA通信入门
+    details: JAKA通过工业总线与主流PLC通信的步骤
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---

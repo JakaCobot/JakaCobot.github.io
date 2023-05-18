@@ -38,7 +38,8 @@ module.exports = {
                 sidebar: [
                     '/guide/quick_start',
                     '/guide/errinfo',
-                    '/guide/jks'
+                    '/guide/jks',
+                    '/guide/bus'
                 ]
             },
             '/en/':{
