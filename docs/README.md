@@ -18,3 +18,4 @@ features:
     details: JAKA通过工业总线与主流PLC通信的步骤
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---
+### npm install -D vuepress-theme-antdocs
