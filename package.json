@@ -15,6 +15,10 @@
     "vuepress": "^1.9.8"
   },
   "dependencies": {
-    "vuepress-theme-antdocs": "^1.4.6"
+    "lozad": "^1.16.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-lozad": "^0.2.0",
+    "vuepress-theme-antdocs": "^1.4.6",
+    "vui-vue": "^1.0.2"
   }
 }

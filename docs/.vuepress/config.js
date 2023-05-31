@@ -21,7 +21,10 @@ module.exports = {
             description: "JAKA tài liệu",
         },
     },
-
+    plugins: [
+        ['@vuepress/register-components', { componentsDir: './components/' }],
+        ['./plugins/markdownIt', {}],
+      ],
     theme: "antdocs",
     themeConfig: {
         logo: '/logo.png',
