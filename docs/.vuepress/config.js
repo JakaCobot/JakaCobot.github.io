@@ -42,7 +42,8 @@ module.exports = {
                     '/guide/quick_start',
                     '/guide/errinfo',
                     '/guide/jks',
-                    '/guide/bus'
+                    '/guide/bus',
+                    '/guide/cmdhelp'
                 ]
             },
             '/en/':{
@@ -53,6 +54,7 @@ module.exports = {
                 sidebar: [
                     '/en/guide/quick_start',
                     '/en/guide/errinfo',
+                    '/en/guide/cmdhelp'
                 ]
             },
             '/jp/':{

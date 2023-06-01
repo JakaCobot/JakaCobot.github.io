@@ -14,6 +14,8 @@ features:
     details: jks program scripts
   - title: Error code
     details: Error codes
+  - title: CMD Help
+    details: Introduction to JAKA Programming Control Instructions
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---
 

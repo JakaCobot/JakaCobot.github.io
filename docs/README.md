@@ -16,6 +16,7 @@ features:
     details: 控制器等异常信息详细说明
   - title: JAKA通信入门
     details: JAKA通过工业总线与主流PLC通信的步骤
+  - title: 指令帮助
+    details: JAKA编程控制指令介绍
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---
-### npm install -D vuepress-theme-antdocs
