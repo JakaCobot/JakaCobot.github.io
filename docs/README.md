@@ -18,5 +18,7 @@ features:
     details: JAKA通过工业总线与主流PLC通信的步骤
   - title: 指令帮助
     details: JAKA编程控制指令介绍
+  - title: 功能IO
+    details: 功能IO介绍
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---

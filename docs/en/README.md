@@ -16,6 +16,8 @@ features:
     details: Error codes
   - title: CMD Help
     details: Introduction to JAKA Programming Control Instructions
+  - title: funcIO Help
+    details: Introduction to funcIO
 footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---
 

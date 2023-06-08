@@ -32,6 +32,7 @@ module.exports = {
         displayAllHeaders: true,
         smoothScroll: true, 
         sidebarDepth: 0,
+        sidebar: 'auto',
         locales:{
             '/':{
                 lastUpdated:'上次修改',
@@ -43,7 +44,8 @@ module.exports = {
                     '/guide/errinfo',
                     '/guide/jks',
                     '/guide/bus',
-                    '/guide/cmdhelp'
+                    '/guide/cmdhelp',
+                    '/guide/funcIO'
                 ]
             },
             '/en/':{
@@ -54,7 +56,8 @@ module.exports = {
                 sidebar: [
                     '/en/guide/quick_start',
                     '/en/guide/errinfo',
-                    '/en/guide/cmdhelp'
+                    '/en/guide/cmdhelp',
+                    '/en/guide/funcIO'
                 ]
             },
             '/jp/':{
