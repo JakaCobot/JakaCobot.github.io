@@ -1,3 +1,11 @@
+/*
+ * @Author: 贺炳硕 hebingshuo@jaka.com
+ * @Date: 2023-07-17
+ * @LastEditors: 贺炳硕 hebingshuo@jaka.com
+ * @LastEditTime: 2023-07-17
+ * @Description: 
+ */
+
 module.exports = {
     locales:{
         '/':{
@@ -45,7 +53,12 @@ module.exports = {
                     '/guide/jks',
                     '/guide/bus',
                     '/guide/cmdhelp',
-                    '/guide/funcIO'
+                    '/guide/funcIO',
+                    {
+                      title:'AddOn开发', 
+                      collapsable: true,
+                      children: ['/guide/addOn/evn','/guide/addOn/customerCMD','/guide/addOn/addOnTool'], // 新增的下级页面链接
+                    }
                 ]
             },
             '/en/':{
@@ -57,7 +70,12 @@ module.exports = {
                     '/en/guide/quick_start',
                     '/en/guide/errinfo',
                     '/en/guide/cmdhelp',
-                    '/en/guide/funcIO'
+                    '/en/guide/funcIO',
+                    {
+                        title: 'AddOn开发',
+                        collapsable: true,
+                        children: ['/guide/addOn/evn','/guide/addOn/customerCMD' ], // 新增的下级页面链接
+                    }
                 ]
             },
             '/jp/':{
