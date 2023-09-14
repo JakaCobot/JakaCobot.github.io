@@ -78,12 +78,7 @@ module.exports = {
                     '/en/guide/quick_start',
                     '/en/guide/errinfo',
                     '/en/guide/cmdhelp',
-                    '/en/guide/funcIO',
-                    {
-                        title: 'AddOn Develop',
-                        collapsable: true,
-                        children: ['/en/guide/addOn/evn','/en/guide/addOn/Development Environment Preparation','/en/guide/addOn/customerCMD','/en/guide/addOn/初始化DO','/en/guide/addOn/AddOn开发基础' ], // 新增的下级页面链接
-                    }
+                    '/en/guide/funcIO'
                 ]
             },
             '/jp/':{
