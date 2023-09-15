@@ -18,7 +18,7 @@ module.exports = {
             title: "Docs",
             description: "JAKA Docs",
         },
-        '/jp/':{
+        '/ja/':{
             lang:'ja',
             title: "書類",
             description: "JAKA 書類",
@@ -83,23 +83,34 @@ module.exports = {
                         title: 'AddOn Develop',
                         collapsable: true,
                         children:  [
-                            '/guide/addOn/AddOn3.0',
-                            '/guide/addOn/environment',
-                            '/guide/addOn/JAKA_Command',
-                            '/guide/addOn/JAKA_Serve',
-                            '/guide/addOn/JAKA_web',
+                            '/en/guide/addOn/AddOn3.0',
+                            '/en/guide/addOn/environment',
+                            '/en/guide/addOn/JAKA_Command',
+                            '/en/guide/addOn/JAKA_Serve',
+                            '/en/guide/addOn/JAKA_web',
                         ], 
                     }
                 ]
             },
-            '/jp/':{
+            '/ja/':{
                 lastUpdated:'最後の更新',
                 nav: [
-                    { text: "ホームページ", link: '/jp/' }
+                    { text: "ホームページ", link: '/ja/' }
                 ],
                 sidebar: [
-                    '/jp/guide/quick_start',
-                    '/jp/guide/errinfo',
+                    '/ja/guide/quick_start',
+                    '/ja/guide/errinfo',
+                    {
+                        title: 'AddOn開発',
+                        collapsable: true,
+                        children:  [
+                            '/ja/guide/addOn/AddOn3.0',
+                            '/ja/guide/addOn/environment',
+                            '/ja/guide/addOn/JAKA_Command',
+                            '/ja/guide/addOn/JAKA_Serve',
+                            '/ja/guide/addOn/JAKA_web',
+                        ], 
+                    }
                 ]
             },
             '/vi/':{
