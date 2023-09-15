@@ -14,16 +14,16 @@ sidebarDepth: 1
 
 ### 1.2 JAKA仮想イメージのインストール
 &emsp;&emsp;*jaka_addon_package*内で仮想イメージファイルを見つけてインポートし、インストールします。
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/install_vm.gif"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/install_vm.gif"/></div>
 
 ### 1.3 JAKA仮想コントローラの起動
 &emsp;&emsp;「この仮想マシンを開始」をクリックして、仮想マシンを起動します。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/start_vm.gif"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/start_vm.gif"/></div>
 
 &emsp;&emsp;この時点で、仮想マシンのページに現在のロボットのIPアドレスが表示されます。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/IP.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/IP.png"/></div>
 
 
 
@@ -36,7 +36,7 @@ sidebarDepth: 1
 
 1. アプリを開き、ロボットに接続します。この時点で、IPに基づいて仮想ロボットをロボットリストから見つけることができるはずです。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/find_robot.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/find_robot.png"/></div>
 
 2. リストでロボットを見つけることができない場合は、オフライン接続を試してみてください。
 
@@ -44,19 +44,19 @@ sidebarDepth: 1
 
 4. アドレスには仮想ロボットのIPを入力します。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/offline_connect.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/offline_connect.png"/></div>
 
 ### 2.3 コントローラのアップグレード
 
 &emsp;&emsp;設定ページを開き、システム設定に移動し、バージョンアップグレードページに移動します。アップグレードしたいコントローラパッケージを選択し、「アップロード」をクリックします。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/upgrade_controler.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/upgrade_controler.png"/></div>
 
 ### 2.4 AddOn環境のアップグレード
 
 &emsp;&emsp;設定ページを開き、システム設定に移動し、バージョンアップグレードページに移動します。AddOn環境パッケージを選択し、「アップロード」をクリックします。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/environment/upgrade_AddOnkit.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/environment/upgrade_AddOnkit.png"/></div>
 
 &emsp;&emsp;アップグレードが完了したら、アプリを再起動する必要があります。
 

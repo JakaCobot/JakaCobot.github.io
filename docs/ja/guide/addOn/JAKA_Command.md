@@ -9,7 +9,7 @@ sidebarDepth: 1
 ## 概要
 &emsp;&emsp;このチュートリアルでは、指令ブロックの内容に基づいて、異なる内容をAppログに出力するカスタムコマンド型のAddOnを作成します。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/JAKA_Command/showcase.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/JAKA_Command/showcase.png"/></div>
 
 ## JAKA_Commandの作成
 ### ステップ1: AddOnパッケージの作成  
@@ -40,30 +40,30 @@ sidebarDepth: 1
 
 ### ステップ2: パッケージ化とアップロード
 &emsp;&emsp;次に、AddOnをパッケージ化し、コマンドブロックの開発のためにコントローラにアップロードします。パッケージの形式は`.tar.gz`である必要があります。Windowsでは、7zなどのツールを使用して二次的な圧縮を行うことができます。    
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/JAKA_Command/compress_addon.gif"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/JAKA_Command/compress_addon.gif"/></div>
 &emsp;&emsp;App内の添付マネージャーページでAddOnをアップロードします。    
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/JAKA_Command/upLoad_addon.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/JAKA_Command/upLoad_addon.png"/></div>
 
 ### ステップ3: カスタムコマンドの開発
 
 &emsp;&emsp;AddOnを実行し、実行中のポートを確認します。
 
-<div align="center"><img width="800"  src="../../../resource/ja/AddOn/JAKA_Command/run_addOn.gif"/></div>
+<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
 &emsp;&emsp;`IP:Port`で開発者インターフェースにアクセスします。
 
-<div align="center"><img width="1000"  src="../../../resource/ja/AddOn/JAKA_Command/developPage.png"/></div>
+<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/developPage.png"/></div>
 
 &emsp;&emsp;`Customized Commands`ノードを使用してカスタムコマンドブロックを作成します。*基本構成*ページでコマンドブロックの外観とプロパティを定義し、*スクリプト生成*ページでコマンドブロックの動作を定義します。   
 - スクリプトの構文については、[JAKAプログラミングスクリプト](/ja/guide/jks.html)を参照してください。
 - `Customized Commands`ノードの使用方法については、[カスタムコマンドの作成ノード](/ja/guide/addOn/Commands_Tool.html)を参照してください。
 
-<div align="center"><img width="1000"  src="../../../resource/ja/AddOn/JAKA_Command/creat_block.gif"/></div>
+<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/creat_block.gif"/></div>
 
  
 &emsp;&emsp;Appでカスタムコマンドを保存する際は、httpのGETリクエストを使用してスクリプトを取得するため、`http in`および`http response`ノードを使用してフローを完了する必要があります。
 
-<div align="center"><img width="1000"  src="../../../resource/ja/AddOn/JAKA_Command/Add_Http.gif"/></div>
+<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
 :::tip 注意！
 `http in`ノードのURLは、カスタムコマンドブロックの名前と一致している必要があります！
@@ -72,7 +72,7 @@ sidebarDepth: 1
 ### ステップ4: 実行
 &emsp;&emsp;Node-REDでフローをデプロイした後、Appでカスタムコマンドブロックを使用できます。
 
-<div align="center"><img width="1000"  src="../../../resource/ja/AddOn/JAKA_Command/program_hello.gif"/></div>
+<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/program_hello.gif"/></div>
 
 
 ## デバッグ方法
