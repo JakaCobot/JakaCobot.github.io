@@ -4,7 +4,7 @@ sidebarDepth: 1
 ---
 
 # 开发环境准备
-**本文将介绍如何搭建AddOn开发环境，开始前请先下载["*jaka_addon_package*"](/guide/addOn/AddOn3.0.html#开发资料获取)。**
+**本文将介绍如何搭建AddOn开发环境，开始前请先下载[*开发资料*](/guide/addOn/AddOn3.0.html#开发资料获取)。**
 
 ## JAKA虚拟机安装
 

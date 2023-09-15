@@ -14,7 +14,7 @@ sidebarDepth: 1
 
 ## 创建JAKA_Command
 ### Step1:创建AddOn包  
-&emsp;&emsp;首先我们需要创建一份AddOn基本文件，包含一个.ini格式的配置文件和一个保存数据的json文件。您可以从头开始手动创建，也可以使用AddOn开发包 ["*jaka_addon_package/5.Template*"](/guide/addOn/AddOn3.0.html#开发资料获取) 目录下附带的AddOn模板进行修改。 
+&emsp;&emsp;首先我们需要创建一份AddOn基本文件，包含一个.ini格式的配置文件和一个保存数据的json文件。您可以从头开始手动创建，也可以使用AddOn开发包仓库中 ["*Template*"](https://github.com/JakaCobot/jaka_addon_kit) 目录下的AddOn模板进行修改。 
 ::: tip 目录结构
 |——JAKA_Command  
 &emsp;&emsp;&emsp;|——AddOn.json   
@@ -61,10 +61,6 @@ sidebarDepth: 1
   
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
-
-
-
-
 
  
 &emsp;&emsp;当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。

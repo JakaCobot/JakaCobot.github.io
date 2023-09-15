@@ -12,35 +12,43 @@ sidebarDepth: 1
 :::
 
 
-
-
 ## AddOn是什么
 ---
-<!-- 这里补充AddOn的介绍 是什么 能干什么 例子-->
+&emsp;&emsp;JAKA AddOn是一款由JAKA提供支持和相应产品规范的插件型软件产品。它允许用户开发自定义指令插件、自定义服务插件、自定义页面插件，或包含上述几种类型的复合型插件，从而为系统提供全新的功能扩展或对现有功能进行个性化定制。典型的AddOn产品包括夹爪控制插件、视觉引导插件、传感器控制插件、通信协议、工艺应用包等。
 
 ## 技术栈
 ---
-
-## JAKA APP 扩展API
----
-
+- [**JAKAScript**](/guide/jks.html): 用来实现自定义指令功能的脚本语言。
+- [**JAKA http APIs**](https://console-docs.apipost.cn/preview/4799a89c0be775ce/48bff16c603e4a42): 提供与机器人交互的http接口。
+- [**JAKA App APIs**](/guide/addOn/AppAPI.html): 提供前端与JAKA App交互的js函数。
+- [**node-red**](https://nodered.org/docs/): 是AddOn的开发平台和后端服务。
+- [**JavaScript**](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript): 在node-red中编写脚本和逻辑。
+- [**前端技术**](https://web.dev/learn/html/): 在开发自定义页面插件时需要掌握一定的前端技术
+  
 ## AddOn文件组成
 ---
+AddOn可能包含许多不同的文件，下面是最常用的几种   
 
+**数据文件**    
+&emsp;&emsp;AddOn包中一般都包含一个json文件，其中包含了在node-red中定义流和节点信息。该文件的名称可以自定义，但需要在配置中指向该文件。
+
+**配置文件**    
+&emsp;&emsp;任何类型的AddOn插件必须包含`xxx_config.ini`文件，即[AddOn配置文件](/guide/addOn/iniConfig)。只有包含AddOn配置文件才能安装、初始化、运行。
+
+**前端工程**   
+&emsp;&emsp;包含自定义页面的AddOn目录下一般会有前端工程的文件夹，例如client、dist。
 
 ## 开发资料获取
 ---
 
-* 您可以在节卡官网的[技术资料-软件](https://www.jaka.com/jszl.html)中获取最新的AddOn开发包 *jaka_addon_package*、 *App安装包* 、*控制器版本*。
-::: tip "jaka_addon_package"中包含：
-1. JAKA Virtual Controler: JAKA64位虚拟机
-2. APP: App安装包
-3. Controler: 控制器安装包
-4. AddOn Environment: AddOn开发环境安装包
-5. Template: AddOn开发模板
-6. Demo: 教程中包含的AddOn包
-:::
+1. [JAKA虚拟机](https://github.com/JakaCobot/JAKASim)
+2. [AddOn环境包](https://github.com/JakaCobot/jaka_addon_kit/releases)
+3. AddOn[开发模板](https://github.com/JakaCobot/jaka_addon_kit)
+4. 教程中包含的[Demo](https://github.com/JakaCobot/jaka_addon_kit)
 
+:::tip
+环境包中会附带与之匹配的最新App和控制器版本。
+:::
 
 ## 了解如何开发AddOn
 ---
@@ -60,16 +68,9 @@ sidebarDepth: 1
   
 <!-- todo 这里补充更多的教程覆盖到每一种场景：夹爪、升降轴、视觉等 -->
 
-开发AddOn过程中，可能会需要参考：
-
-* [AddOn配置文件说明]()
-* [JAKA脚本编程手册]()
-* [JAKA Http APIs]()
-* [JAKA App扩展API]()
-
 
 ## 反馈
 ---
 
-我们很高兴收到您的反馈！如果您发现文档有错误或不清楚的地方，请
+我们很高兴收到您的反馈！如果您发现文档有错误或不清楚的地方,可以在我们的文档仓库中提交[Issues](https://github.com/JakaCobot/JakaCobot.github.io/issues)。
 <!-- 给addonkit的仓库链接和该文档的链接 -->

@@ -1,8 +1,8 @@
 /*
- * @Author: 贺炳硕 hebingshuo@jaka.com
+ * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2023-09-13
+ * @LastEditTime: 2023-09-15
  * @Description: 
  */
 
@@ -82,7 +82,13 @@ module.exports = {
                     {
                         title: 'AddOn Develop',
                         collapsable: true,
-                        children: ['/en/guide/addOn/evn','/en/guide/addOn/Development Environment Preparation','/en/guide/addOn/customerCMD','/en/guide/addOn/初始化DO','/en/guide/addOn/AddOn开发基础' ], // 新增的下级页面链接
+                        children:  [
+                            '/guide/addOn/AddOn3.0',
+                            '/guide/addOn/environment',
+                            '/guide/addOn/JAKA_Command',
+                            '/guide/addOn/JAKA_Serve',
+                            '/guide/addOn/JAKA_web',
+                        ], 
                     }
                 ]
             },
