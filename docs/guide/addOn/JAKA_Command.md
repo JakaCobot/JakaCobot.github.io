@@ -10,7 +10,7 @@ sidebarDepth: 1
 ## 概述
 &emsp;&emsp;我们将创建一个自定义指令类型的AddOn，当运行该指令时将根据指令块上的内容在App日志中输出不同的内容。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/showcase.png"/></div>
+<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/showcase.png"/></div>
 
 ## 创建JAKA_Command
 ### Step1:创建AddOn包  
@@ -41,31 +41,41 @@ sidebarDepth: 1
 
 ### Step2:打包&上传
 &emsp;&emsp;接下来我们会将AddOn打包，上传至控制器中进行指令块开发。打包的要求格式为`.tar.gz`。在Windows中您可以使用7z等打包工具进行二次压缩。    
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/compress_addon.gif"/></div>
+<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/compress_addon.gif"/></div>
 &emsp;&emsp;在App中附加管理程序页面上传AddOn。    
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/upLoad_addon.png"/></div>
+<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/upLoad_addon.png"/></div>
 
 ### Step3:开发自定义指令
 
-&emsp;&emsp;运行AddOn并查看AddOn运行的端口号。
+1. 运行AddOn并查看AddOn运行的端口号。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/run_addOn.gif"/></div>
+<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
-&emsp;&emsp;使用`IP:Port`进入开发者界面。
+2. 使用`IP:Port`进入开发者界面。
 
-<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/developPage.png"/></div>
+<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/developPage.png"/></div>
 
-&emsp;&emsp;使用`Customized Commands`节点创建自定义指令块。在*基本配置*页面中定义指令块的样式和属性，在*脚本生成*页面定义指令块的行为。   
-- 脚本语法请参考[JAKA编程脚本](/guide/jks.html)。
-- `Customized Commands`节点使用请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html)
+3. 在左侧工具栏中找到`Customized Commands`节点，拖入画布中，点击部署。
+4. 双击`Customized Commands`节点，打开指令块生成工具页面。
+   
+    <div align="center">
+    <video width="1000" controls autoplay >
+    <source src="../../../resource/ch/AddOn/JAKA_Command/open_coustomer_node.mp4" type="video/mp4">
+    </video>
+    </div>
+
+5. 更改指令块名称为*hello_jaka*,颜色为绿色。
+6. 在*基本配置*页面中定义了指令块的样式和属性，这里使用自带的属性不做更改。
+7. 在*脚本生成*页面定义指令块的行为，这里使用自带的脚本不做更改。   
   
+    <div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/creat_block.gif"/></div>
 
-<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
-
+    - 节卡脚本语法请参考[JAKA编程脚本](/guide/jks.html)。
+    - 更详细的`Customized Commands`节点使用方法请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html)
  
-&emsp;&emsp;当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
+8. 当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
 
-<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/Add_Http.gif"/></div>
+<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
 :::tip 注意！
 `http in` 节点的url要与自定义指令块的名称一致！
@@ -74,7 +84,7 @@ sidebarDepth: 1
 ### Step4:运行
 &emsp;&emsp;在node-red中部署流程后，即可在App中使用该指令块。
 
-<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/program_hello.gif"/></div>
+<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/program_hello.gif"/></div>
 
 
 ## 如何Debug？

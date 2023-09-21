@@ -46,22 +46,40 @@ sidebarDepth: 1
 
 ### ステップ3: カスタムコマンドの開発
 
-&emsp;&emsp;AddOnを実行し、実行中のポートを確認します。
+1. **AddOnを実行し、ポートを確認**
+   <div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
-<div align="center"><img width="800"  src="../../../../resource/ja/AddOn/JAKA_Command/run_addOn.gif"/></div>
+2. **開発者インターフェースにアクセス**
+   `IP:Port`を使用して開発者インターフェースにアクセスします。
+   ![開発者インターフェース]()
+   <div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/developPage.png"/></div>
 
-&emsp;&emsp;`IP:Port`で開発者インターフェースにアクセスします。
+3. **Customized Commandsノードをデプロイ**
+   左のツールバーで`Customized Commands`ノードを見つけ、キャンバスにドラッグして、デプロイをクリックします。
 
-<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/developPage.png"/></div>
+4. **コマンドブロック生成ツールを開く**
+   `Customized Commands`ノードをダブルクリックして、コマンドブロック生成ツールページを開きます。
+    <div align="center">
+    <video width="1000" controls autoplay >
+    <source src="../../../../resource/ch/AddOn/JAKA_Command/open_coustomer_node.mp4" type="video/mp4">
+    </video>
+    </div>
 
-&emsp;&emsp;`Customized Commands`ノードを使用してカスタムコマンドブロックを作成します。*基本構成*ページでコマンドブロックの外観とプロパティを定義し、*スクリプト生成*ページでコマンドブロックの動作を定義します。   
-- スクリプトの構文については、[JAKAプログラミングスクリプト](/ja/guide/jks.html)を参照してください。
-- `Customized Commands`ノードの使用方法については、[カスタムコマンドの作成ノード](/ja/guide/addOn/Commands_Tool.html)を参照してください。
+5. **コマンドブロックの名前と色を変更**
+   コマンドブロックの名前を*hello_jaka*に変更し、色を緑に設定します。
 
-<div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/creat_block.gif"/></div>
+6. **デフォルトの属性を使用**
+   *基本設定*ページでは、コマンドブロックのスタイルと属性を定義します。変更せずにデフォルトの属性を使用します。
 
- 
-&emsp;&emsp;Appでカスタムコマンドを保存する際は、httpのGETリクエストを使用してスクリプトを取得するため、`http in`および`http response`ノードを使用してフローを完了する必要があります。
+7. **デフォルトのスクリプトを使用**
+   *スクリプト生成*ページでコマンドブロックの動作を定義します。変更せずにデフォルトのスクリプトを使用します。
+   <div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/creat_block.gif"/></div>
+
+   - JAKAスクリプトの構文については、[JAKAプログラミングスクリプト](/guide/jks.html)を参照してください。
+   - `Customized Commands`ノードの詳しい使用方法については、[カスタムコマンド作成ノード](/guide/addOn/Commands_Tool.html)を参照してください。
+
+8. **HTTPプロセスを完了**
+   Appでカスタムコマンドを保存するとき、スクリプトはHTTP GETリクエストを介して取得されます。そのため、`http in`および`http response`ノードを使用してプロセスを完了します。
 
 <div align="center"><img width="1000"  src="../../../../resource/ja/AddOn/JAKA_Command/Add_Http.gif"/></div>
 

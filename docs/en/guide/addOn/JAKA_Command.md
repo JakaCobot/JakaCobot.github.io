@@ -46,21 +46,39 @@ sidebarDepth: 1
 
 ### Step 3: Develop Custom Commands
 
-&emsp;&emsp;Run the AddOn and check the port it's running on.
+1. **Run the AddOn and Check the Port**
+   <div align="center"><img width="1000"  src="../../../../resource/ch/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
-<div align="center"><img width="800"  src="../../../../resource/en/AddOn/JAKA_Command/run_addOn.gif"/></div>
+2. **Access the Developer Interface**
+   Use `IP:Port` to access the developer interface.
+   <div align="center"><img width="1000"  src="../../../../resource/ch/AddOn/JAKA_Command/developPage.png"/></div>
 
-&emsp;&emsp;Access the developer interface using `IP:Port`.
+3. **Deploy the Customized Commands Node**
+   In the left toolbar, find the `Customized Commands` node, drag it into the canvas, and click deploy.
 
-<div align="center"><img width="1000"  src="../../../../resource/en/AddOn/JAKA_Command/developPage.png"/></div>
+4. **Open the Command Block Generation Tool**
+   Double-click the `Customized Commands` node to open the command block generation tool page.
+    <div align="center">
+    <video width="1000" controls autoplay >
+    <source src="../../../../resource/ch/AddOn/JAKA_Command/open_coustomer_node.mp4" type="video/mp4">
+    </video>
+    </div>
+5. **Rename and Color the Command Block**
+   Rename the command block to *hello_jaka* and set its color to green.
 
-&emsp;&emsp;Create custom command blocks using the `Customized Commands` node. Define the appearance and properties of the command block on the *Basic Configuration* page and its behavior on the *Script Generation* page.   
-- Refer to [JAKA Programming Scripts](/en/guide/jks.html) for script syntax.
-- Refer to [Creating Custom Commands Nodes](/en/guide/addOn/Commands_Tool.html) for using the `Customized Commands` node.
+6. **Use Default Attributes**
+   The *Basic Configuration* page defines the style and attributes of the command block. Use the default attributes without making any changes.
 
-<div align="center"><img width="1000"  src="../../../../resource/en/AddOn/JAKA_Command/creat_block.gif"/></div>
+7. **Use Default Script**
+   Define the behavior of the command block on the *Script Generation* page. Use the default script without making any changes.
+   <div align="center"><img width="1000"  src="../../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
 
-&emsp;&emsp;When you save custom commands in the App, it will use an HTTP GET request to retrieve the script, so you need to complete the flow using the `http in` and `http response` nodes.
+   - For JAKA script syntax, please refer to [JAKA Programming Script](/guide/jks.html).
+   - For a more detailed usage of the `Customized Commands` node, please refer to [Custom Command Creation Node](/guide/addOn/Commands_Tool.html).
+
+8. **Complete the HTTP Process**
+   When saving custom commands in the App, the script is obtained through an HTTP GET request. Therefore, use the `http in` and `http response` nodes to complete the process.
+
 
 <div align="center"><img width="1000"  src="../../../../resource/en/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
