@@ -10,7 +10,7 @@ sidebarDepth: 1
 ## 概述
 &emsp;&emsp;我们将创建一个自定义指令类型的AddOn，当运行该指令时将根据指令块上的内容在App日志中输出不同的内容。
 
-<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/showcase.png"/></div>
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/showcase.png"/></div>
 
 ## 创建JAKA_Command
 ### Step1:创建AddOn包  
@@ -41,19 +41,19 @@ sidebarDepth: 1
 
 ### Step2:打包&上传
 &emsp;&emsp;接下来我们会将AddOn打包，上传至控制器中进行指令块开发。打包的要求格式为`.tar.gz`。在Windows中您可以使用7z等打包工具进行二次压缩。    
-<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/compress_addon.gif"/></div>
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/compress_addon.gif"/></div>
 &emsp;&emsp;在App中附加管理程序页面上传AddOn。    
-<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/upLoad_addon.png"/></div>
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/upLoad_addon.png"/></div>
 
 ### Step3:开发自定义指令
 
 1. 运行AddOn并查看AddOn运行的端口号。
 
-<div align="center"><img width="800"  src="../../../resource/en/AddOn/JAKA_Command/run_addOn.gif"/></div>
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
 2. 使用`IP:Port`进入开发者界面。
 
-<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/developPage.png"/></div>
+<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/developPage.png"/></div>
 
 3. 在左侧工具栏中找到`Customized Commands`节点，拖入画布中，点击部署。
 4. 双击`Customized Commands`节点，打开指令块生成工具页面。
@@ -68,14 +68,14 @@ sidebarDepth: 1
 6. 在*基本配置*页面中定义了指令块的样式和属性，这里使用自带的属性不做更改。
 7. 在*脚本生成*页面定义指令块的行为，这里使用自带的脚本不做更改。   
   
-    <div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/creat_block.gif"/></div>
+    <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
 
     - 节卡脚本语法请参考[JAKA编程脚本](/guide/jks.html)。
     - 更详细的`Customized Commands`节点使用方法请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html)
  
 8. 当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
 
-<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/Add_Http.gif"/></div>
+<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
 :::tip 注意！
 `http in` 节点的url要与自定义指令块的名称一致！
@@ -84,9 +84,36 @@ sidebarDepth: 1
 ### Step4:运行
 &emsp;&emsp;在node-red中部署流程后，即可在App中使用该指令块。
 
-<div align="center"><img width="1000"  src="../../../resource/en/AddOn/JAKA_Command/program_hello.gif"/></div>
+<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/program_hello.gif"/></div>
+
+## 多语言
+在制作自定义指令时，支持多语言的内容输入框右侧会有一个小地球图标，点击即可配置多语言。目前支持中英日三种语言。
+
+<div align="center"><img width="500"  src="../../../resource/ch/AddOn/JAKA_Command/multiLan.png"/></div>
+
+## 调试
+
+- node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug.png"/></div>
+
+保存或运行程序时，App发起Get请求。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug1.png"/></div>
 
 
-## 如何Debug？
+此时debug1可以捕获到请求中的传参。“Select1”为定义的属性名，“value”为该属性的值，即指令块上填入的内容。“type”为指令块上填入参数的类型，0表示输入框内为手动写入的值，1表示输入框内放入了变量。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug2.png"/></div>
+
+
+debug2中可以看到包含了Jks脚本的对象。其中error_code为生成Jks的错误码，0是生成正常，-12为内部错误。当该错误码不等于0时，App会弹窗报错相应的错误码和错误信息。jksstr中包含了type（指令块类型）jks（指令块脚本）jks_return(指令块返回值) 。lines为指令块脚本的行数，自动计算生成。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug3.png"/></div>
+
+
+- 脚本生成页面，在左侧指令块上输入参数后，点击“生成jks脚本”可模拟生成脚本，在下方代码栏内查看模拟生成的代码。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug4.png"/></div>
 
 
