@@ -47,23 +47,33 @@ sidebarDepth: 1
 
 ### Step3:开发自定义指令
 
-&emsp;&emsp;运行AddOn并查看AddOn运行的端口号。
+1. 运行AddOn并查看AddOn运行的端口号。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/run_addOn.gif"/></div>
 
-&emsp;&emsp;使用`IP:Port`进入开发者界面。
+2. 使用`IP:Port`进入开发者界面。
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/developPage.png"/></div>
 
-&emsp;&emsp;使用`Customized Commands`节点创建自定义指令块。在*基本配置*页面中定义指令块的样式和属性，在*脚本生成*页面定义指令块的行为。   
-- 脚本语法请参考[JAKA编程脚本](/guide/jks.html)。
-- `Customized Commands`节点使用请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html)
+3. 在左侧工具栏中找到`Customized Commands`节点，拖入画布中，点击部署。
+4. 双击`Customized Commands`节点，打开指令块生成工具页面。
+   
+    <div align="center">
+    <video width="1000" controls autoplay >
+    <source src="../../../resource/ch/AddOn/JAKA_Command/open_coustomer_node.mp4" type="video/mp4">
+    </video>
+    </div>
+
+5. 更改指令块名称为*hello_jaka*,颜色为绿色。
+6. 在*基本配置*页面中定义了指令块的样式和属性，这里使用自带的属性不做更改。
+7. 在*脚本生成*页面定义指令块的行为，这里使用自带的脚本不做更改。   
   
+    <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
 
-<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
-
+    - 节卡脚本语法请参考[JAKA编程脚本](/guide/jks.html)。
+    - 更详细的`Customized Commands`节点使用方法请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html)
  
-&emsp;&emsp;当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
+8. 当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
@@ -76,7 +86,34 @@ sidebarDepth: 1
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/program_hello.gif"/></div>
 
+## 多语言
+在制作自定义指令时，支持多语言的内容输入框右侧会有一个小地球图标，点击即可配置多语言。目前支持中英日三种语言。
 
-## 如何Debug？
+<div align="center"><img width="500"  src="../../../resource/ch/AddOn/JAKA_Command/multiLan.png"/></div>
+
+## 调试
+
+- node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug.png"/></div>
+
+保存或运行程序时，App发起Get请求。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug1.png"/></div>
+
+
+此时debug1可以捕获到请求中的传参。“Select1”为定义的属性名，“value”为该属性的值，即指令块上填入的内容。“type”为指令块上填入参数的类型，0表示输入框内为手动写入的值，1表示输入框内放入了变量。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug2.png"/></div>
+
+
+debug2中可以看到包含了Jks脚本的对象。其中error_code为生成Jks的错误码，0是生成正常，-12为内部错误。当该错误码不等于0时，App会弹窗报错相应的错误码和错误信息。jksstr中包含了type（指令块类型）jks（指令块脚本）jks_return(指令块返回值) 。lines为指令块脚本的行数，自动计算生成。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug3.png"/></div>
+
+
+- 脚本生成页面，在左侧指令块上输入参数后，点击“生成jks脚本”可模拟生成脚本，在下方代码栏内查看模拟生成的代码。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug4.png"/></div>
 
 
