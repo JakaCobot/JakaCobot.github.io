@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2023-09-15
+ * @LastEditTime: 2023-10-20
  * @Description: 
  */
 
@@ -60,6 +60,7 @@ module.exports = {
                       sidebarDepth: 0,
                       children: [
                         '/guide/addOn/AddOn3.0',
+                        '/guide/addOn/quickStart',
                         '/guide/addOn/environment',
                         '/guide/addOn/JAKA_Command',
                         '/guide/addOn/JAKA_Serve',
