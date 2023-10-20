@@ -60,10 +60,15 @@ module.exports = {
                       sidebarDepth: 0,
                       children: [
                         '/guide/addOn/AddOn3.0',
+                        '/guide/addOn/BeforeYouStart',
+                        '/guide/addOn/QuickStart',
                         '/guide/addOn/environment',
                         '/guide/addOn/JAKA_Command',
                         '/guide/addOn/JAKA_Serve',
                         '/guide/addOn/JAKA_web',
+                        '/guide/addOn/demo_LiftKit',
+                        '/guide/addOn/demo_DHGripper',
+                        '/guide/addOn/references',
                     ], 
                         // 新增的下级页面链接
                     }

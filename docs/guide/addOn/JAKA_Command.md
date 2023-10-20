@@ -1,5 +1,5 @@
 ---
-title: 自定义指令-入门
+title: 自定义指令开发
 sidebarDepth: 1
 ---
 
@@ -8,7 +8,14 @@ sidebarDepth: 1
 
 
 ## 概述
-&emsp;&emsp;我们将创建一个自定义指令类型的AddOn，当运行该指令时将根据指令块上的内容在App日志中输出不同的内容。
+
+### 自定义指令的作用
+
+使用AddOn自定义指令，可以将复杂的工艺流程、不直观的参数输入抽象为一条简单易用的指令块。
+
+### 应用场景
+
+&emsp;&emsp;我们将创建一个自定义指令类型的AddOn，该AddOn的功能是将指令块上输入和选择的内容显示在App日志中。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/showcase.png"/></div>
 
@@ -91,7 +98,7 @@ sidebarDepth: 1
 
 <div align="center"><img width="500"  src="../../../resource/ch/AddOn/JAKA_Command/multiLan.png"/></div>
 
-## 调试
+## 问题排查
 
 - node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
 
