@@ -66,9 +66,13 @@ module.exports = {
                         '/guide/addOn/JAKA_Command',
                         '/guide/addOn/JAKA_Serve',
                         '/guide/addOn/JAKA_web',
+                        '/guide/addOn/references',
                         '/guide/addOn/demo_LiftKit',
                         '/guide/addOn/demo_DHGripper',
-                        '/guide/addOn/references',
+                        '/guide/addOn/multi-language',
+                        '/guide/addOn/user guide',
+                        '/guide/addOn/release',
+                        
                     ], 
                         // 新增的下级页面链接
                     }
