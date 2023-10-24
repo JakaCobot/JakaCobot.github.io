@@ -93,12 +93,16 @@ sidebarDepth: 1
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/program_hello.gif"/></div>
 
-## 多语言
-在制作自定义指令时，支持多语言的内容输入框右侧会有一个小地球图标，点击即可配置多语言。目前支持中英日三种语言。
-
-<div align="center"><img width="500"  src="../../../resource/ch/AddOn/JAKA_Command/multiLan.png"/></div>
 
 ## 问题排查
+
+### 自定义指令生成失败
+![Alt text](./image.png)
+
+### 服务器内部错误
+![Alt text](./image-1.png)
+
+
 
 - node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
 
