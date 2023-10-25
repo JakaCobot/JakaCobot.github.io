@@ -2,9 +2,9 @@
 title: 简介
 sidebarDepth: 1
 ---
-# AddOn
+# 关于AddOn
 
-**该页面介绍了什么是AddOn，并为AddOn开发者提供入门指南。**
+**该页面旨在为AddOn开发者解释基本概念。**
 
 ::: warning 请注意：
 1. 该教程中所提到的AddOn默认为AddOn3.0。
@@ -33,7 +33,7 @@ JAKA AddOn是一款由JAKA提供的插件型软件产品，它支持用户开发
 
 总而言之，使用AddOn能提高应用的编程效率、降低用户的学习成本。
 
-## AddOn的基本功能
+## AddOn基本功能
 ---
 如前所述，AddOn的基本功能有三：开发自定义指令插件、自定义服务插件及自定义网页插件。
 
@@ -57,7 +57,19 @@ JAKA机器人终端用户可以通过AddOn框架开发自定义指令，对常�
 
 AddOn自定义指令基于B/S架构，JAKA App中的编程页面为客户端（B），运行在JAKA控制器内基于node-red的AddOn服务为服务端（S），运行机制如下：
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/AddOn3.0/upgrade_AddOnkit.png"/></div>
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/AddOn3.0/自定义指令机制.png"/></div>
+
+* AddOn自定义服务
+
+AddOn自定义服务基于node-red开发，运行在控制器内部，可以调用JAKA提供的HTTP API接口来查询信息及控制机器人，运行机制如下：
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/AddOn3.0/自定义服务机制.png"/></div>
+
+* AddOn自定义网页
+
+AddOn自定义网页部署在JAKA控制柜中，可以与控制器、JAKA App进行交互。与控制器的交互方式为通过http请求；与JAKA App的交互方式为通过JAKA App提供的API（JS方法）。运行机制如下：
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/AddOn3.0/自定义网页机制.png"/></div>
 
 
 ## AddOn文件组成
@@ -78,5 +90,7 @@ AddOn包中一般都包含一个json文件，其中包含了在node-red中定义
 ## 反馈
 ---
 
-我们很高兴收到您的反馈！如果您发现文档有错误或不清楚的地方,可以在我们的文档仓库中提交[Issues](https://github.com/JakaCobot/JakaCobot.github.io/issues)。
+我们很高兴收到您的反馈！
+
+如果您发现文档有任何叙述错误或描述不清的地方，欢迎在我们的文档仓库中提交[Issues](https://github.com/JakaCobot/JakaCobot.github.io/issues)。
 <!-- 给addonkit的仓库链接和该文档的链接 -->
