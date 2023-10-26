@@ -13,13 +13,13 @@ sidebarDepth: 1
 
 使用AddOn自定义指令，可以将复杂的工艺流程、不直观的参数输入抽象为一条简单易用的指令块。
 
-### 应用场景
 
 &emsp;&emsp;我们将创建一个自定义指令类型的AddOn，该AddOn的功能是将指令块上输入和选择的内容显示在App日志中。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/showcase.png"/></div>
 
 ## 创建JAKA_Command
+
 ### Step1:创建AddOn包  
 &emsp;&emsp;首先我们需要创建一份AddOn基本文件，包含一个.ini格式的配置文件和一个保存数据的json文件。您可以从头开始手动创建，也可以使用AddOn开发包仓库中 ["*Template*"](https://github.com/JakaCobot/jaka_addon_kit) 目录下的AddOn模板进行修改。 
 ::: tip 目录结构
@@ -97,11 +97,29 @@ sidebarDepth: 1
 ## 问题排查
 
 ### 自定义指令生成失败
+在App编程页面使用自定义指令块后，点击保存，报错“自定义指令生成失败”，可能是以下几个原因导致的。
+
 ![Alt text](./image.png)
 
+1. AddOn没有运行   
+   解决方法：在附加程序页面找到该AddOn，点击运行按钮开启AddOn。
+![Alt text](./image-2.png)
+
+2. node-red中的`http in`节点中url与指令块名字不一致  
+   解决方法：将url与指令块名称统一。
+![Alt text](./image-3.png) 
+
 ### 服务器内部错误
+当遇到服务器内部错误时，一般都是因为App没有收到Http请求的响应超时导致。  
+
 ![Alt text](./image-1.png)
 
+解决方法：检查node-red端的`http in`节点是否正确连接`http response`节点，连接后在App端重启AddOn。
+
+::: warning
+    - 目前恢复连接后任然需要重启AddOn服务，才能正常保存程序。这是内部的一些未知bug导致，会在后续版本修复。
+    - 报错信息中请重启控制器的描述有误，重启AddOn即可。
+:::
 
 
 - node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
@@ -125,6 +143,6 @@ debug2中可以看到包含了Jks脚本的对象。其中error_code为生成Jks�
 
 - 脚本生成页面，在左侧指令块上输入参数后，点击“生成jks脚本”可模拟生成脚本，在下方代码栏内查看模拟生成的代码。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug4.png"/></div>
+<div align="center"><img width="800"  src=""/></div>
 
 
