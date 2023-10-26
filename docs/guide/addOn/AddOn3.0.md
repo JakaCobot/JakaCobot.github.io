@@ -49,11 +49,6 @@ JAKA合作伙伴可以通过AddOn框架开发生态链标准插件，增强产�
 
 JAKA机器人终端用户可以通过AddOn框架开发自定义指令，对常用指令进行封装与复用。
 
-## AddOn开发建议
----
-本文档的目标读者应接受过基本的机器人操作培训，并掌握一定的基础开发能力，会使用Python、JavaScript、HTML5、CSS3等编程语言。
-
-除此之外，还应熟悉JAKA的脚本语言JKS，这将有助于用户更好地开发、使用AddOn。
 
 ## AddOn运行机制
 ---
@@ -84,12 +79,15 @@ AddOn自定义网页部署在JAKA控制柜中，可以与控制器、JAKA App进
 AddOn包中一般都包含一个json文件，其中包含了在node-red中定义流和节点信息。该文件的名称可以自定义，但需要在配置中指向该文件。
 
 **配置文件**    
-任何类型的AddOn插件必须包含`xxx_config.ini`文件，即[AddOn配置文件](/guide/addOn/iniConfig)。只有包含AddOn配置文件才能安装、初始化、运行。
+任何类型的AddOn插件必须包含`xxx_config.ini`文件，即[AddOn配置文件:point_left:](/guide/addOn/iniConfig)。只有包含AddOn配置文件才能安装、初始化、运行。
 
 **前端工程**   
-包含自定义页面的AddOn目录下一般会有前端工程的文件夹，例如client、dist。
+包含自定义页面的AddOn目录下一般会有前端工程的文件夹，例如client、dist。我们建议统一使用client作为前端工程文件夹。
 
 
+## 术语解释
+---
+<!-- todo：hbs 术语解释放这里如何？ -->
 
 ## 反馈
 ---

@@ -111,7 +111,7 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 :::
 
 ### 步骤四：运行
-在node-red中部署流程后，即可在App中使用该指令块。
+在node-red中部署流程后，在附加程序页面点击刷新按钮，即可在App中编程页面的扩展指令中找到刚才制作的指令块。
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/program_hello.gif"/></div>
 
@@ -119,32 +119,40 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 ## 调试
 在开发过程中，可能会遇到如下问题，具体情况及相应调试方法请看下文。
 
-### 自定义指令生成失败
+**自定义指令生成失败**  
 在App编程页面使用自定义指令块后，点击保存，报错“自定义指令生成失败”，可能是以下几个原因导致的。
 
-![Alt text](./image.png)
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/自定义指令生成失败.png"/></div>
+
 
 1. AddOn没有运行   
    解决方法：在附加程序页面找到该AddOn，点击运行按钮开启AddOn。
-![Alt text](./image-2.png)
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/AddOn没有运行.png"/></div>
 
-2. node-red中的`http in`节点中url与指令块名字不一致  
+1. node-red中的`http in`节点中url与指令块名字不一致  
    解决方法：将url与指令块名称统一。
-![Alt text](./image-3.png) 
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/统一名称.png"/></div>
 
-### 服务器内部错误
+**服务器内部错误**  
 当遇到服务器内部错误时，一般都是因为App没有收到Http请求的响应超时导致。  
 
-![Alt text](./image-1.png)
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/服务器内部错误.png"/></div>
 
 解决方法：检查node-red端的`http in`节点是否正确连接`http response`节点，连接后在App端重启AddOn。
 
 ::: warning
-    - 目前恢复连接后任然需要重启AddOn服务，才能正常保存程序。这是内部的一些未知bug导致，会在后续版本修复。
-    - 报错信息中请重启控制器的描述有误，重启AddOn即可。
+-目前恢复连接后任然需要重启AddOn服务，才能正常保存程序。这是内部的一些未知bug导致，会在后续版本修复。   
+-报错信息中请重启控制器的描述有误，重启AddOn即可。
 :::
 
+**属性匹配失败**  
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/属性匹配失败.png"/></div>
 
+解决方法：检查node-red中自定义指令的属性名称是否与脚本定义中用到的一致。
+
+<div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/检查属性名.png"/></div>
+
+**如何检查通讯收发的参数是否正确？**    
 - node-red中使用debug节点进行调试。可以调试保存时指令块发来的参数和返回的jks是否正确。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug.png"/></div>
@@ -152,28 +160,29 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 保存或运行程序时，App发起Get请求。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug1.png"/></div>
+  
+此时debug1可以捕获到请求中传入的参数对象。该对象的键为指令块上属性的名字，值为属性的具体内容，包括属性值和属性类型。
 
-
-此时debug1可以捕获到请求中的传参。
-
-“Select1”为定义的属性名，“value”为该属性的值，即指令块上填入的内容。
-
-“type”为指令块上填入参数的类型，0表示输入框内为手动写入的值，1表示输入框内放入了变量。
+以下面收到的内容为例，“Select1”为定义的下拉框属性名，“value”为属性值，0代表此时选中了下拉框的第一个选项。“type”为指令块上填入参数的类型，该参数仅对输入框类型的属性有意义。0表示输入框内为手动写入的值，1表示输入框内放入了变量类型的内容（系统变量、计算结果等数据类型的指令块）。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug2.png"/></div>
 
 
-debug2中可以看到包含了Jks脚本的对象。
+debug2打印的信息中包含了本次保存生成的Jks脚本的对象。
 
-其中error_code为生成Jks的错误码，0是生成正常，-12为内部错误。当该错误码不等于0时，App会弹窗报错相应的错误码和错误信息。jksstr中包含了type（指令块类型）jks（指令块脚本）jks_return(指令块返回值) 。
-
-lines为指令块脚本的行数，自动计算生成。
+其中error_code为生成Jks的错误码，0是生成正常，-12为内部错误。当该错误码不等于0时，App会弹窗报错相应的错误码和错误信息。我们这里只需要关注“jks”这个属性即可，该属性的值即为实际生产的Jks脚本。
 
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/debug3.png"/></div>
 
 
-- 脚本生成页面，在左侧指令块上输入参数后，点击“生成jks脚本”可模拟生成脚本，在下方代码栏内查看模拟生成的代码。
+**模拟生成脚本**
+
+- 脚本生成页面，在左侧指令块上输入参数后，点击“生成Jks脚本”可模拟生成脚本，在下方代码窗口内查看模拟生成的代码。
 
 <div align="center"><img width="800"  src=""/></div>
+
+::: tip 请注意：
+ 点击“生成Jks脚本”按钮只是在下方的代码窗口中显示模拟生成的脚本，并没有其他实际的作用。
+:::
 
 

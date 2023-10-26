@@ -1,8 +1,8 @@
 /*
  * @Author: JAKA
  * @Date: 2023-07-17
- * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2023-09-15
+ * @LastEditors: brycen hebingshuo@jaka.com
+ * @LastEditTime: 2023-10-26
  * @Description: 
  */
 
@@ -66,7 +66,6 @@ module.exports = {
                         '/guide/addOn/JAKA_Command',
                         '/guide/addOn/JAKA_Serve',
                         '/guide/addOn/JAKA_web',
-                        '/guide/addOn/references',
                         '/guide/addOn/demo_LiftKit',
                         '/guide/addOn/demo_DHGripper',
                         '/guide/addOn/multi-language',
