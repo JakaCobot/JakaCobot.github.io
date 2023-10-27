@@ -1,67 +1,66 @@
 ---
-title: 开发指南
+title: 快速入门
 sidebarDepth: 1
 ---
 
-为AddOn开发者提供开发指南。
+# AddOn开发流程速览
 
-## AddOn开发流程
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/quickStart/AddOn开发-流程图.jpg"/></div>
+**该页面旨在向AddOn开发者简单展示完整地开发完一个AddOnXXX包共有几个步骤，以及每个步骤的大致内容。**
 
-## AddOn开发资料获取
----
-
-1. [JAKA虚拟机](https://github.com/JakaCobot/JAKASim)
-2. [AddOn环境包](https://github.com/JakaCobot/jaka_addon_kit/releases)
-3. AddOn[开发模板](https://github.com/JakaCobot/jaka_addon_kit)
-4. 教程中包含的[Demo](https://github.com/JakaCobot/jaka_addon_kit)
-
-:::tip
-1. 点击红色高亮部分跳转至资源页面
-2. 环境包中会附带与之匹配的最新App和控制器版本。
+::: tip 流程图示意：
 :::
 
-## AddOn开发环境搭建
+<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/QuickStart/QuickStart.png"/></div>
 
-* 按照AddOn[开发环境准备](./environment.md)中的步骤，搭建AddOn开发环境。
+如上图所示，AddOnXXX包的完整开发过程一共有三大环节、六大步骤，继续往下细分的话，六大步骤中还包含许多小步骤。
 
+下文将对此流程图作一个简要说明，而小步骤的详细说明及操作方法请参考文档后续的具体章节。
 
-## AddOn文件组成
----
-AddOn可能包含许多不同的文件，下面是最常见的一种组成。   
-
-**数据文件**    
-&emsp;&emsp;AddOn包中一般都包含一个json文件，其中包含了在node-red中定义流和节点信息。该文件的名称可以自定义，但需要在配置中指向该文件。
-
-**配置文件**    
-&emsp;&emsp;任何类型的AddOn插件必须包含`xxx_config.ini`文件，即[AddOn配置文件](/guide/addOn/iniConfig)。只有包含AddOn配置文件才能安装、初始化、运行。
-
-**前端工程**   
-&emsp;&emsp;包含自定义页面的AddOn目录下一般会有前端工程的文件夹，例如client、dist。
-
-
-
-## 快速入门AddOn开发
+## 开发前准备
 ---
 
-<!-- ### 自定义指令 -->
-<!--  -->
-<!-- ### 自定义服务 -->
-<!-- ### 自定义网页 -->
+### 开发环境搭建
+该步骤旨在为AddOnXXX包的开发提供其所需的开发环境，即安装虚拟机、升级控制器与软件的版本。
 
-&emsp;&emsp;如果您不知道从哪里开始，先学习下面的入门教程吧：
+具体信息详见[开发环境搭建:point_left:](./environment.md)
 
-* 通过制作 "[JAKA_Command](./JAKA_Command.md)" 快速入门自定义指令类型AddOn开发的基本流程和规则。
-* 通过制作 "[JAKA_Serve](./JAKA_Serve.md)" 快速入门自定义服务类型AddOn开发的基本流程和规则。
-* 通过制作 "[JAKA_web](./JAKA_web.md)" 快速入门自定义网页类型AddOn开发的基本流程和规则。
+<!-- * 通过制作 "[JAKA_Command:point_left:](./JAKA_Command.md)"学习自定义指令类型AddOn开发的基本流程和规则。
+* 通过制作 "[JAKA_Serve:point_left:](./JAKA_Serve.md)"学习自定义服务类型AddOn开发的基本流程和规则。
+* 通过制作 "[JAKA_web:point_left:](./JAKA_web.md)"学习自定义网页类型AddOn开发的基本流程和规则。 -->
 
-## 深入AddOn开发
+## 进入开发环节
+---
 
-&emsp;&emsp;在此基础之上，您可以选择一个实际场景的AddOn示例教程进行学习，它们可能包含了自定义指令、自定义服务、自定义网页中的至少两种，被称为复合型AddOn：
-<!-- demo还需要确定，至少包含三种不同类型的？目前只提供自定义指令块的详细的？ -->
-<!-- 展开说下每个demo能学到什么 -->
-1. [Ewellix升降轴](./demo_LiftKit.md) 
-2. [大寰夹爪]() 
+在完成环境搭建后，开发者就可自行选择自己所需要的功能，参照相应的文档进行开发。
 
-  
-<!-- todo 这里补充更多的教程覆盖到每一种场景：夹爪、升降轴、视觉等 -->
+如前所述，JAKA AddOn有三个并行的功能，即自定义指令、自定义服务与自定义页面。
+
+一个AddOnXXX包可以包含一种或多种功能。
+
+<div align="center"><img width="1000"  src="../../../resource/ch/AddOn/QuickStart/AddOn的组成.png"/></div>
+
+
+### 开发自定义指令
+自定义指令功能支持开发者根据需求开发除JAKA App内标准指令之外的指令，具体内容及操作步骤详见：[自定义指令开发:point_left:](./JAKA_Command.md)
+
+### 开发自定义服务
+该功能还未开放，后续若有更新，将在此网页进行同步说明。
+### 开发自定义页面
+自定义页面功能支持开发者开发满足自定义需求的页面，具体内容及操作步骤详见：[自定义页面开发:point_left:](./JAKA_web.md)
+### 多语言实现
+JAKA AddOn支持多语言功能，在完成AddOn某个包的功能开发后，可根据需要，自行进行多语言设置。
+
+目前支持的语种有：汉语、英语、及日语。
+
+具体信息详见：[多语言实现:point_left:](./multi-language.md)
+### 编写说明手册
+此处的“说明手册”是指，开发者在使用JAKA AddOn功能开发出具体的应用或功能包后，需要将这些应用或功能包提供给自己的用户使用。此时便需要编写这些应用或功能包的说明手册。
+
+所以该步骤旨在为开发者明示此类说明手册的编写需要包含哪些内容、遵循哪些规则，并且以何种形式发布给自己的用户下载或使用。
+
+具体信息详见[说明手册编写:point_left:](./userguide)
+
+## 发布
+此处的“发布”是指，开发者在使用JAKA AddOn功能开发出具体的应用或功能包后，该如何将这些应用或功能包发布，以提供给自己的用户使用。
+
+目前“发布”功能还在开发中，后续完成后将在本网站将“发布”步骤的流程说明做同步更新。
