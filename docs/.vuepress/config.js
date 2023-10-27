@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-10-26
+ * @LastEditTime: 2023-10-27
  * @Description: 
  */
 
@@ -90,12 +90,19 @@ module.exports = {
                     {
                         title: 'AddOn Develop',
                         collapsable: true,
-                        children:  [
+                        children: [
                             '/en/guide/addOn/AddOn3.0',
+                            '/en/guide/addOn/BeforeYouStart',
+                            '/en/guide/addOn/QuickStart',
                             '/en/guide/addOn/environment',
                             '/en/guide/addOn/JAKA_Command',
                             '/en/guide/addOn/JAKA_Serve',
                             '/en/guide/addOn/JAKA_web',
+                            '/en/guide/addOn/demo_LiftKit',
+                            '/en/guide/addOn/demo_DHGripper',
+                            '/en/guide/addOn/multi-language',
+                            '/en/guide/addOn/userguide',
+                            '/en/guide/addOn/release',
                         ], 
                     }
                 ]
@@ -108,17 +115,17 @@ module.exports = {
                 sidebar: [
                     '/ja/guide/quick_start',
                     '/ja/guide/errinfo',
-                    {
-                        title: 'AddOn開発',
-                        collapsable: true,
-                        children:  [
-                            '/ja/guide/addOn/AddOn3.0',
-                            '/ja/guide/addOn/environment',
-                            '/ja/guide/addOn/JAKA_Command',
-                            '/ja/guide/addOn/JAKA_Serve',
-                            '/ja/guide/addOn/JAKA_web',
-                        ], 
-                    }
+                    // {
+                    //     title: 'AddOn開発',
+                    //     collapsable: true,
+                    //     children:  [
+                    //         '/ja/guide/addOn/AddOn3.0',
+                    //         '/ja/guide/addOn/environment',
+                    //         '/ja/guide/addOn/JAKA_Command',
+                    //         '/ja/guide/addOn/JAKA_Serve',
+                    //         '/ja/guide/addOn/JAKA_web',
+                    //     ], 
+                    // }
                 ]
             },
             '/vi/':{

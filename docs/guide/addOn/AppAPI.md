@@ -22,7 +22,7 @@ jakaCall()由App实现，当在App中打开浏览器时进行注册。当AddOn�
 ```
 
 ::: warning 注意！
-    `data`的值必须是经过序列化后的对象。
+`data`的值必须是经过序列化后的对象。
 :::
 
 <!-- ### 给指令块传递参数
@@ -77,7 +77,7 @@ let result = {
     }
 ```
 
-点击示教页面保存时，App会调用[window.jakaCallBack(data):point_left:](./#window.jakaCallBack())，将当前的位置信息传入。
+点击示教页面保存时，App会调用[window.jakaCallBack(data):point_left:](./AppAPI.html#window-jakacallback)，将当前的位置信息传入。
 
 **获取App当前语言**   
 ```json
@@ -86,7 +86,7 @@ let result = {
 }
 ```
 
-调用后App立即回调[window.changeLanuageHandler(language):point_left:](./#window.changeLanuageHandler())传入当前语言。
+调用后App立即回调[window.changeLanuageHandler(language):point_left:](./AppAPI.html#window-changelanuagehandler)传入当前语言。
 
 
 ## window.jakaCallBack()

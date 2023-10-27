@@ -62,7 +62,7 @@ sidebarDepth: 1
 ---
 
 - [**JAKAScript**:point_left:](/guide/jks.html): 用来实现自定义指令功能的脚本语言。
-- [**JAKA http APIs**](https://console-docs.apipost.cn/preview/4799a89c0be775ce/48bff16c603e4a42): 提供与机器人交互的http接口。
+<!-- - [**JAKA http APIs**](https://console-docs.apipost.cn/preview/4799a89c0be775ce/48bff16c603e4a42): 提供与机器人交互的http接口。 -->
 - [**JAKA App APIs**:point_left:](/guide/addOn/AppAPI.html): 提供前端与JAKA App交互的js函数。
 - [**node-red**](https://nodered.org/docs/): 是AddOn的开发平台和后端服务。
 - [**JavaScript**](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript): 在node-red中编写脚本和逻辑。
