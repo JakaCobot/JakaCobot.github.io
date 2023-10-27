@@ -1,3 +1,8 @@
+---
+title: 实际案例参考——Ewellix 升降轴
+sidebarDepth: 1
+---
+
 # 一、前言
 
 &emsp;&emsp;本教程将会创建一个Ewellix LIFTKIT插件，可以让客户将LIFTKIT升降柱的功能与JAKA应用程序集成。

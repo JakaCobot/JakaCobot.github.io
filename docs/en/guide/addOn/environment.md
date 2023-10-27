@@ -1,61 +1,79 @@
 ---
-title: Setting Up the Development Environment
+title: Setting up Development Environment
 sidebarDepth: 1
 ---
 
-# Setting Up the Development Environment
-**This article will guide you through setting up the AddOn development environment. Before you begin, please download the [*development resources*](/en/guide/addOn/AddOn3.0.html#GettingDevelopmentResources).**
+# Setting up Development Environment
+**This page aims to guide you on how to set up the AddOn development environment. Before you begin, please download the [*development resources*:point_left:](./AddOn3.0.html#获取开发资料).**
+
+Developing AddOns requires the appropriate development environment, including the JAKA virtual machine and compatible software and controller versions.
 
 ## Installing the JAKA Virtual Machine
 
-### 1.1 Installing Virtual Machine Software
+### Step One: Install Virtual Machine Software
 
-&emsp;&emsp;Developers need to install virtual machine software, such as VirtualBox or VMware Player.
+Developers need to first install virtual machine software, such as VirtualBox or VMware Player.
 
-### 1.2 Installing the JAKA Virtual Image
-&emsp;&emsp;Locate the virtual machine image file in the *jaka_addon_package* and import it for installation.
+### Step Two: Install the JAKA Virtual Image
+Locate the virtual machine image file in the *jaka_addon_package* and import it for installation.
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/install_vm.gif"/></div>
 
-### 1.3 Starting the JAKA Virtual Controller
-&emsp;&emsp;Click "Start this virtual machine" to boot up the virtual machine.
+### Step Three: Start the JAKA Virtual Controller
+
+Click "Start this virtual machine" to launch the virtual machine.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/start_vm.gif"/></div>
 
-&emsp;&emsp;At this point, the IP address of the current robot will be displayed on the virtual machine page.
+At this point, the virtual machine page will display the current robot's IP address.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/IP.png"/></div>
 
 
 
-## Installing Other Environments
-### 2.1 Installing the App
+## Installing the AddOn Suite
 
-1. In the AddOn development environment package, locate the installation package in the APP folder, and follow the prompts to install the APP. Pay attention to granting network permissions during the installation process.
+::: tip Please Note:
+Apps and controllers with versions that are too low cannot support AddOn functionality.
+:::
+After setting up the virtual machine, you need to upgrade the App and controller to the corresponding compatible versions before installing the AddOn Suite to enable AddOn development.
 
-### 2.2 Connecting to the Robot Using the App
+### Step One: Install JAKA App
 
-1. Open the APP and connect to the robot. You should be able to find the virtual robot in the robot list based on its IP.
+In the APP folder of the AddOn development environment package, find the installation package and follow the prompts to complete the installation of the App.
+
+During the installation process, be sure to grant network permissions.
+
+### Step Two: Connect the Robot Using the App
+
+1. Open the App to connect to the robot. At this point, you should be able to find the virtual robot in the robot list based on its IP.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/find_robot.png"/></div>
 
-2. If you can't find the robot in the list, try using the offline connection option.
+2. If you cannot find the robot in the list, try using offline connection.
 
-3. Enter the default login password (jakazuadmin).
+3. For the password, enter the default login password (jakazuadmin).
 
-4. Enter the IP of the virtual robot.
+4. For the address, enter the IP of the virtual robot.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/offline_connect.png"/></div>
 
-### 2.3 Upgrading the Controller
+### Step Three: Upgrade the Controller
 
-&emsp;&emsp;Open the Settings page, go to System Settings, and navigate to the Version Upgrade page. Select the controller package you want to upgrade, and click "Upload Upgrade."
+Open the settings page, go to System Settings, then the Version Upgrade page. Select the controller package you want to upgrade, click upload, and complete the upgrade.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/upgrade_controler.png"/></div>
 
-### 2.4 Upgrading the AddOn Environment
+### Step Four: Install the AddOn Suite
 
-&emsp;&emsp;Open the Settings page, go to System Settings, and navigate to the Version Upgrade page. Select the AddOn environment package, and click "Upload Upgrade."
+Open the settings page, go to System Settings, then the Version Upgrade page. Select the AddOn Suite, click upload, and complete the installation.
 
 <div align="center"><img width="800"  src="../../../../resource/en/AddOn/environment/upgrade_AddOnkit.png"/></div>
 
-&emsp;&emsp;After the upgrade is complete, you will need to restart the APP.
+### Step Five: Restart the App
+
+::: tip Please Note:
+After completing steps one to four, please restart the App for the changes to take effect.
+:::
+
+
+

@@ -1,5 +1,103 @@
+# JAKA App APIs
+
 ---
+
 title: JAKA App APIs
 sidebarDepth: 1
 ---
-**Stay tuned**
+
+# Interaction between AddOn Web Pages and the App
+
+When a custom web page from AddOn is opened in the JAKA App, the JAKA App provides the `JAKAController.jakaCall(result)` method for the web page to call. Additionally, developers can implement specific methods on the web page for the App to callback.
+
+## JAKAController.jakaCall()
+---
+
+`jakaCall()` is implemented by the App and registered when the browser is opened within the App. When the AddOn web page calls `jakaCall()`, it passes different objects to achieve different functionalities.
+
+This object will always contain the property `type` and may contain `data`.
+
+```json
+{
+    "type":"",
+    "data":"{\"parameter_name\":\"parameter_value\"}",
+}
+```
+
+::: warning Note!
+    The value of `data` must be a serialized object.
+:::
+
+**Passing Parameters to an Instruction Block**
+```json
+{
+    "type":"saveJakaEditorItem",
+    "data":"{\"property_name\":\"property_value\"}",
+}
+```
+
+**Close Browser Window**
+``` json
+{
+    "type":"close",
+}
+```
+
+**Open Browser Developer Tools Window**
+```json
+{
+    "type":"showDevTools",
+}
+```
+
+**Open Robot Teaching Page**
+```json
+{
+    "type":"jakaMoveRobot",
+    "data":"{
+        \"pose\":\"cartesian_coordinates\",
+        \"jointpose\":\"joint_angles\"
+    }",
+}
+```
+When the teaching page is saved, the App will call [window.jakaCallBack(data):point_left:](./AppAPI.html#window-jakacallback) and pass the current position information.
+
+**Get the Current App Language**
+```json
+{
+    "type":"getLanguage",
+}
+```
+After calling this, the App immediately callbacks [window.changeLanguageHandler(language):point_left:](./AppAPI.html#window-changelanuagehandler) with the current language.
+
+## window.jakaCallBack()
+---
+This function is called by the App when the save button is clicked on the teaching page, and it passes the current position information.
+
+```js
+/**
+ * Callback function for when the teaching page is closed
+ * @param {*} data Contains the current teaching information
+ */
+window.jakaCallBack = function(data){
+    console.log("jakaCallBack Info",data)
+
+    if(data){
+      console.log("jointPose",data.data.jointPose)
+    }
+  }
+```
+
+## window.changeLanguageHandler()
+---
+After calling the method to get the current language, the App immediately calls this function and passes the language being used by the App.
+
+```js
+/**
+ * Trigger getAppLanguage callback function in the app.
+ * @param {*} language The current language passed by the app
+ */
+window.changeLanguageHandler = (language)=>{
+    console.log("changeLanguageHandler",language)
+}
+```

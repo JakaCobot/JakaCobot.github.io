@@ -1,8 +1,13 @@
 /*
  * @Author: JAKA
  * @Date: 2023-07-17
- * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2023-10-20
+<<<<<<< HEAD
+ * @LastEditors: brycen hebingshuo@jaka.com
+ * @LastEditTime: 2023-10-27
+=======
+ * @LastEditors: brycen hebingshuo@jaka.com
+ * @LastEditTime: 2023-10-27
+>>>>>>> AddOn/develop
  * @Description: 
  */
 
@@ -60,11 +65,18 @@ module.exports = {
                       sidebarDepth: 0,
                       children: [
                         '/guide/addOn/AddOn3.0',
-                        '/guide/addOn/quickStart',
+                        '/guide/addOn/BeforeYouStart',
+                        '/guide/addOn/QuickStart',
                         '/guide/addOn/environment',
                         '/guide/addOn/JAKA_Command',
                         '/guide/addOn/JAKA_Serve',
                         '/guide/addOn/JAKA_web',
+                        '/guide/addOn/demo_LiftKit',
+                        '/guide/addOn/demo_DHGripper',
+                        '/guide/addOn/multi-language',
+                        '/guide/addOn/userguide',
+                        '/guide/addOn/release',
+                        
                     ], 
                         // 新增的下级页面链接
                     }
@@ -83,12 +95,19 @@ module.exports = {
                     {
                         title: 'AddOn Develop',
                         collapsable: true,
-                        children:  [
+                        children: [
                             '/en/guide/addOn/AddOn3.0',
+                            '/en/guide/addOn/BeforeYouStart',
+                            '/en/guide/addOn/QuickStart',
                             '/en/guide/addOn/environment',
                             '/en/guide/addOn/JAKA_Command',
                             '/en/guide/addOn/JAKA_Serve',
                             '/en/guide/addOn/JAKA_web',
+                            '/en/guide/addOn/demo_LiftKit',
+                            '/en/guide/addOn/demo_DHGripper',
+                            '/en/guide/addOn/multi-language',
+                            '/en/guide/addOn/userguide',
+                            '/en/guide/addOn/release',
                         ], 
                     }
                 ]
@@ -101,17 +120,17 @@ module.exports = {
                 sidebar: [
                     '/ja/guide/quick_start',
                     '/ja/guide/errinfo',
-                    {
-                        title: 'AddOn開発',
-                        collapsable: true,
-                        children:  [
-                            '/ja/guide/addOn/AddOn3.0',
-                            '/ja/guide/addOn/environment',
-                            '/ja/guide/addOn/JAKA_Command',
-                            '/ja/guide/addOn/JAKA_Serve',
-                            '/ja/guide/addOn/JAKA_web',
-                        ], 
-                    }
+                    // {
+                    //     title: 'AddOn開発',
+                    //     collapsable: true,
+                    //     children:  [
+                    //         '/ja/guide/addOn/AddOn3.0',
+                    //         '/ja/guide/addOn/environment',
+                    //         '/ja/guide/addOn/JAKA_Command',
+                    //         '/ja/guide/addOn/JAKA_Serve',
+                    //         '/ja/guide/addOn/JAKA_web',
+                    //     ], 
+                    // }
                 ]
             },
             '/vi/':{
