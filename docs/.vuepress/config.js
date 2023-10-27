@@ -1,3 +1,11 @@
+/*
+ * @Author: JAKA
+ * @Date: 2023-07-17
+ * @LastEditors: 贺炳硕 hebingshuo@jaka.com
+ * @LastEditTime: 2023-09-15
+ * @Description: 
+ */
+
 module.exports = {
     locales:{
         '/':{
@@ -10,7 +18,7 @@ module.exports = {
             title: "Docs",
             description: "JAKA Docs",
         },
-        '/jp/':{
+        '/ja/':{
             lang:'ja',
             title: "書類",
             description: "JAKA 書類",
@@ -29,7 +37,7 @@ module.exports = {
     themeConfig: {
         logo: '/logo.png',
         lastUpdated: 'Last Updated',
-        displayAllHeaders: true,
+        displayAllHeaders: false,
         smoothScroll: true, 
         sidebarDepth: 0,
         sidebar: 'auto',
@@ -45,7 +53,20 @@ module.exports = {
                     '/guide/jks',
                     '/guide/bus',
                     '/guide/cmdhelp',
-                    '/guide/funcIO'
+                    '/guide/funcIO',
+                    {
+                      title:'AddOn开发', 
+                      collapsable: true,
+                      sidebarDepth: 0,
+                      children: [
+                        '/guide/addOn/AddOn3.0',
+                        '/guide/addOn/environment',
+                        '/guide/addOn/JAKA_Command',
+                        '/guide/addOn/JAKA_Serve',
+                        '/guide/addOn/JAKA_web',
+                    ], 
+                        // 新增的下级页面链接
+                    }
                 ]
             },
             '/en/':{
@@ -58,17 +79,39 @@ module.exports = {
                     '/en/guide/errinfo',
                     '/en/guide/cmdhelp',
                     '/en/guide/bus',
-                    '/en/guide/funcIO'
+                    '/en/guide/funcIO',
+                    {
+                        title: 'AddOn Develop',
+                        collapsable: true,
+                        children:  [
+                            '/en/guide/addOn/AddOn3.0',
+                            '/en/guide/addOn/environment',
+                            '/en/guide/addOn/JAKA_Command',
+                            '/en/guide/addOn/JAKA_Serve',
+                            '/en/guide/addOn/JAKA_web',
+                        ], 
+                    }
                 ]
             },
-            '/jp/':{
+            '/ja/':{
                 lastUpdated:'最後の更新',
                 nav: [
-                    { text: "ホームページ", link: '/jp/' }
+                    { text: "ホームページ", link: '/ja/' }
                 ],
                 sidebar: [
-                    '/jp/guide/quick_start',
-                    '/jp/guide/errinfo',
+                    '/ja/guide/quick_start',
+                    '/ja/guide/errinfo',
+                    {
+                        title: 'AddOn開発',
+                        collapsable: true,
+                        children:  [
+                            '/ja/guide/addOn/AddOn3.0',
+                            '/ja/guide/addOn/environment',
+                            '/ja/guide/addOn/JAKA_Command',
+                            '/ja/guide/addOn/JAKA_Serve',
+                            '/ja/guide/addOn/JAKA_web',
+                        ], 
+                    }
                 ]
             },
             '/vi/':{
