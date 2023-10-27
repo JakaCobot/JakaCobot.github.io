@@ -1,6 +1,6 @@
 ---
-title: Custom command development node
+title: Custom Directive Development Node
 sidebarDepth: 1
 ---
 
-**Stay tuned**
+**Coming Soon**
