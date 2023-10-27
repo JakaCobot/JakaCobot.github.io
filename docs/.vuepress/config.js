@@ -57,6 +57,7 @@ module.exports = {
                     '/en/guide/quick_start',
                     '/en/guide/errinfo',
                     '/en/guide/cmdhelp',
+                    '/en/guide/bus',
                     '/en/guide/funcIO'
                 ]
             },
