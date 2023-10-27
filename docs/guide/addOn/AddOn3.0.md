@@ -2,12 +2,7 @@
 title: 基本介绍
 sidebarDepth: 1
 ---
-<<<<<<< HEAD
-# AddOn
-**该页面介绍了什么是AddOn，以及其运行原理。**
-=======
 # 关于AddOn
->>>>>>> AddOn/develop
 
 **该页面旨在为AddOn开发者解释基本概念。**
 
