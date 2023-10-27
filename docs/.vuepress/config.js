@@ -69,7 +69,7 @@ module.exports = {
                         '/guide/addOn/demo_LiftKit',
                         '/guide/addOn/demo_DHGripper',
                         '/guide/addOn/multi-language',
-                        '/guide/addOn/user guide',
+                        '/guide/addOn/userguide',
                         '/guide/addOn/release',
                         
                     ], 

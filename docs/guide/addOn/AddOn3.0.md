@@ -22,9 +22,6 @@ JAKA AddOn是一款由JAKA提供的插件型软件产品，它支持用户开发
 * JAKA AddOn套件包：在开发环境搭建时需要使用的套件包，即jaka_addon_kit.tar.gz。
 * JAKA AddOnXXX包：开发完成后已经带有具体功能的功能包，如JAKA AddOn码垛包、JAKA AddOn大寰夹爪包、JAKA AddOn视觉引导包、JAKA AddOn传感器控制包等。
 工艺包、第三方设备的适配包
-
-* 包
-* 插件
 :::
 
 ## 为何需要使用AddOn 
@@ -85,7 +82,7 @@ AddOn包中一般都包含一个json文件，其中包含了在node-red中定义
 包含自定义页面的AddOn目录下一般会有前端工程的文件夹，例如client、dist。我们建议统一使用client作为前端工程文件夹。
 
 
-## 术语解释
+<!-- ## 术语解释 -->
 ---
 <!-- todo：hbs 术语解释放这里如何？ -->
 

@@ -4,7 +4,7 @@ sidebarDepth: 1
 ---
 
 # 开发环境搭建
-**本页面旨在介绍如何搭建AddOn开发环境，开始前请先下载[*开发资料*](/guide/addOn/AddOn3.0.html#开发资料获取)。**
+**本页面旨在介绍如何搭建AddOn开发环境，开始前请先下载[*开发资料*:point_left:](/guide/addOn/AddOn3.0.html#开发资料获取)。**
 
 AddOn的开发需要依赖适当的开发环境，例如JAKA虚拟机以及相适配的软件、控制器版本。
 
