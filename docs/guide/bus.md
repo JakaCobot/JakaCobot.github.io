@@ -2,7 +2,7 @@
 
 ## 介绍
 
-为了帮助用户更好地使用JAKA的通讯功能，针对市面主流的PLC，分别使用其上位机验证其与JAKA的数据交互。教程仅选用了部分型号，即使是同一厂商的PLC，由于通讯参数和设备版本的问题，使用方法不完全相同，因此本教程仅供初步使用的参考，更进一步的应用请联系PLC的本地供应商。
+为了帮助用户更好地使用JAKA的通讯功能，本手册介绍了节卡如何与市面上主流的PLC进行数据交互。本手册中的示例仅选用了部分型号，即使是同一厂商的PLC，由于通讯参数和设备版本的差异，使用方法不完全相同，因此本手册仅供初步使用参考，更进一步的使用请联系相应PLC品牌的本地供应商。
 
 本次验证基于以下PLC型号，表中分别给出了使用的固件版本和上位机的软件版本，推荐在已经验证过功能的版本或更高版本使用。
 
@@ -24,45 +24,77 @@ JAKA设备的EtherNet/IP支持作为Adapter使用，Profinet支持作为Device�
 
 ### 环境搭建
 
-节卡机器人的电控柜和PLC建立通讯后，PLC可以实时读取机器人的各项性能参数， 例如：机器人状态，各关节的角度、速度、温度，以及TCP的位置、速度和受力值，同时，PLC也能通过不同类型数据的寄存器与控制柜进行数据交互。
+节卡控制柜和PLC建立通讯后，PLC可以实时读取机器人的各项性能参数， 例如：机器人状态，各关节的角度、速度、温度，以及TCP的位置、速度和受力值，同时，PLC也能通过不同类型数据的寄存器与控制柜进行数据交互。
 
 设备间的简易连接示意如下，需要保证PLC、上位机和控制柜在同一网段内，下文所述的使用方法和步骤均基于三者之间可互相访问。
 
 ![image-20230220170602938](../../resource/ch/bus/image-20230220170602938.png)
 
-节卡机器人控制柜通讯功能建议使用控制柜的底部网口，JAKA Zu APP（下文简称APP）也可以通过底部网口与控制柜连接，但为了避免APP与控制柜的数据传输影响通信功能，建议APP使用面板上网口或WIFI与控制柜相连。
+节卡控制柜通讯功能建议使用控制柜的底部网口，JAKA Zu APP（下文简称APP）也可以通过底部网口与控制柜连接，但为了避免APP与控制柜的数据传输影响通信功能，建议APP使用面板上网口或WIFI与控制柜相连。
 
 注：底部网口需要处于处于激活状态（连上电脑或路由器），才能使用相关通信功能。
 
-### 使能EtherNet/IP功能
+### 使能EtherNet/IP，Profinet
 
-节卡机器人默认情况下，Ethernet/IP功能处于关闭状态，使能的具体步骤如下：
+由于Ethernet/IP及Profinet使能步骤基本一致，因此一并说明。
 
-步骤一：打开最新版本JAKA Zu APP，点击APP右上角的未连接搜索控制器IP地址。
+默认情况下，Ethernet/IP及Profinet功能处于关闭状态，使能的具体步骤如下：
+
+步骤一：打开最新版本JAKA Zu APP，点击APP右上角的”未连接“图标进入机器人连接界面。
 
 ![image-20230221094819134](../../resource/ch/bus/image-20230221094819134.png)
 
-步骤二：选中控制柜并输入管理员密码使APP与控制柜相连。
+步骤二：点击想要连接的机器人并输入管理员密码（默认密码为jakazuadmin）使APP与控制柜相连。
 
 ![image-20230221094852245](../../resource/ch/bus/image-20230221094852245.png)
 
-步骤三：在APP界面， 点击设置->硬件与通讯->Ethernet/IP设置， 开启使能按键并点击确定按钮，手动重启控制柜。重新连接控制柜后可查看状态项。状态为未成功连接主站时，代表EtherNet/IP已成功使能，等待主站连接。
+步骤三：在APP界面， 点击“设置”→“硬件与通讯”→“Ethernet/IP设置”或“Profinet设置”， 开启使能开关，并点击“确定”，手动重启控制柜。重启控制柜步骤如下：
+
+a. 回到主界面，点击”关闭本体电源“→位于界面右上角的”关闭“按钮，关闭控制柜；
+
+b. 控制柜关闭后，短按手柄开机按钮，待蜂鸣器响后，控制柜开机；
+
+c. 打开JAKA Zu APP，重新连接机器人，具体操作见步骤一和步骤二；
+
+d. 进入主界面，点击“打开本体电源”。
+
+重新连接控制柜后可在“EtherNet/IP设置”或“Profinet设置”界面查看状态。状态为“未成功连接主站”，则EtherNet/IP已成功使能，等待主站连接。
 
 ![image-20230221094909935](../../resource/ch/bus/image-20230221094909935.png)
 
 
+### 使能 Modbus TCP/IP，Modbus RTU
 
-Profinet和Modbus的使能同理，均在硬件与通信开启，在使能和配置完通讯参数后，需要对控制器进行重启让功能生效。
+由于Modbus TCP/IP及Modbus RTU使能步骤基本一致，因此一并说明。
 
-## IO数量配置方法
+默认情况下，Modbus TCP/IP及Modbus RTU功能处于开启状态，使能的具体步骤如下：
+
+步骤一：打开最新版本JAKA Zu APP，点击APP右上角的”未连接“图标进入机器人连接界面。
+
+![image-20230221094819134](../../resource/ch/bus/image-20230221094819134.png)
+
+步骤二：点击想要连接的机器人并输入管理员密码（默认密码为jakazuadmin）使APP与控制柜相连。
+
+![image-20230221094852245](../../resource/ch/bus/image-20230221094852245.png)
+
+步骤三：在APP主页， 点击“设置”→“硬件与通讯”→“Modbus设置”。
+
+a. 若开启Modbus TCP/IP，则勾选Modbus TCP/IP前的单选按钮，输入端口号（0~65535），点击“确定”；
+
+b. 若开启Modbus RTU，则勾选Modbus RTU前的单选按钮，输入从站节点号（1~128），选择波特率、数据位长度、停止位长度、校验方式，点击“确定”。
+
+![image-20230901094852245](../../resource/ch/bus/image-20230901094852245.png)
+
+
+## IO数量配置说明
 
 ### EtherNet/IP
 
 在地址分配表中，数据类型排列的顺序为：DIO布尔型、AIO整型和AIO浮点数型。其中：
 
-DIO：布尔型，占1bit，每8个DIO组成一个字节，因此DI和DO的IO数量配置需为8*n个，n为正整数，使对应的DI和DO数据长度为整数字节，
+DIO：布尔型，占1位（bit），每8个DIO组成一个字节，因此DI和DO的IO数量配置需为8*n个，n为正整数，使对应的DI和DO数据长度为整数字节，
 
-AIO：整型和浮点数型均占4个字节。
+AIO：整型和浮点数型均占4个字节（byte）。
 
 按照使用场景，EtherNet/IP的IO数量是可配置的。在usersetting中，如果Mode = 0，代表EIP使用标准的IO数量，如果Mode = 1，代表可以配置IO数量。
 
@@ -102,119 +134,23 @@ AO_FLOAT_NUM = 24
 
 ### Profinet
 
-节卡机器人Profinet IO数据传输的控制，首先请参考节卡机器人地址分配表的EXCEL文档，由4个sheet表组成，分别是表格说明、Robot2PLC、PLC2Robot以及脚本函数。在Robot2PLC和PLC2Robot表中定义的每个数据占4个字节，即0 ~ 31个Bit位，重点关注内容如下：
+节卡机器人Profinet IO数据传输操作，请参考节卡机器人地址分配表，由4个表组成，分别是表格说明、Robot2PLC、PLC2Robot以及脚本函数。在Robot2PLC和PLC2Robot表中定义的每个数据占4个字节，即0 ~ 31 位，重点内容如下：
 
 
 
-传输类型： R->P （Robot->PLC）或者传输类型 P->R（PLC->Robot），表明了数据传输的方向
+传输类型： R->P （Robot->PLC）或者传输类型 P->R（PLC->Robot），表明了数据传输的方向；
 
-单元模块（Unit Group）： 表明了数据类型和所属模块，数据类型为：机器人状态、安全设置，属于第一个模块。比如：1_R->P_Robot_Safety， 代表数据模块编号为1，传输方向R->P （Robot->PLC），Robot表示机器人状态，Safety表示安全设置，32 Bytes为已使用地址，4 Bytes为预留地址。 其他的单元模块内容与此类似。
+单元模块（Unit Group）： 表明了数据类型和所属模块，数据类型为：机器人状态、安全设置，属于第一个模块。比如：1_R->P_Robot_Safety， 代表数据模块编号为1，传输方向R->P （Robot->PLC），Robot表示机器人状态，Safety表示安全设置，32 字节为已使用地址，4 字节为预留地址。 其他的单元模块内容与此类似。
 
-PLC设置： 包括各个单元模块对应的插槽、子插槽编号和PLC上地址，如1_R->P_Robot_Safety对应1号插槽，1号子插槽，PLC输入I地址为0 ~ 35 Bytes。
+PLC设置： 包括各个单元模块对应的插槽、子插槽编号和PLC上地址，如1_R->P_Robot_Safety对应1号插槽，1号子插槽，PLC输入I地址为0 ~ 35 字节。
 
-
-
-#### DI布尔量输入操作
-
-Profinet数字输入对应DI 136到DI 199，共64个DI数据。数据传输方向为：PLC数据输出对应控制柜DI数据输入。在PLC2Robot工作表中，传输类型 P->R（PLC->Robot），布尔输入寄存器DI 0 ~ 64位于PLC的7号插槽和1号子插槽，PLC的输出地址为0 ~ 7字节, 在Profinet IO的数据通讯模式中，每一个DI数据由1个Bit位控制。 
-
-![image-20230518105055149](../../resource/ch/bus/image-20230518105055149.png)
-
-如上图所示，其他DI数据的操作步骤类似，先提供Profinet功能DI寄存器与PLC输出地址对应表：
-
-| DI输入寄存器 | 插槽 | 子插槽 | QB地址 |
-| ------------ | ---- | ------ | ------ |
-| DI 136 ~ 143 | 7    | 1      | 0      |
-| DI 144 ~ 151 | 1    |        |        |
-| ……           | ……   |        |        |
-| DI 192 ~ 199 | 7    |        |        |
-
-
-
-#### AI整数输入操作
-
-Profinet有符号模拟量输入为AI 73到AI 104，共计32个数据。在PLC2Robot工作表中,传输类型 P->R（PLC->Robot），整数输入寄存器AI 0 ~ 31位于PLC的8号插槽和1号子插槽，PLC的输出地址为12 ~ 139字节, 在Profinet IO的数据通讯模式中，每一个AI整数数据由4个字节控制。
-
-![image-20230518105217981](../../resource/ch/bus/image-20230518105217981.png)
-
-Profinet功能AI整数输入寄存器与PLC输出地址对应表如下：
-
-| AI整数输入寄存器 | 插槽 | 子插槽 | QD地址 |
-| ---------------- | ---- | ------ | ------ |
-| AI 73            | 8    | 1      | 12     |
-| AI 74            | 16   |        |        |
-| ……               | ……   |        |        |
-| AI 104           | 136  |        |        |
-
-
-
-#### AI浮点数输入操作
-
-Profinet浮点数输入为AI 105到AI 136，共计32个数据。在PLC2Robot工作表中,传输类型 P->R（PLC->Robot），浮点数输入寄存器AI 0 ~ 31位于PLC的9号插槽和1号子插槽，PLC的输出地址为140 ~ 247字节, 在Profinet IO的数据通讯模式中，每一个AI浮点数据由4个字节控制。
-
-![image-20230518105300645](../../resource/ch/bus/image-20230518105300645.png)
-
-Profinet功能AI浮点输入寄存器与PLC输出地址对应表如下：
-
-| AI浮点输入寄存器 | 插槽 | 子插槽 | QD地址 |
-| ---------------- | ---- | ------ | ------ |
-| AI 105           | 9    | 1      | 140    |
-| AI 106           | 144  |        |        |
-| ……               | ……   |        |        |
-| AI 136           | 264  |        |        |
-
-
-
-#### DO布尔量输出控制
-
-Profinet数字输出对应DO 136到DO 199，总共64个DO数据。数据传输方向为，控制柜的DO数据输出对应PLC的数据输入，在Robot2PLC工作表中，传输类型 R->P （Robot->PLC），布尔输出寄存器 DO 0 ~ 64位于PLC的4号插槽和1号子插槽，PLC的输入地址为400 ~ 407字节, 在Profinet IO的数据通讯模式中，每一个DO数据由1个Bit位控制。
-
-![image-20230518105335789](../../resource/ch/bus/image-20230518105335789.png)
-
-Profinet功能DO寄存器与PLC输入地址对应表:
-
-| DO输出寄存器 | 插槽 | 子插槽 | IB地址 |
-| ------------ | ---- | ------ | ------ |
-| DO 136 ~ 143 | 4    | 1      | 400    |
-| DO 144 ~ 151 | 401  |        |        |
-| ……           | ……   |        |        |
-| DO 192 ~ 199 | 407  |        |        |
-
-#### AO整数输出操作
-
-Profinet有符号模拟量输出为AI 65到AI 96，共计32个数据。在Robot2PLC工作表中，传输类型 R->P （Robot->PLC），整数输出寄存器AO 0 ~ 31位于PLC的5号插槽和1号子插槽，PLC的输入地址为412 ~ 539字节, 在Profinet IO的数据通讯模式中，每一个AI整数数据由4个字节控制。
-
-![image-20230518105409172](../../resource/ch/bus/image-20230518105409172.png)
-
-Profinet功能AO整数输出寄存器与PLC输入地址对应表如下：
-
-| AO整数输入寄存器 | 插槽 | 子插槽 | ID地址 |
-| ---------------- | ---- | ------ | ------ |
-| AO 65            | 8    | 1      | 412    |
-| AO 66            | 416  |        |        |
-| ……               | ……   |        |        |
-| AO 96            | 536  |        |        |
-
-#### AO浮点数输出操作
-
-Profinet有浮点模拟量输出为AO 97到AI 128，共计32个数据。在Robot2PLC工作表中，传输类型 R->P （Robot->PLC），浮点数输出寄存器AO 0 ~ 31位于PLC的6号插槽和1号子插槽，PLC的输入地址为540 ~ 667字节, 在Profinet IO的数据通讯模式中，每一个AI浮点数据由4个字节控制。
-
-![image-20230518105444324](../../resource/ch/bus/image-20230518105444324.png)
-
-Profinet功能AO浮点数输出寄存器与PLC输入地址对应表如下：
-
-| AO浮点数输出寄存器 | 插槽 | 子插槽 | ID地址 |
-| ------------------ | ---- | ------ | ------ |
-| AO 97              | 6    | 1      | 540    |
-| AO 98              | 544  |        |        |
-| ……                 | ……   |        |        |
-| AO 128             | 664  |        |        |
-
-上文已经介绍了布尔量、整数和浮点数的读取操作，机器人的状态和安全设置，以及关节和TCP等数据，其数据格式多为整数和浮点， 获取这些数据的操作与Profinet IO的控制相同，只要参考Robot2PLC工作表中PLC的输入地址，在TIA Portal中输入数据对应的地址，注意数据所占的字节长度，就能获取所想要的数据。
+![image-20230901170602938](../../resource/ch/bus/image-20230901170602938.png)
 
 ## PLC通讯实例
 
 ### 罗克韦尔5370 L3 1769-L33ER
+
+所需软件：RsLinx Classic，BOOTP-DHCP Server，RsLinx Classic Launch Panel，RsLogix 5000，JAKA Zu APP，Wireshark（非必须）
 
 #### EtherNet/IP
 
@@ -222,11 +158,11 @@ Profinet功能AO浮点数输出寄存器与PLC输入地址对应表如下：
 
 
 
-2. 打开软件RsLinx Classic，点击Config Drivers菜单，在弹出的对话框中， 选择Ethernet/IP Driver， 点击Add New，按照默认配置，完成后点击Ok。![image-20230221093844646](../../resource/ch/bus/image-20230221093844646.png)
+2. 打开软件RsLinx Classic，点击Configure Drivers菜单，在弹出的对话框中， 选择Ethernet/IP Driver， 点击Add New，按照默认配置，完成后点击Ok。![image-20230221093844646](../../resource/ch/bus/image-20230221093844646.png)
 
    
 
-3. 点击网络节点图标，弹出WRWho对会话框。点击ABETHIP_1, 会刷新出PLC和Ethernet/IP的模块信息，连接正常表示已正确组网。右键点击PLC可以修改其IP地址，使其与控制器和上位机处于同一子网段内。
+3. 点击网络节点图标，弹出WRWho对会话框。点击ABETHIP_1，会刷新出PLC和Ethernet/IP的模块信息，连接正常表示已正确组网。右键点击PLC可以修改其IP地址，使其与控制器和上位机处于同一子网段内。
 
 ![image-20230221093902444](../../resource/ch/bus/image-20230221093902444.png)
 
@@ -246,7 +182,7 @@ Profinet功能AO浮点数输出寄存器与PLC输入地址对应表如下：
 
 
 
-6. 点击菜单栏工具，选择安装EDS文件，注册EDS文件， 一直点击下一步，直到完成配置。
+6. 点击菜单栏Tools，选择安装EDS文件，注册EDS文件， 一直点击下一步，直到完成配置。
 
 ![image-20230221094022980](../../resource/ch/bus/image-20230221094022980.png)
 
@@ -316,19 +252,11 @@ PLC输入的最大字节数为492字节
 
 AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的协议转换网关将ModBusTCP协议转换为AB自己的Ethernet/IP协议。因此罗克韦尔PLC首先必须有具备EtherNet/IP协议的以太网接口。
 
-从Logix5000编程软件15版本（实测20版本及以上）以后，对于CompactLogix和Controllogix系列的PLC，支持了使用PLC程序编写出来的ModbusTCP协议通讯，目前来看，支持该通讯的协议的产品和版本主要有：
+从Logix5000编程软件15版本（实测20版本及以上）以后，对于CompactLogix和Controllogix系列的PLC，支持了使用PLC程序编写出来的ModbusTCP协议通讯，并且可作为Master和Slave与其他第三方设备进行通讯，AB官方提供的例程分为Master和Slave两部分，可按需分别使用。Master功能部分可能会占用PLC内200-230K的存储空间，Slave功能部分可能会占用PLC的280-300K空间
 
-![image-20230518092542471](../../resource/ch/bus/image-20230518092542471.png)
+由上可知，罗克韦尔不支持原生的Modbus TCP协议，需要通过其EtherNet\IP的以太网端口实现。
 
-以上产品刷对应固件后即可支持ModbusTCP协议，并且可作为Master和Slave与其他第三方设备进行通讯，AB官方提供的例程分为Master和Slave两部分，可按需分别使用。Master功能部分可能会占用PLC内200-230K的存储空间，Slave功能部分可能会占用PLC的280-300K空间
-
-由上可知，罗克韦尔不支持原生的Modbus Tcp协议，需要通过其EtherNet\IP的以太网端口实现。
-
-可以自行编写PLC程序来支持modbus，也可在罗克韦尔下载示例程序，下面对官网给出的示例程序作简要验证。
-
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/94EZlwQkXEJLqxAY/img/98b12361-4b42-4101-927e-47c54ac7f986.png){.lozad}
-
-
+可以自行编写PLC程序来支持Modbus，也可在罗克韦尔下载示例程序，下面对官网给出的示例程序作简要验证。
 
 1. 新建工程，选择MainRoutine，在右侧的空白区域点击右键选择Import Rungs
 
@@ -354,7 +282,7 @@ AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的�
 
 
 
-5. 回到MainRoutine选项，将inp_Enable置为1，代表启动Modbus Client功能，对于RSLogix 5000而言，同时需要将程序编译并下载到plc，最后切换到运行状态
+5. 回到MainRoutine选项，将inp_Enable置为1，代表启动Modbus Client功能，对于RSLogix 5000而言，同时需要将程序编译并下载到PLC，最后切换到运行状态
 
 ![image-20230518093017397](../../resource/ch/bus/image-20230518093017397.png)
 
@@ -370,11 +298,11 @@ AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的�
 
 ![image-20230518093105083](../../resource/ch/bus/image-20230518093105083.png)
 
-![img](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/94EZlwQkXEJLqxAY/img/1c4e6957-307d-409a-9546-52ece9ec4ae3.png){.lozad}
-
 
 
 ### **西门子** 6ES7317-2EK14-0AB0
+
+所需软件：TIA Portal V15，JAKA Zu APP
 
 #### Profinet
 
@@ -410,13 +338,9 @@ AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的�
 
 ![image-20230518103207811](../../resource/ch/bus/image-20230518103207811.png)
 
-![image-20230518103309906](../../resource/ch/bus/image-20230518103309906.png)
-
 
 
 7. 点击Profinet设备的未分配，选择PLC_1.PROFINET接口_1
-
-![image-20230518103916807](../../resource/ch/bus/image-20230518103916807.png)
 
 ![image-20230518103927603](../../resource/ch/bus/image-20230518103927603.png)
 
@@ -470,7 +394,7 @@ AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的�
 
 
 
-2. 进入组态进行连接设置，设定ip地址、端口号等参数
+2. 进入组态进行连接设置，设定IP地址、端口号等参数
 
 ![image-20230518093934377](../../resource/ch/bus/image-20230518093934377.png)
 
@@ -504,9 +428,11 @@ AB的PLC自身均不支持Modbus TCP通讯，使用AB PLC需要配第三方的�
 
 ### 三菱 FX5U-80MT/DSS
 
+所需软件：MELSOFT GX Works3，EtherNet/IP Configuration Tool for FX5-ENET/IP，JAKA Zu APP
+
 #### EtherNet/IP
 
-FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
+FX5U默认ip为192.168.3.250；FX5 ENET/IP默认IP为192.168.3.251
 
 需要使用扩展模块FX5-ENT/IP开启EtherNet/IP功能，此功能需要软件EtherNet/IP Configuration Tool for FX5-ENET/IP，可在三菱官网或联系供应商获取
 
@@ -544,7 +470,7 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 
 
-6. 将eds文件直接拖至TCP/IP下方，注意配置其ip与模块同网段。
+6. 将eds文件直接拖至TCP/IP下方，注意配置其IP与模块同网段。
 
 ![image-20230518110154849](../../resource/ch/bus/image-20230518110154849.png)
 
@@ -580,7 +506,7 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 
 
-12. 双击设备网络进行FX5U的ip设置
+12. 双击设备网络进行FX5U的IP设置
 
 ![image-20230518110409610](../../resource/ch/bus/image-20230518110409610.png)
 
@@ -616,29 +542,25 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 
 
-18. 使用模块触发EIP功能后，此时APP侧应显示成功连接主站
-
-![image-20230518110608603](../../resource/ch/bus/image-20230518110608603.png)
 
 
-
-19. 若在EtherNet/IP Configuration Tool for FX5-ENET/IP进行诊断，将显示设备正常在线
-
-![image-20230518110636975](../../resource/ch/bus/image-20230518110636975.png)
-
-
-
-20. 重启后将网线从FX5U拔下并接入FX5-ENET/IP，同样进入在线-当前连接目标确认与EIP模块的通信正常，然后打开监视
+18. 重启后将网线从FX5U拔下并接入FX5-ENET/IP，同样进入在线-当前连接目标确认与EIP模块的通信正常，然后打开监视
 
 ![image-20230518110654282](../../resource/ch/bus/image-20230518110654282.png)
 
 
 
-21. 光标放在M1001开关，使用Shift+Enter改变输入信号触发此函数功能块
+19. 光标放在M1001开关，使用Shift+Enter改变输入信号触发此函数功能块
 
 ![image-20230518110711675](../../resource/ch/bus/image-20230518110711675.png)
 
+20. 使用模块触发EIP功能后，此时APP侧应显示成功连接主站
 
+![image-20230518110608603](../../resource/ch/bus/image-20230518110608603.png)
+
+21. 若在EtherNet/IP Configuration Tool for FX5-ENET/IP进行诊断，将显示设备正常在线
+
+![image-20230518110636975](../../resource/ch/bus/image-20230518110636975.png)
 
 22. 右键函数块，打开在线-软元件/缓冲存储器批量监视
 
@@ -704,7 +626,7 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 
 
-5. APP此时可以运行扩展IO模块，查看值是否更新到对应地址
+5. APP此时可以运行扩展IO模块，打开软元件缓冲区批量监视，查看值是否更新到对应地址
 
 ![image-20230518111057725](../../resource/ch/bus/image-20230518111057725.png)
 
@@ -778,10 +700,6 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 11. 写入完成后需要编写程序触发此通信协议，三菱PLC作为Modbus主站时主要用到三条指令，可以参考*MELSEC iQ-F FX5用户手册(MODBUS通信篇)*，指令的详细含义可以按F1查看官方的指令帮助
 
-![image-20230518111415825](../../resource/ch/bus/image-20230518111415825.png)
-
-
-
 12. 此处介绍一种通信方法，可根据自己的逻辑需求修改程序，使用SP.SOCOPEN打开连接
 
 ![image-20230518111430357](../../resource/ch/bus/image-20230518111430357.png)
@@ -837,6 +755,8 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 
 ### 施耐德 TM241CE24R
+
+所需软件：Machine Expert，JAKA Zu APP
 
 #### EtherNet/IP
 
@@ -942,11 +862,11 @@ FX5U默认ip为192.168.3.250；FX5 ENET/IP默认ip为192.168.3.251
 
 4. TM241CE24R支持的modbus从站的保持寄存器的功能码为03、06和16，而输入寄存器支持的功能码为17，JAKA机器人modbus主站暂不支持此功能码，使用前需要查阅官方文档
 
-![image-20230518112408357](../../resource/ch/bus/image-20230518112408357.png)
-
 
 
 ### 欧姆龙 CP1H-X40DT-D
+
+所需软件：CX-Programmer，JAKA Zu APP
 
 CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此之前需要先再装一个CJ1W-EXT01扩展单元以支持扩展，安装后的产品如图：
 
@@ -992,31 +912,31 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 
-7. 选择第二项进行EIP设定
+7. 点击“Network Confihurator”进行EIP设定
 
 ![image-20230518112716651](../../resource/ch/bus/image-20230518112716651.png)
 
 
 
-8. 安装eds文件
+8. 点击“Install”安装eds文件
 
 ![image-20230518112728140](../../resource/ch/bus/image-20230518112728140.png)
 
 
 
-9. 选择上载
+9. 点击“Upload”
 
 ![image-20230518112746186](../../resource/ch/bus/image-20230518112746186.png)
 
 
 
-10. 将导入的设备拖到总线，修改ip地址
+10. 将导入的设备拖到总线，点击“Change Node Address…”修改IP地址
 
 ![image-20230518112807626](../../resource/ch/bus/image-20230518112807626.png)
 
 
 
-11. 进行连接注册
+11. 连接注册：点击“JAKA Robot Ethernet/IP Adapter”→“Connections”
 
 ![image-20230518112818721](../../resource/ch/bus/image-20230518112818721.png)
 
@@ -1028,13 +948,13 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 
-13. 设置完成后将参数修改到plc
+13. 设置完成后将参数修改到PLC
 
 ![image-20230518112852640](../../resource/ch/bus/image-20230518112852640.png)
 
 
 
-14. 点击下载到设备
+14. 点击“Dowland”
 
 ![image-20230518112907042](../../resource/ch/bus/image-20230518112907042.png)
 
@@ -1046,13 +966,13 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 
-16. 下载完成后将重启plc
+16. 下载完成后将重启PLC
 
 ![image-20230518112933858](../../resource/ch/bus/image-20230518112933858.png)
 
 
 
-17. 此时APP侧应显示成功连接主站，将plc的工作模式切换为监视，可以实现值的传递
+17. 此时APP侧应显示成功连接主站，将PLC的工作模式切换为监视，可以实现值的传递
 
 ![image-20230518112952130](../../resource/ch/bus/image-20230518112952130.png)
 
@@ -1061,6 +981,8 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 ### 基恩士 KV-8000
+
+所需软件：KV STUDIO，JAKA Zu APP
 
 本例采用KV-8000作为CPU单元，KV-XLE02作为扩展单元
 
@@ -1078,7 +1000,7 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 
-3. 设置端口的协议为scanner，（此处如果不设置将不会显示ethernetip设定），分别设置KV-8000和KV-XLE02的IP地址，最后应用设置。
+3. 设置端口的协议为scanner，（此处如果不设置将不会显示EtherNet/IP设定），分别设置KV-8000和KV-XLE02的IP地址，最后应用设置。
 
 ![image-20230518113139022](../../resource/ch/bus/image-20230518113139022.png)
 
@@ -1167,6 +1089,8 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 
 ### 台达 AS228T-A
+
+所需软件：Delta ISPSoft，HWCONFIG，JAKA Zu APP
 
 #### EtherNet/IP
 
@@ -1288,6 +1212,8 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 ### 汇川 Easy522‑0808TN
 
+所需软件：AutoShop，JAKA Zu APP
+
 #### EtherNet/IP
 
 1. 打开AutoShop，新建工程，选择PLC型号，进入工具的通讯设置
@@ -1372,15 +1298,15 @@ CP1H的CPU单元本身不带EIP的功能，因此需要装扩展单元，在此�
 
 ![image-20230518115410000](../../resource/ch/bus/image-20230518115410000.png)
 
-3. 打开软元件表，监视D200-D400的值，按照上图的分配，地址映射如下：
+3. 打开软元件表，监视D200-D240的值，按照上图的分配，地址映射如下：
 
-DI 0-9 : D200-209
+DO 0-9 : D200-209
 
-DO 0-9 : D210-D219
+DI 0-9 : D210-D219
 
-AI 0-9 : D220-229
+AO 0-9 : D220-229
 
-AO 0-9 : D230-D239
+AI 0-9 : D230-D239
 
 分别使用读取内存和写入内存可以观察值的更新
 
@@ -1428,7 +1354,7 @@ AO 0-9 : D230-D239
 
 
 
-6. 双击EtherNet选择与外部设备相连的网口，点击ok。如果组网中已有匹配该eds文件的JAKA控制器，并且使能了EtherNet/IP功能，右键单击EtherNet_IP_Scanner进行设备扫描，可以看到符合条件的设备，单击复制到工程；如果未成功扫描，也可以手动添加设备并配置其ip地址。
+6. 双击EtherNet选择与外部设备相连的网口，点击ok。如果组网中已有匹配该eds文件的JAKA控制器，并且使能了EtherNet/IP功能，右键单击EtherNet_IP_Scanner进行设备扫描，可以看到符合条件的设备，单击复制到工程；如果未成功扫描，也可以手动添加设备并配置其IP地址。
 
 ![image-20230220183555384](../../resource/ch/bus/image-20230220183555384.png)
 
@@ -1501,18 +1427,18 @@ AO 0-9 : D230-D239
 
 ### 从APP确认EtherNet/IP的状态
 
-修改EtherNet/IP使能状态和网络状态后，需要对控制器进行重启以更新配置，Profinet同理，可以从APP确认是否处在与主站交互的状态判断连接。
+修改EtherNet/IP使能状态和网络状态后，需要重启控制器以更新配置，Profinet同理，可以在APP相应设置界面查看是否处在与主站交互的状态，并是否判断连接。
 
 ### 检查接线是否正常
 
-PLC最好走底部网口网线直连，此时APP应通过wifi或面板网口直连控制器以提供更好的通信质量。
+与PLC连接时，推荐使用控制柜底部网口，此时APP应通过Wi-Fi或控制柜前面板网口连接，以保证通信质量。
 
 ### 从PLC查看状态
 
-通过上位机软件检测PLC的状态，确认其处于运行状态并且正常工作，如Codesys数据更新的前提是必须打开数据映射选项的”使能1“。
+通过上位机软件监测PLC的状态，确认其处于运行状态并且正常工作，如Codesys数据更新的前提是打开数据映射选项的”使能1“。
 
 ### 查看终端界面打印信息
 
-在终端界面上使用jkzuc命令重启控制器程序，查看EtherNet/IP的相关打印信息，包括使能状态、IO配置模式、网卡名称、IP地址、与master连接状态等，确认信息是否匹配或正常。
+在终端界面上使用jkzuc命令重启控制器，查看EtherNet/IP的相关打印信息，包括使能状态、IO配置模式、网卡名称、IP地址、与master连接状态等，确认信息是否匹配或正常。
 
 ![image-20230220190231581](../../resource/ch/bus/image-20230220190231581.png)
