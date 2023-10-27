@@ -5,9 +5,10 @@ sidebarDepth: 1
 
 # AddOn网页与APP交互
 
-当AddOn的自定义网页在JAKA App中访问时，有两种方式实现网页与App的交互，第一种由网页调用App实现并注册方法，第二部分是由App调用AddOn实现并注册的方法。
+当AddOn的自定义网页在JAKA App中打开时，JAKA App会提供`JAKAController.jakaCall(result)`方法给web页面调用，同时开发者可以自行在web页面上实现一些指定的方法，供App回调。
 
-## jakaCall()
+## JAKAController.jakaCall()
+---
 
 jakaCall()由App实现，当在App中打开浏览器时进行注册。当AddOn网页调用jakaCall()时，传入不同的对象，可以实现不同的功能。
 
@@ -24,7 +25,7 @@ jakaCall()由App实现，当在App中打开浏览器时进行注册。当AddOn�
     `data`的值必须是经过序列化后的对象。
 :::
 
-### 给指令块传递参数
+<!-- ### 给指令块传递参数
 /**
 类型：saveJakaEditorItem
 参数：需要保存到指令块上的属性对象，属性名需要与指令块上的属性名一致
@@ -37,20 +38,16 @@ jakaCall()由App实现，当在App中打开浏览器时进行注册。当AddOn�
     "type":"saveJakaEditorItem",
     "data":"{\"属性名\":\"属性值\"}",
 }
-```
+``` -->
 
-/**
-类型：close
-参数：无
-响应：关闭浏览器窗口。
-使用范围：任何AddOn浏览器窗口
-**/
-let result = {
+**关闭浏览器窗口**  
+``` json
+{
     "type":"close",
 }
+```
 
-
-/**
+<!-- /**
 类型：disableWindow
 参数：无
 响应：禁用web窗口任何操作。
@@ -58,82 +55,96 @@ let result = {
 **/
 let result = {
     "type":"disableWindow",
-}
+} -->
 
 
-/**
-类型：showDevTools
-参数：无
-响应：打开当前浏览器开发者工具页面。
-使用范围：任何AddOn浏览器窗口
-**/
-let result = {
+**打开浏览器开发者工具窗口**   
+```json
+{
     "type":"showDevTools",
 }
+```
 
-/**
-类型：showDevTools
-参数：无
-响应：打开App上传文件弹窗。
-使用范围：仅AddOn管理页面可调用
-**/
-let result = {
-    "type":"openFileUploadWindow",
-}
 
-/**
-类型：openFileExportWindow
-参数：导出AddOn的名称，
-响应：打开App导出文件弹窗。
-使用范围：仅AddOn管理页面可调用
-**/
-let result = {
-    "type":"openFileExportWindow",
-    "data":"{\"fileName\":\"your-addonName\"}",
-}
-
-/**
-类型：openFileExportWindow
-参数：删除AddOn的名称，
-响应：打开App导出文件弹窗。
-使用范围：仅AddOn管理页面可调用
-**/
-// 通知App AddOn已经被删除成功，data中传入删除成功的addon文件夹名称
-// 仅AddOn管理页面可调用
-let result = {
-    "type":"notifyAddOnDelete",
-    "data":"{\"fileName\":\"your-AddOnName\"}",
-}
-
-// 打开一个App的web窗口，data中传入url
-// 仅AddOn管理页面可调用
-let result = {
-    "type":"userWebView",
-    "data":"{\"url\":\"your-url\"}",
-}
-
-// 打开App的示教页面，关闭示教页面时触发window.jakaCallBack()
-// 仅指令块编辑页面可用
-let result = {
-    "type":"jakaMoveRobot",
-    "data":"{\"pose\":\"笛卡尔坐标\",
-              \"jointpose\":\"关节角\",
-            }",
+**打开机器人示教页面**  
+```json
+    {
+        "type":"jakaMoveRobot",
+        "data":"{
+                    \"pose\":\"笛卡尔坐标\",
+                    \"jointpose\":\"关节角\",
+                }",
     }
+```
 
-// 获取App当前语言，调用后App回调window.changeLanuageHandler()
-let result = {
+点击示教页面保存时，App会调用[window.jakaCallBack(data):point_left:](./#window.jakaCallBack())，将当前的位置信息传入。
+
+**获取App当前语言**   
+```json
+{
     "type":"getLanguage",
 }
+```
 
-// 当前操作没有使用范围，调用app报错飘窗
-let result = {
-    "type":"optionNoAccess",
+调用后App立即回调[window.changeLanuageHandler(language):point_left:](./#window.changeLanuageHandler())传入当前语言。
+
+
+## window.jakaCallBack()
+---
+示教页面点击保存时的，App回调该函数并将当前的位置信息传入。
+
+```js
+/**
+ * 示教页面关闭时app的回调函数
+ * @param {*} data 包含了当前示教的信息
+ */
+window.jakaCallBack = function(data){
+    console.log("jakaCallBack Info",data)
+
+    if(data){
+      console.log("jointPose",data.data.jointPose)
+    }
+  }
+```
+
+## window.changeLanuageHandler()
+---
+调用获取当前语言方法后，App立即回调该函数，并传入当前App使用的语言。
+```js
+/**
+ * 触发getAppLanguage app的回调函数。
+ * @param {*} language app传入当前语言
+ */
+window.changeLanuageHandler = (language)=>{
+    console.log("changeLanuageHandler",language)
+}
+```
+
+
+<!-- 
+三、自定义指令参数获取
+自定义指令打开编辑页面时，App会将指令块上的参数附加在url上发起get请求。可以使用下面的getQueryString函数获取参数。
+
+
+// 从url中获取参数
+function getQueryString(name) {   
+    // 如果url是hash模式（带有#) 此时App中将？传参部分拼接到#后，window.location.search为空，要从hash中抓取
+    var urlParams = window.location.search.substring(1) || window.location.hash.match(/\?(.*)/)[1]
+    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");   
+    const match = urlParams.match(regex);
+    if (match != null) return decodeURI(match[2]); return null;
 }
 
 
+export function getBlockParamsAPI(){
 
+        var params = JSON.parse(getQueryString("params"));
+        
+        console.log('指令块参数:',params);
 
+        return params
+   
+    }
 
 
 let data = {"a":1}
@@ -280,72 +291,4 @@ function jakaCall(result){
     }catch(e){
          consloe.log("调用JAKAController失败！",e)
     }
-}
-
-二、AddOn实现并注册
-不强制要求AddOn实现
-// 示教页面保存时的回调函数
-window.jakaCallBack()
-// 调用获取App语言后的回调函数
-window.changeLanuageHandler
-// 页面切换时的回调函数（目前只有页面打开时会调用，只能在addon管理页面中调用）
-window.changePageHandler
-
-// 一种实现方式
-
-/**
- * 示教页面关闭时app的回调函数
- * @param {*} data 包含了当前示教的信息
- */
-window.jakaCallBack = function(data){
-    console.log("jakaCallBack Info",data)
-
-    if(data){
-      console.log("jointPose",data.data.jointPose)
-    }
-  }
-
-
-/**
- * 触发getAppLanguage app的回调函数。
- * @param {*} language app传入当前语言
- */
-window.changeLanuageHandler = (language)=>{
-    console.log("changeLanuageHandler",language)
-}
-
-/**
- * 页面状态app回调函数。App通知当前页面是否处于显示状态。
- * @param {*} status true 页面被app显示  false 页面不在app中显示
- * @param {*} permission 当前app登录者使用范围 0管理员 1技术员 2操作员
- */
-window.changePageHandler = (status,permission)=>{
-    console.log("page status & permission",status,permission)
-}
-
-
-
-
-三、自定义指令参数获取
-自定义指令打开编辑页面时，App会将指令块上的参数附加在url上发起get请求。可以使用下面的getQueryString函数获取参数。
-
-
-// 从url中获取参数
-function getQueryString(name) {   
-    // 如果url是hash模式（带有#) 此时App中将？传参部分拼接到#后，window.location.search为空，要从hash中抓取
-    var urlParams = window.location.search.substring(1) || window.location.hash.match(/\?(.*)/)[1]
-    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");   
-    const match = urlParams.match(regex);
-    if (match != null) return decodeURI(match[2]); return null;
-}
-
-
-export function getBlockParamsAPI(){
-
-        var params = JSON.parse(getQueryString("params"));
-        
-        console.log('指令块参数:',params);
-
-        return params
-   
-    }
+} -->
