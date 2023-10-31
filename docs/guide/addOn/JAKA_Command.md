@@ -82,7 +82,7 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/developPage.png"/></div>
 
-3. 在左侧工具栏中找到`Customized Commands`节点，拖入画布中，点击部署。
+3. 在左侧工具栏中找到`Customized Commands`节点，拖入中间工作区中，点击部署。
 
 双击`Customized Commands`节点，打开指令块生成工具页面。
 
@@ -92,9 +92,9 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 </video>
 </div>
 
-5. 在*基本配置*页面中定义指令块的样式和属性，这里使用页面案例自带的属性，不做更改。
-6. 更改指令块名称为*hello_jaka*，颜色为绿色。
-7. 在*脚本生成*页面中定义指令块的行为，这里使用页面案例自带的脚本，不做更改。
+4. 在*基本配置*页面中定义指令块的样式和属性，这里使用页面案例自带的属性，不做更改。
+5. 更改指令块名称为*hello_jaka*，颜色为绿色。
+6. 在*脚本生成*页面中定义指令块的行为，这里使用页面案例自带的脚本，不做更改。
 
   
     <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/creat_block.gif"/></div>
@@ -102,7 +102,7 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
     - 此处所使用的脚本语言为JAKA编程脚本，具体语法请参考[JAKA编程脚本:point_left:](/guide/jks.html)。
     <!-- - 更详细的`Customized Commands`节点使用方法请参考[自定义指令创建节点](/guide/addOn/Commands_Tool.html) -->
  
-8. 当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
+7. 当在App中保存自定义指令时，会通过http的get请求获取脚本，因此需要使用`http in`和`http response`节点完善流程。
 
 <div align="center"><img width="1000"  src="../../../resource/ch/AddOn/JAKA_Command/Add_Http.gif"/></div>
 
@@ -129,7 +129,7 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
    解决方法：在附加程序页面找到该AddOn，点击运行按钮开启AddOn。
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/AddOn没有运行.png"/></div>
 
-1. node-red中的`http in`节点中url与指令块名字不一致  
+2. node-red中的`http in`节点中url与指令块名字不一致  
    解决方法：将url与指令块名称统一。
 <div align="center"><img width="800"  src="../../../resource/ch/AddOn/JAKA_Command/统一名称.png"/></div>
 
@@ -140,7 +140,7 @@ json文件内容为空即可，后面的步骤中会自动生成数据写入。
 
 解决方法：检查node-red端的`http in`节点是否正确连接`http response`节点，连接后在App端重启AddOn。
 
-::: warning
+::: warning 注意：
 -目前恢复连接后任然需要重启AddOn服务，才能正常保存程序。这是内部的一些未知bug导致，会在后续版本修复。   
 -报错信息中请重启控制器的描述有误，重启AddOn即可。
 :::

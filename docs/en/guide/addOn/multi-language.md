@@ -3,23 +3,23 @@ title: Multilanguage Implementation
 sidebarDepth: 1
 ---
 
-# Multilanguage Implementation
+# Multilanguage Setting
 
-The JAKA AddOn supports multilanguage functionality. After completing the development of a certain package's functionality, you can set up multilanguage options as needed.
+The JAKA AddOn supports multilanguage setting. After completing the development of a certain package's function, you can set up multilanguage options as needed.
 
 Currently supported languages include Chinese, English, and Japanese.
 
 The specific steps for configuration are as follows:
 
-## Multilanguage for Custom Commands
+## Multilanguage Setting for Custom Commands
 
-When creating custom commands, there will be a small globe icon to the right of the content input box that supports multilanguage. Clicking on it will allow you to configure multilanguage options. Currently, it supports Chinese, English, and Japanese.
+When developing custom commands, there will be a small globe icon on the right of the content input box that supports multilanguage. Clicking on it will allow you to configure multilanguage options.
 
 <div align="center"><img width="500"  src="../../../../resource/en/AddOn/multiLanguage/multiLan.png"/></div>
 
-## Multilanguage for Custom Pages
+## Multilanguage Setting for Custom Interfaces
 
-When a custom page is opened in the JAKA App, it needs to retrieve the current language of the app in order to synchronize the language of the user's custom page with that of the app. This can be achieved using the following method.
+When a custom interface is opened in the JAKA App, it needs to retrieve the current language of the app in order to synchronize the language of the user's custom page with that of the app. This can be achieved using the following method.
 
 <div align="center"><img width="500"  src="../../../../resource/en/AddOn/multiLanguage/getLanuage.png"/></div>
 
