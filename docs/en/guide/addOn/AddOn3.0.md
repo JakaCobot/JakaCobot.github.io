@@ -51,7 +51,7 @@ JAKA robot end users can develop custom commands through the AddOn framework to 
 
 AddOn custom commands are based on a B/S architecture. The programming page in the JAKA App is the client (B), the running server based on node-red in the JAKA controller is the server (S). The operation mechanism is as follows:
 
-<div align="center"><img width="800"  src="../../../../resource/en/AddOn/AddOn3.0/自定义指令机制.png"/></div>
+<div align="center"><img width="800"  src="../../../../resource/en/AddOn/AddOn3.0//command mechanism.png"/></div>
 
 * AddOn Custom Services
 
