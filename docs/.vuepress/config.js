@@ -69,17 +69,13 @@ module.exports = {
                       sidebarDepth: 0,
                       children: [
                         '/guide/addOn/AddOn3.0',
-                        '/guide/addOn/BeforeYouStart',
                         '/guide/addOn/QuickStart',
                         '/guide/addOn/environment',
                         '/guide/addOn/JAKA_Command',
-                        '/guide/addOn/JAKA_Serve',
-                        '/guide/addOn/JAKA_Web',
-                        '/guide/addOn/demo_LiftKit',
-                        '/guide/addOn/demo_DHGripper',
                         '/guide/addOn/multi-language',
                         '/guide/addOn/userguide',
                         '/guide/addOn/release',
+                        '/guide/addOn/example',
                         
                     ], 
                         // 新增的下级页面链接
@@ -104,17 +100,13 @@ module.exports = {
                         collapsable: true,
                         children: [
                             '/en/guide/addOn/AddOn3.0',
-                            '/en/guide/addOn/BeforeYouStart',
                             '/en/guide/addOn/QuickStart',
                             '/en/guide/addOn/environment',
                             '/en/guide/addOn/JAKA_Command',
-                            '/en/guide/addOn/JAKA_Serve',
-                            '/en/guide/addOn/JAKA_Web',
-                            '/en/guide/addOn/demo_LiftKit',
-                            '/en/guide/addOn/demo_DHGripper',
                             '/en/guide/addOn/multi-language',
                             '/en/guide/addOn/userguide',
                             '/en/guide/addOn/release',
+                            '/en/guide/addOn/example',
                         ], 
                     }
                 ]
