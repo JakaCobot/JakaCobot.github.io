@@ -3,7 +3,7 @@
  * @Date: 2023-07-17
 <<<<<<< HEAD
  * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-10-27
+ * @LastEditTime: 2023-11-01
 =======
  * @LastEditors: brycen hebingshuo@jaka.com
  * @LastEditTime: 2023-10-27
@@ -48,6 +48,10 @@ module.exports = {
         sidebar: 'auto',
         locales:{
             '/':{
+                // 多语言下拉菜单的标题
+                selectText: '选择语言',
+                // 该语言在下拉菜单中的标签
+                label: '简体中文',
                 lastUpdated:'上次修改',
                 nav: [
                     { text: "首页", link: '/' }
@@ -83,6 +87,8 @@ module.exports = {
                 ]
             },
             '/en/':{
+                selectText: 'Languages',
+                label: 'English',
                 lastUpdated:'Last update',
                 nav: [
                     { text: "Home", link: '/en/' }
@@ -114,6 +120,8 @@ module.exports = {
                 ]
             },
             '/ja/':{
+                selectText: '言語',
+                label: '日本語',
                 lastUpdated:'最後の更新',
                 nav: [
                     { text: "ホームページ", link: '/ja/' }
@@ -135,6 +143,8 @@ module.exports = {
                 ]
             },
             '/vi/':{
+                selectText: 'Ngôn ngữ',
+                label: 'Tiếng Việt',
                 lastUpdated:'Cập nhật cuối cùng',
                 nav: [
                     { text: "trang chủ", link: '/vi/' }
