@@ -71,12 +71,80 @@ module.exports = {
                         '/guide/addOn/AddOn3.0',
                         '/guide/addOn/QuickStart',
                         '/guide/addOn/environment',
-                        '/guide/addOn/JAKA_Command',
-                        '/guide/addOn/multi-language',
-                        '/guide/addOn/userguide',
+                        // '/guide/addOn/JAKA_Command',
+                        // 'guide/addOn/JAKA_Serve',
+                        // 'guide/addOn/JAKA_Web',
+                        // 'guide/addOn/multi-language',
+                        // 'guide/addOn/userguide',
+                        // 'guide/addOn/advanced',
+                        {
+                            title: '开发',   // 必要的
+                            collapsable: true, // 可选的, 默认值是 true,
+                            sidebarDepth: 1,    // 可选的, 默认值是 1
+                            children: [
+                                // '/guide/addOn/JAKA_Command',
+                                // 'guide/addOn/JAKA_Serve',
+                                // 'guide/addOn/JAKA_Web',
+                                // 'guide/addOn/multi-language',
+                                // 'guide/addOn/userguide',
+                                {
+                                    title: '入门教程',   // 必要的
+                                    collapsable: true, // 可选的, 默认值是 true,
+                                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                                    children: [
+                                        '/guide/addOn/JAKA_Command',
+                                        'guide/addOn/JAKA_Serve',
+                                        'guide/addOn/JAKA_Web',
+                                        'guide/addOn/multi-language',
+                                        'guide/addOn/userguide',
+                                    ]
+                                  },
+                                'guide/addOn/advanced',
+
+                                // {
+                                //     title: '入门教程',   // 必要的
+                                //     collapsable: true, // 可选的, 默认值是 true,
+                                //     sidebarDepth: 1,    // 可选的, 默认值是 1
+                                //     children: [
+                                //         '/guide/addOn/JAKA_Command',
+                                //         'guide/addOn/JAKA_Serve',
+                                //         'guide/addOn/JAKA_Web',
+                                //         'guide/addOn/multi-language',
+                                //         'guide/addOn/userguide',
+                                //     ]
+                                //   },
+                            ]
+                          },
                         '/guide/addOn/release',
                         '/guide/addOn/example',
                         
+                        // {
+                        //     title: '开发',   // 必要的
+                        //     collapsable: true, // 可选的, 默认值是 true,
+                        //     sidebarDepth: 1,    // 可选的, 默认值是 1
+                        //     children: [
+                        //         // '/guide/addOn/JAKA_Command',
+                        //         // 'guide/addOn/JAKA_Serve',
+                        //         // 'guide/addOn/JAKA_Web',
+                        //         // 'guide/addOn/multi-language',
+                        //         // 'guide/addOn/userguide',
+                        //         'guide/addOn/advanced',
+
+                        //         {
+                        //             title: '入门教程',   // 必要的
+                        //             collapsable: true, // 可选的, 默认值是 true,
+                        //             sidebarDepth: 1,    // 可选的, 默认值是 1
+                        //             children: [
+                        //                 '/guide/addOn/JAKA_Command',
+                        //                 'guide/addOn/JAKA_Serve',
+                        //                 'guide/addOn/JAKA_Web',
+                        //                 'guide/addOn/multi-language',
+                        //                 'guide/addOn/userguide',
+                        //             ]
+                        //           },
+                        //     ]
+                        //   },
+
                     ], 
                         // 新增的下级页面链接
                     }
@@ -103,8 +171,6 @@ module.exports = {
                             '/en/guide/addOn/QuickStart',
                             '/en/guide/addOn/environment',
                             '/en/guide/addOn/JAKA_Command',
-                            '/en/guide/addOn/multi-language',
-                            '/en/guide/addOn/userguide',
                             '/en/guide/addOn/release',
                             '/en/guide/addOn/example',
                         ], 

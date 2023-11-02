@@ -3,18 +3,18 @@ title: 实际案例参考——Ewellix 升降轴
 sidebarDepth: 1
 ---
 
-# 一、前言
+## 前言
 
-&emsp;&emsp;本教程将会创建一个Ewellix LIFTKIT插件，可以让客户将LIFTKIT升降柱的功能与JAKA应用程序集成。
-&emsp;&emsp;在开始之前，需要了解的知识/文档包括：
+本教程将会创建一个Ewellix LIFTKIT插件，可以让客户将LIFTKIT升降柱的功能与JAKA应用程序集成。
+在开始之前，需要了解的知识/文档包括：
 * 可视化编程概念；
 * JavaScript编程知识；
 * Node-RED节点和流程库的使用；
 * JAKA AddOn介绍文档：（具体名称或连接）
   
-&emsp;&emsp;本教程默认JAKA 机械臂控制器内部已安装完整AddOn环境，且控制器和APP版本均满足创建AddOn要求。
+本教程默认JAKA 机械臂控制器内部已安装完整AddOn环境，且控制器和APP版本均满足创建AddOn要求。
 
-# 二、插件功能说明
+## 插件功能说明
 
 Ewellix LIFTKIT插件具体实现功能如下：
 1.	通过node-red实现3个自定义指令块的创建：
@@ -25,14 +25,18 @@ Ewellix LIFTKIT插件具体实现功能如下：
 （1）升降柱参数获取、设置，包括界面语言显示、升降柱IP、端口号、虚拟限位、类型；
 （2）通过前端界面的控制按钮实现对升降柱的控制，包括控制升降柱移动到绝对位置、上升到虚拟限位最大值、下降到虚拟限位最小值、停止当前运动。
 
-# 三、准备工作
+## 准备工作
 
 1.	首先，需要提前下载一份AddOn开发模板”JAKA_AddOn”，该工程文件包含了各种类型AddOn开发所用到的功能。
 2.	修改JAKA_AddOn文件夹下的配置文件JAKA_AddOn_config.ini
 （1）修改配置文件中的name = JAKA_LiftKit;
+
 （2）修改description = “JAKA LiftKit Command”；
-（3）由于配置文件和文件夹的名称与addOn的名称要求必须统一，所以需修改配置文件名称为：JAKA_ LiftKit _config.ini；
-（4）url暂时不修改，之后讲到前后端交互时会再作修改。
+
+（3）由于配置文件和文件夹的名称与addOn的名称要求必须统一，所以需修改配置文件名称为：JAKA_ LiftKit_config.ini；
+
+（4）url暂时不修改，之后讲到前后端交互时会再作修改;
+
 （5）增加LiftKit配置信息：包括升降柱的IP、端口号及语言。这3个参数由前端设置后传入配置文件，我们再从配置文件中读取值，这里先固定为如下参数。
     ``` ini
     [LIFIKIT_CONFIG]
@@ -42,32 +46,36 @@ Ewellix LIFTKIT插件具体实现功能如下：
     ```
 修改后的配置文件内容如下：
 ![配置文件](../../../resource/ch/AddOn/demo_LiftKit/iniconfig.png)
+
 3.	修改文件夹JAKA_AddOn名称为JAKA_LiftKit，并压缩成文件夹压缩为JAKA_LiftKit.tar.gz 格式。
+
 4.	打开JAKA APP，依次点击“设置”—“系统设置”—“附加程序”，在“附加程序”中点击如下的+号上传JAKA_LiftKit.tar.gz文件。
 ![上传1](../../../resource/ch/AddOn/demo_LiftKit/upload1.png)
 ![上传2](../../../resource/ch/AddOn/demo_LiftKit/upload2.png)
 
 
-# 四、自定义指令块的创建
+## 自定义指令块的创建
 
-&emsp;&emsp;该部分创建后完整的指令块样式和node-red节点部署如下所示，接下来我们将一步步完成这些功能。
+该部分创建后完整的指令块样式和node-red节点部署如下所示，接下来我们将一步步完成这些功能。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image007.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image009.png)
 
-## 4.1 获取位置指令块
+### 4.1 获取位置指令块
 
-### 4.1.1 创建步骤
+#### 4.1.1 创建步骤
 
 具体步骤为：
 1.	在APP附件程序管理界面，点击JAKA_LiftKit的齿轮按钮，查看当前的端口号。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image011.png)
 2.	示例中机器人IP为172.30.3.123，AddOn端口号为10010。在浏览器地址栏输入：“172.30.3.123:10010”进入开发者页面。
 3.	从JAKA_ LiftKit _config.ini配置文件中读取升降柱IP和端口号。
+
 （1）在开发者页面的左侧节点菜单栏中找到“inject”、“read file”、“function”、“debug”这4个节点连并接部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image013.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image015.png)
 （3）双击“read file”节点，属性设置中，文件名写JAKA_LiftKit_config.ini 文件在控制器中的存放位置。/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini。编码选择utf8，点击“完成”按钮。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image017.png)
+
 （4）编写函数实现IP和端口号的读取：
 代码如下：
 ```javascript
@@ -97,18 +105,29 @@ Ewellix LIFTKIT插件具体实现功能如下：
     return msg 
 ```
 （5）所有都置完成之后重新部署，最后Debug验证输出是否是升降柱IP和端口号。
+
 ![](../../../resource/ch/AddOn/demo_LiftKit/image019.png)
+
 （6）可以在这条节点下方给node-red加上注释节点，增加可读性。
+
 ![](../../../resource/ch/AddOn/demo_LiftKit/image021.png)
+
 4.	在开发者页面的左侧节点菜单栏中，找到JAKA AddOn，将其中的Customized-commands拖到中间的工作区域。点击“部署”，之后页面顶部出现“部署成功”即可进行下一步。
+
 ![](../../../resource/ch/AddOn/demo_LiftKit/image023.png)
+
 5.	双击工作区域中的块，进入指令块开发页面。该页面中我们可以定义指令块的样式、链接、和其实现的功能。
+
 （1）基本配置：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image025.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image026.png)
+
 注：中间空白输入框用来存放程序或者系统数字类型变量，获取到的位置值由变量接收。
+
 （2）编辑界面预览：预览页面，无须任何设置。
+
 （3）链接：默认
+
 （4）脚本生成：
 方式一：脚本生成方式选择Template Syntax。在Jks Template中编写脚本，当脚本内容较少可直接定义时，建议选用该方式。
 方式二：脚本生成方式选择Function。自定义函数生成方式，由于升降柱的IP和端口号等参数是变化的，所以我们这里选择函数方式实现。选择之后点击“完成”。
@@ -122,7 +141,7 @@ Ewellix LIFTKIT插件具体实现功能如下：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image038.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image040.png)
 
-&emsp;&emsp;“indePos”是前面我们在自定义指令基本配置里输入框的属性名，“type”为0表示输入框为手动输入；“type”为1表示输入框为拖入的变量。由于获取的位置值是个变量，所以我们需建立一个数字型程序变量或者系统变量来存放获取的位置值。
+“indePos”是前面我们在自定义指令基本配置里输入框的属性名，“type”为0表示输入框为手动输入；“type”为1表示输入框为拖入的变量。由于获取的位置值是个变量，所以我们需建立一个数字型程序变量或者系统变量来存放获取的位置值。
 
 9.	编辑第1个“function”节点，写入以下代码对传入的数据流做预处理。
 ```javascript
@@ -170,12 +189,12 @@ Ewellix LIFTKIT插件具体实现功能如下：
 
 
 ### 4.1.2 APP测试
-&emsp;&emsp;打开JAKA APP，在编程界面扩展模块找到LiftKit_GetPos。由于程序运行结束后变量会显示初始值，所以在程序中加上延时以便更好观察到变量的改变。
+打开JAKA APP，在编程界面扩展模块找到LiftKit_GetPos。由于程序运行结束后变量会显示初始值，所以在程序中加上延时以便更好观察到变量的改变。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image044.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image046.png)
-&emsp;&emsp;可以看到此时升降柱返回的位置为180 mm，说明该自定义指令已生效。
+可以看到此时升降柱返回的位置为180 mm，说明该自定义指令已生效。
 ### 4.1.3 扩展
-&emsp;&emsp;上节创建的指令块类型属于指令块类型，现在我们创建一个数字类型的指令来实现同样功能。
+上节创建的指令块类型属于指令块类型，现在我们创建一个数字类型的指令来实现同样功能。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image048.png)
 1.	在开发者页面的左侧节点菜单栏中，找到JAKA AddOn，将其中的Customized-commands拖到中间的工作区域。点击“部署”，之后页面顶部出现“部署成功”即可进行下一步。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image050.jpg)
@@ -184,7 +203,9 @@ Ewellix LIFTKIT插件具体实现功能如下：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image051.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image053.png)
 （2）编辑界面预览：预览页面，无须任何设置。
+
 （3）链接：使用默认。
+
 （4）脚本生成：选择Function。选择之后点击“完成”。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image056.png)
 3.	在左侧节点功能栏中拖出“http in”、“http response”、“function”节点。加上“liftkit_positon”节点按下图连接并部署：
@@ -214,6 +235,7 @@ Ewellix LIFTKIT插件具体实现功能如下：
 ```
 6.	在APP上测试。
 测试步骤为：
+
 （1） 重新启动APP，在编程控制页面的扩展中找到自定义指令块LiftKit Position、条件判断指令、比较指令及设置数字输出指令。同时确认I/O界面的控制柜DO1是关闭状态。
 
 ![](../../../resource/ch/AddOn/demo_LiftKit/image061.png)
@@ -224,7 +246,7 @@ Ewellix LIFTKIT插件具体实现功能如下：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image066.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image068.png)
 
-## 4.2 移动指令块
+### 4.2 移动指令块
 ### 4.2.1 创建步骤
 1. 在开发者页面的左侧节点菜单栏中，找到JAKA AddOn，将其中的Customized-commands拖到中间的工作区域，点击“部署”。
 2. 双击工作区域中的块，进入指令块开发页面。
@@ -232,7 +254,9 @@ Ewellix LIFTKIT插件具体实现功能如下：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image070.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image072.png)
 注：在“LiftKit_MoveTo”指令中“Block”表示是否开启指令阻塞功能，“False”表示非阻塞，“True”表示阻塞。默认“False”，即关闭阻塞。若开启阻塞，升降柱在未到达指定高度前机器人无法进行下一步运动；若关闭阻塞，机器人就可以在升降柱移动的时候同时执行下一步指令进行运动。
+
 （2）链接：使用默认。
+
 （3）脚本生成：选择Function方式，点击“完成”。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image056.png)
 3.	在左侧节点功能栏中拖拽出“http in”、“http response”、3个“function”、“debug”节点。将各节点按下图连接并部署：
@@ -405,21 +429,21 @@ return msg;
 9.	各节点都设置完成之后连接并部署（Debug可以选择删除）。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image084.png)
 ### 4.2.2 APP测试
-&emsp;&emsp;打开JAKA APP，在编程界面扩展模块找到LiftKit_MoveTo。
+打开JAKA APP，在编程界面扩展模块找到LiftKit_MoveTo。
 情况一：“Block”选择“False”。直接在输入框内输入合理位置值或通过程序变量输入合理位置值。保存运行程序让升降柱移动到绝对位置为100 mm处。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image086.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image088.png)
-&emsp;&emsp;当连接真实升降柱，真实效果是升降柱会移动到绝对位置为100 mm处。为了方便看到效果，这里借助调试助手模拟TCP服务端，即升降柱，机器人为TCP客户端。
+当连接真实升降柱，真实效果是升降柱会移动到绝对位置为100 mm处。为了方便看到效果，这里借助调试助手模拟TCP服务端，即升降柱，机器人为TCP客户端。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image090.png)
-&emsp;&emsp;运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令，只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,100\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令，最后关闭socket (TCP)通讯，程序运行结束。
+运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令，只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,100\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令，最后关闭socket (TCP)通讯，程序运行结束。
 情况二：“Block”选择“True”。直接在输入框内输入合理位置值或通过程序变量输入合理位置值，这里设置变量初试值为200，保存运行程序让升降柱移动到绝对位置为200 mm处。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image092.png)
 ![](../../../resource/ch/AddOn/demo_LiftKit/image094.png)
-&emsp;&emsp;运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令。只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,200\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令。之后再次发送“get_status\n”指令查询升降柱当前状态，若升降柱正在移动返回“get_status,OK,Moving\n”。若是移动结束处于停止则返回“get_status,OK, READY\n”，以此来确认升降柱移动完成，程序才会跳转至下一条指令。
+运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令。只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,200\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令。之后再次发送“get_status\n”指令查询升降柱当前状态，若升降柱正在移动返回“get_status,OK,Moving\n”。若是移动结束处于停止则返回“get_status,OK, READY\n”，以此来确认升降柱移动完成，程序才会跳转至下一条指令。
 以上测试成功说明该自定义指令块生效。
 
 
-## 4.3 停止指令块
+### 4.3 停止指令块
 ### 4.3.1 创建步骤
 1.	在开发者页面的左侧节点菜单栏中，找到JAKA AddOn，将其中的Customized-commands拖到中间的工作区域，点击“部署”。
 2.	双击工作区域中的块，进入指令块开发页面。
@@ -451,16 +475,16 @@ return msg;
 ![](../../../resource/ch/AddOn/demo_LiftKit/image108.png)
 
 ### 4.3.2 APP测试
-&emsp;&emsp;打开JAKA APP，在编程界面扩展模块找到LiftKit_StopMove。这里需要结合移动指令使用，并且是非阻塞运动状态，先让升降柱移动到300 mm，在移动未完成之前发送停止指令。
+打开JAKA APP，在编程界面扩展模块找到LiftKit_StopMove。这里需要结合移动指令使用，并且是非阻塞运动状态，先让升降柱移动到300 mm，在移动未完成之前发送停止指令。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image110.png)
-&emsp;&emsp;当连接真实升降柱，真实效果是升降柱还没移动到300 mm就停止了，具体停在什么位置取决于立柱本身的延迟。为了方便看到效果，这里借助调试助手模拟TCP服务端，即升降柱，机器人为TCP客户端。
+当连接真实升降柱，真实效果是升降柱还没移动到300 mm就停止了，具体停在什么位置取决于立柱本身的延迟。为了方便看到效果，这里借助调试助手模拟TCP服务端，即升降柱，机器人为TCP客户端。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image112.png)
-&emsp;&emsp;运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令。只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,300\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令。之后机器人发送“stop_moving\n”指令停止移动，升降柱返回“stop_moving,OK\n”。
+运行程序时看到机器人会先发送“get_status\n”指令查询升降柱当前状态，升降柱若是准备状态会回复“get_status,OK,READY\n”指令。只有收到是“READY”状态时，机器人才会发送“moveTo_absolutePosition,300\n”指令，发送后升降柱会回复“moveTo_absolutePosition,OK\n”指令。之后机器人发送“stop_moving\n”指令停止移动，升降柱返回“stop_moving,OK\n”。
 以上测试成功说明该自定义指令块生效。
 
-# 五、前后端交互
-&emsp;&emsp;该部分需要连接真实升降柱进行测试才能实时访问到其虚拟限位、型号、当前状态、当前位置、行程等信息。
-## 5.1 准备工作
+## 前后端交互
+该部分需要连接真实升降柱进行测试才能实时访问到其虚拟限位、型号、当前状态、当前位置、行程等信息。
+### 5.1 准备工作
 1.	提前下载一份前端工程文件夹“dist”。将改文件夹放置在AddOn包JAKA_LiftKit目录下。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image114.png)
 2.	修改JAKA_LiftKit文件夹下的配置文件JAKA_LiftKit_config.ini中的url路径为http://localhost/JAKA_LiftKit/dist/
@@ -473,7 +497,7 @@ return msg;
 ![](../../../resource/ch/AddOn/demo_LiftKit/image120.png)
 
 ## 5.2 初始化界面
-&emsp;&emsp;前端界面中的语言、升降柱ip、port初始参数来源于JAKA_AddOn_config.ini，所以需要提前从文件中读取出。当前状态、当前位置、最大行程、虚拟限位、类型及类型列表来源于升降柱，所以需要提前建立TCP通讯向升降柱发送相关指令获取这些信息。该部分创建后的node-red节点部署如下所示，接下来我们将一步步完成这些功能。
+前端界面中的语言、升降柱ip、port初始参数来源于JAKA_AddOn_config.ini，所以需要提前从文件中读取出。当前状态、当前位置、最大行程、虚拟限位、类型及类型列表来源于升降柱，所以需要提前建立TCP通讯向升降柱发送相关指令获取这些信息。该部分创建后的node-red节点部署如下所示，接下来我们将一步步完成这些功能。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image122.png)
 1.	在左侧节点菜单栏中找到“inject”、“read file”、2个“function”、“write file”、2个“debug”，将这些节点并连接部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image124.png)
@@ -496,8 +520,8 @@ msg.payload = jsonObject;
 return msg
 ```
 （4）编辑“write file”节点，文件路径为：
-/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/dist/server_config.json
-行为选择复写文件，编码选择utf8。
+/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/dist/server_config.json行为选择复写文件，编码选择utf8。
+
 （5）编辑“function 13”节点，更名为“extract_ip/lang/port”同样使用正则表达式将升降柱IP地址、端口号、默认语言提取出来并输出。代码如下：
 ```javascript
 let configString = msg.payload;
@@ -526,6 +550,7 @@ return msg
 2. 获取升降柱参数：在左侧节点菜单栏中找到“inject”、8个“function”，4个“tcp request”，1个“tcp out”节点，并将这些节点按下图连接并部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image128.png)
 （1）编辑“inject”节点，勾选立刻执行于0.1秒后。
+
 （2）编辑“function 4”节点，名称改为“get_stroke”，该节点用来向升降柱发送获取行程命令。代码如下：
 ```javascript
 msg.payload = "get_stroke\n"
@@ -534,6 +559,7 @@ msg.port = global.get("global_port");
 return msg;
 ```
 （3）编辑“tcp request”节点，更改名称，返回选择字符串，因为上个步骤使用msg.host和msg.port属性设置tcp主机或端口，所以可以将tcp主机或端口留空。
+
 （4）编辑“function 8”节点，名称改为“return_get_stroke”，用于接收并处理tcp服务端回复的消息，获得行程值。
 ```javascript
 var get_stroke_data = msg.payload;
@@ -543,6 +569,7 @@ msg.payload = global.get("global_stroke");
 return msg;
 ```
 注：可以在“return_get_stroke”函数节点后加debug节点输出行程值，这里不做演示。
+
 （5）编辑“function 5”节点，名称改为“get_virLimit”，该节点用来向升降柱发送获取虚拟限位命令。代码如下：
 ```javascript
 msg.payload = "get_virtualLimits\n"
@@ -596,6 +623,7 @@ return msg;
 3. 初始化UI：在左侧节点菜单栏中找到“http in”、“function”，“http response”节点，并将这些节点按下图连接并部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image132.png)
 （1）编辑“http in”节点：请求方式选择“POST”，URL为“/init”，点击“完成”。
+
 （2）编辑“function”节点，名称改为“init”，代码如下：
 ```javascript
 msg.payload={
@@ -613,13 +641,16 @@ msg.payload={
 return msg;
 ```
 （3）编辑“http response”节点，状态码为200。
+
 （4）各节点编辑连接后重新部署，并且成功连接真实升降柱（注：只有连接真实机械臂才会自动返回正确行程、类型、虚拟限位信息），刷新前端界面就可以显示完整信息。
 
-## 5.3 heartbeat监测
-&emsp;&emsp;该部分用来监测并更新升降柱的状态、位置、行程及虚拟限位。该部分创建后的node-red节点部署如下所示：
+### 5.3 heartbeat监测
+该部分用来监测并更新升降柱的状态、位置、行程及虚拟限位。该部分创建后的node-red节点部署如下所示：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image134.png)
 1. 在左侧节点菜单栏中找到“http in”、5个“function”，“http reponse”，2个“tcp request”，2个“tcp out”节点，并将这些节点按上图顺序连接并部署。
+
 （1）编辑“http in”节点：请求方式选择“POST”，URL为“/heartbeat1”，点击“完成”。
+
 （2）编辑第1个“function”节点，名称改为“get_status”，该节点用来向升降柱发送获取状态命令。代码如下：
 ```javascript
 msg.payload = "get_status\n";
@@ -662,16 +693,20 @@ msg.payload = {
 return msg;
 ```
 （7）编辑“http response”节点，状态码为200。
+
 （8）编辑2个“tcp request”节点，更改名称，返回选择字符串。
+
 （9）编辑2个“tcp out”节点，修改名称，类型选择为响应TCP。
 
-## 5.4 参数设置
-&emsp;&emsp;该部分是为了使前端设置按钮生效，包括升降柱IP地址、端口号、语言（中文/英文）、虚拟限位、选择类型。该部分创建后的node-red节点部署如下所示：
+### 5.4 参数设置
+该部分是为了使前端设置按钮生效，包括升降柱IP地址、端口号、语言（中文/英文）、虚拟限位、选择类型。该部分创建后的node-red节点部署如下所示：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image136.png)
 1.	设置语言：
 （1）在左侧节点菜单栏中找到“http in”、“switch”、3个“function”，“http reponse”，“read file”，“write file”节点，并将这些节点按下图顺序连接并部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image138.png)
+
 （2）编辑“http in”节点：请求方式选择“POST”，URL为“/set_param”，点击“完成”。
+
 （3）编辑“switch”节点，名称改为“switch_set”，属性选择msg.payload.param，左下角选择添加共4个流，输出分别为：“set_lang”、“set_ip”、“set_virtualLimits”、“set_type”。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image140.png)
 （4）编辑第1个“function”节点，更名为“set_lang”，对传输数据流作预处理：
@@ -682,6 +717,7 @@ msg.setportValue = global.get("global_setlang");
 return msg;
 ```
 （5）编辑“read file”节点，属性设置中，文件名写JAKA_LiftKit_config.ini 文件在控制器中的存放位置。/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini。编码选择utf8，点击“完成”按钮。
+
 （6）编辑第2个“function”节点，更名为“update_/lang”，利用正则表达从配置文件中提取出界面语言：
 ```javascript
 let configString = msg.payload;
@@ -696,14 +732,15 @@ msg.payload = configString;
 return msg;
 ```
 （7）编辑“write file”节点，文件路径为：
-/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini
-行为选择复写文件，编码选择utf8。
+/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini行为选择复写文件，编码选择utf8。
+
 （8）编辑第3个“function”节点，更名为“return_set”，给前端返回设置成功的信息。
 ```javascript
 msg.payload = "0";
 return msg;
 ```
 （9）编辑“http response”节点，状态码为200。
+
 2.	设置IP/端口：
 （1）在左侧节点菜单栏中找到3个“function”，“http reponse”，“read file”，“write file”节点，并将这些节点按下图顺序连接并部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image142.png)
@@ -719,6 +756,7 @@ msg.setportValue = global.get("global_setport");
 return msg;
 ```
 （3）编辑“read file”节点，属性设置中，文件名写JAKA_LiftKit_config.ini 文件在控制器中的存放位置。/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini。编码选择utf8，点击“完成”按钮。
+
 （4）编辑第2个“function”节点，更名为“update_ip/port”，利用正则表达从配置文件中提取出升降柱IP和端口号：
 ```javascript
 let configString = msg.payload;
@@ -738,8 +776,8 @@ msg.payload = configString;
 return msg;
 ```
 （5）编辑“write file”节点，文件路径为：
-/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini
-行为选择复写文件，编码选择utf8。
+/usr/etc/jkzuc/configs/JAKA/AddOns/JAKA_LiftKit/JAKA_LiftKit_config.ini行为选择复写文件，编码选择utf8。
+
 （6）编辑第3个“function”节点，更名为“update_ip/port”，给前端返回设置成功的信息。
 ```javascript
 msg.payload = "0";
@@ -809,16 +847,20 @@ else
 return msg;
 ```
 （6）编辑“http response”节点，状态码为200。
-## 5.5 运动控制
-&emsp;&emsp;该部分是为了使前端关于运动控制的按钮生效，包括移动、上升（上升到虚拟限位最大值）、下降（下降到虚拟限位最小值）、停止。该部分创建后的node-red节点部署如下所示：
+### 5.5 运动控制
+该部分是为了使前端关于运动控制的按钮生效，包括移动、上升（上升到虚拟限位最大值）、下降（下降到虚拟限位最小值）、停止。该部分创建后的node-red节点部署如下所示：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image148.png)
 1.	由于移动、上升、下降都是向TCP服务端发送移动到绝对位置的指令，所以这三个输出可以使用同一路输出流来处理。
+
 2.	控制升降柱移动/上升/下降：
+
 （1）在左侧节点菜单栏中找到“http in”、“switch”、2个“function”，“http reponse”，“read file”，“write file”节点，并将这些节点按下图顺序连接并部署。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image150.png)
 （2）编辑“http in”节点：请求方式选择“POST”，URL为“/move_control”，点击“完成”。
+
 （3）编辑“switch”节点，名称改为“switch_set”，属性选择msg.payload.param，左下角选择添加共4个流，输出分别为：“move”、“up”、“down”、“stop”。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image152.png)
+
 （4）编辑第1个“function”节点，更名为“move/up/down”，对传输数据流作预处理：
 ```javascript
 const move_data = parseFloat(msg.payload.data);
@@ -831,7 +873,9 @@ msg.port = global.get("global_port");
 return msg;
 ```
 （5）编辑“tcp request”节点，更改名称，返回选择字符串。
+
 （6）编辑“tcp out”节点，修改名称，类型选择为响应TCP。
+
 （7）编辑第2个“function”节点，更名为“return_move”，给前端返回设置成功的信息。
 ```javascript
 if (msg.payload == 'moveTo_absolutePosition,OK\n')
@@ -848,11 +892,12 @@ return msg;
 至此，与前端交互的后端服务便创建完整了，节点部署如下所示：
 ![](../../../resource/ch/AddOn/demo_LiftKit/image154.png)
 
-## 5.6 APP测试
-&emsp;&emsp;前提条件：已连接真实升降柱。这里我们使用的是EWELLIX公司生产的型号为LIFTKIT-601的升降柱。只有连接真实升降柱才能实时访问到其虚拟限位、型号、当前状态、当前位置、行程等信息。
+### 5.6 APP测试
+前提条件：已连接真实升降柱。这里我们使用的是EWELLIX公司生产的型号为LIFTKIT-601的升降柱。只有连接真实升降柱才能实时访问到其虚拟限位、型号、当前状态、当前位置、行程等信息。
 具体测试步骤：
 1. 点开附加程序JAKA_LiftKit包右侧的操作选项中的小地球图标，就可以打开前端界面。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image156.png)
+
 2. 语言切换：点击右上角语言切换，可以看到界面由英文变为中文。
 3. 通讯设置：输入正确升降柱IP、端口，点击下方“设置”按钮，界面弹出“设置参数成功”提示。
 4. 虚拟限位：输入虚拟限位的最大最小值，点击下方“设置”按钮，界面弹出“设置参数成功”提示。
