@@ -1,5 +1,5 @@
 ---
-title: 实际案例参考——Ewellix 升降轴
+title: Ewellix升降轴
 sidebarDepth: 1
 ---
 
@@ -45,7 +45,9 @@ Ewellix LIFTKIT插件具体实现功能如下：
     port = 50001
     ```
 修改后的配置文件内容如下：
+
 ![配置文件](../../../resource/ch/AddOn/demo_LiftKit/iniconfig.png)
+
 
 3.	修改文件夹JAKA_AddOn名称为JAKA_LiftKit，并压缩成文件夹压缩为JAKA_LiftKit.tar.gz 格式。
 
@@ -496,7 +498,7 @@ return msg;
 6.	为了方便调试，可以在浏览器中打开前端界面，当前机器人IP为172.30.3.123。故在浏览器地址栏输入172.30.3.123/addon/JAKA_LiftKit/dist/。若打开的页面有信息错误、缺失、设置按钮失效等都是正常现象，这是由于我们还没开始创建后端服务。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image120.png)
 
-## 5.2 初始化界面
+### 5.2 初始化界面
 前端界面中的语言、升降柱ip、port初始参数来源于JAKA_AddOn_config.ini，所以需要提前从文件中读取出。当前状态、当前位置、最大行程、虚拟限位、类型及类型列表来源于升降柱，所以需要提前建立TCP通讯向升降柱发送相关指令获取这些信息。该部分创建后的node-red节点部署如下所示，接下来我们将一步步完成这些功能。
 ![](../../../resource/ch/AddOn/demo_LiftKit/image122.png)
 1.	在左侧节点菜单栏中找到“inject”、“read file”、2个“function”、“write file”、2个“debug”，将这些节点并连接部署。

@@ -68,25 +68,22 @@ module.exports = {
                       collapsable: true,
                       sidebarDepth: 0,
                       children: [
-                        '/guide/addOn/AddOn3.0',
+                        {
+                            title: '基本介绍',   // 必要的
+                            collapsable: true, // 可选的, 默认值是 true,
+                            sidebarDepth: 1,    // 可选的, 默认值是 1
+                            children: [
+                              '/guide/addOn/aboutaddOn',
+                              '/guide/addOn/aboutdoc',
+                            ]
+                          },
                         '/guide/addOn/QuickStart',
                         '/guide/addOn/environment',
-                        // '/guide/addOn/JAKA_Command',
-                        // 'guide/addOn/JAKA_Serve',
-                        // 'guide/addOn/JAKA_Web',
-                        // 'guide/addOn/multi-language',
-                        // 'guide/addOn/userguide',
-                        // 'guide/addOn/advanced',
                         {
                             title: '开发',   // 必要的
                             collapsable: true, // 可选的, 默认值是 true,
                             sidebarDepth: 1,    // 可选的, 默认值是 1
                             children: [
-                                // '/guide/addOn/JAKA_Command',
-                                // 'guide/addOn/JAKA_Serve',
-                                // 'guide/addOn/JAKA_Web',
-                                // 'guide/addOn/multi-language',
-                                // 'guide/addOn/userguide',
                                 {
                                     title: '入门教程',   // 必要的
                                     collapsable: true, // 可选的, 默认值是 true,
@@ -101,50 +98,19 @@ module.exports = {
                                   },
                                 'guide/addOn/advanced',
 
-                                // {
-                                //     title: '入门教程',   // 必要的
-                                //     collapsable: true, // 可选的, 默认值是 true,
-                                //     sidebarDepth: 1,    // 可选的, 默认值是 1
-                                //     children: [
-                                //         '/guide/addOn/JAKA_Command',
-                                //         'guide/addOn/JAKA_Serve',
-                                //         'guide/addOn/JAKA_Web',
-                                //         'guide/addOn/multi-language',
-                                //         'guide/addOn/userguide',
-                                //     ]
-                                //   },
                             ]
                           },
                         '/guide/addOn/release',
-                        '/guide/addOn/example',
-                        
-                        // {
-                        //     title: '开发',   // 必要的
-                        //     collapsable: true, // 可选的, 默认值是 true,
-                        //     sidebarDepth: 1,    // 可选的, 默认值是 1
-                        //     children: [
-                        //         // '/guide/addOn/JAKA_Command',
-                        //         // 'guide/addOn/JAKA_Serve',
-                        //         // 'guide/addOn/JAKA_Web',
-                        //         // 'guide/addOn/multi-language',
-                        //         // 'guide/addOn/userguide',
-                        //         'guide/addOn/advanced',
-
-                        //         {
-                        //             title: '入门教程',   // 必要的
-                        //             collapsable: true, // 可选的, 默认值是 true,
-                        //             sidebarDepth: 1,    // 可选的, 默认值是 1
-                        //             children: [
-                        //                 '/guide/addOn/JAKA_Command',
-                        //                 'guide/addOn/JAKA_Serve',
-                        //                 'guide/addOn/JAKA_Web',
-                        //                 'guide/addOn/multi-language',
-                        //                 'guide/addOn/userguide',
-                        //             ]
-                        //           },
-                        //     ]
-                        //   },
-
+                        {
+                            title: '具体案例',   // 必要的
+                            collapsable: true, // 可选的, 默认值是 true,
+                            sidebarDepth: 1,    // 可选的, 默认值是 1
+                            children: [
+                              '/guide/addOn/demo_LiftKit',
+                              '/guide/addOn/demo_DHGripper',
+                            ]
+                          },
+    
                     ], 
                         // 新增的下级页面链接
                     }
@@ -167,12 +133,55 @@ module.exports = {
                         title: 'AddOn Develop',
                         collapsable: true,
                         children: [
-                            '/en/guide/addOn/AddOn3.0',
+                            {
+                                title: 'Introduction',   // 必要的
+                                collapsable: true, // 可选的, 默认值是 true,
+                                sidebarDepth: 1,    // 可选的, 默认值是 1
+                                children: [
+                                  '/en/guide/addOn/aboutaddOn',
+                                  '/en/guide/addOn/aboutdoc',
+                                ]
+                              },
                             '/en/guide/addOn/QuickStart',
                             '/en/guide/addOn/environment',
-                            '/en/guide/addOn/JAKA_Command',
+                            {
+                                title: 'Let Us Develop',   // 必要的
+                                collapsable: true, // 可选的, 默认值是 true,
+                                sidebarDepth: 1,    // 可选的, 默认值是 1
+                                children: [
+                                    {
+                                        title: 'Elementary',   // 必要的
+                                        collapsable: true, // 可选的, 默认值是 true,
+                                        sidebarDepth: 1,    // 可选的, 默认值是 1
+                                        children: [
+                                          '/en/guide/addOn/JAKA_Command',
+                                          '/en/guide/addOn/JAKA_Serve',
+                                          '/en/guide/addOn/JAKA_Web',
+                                          '/en/guide/addOn/multi-language',
+                                          '/en/guide/addOn/userguide',
+                                        ]
+                                      },
+                                      {
+                                        title: 'Advanced',   // 必要的
+                                        collapsable: false, // 可选的, 默认值是 true,
+                                        sidebarDepth: 1,    // 可选的, 默认值是 1
+                                        children: [
+                                          '/'
+                                        ]
+                                      },
+                                ]
+                              },
                             '/en/guide/addOn/release',
-                            '/en/guide/addOn/example',
+                            {
+                                title: 'Examples',   // 必要的
+                                collapsable: false, // 可选的, 默认值是 true,
+                                sidebarDepth: 1,    // 可选的, 默认值是 1
+                                children: [
+                                  '/en/guide/addOn/demo_LiftKit',
+                                  '/en/guide/addOn/demo_DHGripper',
+                                ]
+                              },
+                            
                         ], 
                     }
                 ]
