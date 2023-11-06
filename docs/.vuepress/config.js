@@ -44,7 +44,7 @@ module.exports = {
         locales:{
             '/':{
                 // 多语言下拉菜单的标题
-                selectText: '语言',
+                selectText: 'Languages|语言',
                 // 该语言在下拉菜单中的标签
                 label: '简体中文',
                 lastUpdated:'上次修改',
@@ -112,7 +112,7 @@ module.exports = {
                 ]
             },
             '/en/':{
-                selectText: 'Languages',
+                selectText: '语言|Languages',
                 label: 'English',
                 lastUpdated:'Last update',
                 nav: [
@@ -182,7 +182,7 @@ module.exports = {
                 ]
             },
             '/ja/':{
-                selectText: '言語',
+                selectText: '言語|Languages',
                 label: '日本語',
                 lastUpdated:'最後の更新',
                 nav: [
@@ -205,7 +205,7 @@ module.exports = {
                 ]
             },
             '/vi/':{
-                selectText: 'Ngôn ngữ',
+                selectText: 'Ngôn ngữ|Languages',
                 label: 'Tiếng Việt',
                 lastUpdated:'Cập nhật cuối cùng',
                 nav: [
