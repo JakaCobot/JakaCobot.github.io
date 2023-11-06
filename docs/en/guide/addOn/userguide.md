@@ -82,7 +82,7 @@ Specifically includes:
 
 **Release**
 
-Currently, the user guide can be obtained in the software package. If any changes are made in the future, we will update here.
+Provide information about how will the AddOn packages be released and where to obtain them.
 
 **Additional Information**
 Specifically includes:
@@ -92,3 +92,9 @@ Specifically includes:
 ::: tip Tip:
 In addition to the above content, it is important to ensure that the user guide's language should be concise, easy to understand, and suitable for the target reader of the add-on.
 :::
+
+## How to publish the manual
+---
+
+**standalone document**     
+Currently, JAKA supports to provide the user guide along with the packages in the form of PDF.Any changes in the future will be updated here.

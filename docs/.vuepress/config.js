@@ -1,13 +1,8 @@
 /*
  * @Author: JAKA
  * @Date: 2023-07-17
-<<<<<<< HEAD
  * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-11-01
-=======
- * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-10-27
->>>>>>> AddOn/develop
+ * @LastEditTime: 2023-11-06
  * @Description: 
  */
 
@@ -166,7 +161,7 @@ module.exports = {
                                         collapsable: false, // 可选的, 默认值是 true,
                                         sidebarDepth: 1,    // 可选的, 默认值是 1
                                         children: [
-                                          '/'
+                                        //   '/'
                                         ]
                                       },
                                 ]
