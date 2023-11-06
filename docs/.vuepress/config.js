@@ -44,7 +44,7 @@ module.exports = {
         locales:{
             '/':{
                 // 多语言下拉菜单的标题
-                selectText: '选择语言',
+                selectText: '语言',
                 // 该语言在下拉菜单中的标签
                 label: '简体中文',
                 lastUpdated:'上次修改',
