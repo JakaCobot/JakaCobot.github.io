@@ -9,14 +9,14 @@ sidebarDepth: 1
 
 Generally, a user-oriented add-on user guide should include the following content to ensure users can install, configure, and use the add-on smoothly:
 
-## Title and Introduction
+**Title and Introduction**
 Specifically includes:
 
 * Add-on Name
 * Add-on Version
 * Basic Information of the add-on
 
-## Installation Guide
+**Installation Guide**
 Specifically includes:
 
 * System Requirements
@@ -27,7 +27,7 @@ List information about the required operating system, software environment, hard
 
 Provide step-by-step installation instructions, including any issues that may be encountered during the installation process and their corresponding solutions.
 
-## Configuration Guide
+**Configuration Guide**
 Specifically includes:
 
 * Add-on Configuration Options
@@ -42,7 +42,7 @@ Provide step-by-step configuration instructions, including the role of each conf
 
 If the add-on has default configuration options, detailed information about the default configuration should be provided.
 
-## Use Instructions
+**Use Instructions**
 Specifically includes:
 
 * Main Functions
@@ -53,7 +53,7 @@ List the main features and uses of the add-on.
 
 Provide practical examples of use to help users understand how to use the add-on in their own workflows.
 
-## Troubleshooting
+**Troubleshooting**
 Specifically includes:
 
 * Frequently Asked Questions
@@ -64,7 +64,7 @@ List common problems users may encounter and their corresponding solutions.
 
 If the add-on generates log files, explain how to view and analyze these logs to resolve issues.
 
-## Updates and Upgrades
+**Updates and Upgrades**
 Specifically includes:
 
 * Update Guide
@@ -75,12 +75,16 @@ Provide instructions on how to obtain and install add-on updates.
 
 List the version history of the add-on and the changes in each version.
 
-## Support and Contact Information
+**Support and Contact Information**
 Specifically includes:
 
 * Provide contact information for support, such as technical support hotline, email address, social media links, or forum links.
 
-## Additional Information
+**Release**
+
+Currently, the user guide can be obtained in the software package. If any changes are made in the future, we will update here.
+
+**Additional Information**
 Specifically includes:
 
 * Attachment information, such as plugin dependencies, known issues, or warnings.

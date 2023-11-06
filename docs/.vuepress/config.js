@@ -130,7 +130,7 @@ module.exports = {
                     '/en/guide/bus',
                     '/en/guide/funcIO',
                     {
-                        title: 'AddOn Develop',
+                        title: 'AddOn Development',
                         collapsable: true,
                         children: [
                             {

@@ -1,5 +1,5 @@
 ---
-title: Case Study - Ewellix lift
+title: Case Study - Ewellix LiftKit
 sidebarDepth: 1
 ---
 
