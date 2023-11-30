@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-11-06
+ * @LastEditTime: 2023-11-30
  * @Description: 
  */
 
@@ -218,4 +218,27 @@ module.exports = {
             },
         },
     },
+    head: [
+        // 添加 Google Analytics 代码
+        [
+          "script",
+          {
+            async: true,
+            src: "https://www.googletagmanager.com/gtag/js?id=G-X30FSCFGZS",
+          },
+        ],
+        [
+          "script",
+          {},
+          [
+            `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-X30FSCFGZS');
+            `,
+          ],
+        ],
+      ],
 }
