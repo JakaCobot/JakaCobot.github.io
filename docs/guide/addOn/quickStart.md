@@ -1,6 +1,6 @@
 ---
 title: 快速入门
-sidebarDepth: 0
+sidebarDepth: 1
 ---
 
 # AddOn开发流程速览
