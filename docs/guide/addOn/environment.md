@@ -1,6 +1,6 @@
 ---
 title: 开发环境搭建
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # 开发环境搭建

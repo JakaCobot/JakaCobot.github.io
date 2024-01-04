@@ -1,6 +1,6 @@
 ---
 title: 基本介绍
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 # 关于AddOn
 

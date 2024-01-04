@@ -1,6 +1,6 @@
 ---
 title: 自定义指令开发
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # 自定义指令开发

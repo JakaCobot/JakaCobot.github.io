@@ -1,6 +1,6 @@
 ---
 title: 多语言实现
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # 多语言实现

@@ -1,6 +1,6 @@
 ---
 title: AddOn配置文件说明
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # AddOn配置文件规范

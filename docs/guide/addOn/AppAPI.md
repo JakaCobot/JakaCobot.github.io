@@ -1,6 +1,6 @@
 ---
 title: JAKA App APIs
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # AddOn网页与APP交互

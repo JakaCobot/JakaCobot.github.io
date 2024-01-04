@@ -1,6 +1,6 @@
 ---
 title: 说明手册编写
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 # 说明手册编写
 

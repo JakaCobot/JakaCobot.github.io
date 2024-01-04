@@ -1,6 +1,6 @@
 ---
 title: 开发指南
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # 开发指南

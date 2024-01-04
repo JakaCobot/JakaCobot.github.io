@@ -1,6 +1,6 @@
 ---
 title: 关于开发
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 
 # 关于开发

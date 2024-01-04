@@ -1,6 +1,6 @@
 ---
 title: 自定义页面开发
-sidebarDepth: 1
+sidebarDepth: 0
 ---
 # 自定义页面开发
 **该页面旨在指导开发者如何开发具有自定义页面功能的AddOn包。**

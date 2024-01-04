@@ -1,6 +1,6 @@
 ---
 title: 具体案例
-sidebarDepth: 2
+sidebarDepth: 0
 ---
 
 ## Ewellix升降轴

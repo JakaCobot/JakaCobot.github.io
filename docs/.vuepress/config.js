@@ -1,8 +1,8 @@
 /*
  * @Author: JAKA
  * @Date: 2023-07-17
- * @LastEditors: brycen hebingshuo@jaka.com
- * @LastEditTime: 2023-11-30
+ * @LastEditors: 贺炳硕 hebingshuo@jaka.com
+ * @LastEditTime: 2023-12-28
  * @Description: 
  */
 
@@ -72,7 +72,7 @@ module.exports = {
                               '/guide/addOn/aboutdoc',
                             ]
                           },
-                        '/guide/addOn/QuickStart',
+                        '/guide/addOn/quickStart',
                         '/guide/addOn/environment',
                         {
                             title: '开发',   // 必要的
@@ -137,7 +137,7 @@ module.exports = {
                                   '/en/guide/addOn/aboutdoc',
                                 ]
                               },
-                            '/en/guide/addOn/QuickStart',
+                            '/en/guide/addOn/quickStart',
                             '/en/guide/addOn/environment',
                             {
                                 title: 'Let Us Develop',   // 必要的
