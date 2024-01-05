@@ -9,7 +9,7 @@ sidebarDepth: 0
 AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及相适配的软件、控制器版本。
 
 ::: tip 提示：
-如果您手边有JAKA控制器真机，也可以不使用虚拟机，直接使用真机开发。直接跳到[*安装 AddOn 套件包*:point_left:](./3-EnvironmentInstall.html#安装AddOn套件包),根据指引安装升级控制器和 JAKA APP，安装 AddOn 套件包即可。
+如果您手边有JAKA控制器真机，也可以不使用虚拟机，直接使用真机开发。直接跳到[*安装 AddOn 套件包*:point_left:](./3-3-EnvironmentInstallInstall.html#安装AddOn套件包),根据指引安装升级控制器和 JAKA APP，安装 AddOn 套件包即可。
 :::
 
 ## 安装JAKA虚拟机
@@ -20,17 +20,17 @@ AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及�
 
 ### 步骤二：安装JAKA虚拟镜像
 下载 JAKA 虚拟机镜像文件，导入安装。
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/install_vm.gif"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/install_vm.gif"/></div>
 
 ### 步骤三：启动JAKA虚拟控制器
 
 点击“开启此虚拟机”启动虚拟机。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/start_vm.gif"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/start_vm.gif"/></div>
 
-此时虚拟机页面上显示了当前机器人的IP地址。
+此时虚拟机页面上显示了当前机器人的 IP 地址。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/IP.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/IP.png"/></div>
 
 
 
@@ -53,7 +53,7 @@ AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及�
 
 1.打开 App 连接机器人，此时可在机器人列表中根据 IP 找到虚拟机器人。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/find_robot.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/find_robot.png"/></div>
 
 2.若在列表中无法找到机器人，可尝试使用离线连接。
 
@@ -61,7 +61,7 @@ AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及�
 
 4.地址处，输入虚拟机器人 IP。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/offline_connect.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/offline_connect.png"/></div>
 
 ::: tip 提示:
 如果发现先提示 App 与控制器版本不匹配，导致无法连接，请先安装对应版本的 App 并根据步骤三，将控制器升级。
@@ -71,13 +71,13 @@ AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及�
 
 打开设置页面——系统设置——版本升级页面，选择要升级的控制器包，点击上传，完成升级。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/upgrade_controler.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/upgrade_controler.png"/></div>
 
 ### 步骤四：安装AddOn套件包
 
 打开设置页面——系统设置——版本升级页面，选择 AddOn 套件包，点击上传，完成安装。
 
-<div align="center"><img width="800"  src="../../../resource/ch/AddOn/environment/upgrade_AddOnkit.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/upgrade_AddOnkit.png"/></div>
 
 ### 步骤五：重启App
 
