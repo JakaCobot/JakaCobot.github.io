@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2024-01-09
+ * @LastEditTime: 2024-01-15
  * @Description: 
  */
 
@@ -91,7 +91,14 @@ module.exports = {
                                         'guide/addOn/4.5-UserGuide',
                                     ]
                                   },
-                                'guide/addOn/4.6-Advanced',
+                                  {
+                                    title: '高级教程',   // 必要的
+                                    collapsable: false, // 可选的, 默认值是 true,
+                                    sidebarDepth: 1,    // 可选的, 默认值是 1
+                                    children: [
+                                    //   '/'
+                                    ]
+                                  },
 
                             ]
                           },
@@ -133,12 +140,12 @@ module.exports = {
                                 collapsable: true, // 可选的, 默认值是 true,
                                 sidebarDepth: 1,    // 可选的, 默认值是 1
                                 children: [
-                                  '/en/guide/addOn/aboutaddOn',
-                                  '/en/guide/addOn/aboutdoc',
+                                  '/en/guide/addOn/1.1-AboutAddOn',
+                                  '/en/guide/addOn/1.2-AboutDev',
                                 ]
                               },
-                            '/en/guide/addOn/quickStart',
-                            '/en/guide/addOn/environment',
+                            '/en/guide/addOn/2-QuickStart',
+                            '/en/guide/addOn/3-EnvironmentInstall',
                             {
                                 title: 'Let Us Develop',   // 必要的
                                 collapsable: true, // 可选的, 默认值是 true,
@@ -149,11 +156,11 @@ module.exports = {
                                         collapsable: true, // 可选的, 默认值是 true,
                                         sidebarDepth: 1,    // 可选的, 默认值是 1
                                         children: [
-                                          '/en/guide/addOn/JAKA_Command',
-                                          '/en/guide/addOn/JAKA_Serve',
-                                          '/en/guide/addOn/JAKA_Web',
-                                          '/en/guide/addOn/multi-language',
-                                          '/en/guide/addOn/userguide',
+                                          '/en/guide/addOn/4.2-JAKA_Service',
+                                          '/en/guide/addOn/4.1-JAKA_Command',
+                                          '/en/guide/addOn/4.3-JAKA_Web',
+                                          '/en/guide/addOn/4.4-I18n',
+                                          '/en/guide/addOn/4.5-UserGuide',
                                         ]
                                       },
                                       {
@@ -166,14 +173,14 @@ module.exports = {
                                       },
                                 ]
                               },
-                            '/en/guide/addOn/release',
+                            '/en/guide/addOn/5-Release',
                             {
                                 title: 'Examples',   // 必要的
                                 collapsable: false, // 可选的, 默认值是 true,
                                 sidebarDepth: 1,    // 可选的, 默认值是 1
                                 children: [
-                                  '/en/guide/addOn/demo_LiftKit',
-                                  '/en/guide/addOn/demo_DHGripper',
+                                  '/en/guide/addOn/6.1-DHGripper',
+                                  '/en/guide/addOn/6.2-EwellixLiftKit',
                                 ]
                               },
                             
