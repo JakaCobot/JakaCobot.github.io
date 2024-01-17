@@ -16,17 +16,17 @@ Developers need to first install virtual machine software, VirtualBox or VMware 
 
 ### Step Two: Install the JAKA Mirror File
 Locate the virtual machine mirror file in the *jaka_addon_package* and import it for installation.
-<div align="center"><img width="800"  src="./img/environment/install_vm.gif"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/install_vm.gif"/></div>
 
 ### Step Three: Start the JAKA Virtual Controller
 
 Click "play virtual machine" to launch the virtual machine.
 
-<div align="center"><img width="800"  src="./img/environment/start_vm.gif"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/start_vm.gif"/></div>
 
 At this point, the virtual machine page will display the current robot's IP address.
 
-<div align="center"><img width="800"  src="./img/environment/IP.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/IP.png"/></div>
 
 
 
@@ -47,7 +47,7 @@ During the installation process, be sure to grant network permissions.
 
 1. Open the App to connect to the robot. At this point, you should be able to find the virtual robot in the robot list based on its IP.
 
-<div align="center"><img width="800"  src="./img/environment/find_robot.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/find_robot.png"/></div>
 
 2. If you cannot find the robot in the list, try using offline connection.
 
@@ -55,19 +55,19 @@ During the installation process, be sure to grant network permissions.
 
 4. For the address, enter the IP of the virtual robot.
 
-<div align="center"><img width="800"  src="./img/environment/offline_connect.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/offline_connect.png"/></div>
 
 ### Step Three: Upgrade the Controller
 
 Open the settings page, go to System Settings, then the Version Upgrade page. Select the controller package you want to upgrade, click upload, and complete the upgrade.
 
-<div align="center"><img width="800"  src="./img/environment/upgrade_controler.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/upgrade_controler.png"/></div>
 
 ### Step Four: Install the AddOn Suite
 
 Open the settings page, go to System Settings, then the Version Upgrade page. Select the AddOn Suite, click upload, and complete the installation.
 
-<div align="center"><img width="800"  src="./img/environment/upgrade_AddOnkit.png"/></div>
+<div align="center"><img width="800"  src="./img/3-EnvironmentInstall/upgrade_AddOnkit.png"/></div>
 
 ### Step Five: Restart the App
 

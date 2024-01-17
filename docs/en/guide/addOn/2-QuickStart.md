@@ -10,7 +10,7 @@ sidebarDepth: 0
 ::: tip Process Flow:
 :::
 
-<div align="center"><img width="1000"  src="./img/QuickStart/QuickStart.png"/></div>
+<div align="center"><img width="1000"  src="./img/2-QuickStart/QuickStart.png"/></div>
 
 As shown in the above diagram, the complete development process for the AddOnXXX package consists of three main stages and six major steps. If we further break down these six steps, there are many sub-steps.
 
@@ -37,13 +37,14 @@ As mentioned earlier, JAKA AddOn has three functions: custom commands, custom se
 
 An AddOnXXX package can include at least one function.
 
-<div align="center"><img width="1000"  src="./img/QuickStart/AddOn的组成.png"/></div>
+<div align="center"><img width="1000"  src="./img/2-QuickStart/AddOn的组成.png"/></div>
+
+### Developing Custom Services
+The user can run a service in the controller for querying the robot status, setting robot parameters, controlling robot motion, or customising some functions. The service can run in the background alone, or can be used for custom web pages or custom commands. For details and procedures, see: [custom service development:point_left:](./4.2-JAKA_Service.md)
 
 ### Developing Custom Commands
 The custom command function allows developers to create commands other than the standard commands within the JAKA App. For detailed content and operation steps, please refer to: [Developing Custom Commands:point_left:](./4.1-JAKA_Command.md).
 
-### Developing Custom Services
-This function is not yet available. Any updates in the future will be synchronized on this page.
 
 ### Developing Custom Interfaces
 The custom interface function enables developers to create interfaces that meet custom requirements. For detailed content and operation steps, please refer to: [Developing Custom Interfaces:point_left:](./4.3-JAKA_Web.md).

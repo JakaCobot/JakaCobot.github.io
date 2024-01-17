@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2024-01-15
+ * @LastEditTime: 2024-01-17
  * @Description: 
  */
 
@@ -108,8 +108,8 @@ module.exports = {
                             collapsable: true, // 可选的, 默认值是 true,
                             sidebarDepth: 1,    // 可选的, 默认值是 1
                             children: [
-                              '/guide/addOn/6.1-DHGripper',
-                              '/guide/addOn/6.2-EwellixLiftKit',
+                              // '/guide/addOn/6.1-DHGripper',
+                              // '/guide/addOn/6.2-EwellixLiftKit',
                             ]
                           },
     
@@ -179,8 +179,8 @@ module.exports = {
                                 collapsable: false, // 可选的, 默认值是 true,
                                 sidebarDepth: 1,    // 可选的, 默认值是 1
                                 children: [
-                                  '/en/guide/addOn/6.1-DHGripper',
-                                  '/en/guide/addOn/6.2-EwellixLiftKit',
+                                  // '/en/guide/addOn/6.1-DHGripper',
+                                  // '/en/guide/addOn/6.2-EwellixLiftKit',
                                 ]
                               },
                             
