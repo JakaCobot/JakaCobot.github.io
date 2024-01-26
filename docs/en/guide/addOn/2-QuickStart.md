@@ -12,9 +12,9 @@ sidebarDepth: 0
 
 <div align="center"><img width="1000"  src="./img/2-QuickStart/QuickStart.png"/></div>
 
-As shown in the above diagram, the complete development process for the AddOnXXX package consists of three main stages and six major steps. If we further break down these six steps, there are many sub-steps.
+As shown in the above diagram, the complete development process for the AddOnXXX package consists of three main stages and six major steps. We can break down them into many sub-steps.
 
-The following sections will provide a brief explanation of this process diagram. For detailed explanations and operating instructions for the sub-steps, please refer to the specific chapters in the tutorial.
+The following sections will provide a brief explanation of this process diagram. For detailed explanations and operating instructions of the sub-steps, please refer to the specific chapters in the tutorial.
 
 ## Preparations Before Development
 ---
@@ -31,22 +31,22 @@ For detailed information, please refer to [Setting Up the Development Environmen
 ## Start Developing AddOn
 ---
 
-After setting up the environment, developers can choose the type they need and refer to the corresponding pages for more detailed intructions.
+After setting up the environment, developers can choose the type they need and refer to the corresponding pages for more detailed instructions.
 
-As mentioned earlier, JAKA AddOn has three functions: custom commands, custom services, and custom interface.
+As mentioned earlier, JAKA AddOn has three functions: custom commands, custom services, and custom webpages.
 
 An AddOnXXX package can include at least one function.
 
 <div align="center"><img width="1000"  src="./img/2-QuickStart/AddOn的组成.png"/></div>
 
 ### Developing Custom Services
-The user can run a service in the controller for querying the robot status, setting robot parameters, controlling robot motion, or customising some functions. The service can run in the background alone, or can be used for custom web pages or custom commands. For details and procedures, see: [custom service development:point_left:](./4.2-JAKA_Service.md)
+The user can run a service in the controller for querying the robot status, setting robot parameters, controlling robot motion, or customizing some functions. The service can run in the background alone, or can be used for custom web pages or custom commands. For details and procedures, see: [custom service development:point_left:](./4.2-JAKA_Service.md)
 
 ### Developing Custom Commands
 The custom command function allows developers to create commands other than the standard commands within the JAKA App. For detailed content and operation steps, please refer to: [Developing Custom Commands:point_left:](./4.1-JAKA_Command.md).
 
 
-### Developing Custom Interfaces
+### Developing Custom Webpages
 The custom interface function enables developers to create interfaces that meet custom requirements. For detailed content and operation steps, please refer to: [Developing Custom Interfaces:point_left:](./4.3-JAKA_Web.md).
 
 ### Language Setting

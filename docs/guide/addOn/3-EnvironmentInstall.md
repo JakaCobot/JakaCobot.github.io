@@ -9,7 +9,7 @@ sidebarDepth: 0
 AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及相适配的软件、控制器版本。
 
 ::: tip 提示：
-如果您有 JAKA 控制器真机，也可以不使用虚拟机，直接使用真机进行开发。跳到[*安装 AddOn 套件包*:point_left:](./3-3-EnvironmentInstallInstall.html#安装AddOn套件包)，根据指引安装升级控制器和 JAKA APP，安装 AddOn 套件包即可。
+如果您有 JAKA 控制器真机，也可以不使用虚拟机，直接使用真机进行开发。跳到[*安装 AddOn 套件包*:point_left:](./3-3-EnvironmentInstallInstall.html#安装AddOn套件包)，根据指引安装升级控制器和 JAKA App，安装 AddOn 套件包即可。
 :::
 
 ## 安装 JAKA 虚拟机
@@ -43,7 +43,7 @@ AddOn 的开发需要依赖适当的开发环境，例如 JAKA 虚拟机以及�
 
 ### 步骤一：安装JAKA App
 
-在 AddOn 开发环境包中 App 文件夹中找到安装包，点击根据引导安装完成 App。
+在 AddOn 开发环境包中的 App 文件夹里找到安装包，点击根据引导安装完成 App。
 
 在安装过程中要注意给予网络权限。
 
