@@ -9,7 +9,9 @@ sidebarDepth: 0
 Developing AddOns requires an appropriate development environment. Related softwares and Apps are essential, including the JAKA virtual machine and compatible software and controller versions.
 
 ::: tip Tip:
-If you already got a controller, then the virtual machine is not needed since you can directly use that controller to develop. Click[*InstallTheAddOnSuite*:point_left:](./3-3-EnvironmentInstallInstall.html#Install-the-AddOn-Suite) to follow the instructions on installing and upgrading the controller and JAKA App, and then to install the AddOn suite.
+If you already got a controller, then the virtual machine is not needed since you can directly use that controller to develop. Click[*InstallTheAddOnSuite*:point_left:](./3-3-EnvironmentInstallInstall.html#Install-the-AddOn-Suite) to follow the instructions on installing and upgrading the controller and JAKA App, and then to install the AddOn suite. 
+
+<!-- ! todo check the link in the tip above-->
 
 ## Install the JAKA Virtual Machine
 
