@@ -115,7 +115,9 @@ module.exports = {
     
                     ], 
                         // 新增的下级页面链接
-                    }
+                    },
+                    '/guide/SRCI/SRCI.md'
+
                 ]
             },
             '/en/':{
@@ -185,7 +187,8 @@ module.exports = {
                               },
                             
                         ], 
-                    }
+                    },
+                    '/en/guide/SRCI/SRCI_en.md'
                 ]
             },
             '/ja/':{
