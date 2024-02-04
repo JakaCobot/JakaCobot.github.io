@@ -144,6 +144,8 @@ Please read through these risks carefully before using JSI commands:
 
   - `ConfigMode.Wrist=1` ("*No change*")
 - Please make sure the overall speed and command speed are in a safe and acceptable range before the execution of any commands.
+- Using SRCI AddOn with the App simultaneously will violate the requirements of "single point control", which may lead to unexpected risks (such as unexcepeted robot movements or error information loss). Therefore, the SRCI AddOn and the App should not be used at the same time.
+- The version of controller and SRCI AddOn must be strictly matched, otherwise there might be unexpected risks.
 
 ## Commands Descriptions 
 
