@@ -42,7 +42,7 @@ Note:
 - JAKA part
   - Robot Hardware: no limit（***switch on PROFINET***）
   - The PROFINET GSDML must be upgraded to ***GSDML-V2.41-JAKA-JAKARobot-20231017.xml***
-  - Robot Controller: v1.7.1_25 and above
+  - Robot Controller: v1.7.1_25 and above (Controller vesion and SRCI Addon version must match)
   - App: v1.7.1_22 and above
   - AddOn: JSI (1.6.27) and above
 - Siemens PLC part
@@ -50,7 +50,9 @@ Note:
   - PLC must support PROFINET
   - PLC must install SRL library (must be authorized by Siemens)
 
-
+| Controller version | AddOn version | 
+| -------------      | ------------- | 
+| 171.26rc           | 1.6.28 | 
 
 
 ### Functions Supported on Different Versions
@@ -67,9 +69,9 @@ SRCI defines 3 function groups, which contain the functions of all interfaces:
 > JAKA supports limited **Core**.
 
 
-#### Core
+#### Limited Core
 
-List below shows the functions supported by Core:
+List below shows the functions supported by limited Core:
 > The realization of Core requires the realization of some basic functions within Core. These basic functions can be regarded as the pre-steps of Core that won't be needed to be used by users, therefore they're not listed here.  
 > Some functions are supported at different levels, and the illustrations of which will be listed separately. 
 
@@ -146,6 +148,13 @@ Please read through these risks carefully before using JSI commands:
 - Please make sure the overall speed and command speed are in a safe and acceptable range before the execution of any commands.
 - Using SRCI AddOn with the App simultaneously will violate the requirements of "single point control", which may lead to unexpected risks (such as unexcepeted robot movements or error information loss). Therefore, the SRCI AddOn and the App should not be used at the same time.
 - The version of controller and SRCI AddOn must be strictly matched, otherwise there might be unexpected risks.
+
+#### JAKA Safety IO
+Work with JAKA safety IO functions to ensure operator safety. JAKA support following safety function（safety IO）：
+1. Additional emergency-stop
+2. Additional protective-stop
+3. Reduced mode（able to set robot TCP speed, etc. ）  
+![pic](./pic/safety-EN.png "safetyIO")
 
 ## Commands Descriptions 
 
@@ -522,6 +531,14 @@ This function writes the data of the user coordinate system based on ToolNo.
 
 
 ### Troubleshooting
+General debug steps:
+1. Check if controller version and SRCI Addon match or not
+2. Check if Addon is running or not
+3. Check Profinet Status（PLC must use right JAKA GSDML）
+4. Check if PLC Profinet data is configured right or not
+5. Contact JAKA technical support team（send email to SRCI.Support@jaka.com， attaching Addon exported files）  
+![pic](./pic/export_EN.png "export addon")
+
 Follow the steps below to troubleshoot when JSI communication fails:
 1. Make sure the PROFINET between JAKA and PLC is connected and functioning.
 2. Make sure the PLC configuration is correct.
@@ -529,6 +546,11 @@ Follow the steps below to troubleshoot when JSI communication fails:
 4. If PROFINET is in normal connection, then the issue might be of the JSI.
 5. If HMI simulation is needed, please set "PG/PC Interface" (contact Siemens for detailed information).
 
+Debug steps when robot not move：
+1. Check overridespeed
+2. Check velocity setting of defaultDynamic and referenceDynamic
+3. Check velocity parameter of command
+4. Check if controller already in interrupted status
 
 ## Appendix #
 
