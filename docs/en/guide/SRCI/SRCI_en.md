@@ -7,7 +7,7 @@ sidebarDepth: 1
 
 | Abbreviation | Description |
 | ---- | ----|
-| SRCI | SIMATIC Robot Control Interface |
+| SRCI | Standard Robot Control Interface |
 | JSI | JAKA SIMATIC Interface |
 | SRL | SIMATIC Robot Library, a robot library in Siemens PLC that provides the function block of corresponding SRCI. |
 | EDK | Easy Development Kit, a SRCI protocol parser provided by Siemens. |

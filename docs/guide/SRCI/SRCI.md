@@ -7,7 +7,7 @@ sidebarDepth: 1
 
 | 名词 | 说明 |
 | ---- | ----|
-| SRCI | SIMATIC Robot Control Interface，SIMATIC机器人控制接口。 |
+| SRCI | Standard Robot Control Interface。 |
 | JSI | JAKA SIMATIC Interface，节卡SIMATIC接口。 |
 | SRL | SIMATIC Robot Library，西门子在PLC端的机器人库，用于提供对应SRCI的功能块（FB）等。 |
 | EDK | Easy Development Kit，西门子提供的SRCI协议解析器。 |
