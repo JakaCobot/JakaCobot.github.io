@@ -43,7 +43,7 @@ SRCI的目标是使数据包和PLC库功能标准化。这使得用户能够在�
 - JAKA 部分
   - 机器人硬件：全系通用（***开启PROFINET支持***）
   - 需要将PROFINET的GSDML文件版本更新至***GSDML-V2.41-JAKA-JAKARobot-20231017.xml***
-  - 机器人控制器：1.7.1_25及以上
+  - 机器人控制器：1.7.1_25及以上（控制器版本和SRCI Addon版本需要匹配）
   - App：1.7.1_22及以上
   - AddOn：JSI（1.6.27）或以上
 - 西门子PLC部分
@@ -51,7 +51,9 @@ SRCI的目标是使数据包和PLC库功能标准化。这使得用户能够在�
   - PLC要支持PROFINET功能
   - PLC要具备相应的SRL库（需要西门子的单独授权）
 
-
+| 控制器版本      | AddOn | 
+| ------------- | ----------------- | 
+| 171.26rc      | 1.6.28 | 
 
 
 ### 版本说明
@@ -68,9 +70,9 @@ SRCI定义了三种功能组，这三个组内包含了所有接口功能：
 > 节卡将主要支持有限制的**Core**
 
 
-#### Core
+#### 缩减范围的Core
 
-以下是Core支持的所有功能：
+以下是缩减范围的Core支持的功能：
 
 > 整个Core的实现依赖于Core功能中部分基础指令的实现，这类基础指令可以理解为支持Core运行的前置指令，并不需要客户单独使用，所以不在此处列出。
 >
@@ -158,6 +160,8 @@ SRCI定义了三种功能组，这三个组内包含了所有接口功能：
 - 执行任何运动指令前，请确保全局的运行速率和指令的运行速率处于一个可接受的安全范围内。
 - 同时使用APP和SRCI的Addon将不符合“单点控制”的要求，会带来意料外的风险（包括但不限于意料外的运动或者报错信息丢失等等），因此请避免同时使用。
 - 控制器版本和SRCI的Addon版本要严格对应，混用可能带来意料外的风险。
+
+#### 使用JAKA安全设置
 
 ## 指令说明
 
@@ -525,13 +529,27 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 ![pic](./pic/address-mapping-2.png "address mapping 2")
 
 
-### 故障排查
+## 故障排查
+一般排查顺序
+1. 检查机器人控制器版本和SRCI Addon版本是否对应
+2. 检查Addon是否运行
+3. 检查机器人和PLC的Profinet是否建立通讯（PLC功能是否使用了正确的JAKA的GSDML文件）
+4. 检查PLC的Profinet数据帧是否配置
+5. 如果依然不行，联系JAKA售后支持（或发邮件至SRCI.Support@jaka.com， 附上Addon导出文件）  
+![pic](./pic/export_CN.png "export addon")
+   
 JSI通讯建立失败的排查顺序为：
 1. 确认JAKA端PROFINET是否正常运行并与PLC连接；
 2. 确认PLC端配置信息是否有误；
 3. 如果经常断连，则检查交换机是否符合PROFINET要求，或者不经过交换机，将PLC和控制柜进行直连；
 4. 如果PROFINET已正常连接，则为JSI的通讯问题；
 5. 如果需要HMI仿真的话，要设置“PG/PC接口”（详细情况请咨询西门子）。
+
+下发指令后机器人不动：
+1. 检查overridespeed设置
+2. 检查defaultDynamic和referenceDynamic中的Velocity相关设置
+3. 检查运动指令中的速度和加速度设置
+4. 检查是否处于Interrupted状态
 
 
 
@@ -583,10 +601,6 @@ w = sin(axis5)
 ![pic](./pic/RampOverlap-blending.png "RampOverBlending 融合说明")
 
 
-### 全部SRCI指令介绍 ##
-| Profile Core | Profile Extended | Profile Optional | 
-| ------       | ------            | ------          |
-|ChangeSpeedOverride<br>EnableRobot<br>ExchangeConfiguration<br>GroupContinue<br>GroupInterrupt<br>GroupJog<br>GroupReset<br>GroupStop<br>MoveAxesAbsolute<br>MoveDirectAbsolute<br>MoveLinearAbsolute<br>ReadActualPosition<br>ReadActualPositionCyclic<br>ReadFrameData<br>ReadLoadData<br>ReadMessages<br>ReadRobotData<br>ReadRobotDefaultDynamics<br>ReadRobotReferenceDynamics<br>ReadRobotSWLimits<br>ReadToolData<br>ReturnToPrimary<br>RobotTask<br>SecondarySequence<br>SetSequence<br>WriteFrameData<br>WriteLoadData<br>WriteRobotDefaultDynamics<br>WriteRobotReferenceDynamics<br>WriteToolData | ActivateNextCommand<br>CalculateCartesianPosition<br>CalculateForwardKinematic<br>CalculateFrame<br>CalculateInverseKinematic<br>CalculateTool<br>CallSubprogram<br>MoveAxesRelative<br>MoveCircularAbsolute<br>MoveCircularCam<br>MoveCircularRelative<br>MoveDirectCam<br>MoveDirectOffset<br>MoveDirectRelative<br>MoveLinearAbsoluteJ<br>MoveLinearCam<br>MoveLinearOffset<br>MoveLinearRelative<br>ReactAtTrigger<br>ReadCallSubprogramCyclic<br>ReadDigitalInputs<br>ReadDigitalOutputs<br>ReadIntegers<br>ReadReals<br>ReadSystemVariable<br>SetTriggerError<br>SetTriggerLimit<br>SetTriggerRegister<br>SetTriggerUser<br>ShiftPosition<br>StopSubprogram<br>WaitForTrigger<br>WaitTime<br>WriteCallSubprogramCyclic<br>WriteDigitalOutputs<br>WriteIntegers<br>WriteReals<br>WriteSystemVariable |ReadDHParameter<br>RestartController<br>ReadActualTCPVelocity<br>UserLogin<br>SwitchLanguage<br>WriteObotSWLimits<br>SetOperationMode<br>ReadWorkArea<br>WriteWorkArea<br>ActivateWorkArea<br>MonitorWorkArea<br>MoveApproachLinear<br>MoveDepartLinear<br>MoveApproachDirect<br>MoveDepartDirect<br>SearchHardStop<br>SearchHardStopJ<br>MovePickPlaceLinear<br>MovePickPlaceDirect<br>ActivateConveyorTracking<br>RedefinetrackingPos<br>SyncToConveyor<br>MoveSuperImposed<br>MoveSuperImposedDynamic<br>ReadAnalogInput<br>ReadAnalogOutput<br>WriteAnalogOutput<br>MeasuringInput<br>AbortMeasuringInput<br>SetTriggerMotion<br>OpenBrake<br>CallSubprogram<br>PathAccuracyMode<br>AvoidSingularity<br>ForceControl<br>ForceLimit<br>ReadActualForce<br>BrakeTest | 
 
 
 
