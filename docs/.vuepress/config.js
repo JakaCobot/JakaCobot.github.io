@@ -227,14 +227,5 @@ module.exports = {
                 ]
             },
         },
-    },
-    head: [
-        [
-          "meta",
-          {
-            httpEquiv: "refresh",
-            content: "0; URL='https://www.jaka.com/docs/'",
-          },
-        ],
-      ],
+    }
 }
