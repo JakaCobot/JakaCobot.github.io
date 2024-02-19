@@ -598,11 +598,3 @@ To enable blending, make sure to set the parameters in usersetting.ini as below 
 When parameter is too large, the actual blending would happen according to the Mode11 (RampOverlap) in SRCI manual to blend at 100% overlap:<br>
 ![pic](./pic/RampOverlap-blending.png "RampOverBlending")
 
-
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

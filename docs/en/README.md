@@ -24,11 +24,3 @@ footer: All Copyright Reserve | Copyright © 2023-JAKA Cobot
 ---
 
 # Welcome
-
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

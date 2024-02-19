@@ -73,11 +73,3 @@ NPN为输入24V OFF，PNP为输入24V ON。
 ![image-20230606163734797](../../resource/ch/funcIO/image-20230606163734797.png)
 
 功能DO示意图  
-
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

@@ -65,10 +65,3 @@ JAKA AddOn 支持多语言功能，在完成 AddOn 某个包的功能开发后�
 
 目前“发布”功能还在开发中，后续完成后将在本网站将“发布”步骤的流程说明做同步更新。
 
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

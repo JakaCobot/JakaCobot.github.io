@@ -1442,10 +1442,3 @@ AI 0-9 : D230-D239
 在终端界面上使用jkzuc命令重启控制器，查看EtherNet/IP的相关打印信息，包括使能状态、IO配置模式、网卡名称、IP地址、与master连接状态等，确认信息是否匹配或正常。
 
 ![image-20230220190231581](../../resource/ch/bus/image-20230220190231581.png)
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

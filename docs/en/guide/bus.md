@@ -1089,10 +1089,3 @@ Use the jkzuc command on the terminal interface to restart the controller, check
 
 ![image-20230220190231581](../../../resource/en/bus/image-20230220190231581.png)
 
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

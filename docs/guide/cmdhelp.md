@@ -1230,10 +1230,3 @@ JAKAZu软件支持运动路点功能。用户可以在路点变量管理中进�
 
 * 用法：选择工具坐标系，机器人末端位姿相对于工具坐标系；选择世界坐标系，机器人末端位姿相对于机器人基坐标系。
 
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>

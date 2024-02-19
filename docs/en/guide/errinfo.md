@@ -13272,12 +13272,3 @@ Extio AI/AO index range: 0~31
 ### Action
  Check whether the TIO communication line and power line are well connected; check whether the TIO board has any visible damage; contact the manufacturer for support
 
-
-
-<script>
-// 在页面加载完成后执行重定向
-window.onload = function() {
-  // 执行重定向到新网站
-  window.location.replace("https://www.jaka.com/docs/");
-};
-</script>
