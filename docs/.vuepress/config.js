@@ -5,6 +5,7 @@
  * @LastEditTime: 2024-02-19
  * @Description: 
  */
+const { resolve } = require('path');
 
 module.exports = {
     locales:{
@@ -227,5 +228,6 @@ module.exports = {
                 ]
             },
         },
-    }
+    },
+    enhanceAppFiles: resolve(__dirname, 'clientAppEnhance.js')
 }
