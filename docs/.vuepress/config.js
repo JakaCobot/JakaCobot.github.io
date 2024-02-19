@@ -229,5 +229,5 @@ module.exports = {
             },
         },
     },
-    // enhanceAppFiles: resolve(__dirname, 'clientAppEnhance.js')
+    enhanceAppFiles: resolve(__dirname, 'clientAppEnhance.js')
 }
