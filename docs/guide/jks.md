@@ -1437,3 +1437,11 @@ thread_exit_critical()
 
 参数含义:<br/>
 &emsp;&emsp;type: 0为末端力矩传感器，1为底座力矩传感器（暂不支持）
+
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>

@@ -1088,3 +1088,11 @@ Monitor the status of the PLC through the host computer software to ensure that 
 Use the jkzuc command on the terminal interface to restart the controller, check the relevant print information of EtherNet/IP, including enable status, IO configuration mode, network interface card name, IP address, connection status with master, etc., to confirm whether the information matches or normal.
 
 ![image-20230220190231581](../../../resource/en/bus/image-20230220190231581.png)
+
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>

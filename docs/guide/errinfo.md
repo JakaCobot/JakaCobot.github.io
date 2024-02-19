@@ -13292,3 +13292,11 @@ To :
 ### 解决措施
  检查TIO的通讯线和电源线是否连接良好；检查TIO板是否有可见损坏；联系厂家予以支持
 
+
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>

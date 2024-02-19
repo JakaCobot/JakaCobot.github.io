@@ -64,3 +64,11 @@ JAKA AddOn 支持多语言功能，在完成 AddOn 某个包的功能开发后�
 此处的“发布”是指，开发者在使用 JAKA AddOn 功能开发出具体的应用或功能包后，该如何将这些应用或功能包发布，以提供给自己的用户使用。
 
 目前“发布”功能还在开发中，后续完成后将在本网站将“发布”步骤的流程说明做同步更新。
+
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>

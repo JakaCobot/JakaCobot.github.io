@@ -599,3 +599,10 @@ When parameter is too large, the actual blending would happen according to the M
 ![pic](./pic/RampOverlap-blending.png "RampOverBlending")
 
 
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>

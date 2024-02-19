@@ -1237,3 +1237,12 @@ Movement termination condition editing interface
 * Meaning: Set the coordinate system used in the force control mode (to ensure that the direction of the coordinate system is consistent with the direction of the sensor).
 
 * Application: Select the tool coordinate system, and the robot end position is relative to the tool coordinate system; select the world coordinate system, and the robot end position is relative to the robot base coordinate system.
+
+
+<script>
+// 在页面加载完成后执行重定向
+window.onload = function() {
+  // 执行重定向到新网站
+  window.location.replace("https://www.jaka.com/docs/");
+};
+</script>
