@@ -11,13 +11,10 @@ export default ({ router }) => {
   if (typeof window !== 'undefined') {
     
     // 在路由变化时执行
-    router.beforeEach((to, from, next) => {
+    router.beforeEach(() => {
       // 在页面加载完成后执行重定向
-      if (to.path === '/') {
         window.location.replace("https://www.jaka.com/docs/");
-      } else {
-        next();
-      }
+
     });
   }
 };
