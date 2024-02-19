@@ -521,7 +521,7 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 
 
 ### PLC准备
-1. SD卡初始化（⻄⻔⼦PLC在下载程序到新的SD卡时，需要先复位存储卡的存储区域，再下载，否则可能会出现需要密码的情况）；
+1. SD卡初始化（PLC在下载程序到新的SD卡时，需要先复位存储卡的存储区域，再下载，否则可能会出现需要密码的情况）；
 2. 导入JAKA提供的GSDML文件；
 3. 准备Profinet组态；  
 ![pic](./pic/PLC-config.png "PLC config")  
