@@ -2,7 +2,7 @@
  * @Author: JAKA
  * @Date: 2023-07-17
  * @LastEditors: 贺炳硕 hebingshuo@jaka.com
- * @LastEditTime: 2024-01-17
+ * @LastEditTime: 2024-02-19
  * @Description: 
  */
 
@@ -229,26 +229,12 @@ module.exports = {
         },
     },
     head: [
-        // 添加 Google Analytics 代码
         [
-          "script",
+          "meta",
           {
-            async: true,
-            src: "https://www.googletagmanager.com/gtag/js?id=G-X30FSCFGZS",
+            httpEquiv: "refresh",
+            content: "0; URL='https://www.jaka.com/docs/'",
           },
-        ],
-        [
-          "script",
-          {},
-          [
-            `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'G-X30FSCFGZS');
-            `,
-          ],
         ],
       ],
 }
