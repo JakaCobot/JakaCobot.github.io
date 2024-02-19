@@ -5,14 +5,17 @@
  * @LastEditTime: 2024-02-19
  * @Description: 
  */
+
 export default ({ router }) => {
+  if (typeof window !== 'undefined') {
     // 在路由变化时执行
     router.beforeEach((to, from, next) => {
       // 在页面加载完成后执行重定向
       if (to.path === '/') {
-        window.location.replace("https://www.jaka.com/docs/");
+        window.location.replace("https://your-new-website-url.com");
       } else {
         next();
       }
     });
-  };
+  }
+};
