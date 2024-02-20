@@ -542,7 +542,7 @@ General debug steps:
 Follow the steps below to troubleshoot when JSI communication fails:
 1. Make sure the PROFINET between JAKA and PLC is connected and functioning.
 2. Make sure the PLC configuration is correct.
-3. If the communication often disconnects, please check whether the switch meets the PROFINET requirement. Or directly connect the PLC with the controller.
+3. If the communication often disconnects, please check whether the switch meets the PROFINET requirement. Or directly connect the PLC with the controller cabinet.
 4. If PROFINET is in normal connection, then the issue might be of the JSI.
 5. If HMI simulation is needed, please set "PG/PC Interface" (contact Siemens for detailed information).
 

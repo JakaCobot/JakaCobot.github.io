@@ -43,7 +43,7 @@ SRCI的目标是使数据包和PLC库功能标准化。这使得用户能够在�
 - JAKA 部分
   - 机器人硬件：全系通用（***开启PROFINET支持***）
   - 需要将PROFINET的GSDML文件版本更新至***GSDML-V2.41-JAKA-JAKARobot-20231017.xml***
-  - 机器人控制器：1.7.1_25及以上（控制器版本和SRCI Addon版本需要匹配）
+  - 机器人控制器：1.7.1_25及以上（控制器版本和SRCI AddOn版本需要匹配）
   - App：1.7.1_22及以上
   - AddOn：JSI（1.6.27）或以上
 - 西门子PLC部分
@@ -247,7 +247,7 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 
 - 使用groupreset将清除ReadMessages读取的信息，包括错误、警告等信息。
 - 主要使用场景是：
-  - 控制柜错误，如pstop（保护性停止）
+  - 控制器错误，如pstop（保护性停止）
   - addon的SRCI功能表现异常时
 
 
@@ -523,13 +523,13 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 ### PLC准备
 1. SD卡初始化（PLC在下载程序到新的SD卡时，需要先复位存储卡的存储区域，再下载，否则可能会出现需要密码的情况）；
 2. 导入JAKA提供的GSDML文件；
-3. 准备Profinet组态；  
+3. 准备PROFINET组态；  
 ![pic](./pic/PLC-config.png "PLC config")  
 4. 设定PROFINET通讯周期（8ms）；  
 ![pic](./pic/profinet-time.png "profinet time")
 5. 设定循环中断时间（8ms）；   
 ![pic](./pic/plc-interrupt-time.png "PLC interrupt time")
-6. 设置SRCI数据的时候需要保持数据的起始地址和RobTask传⼊的起始地址⼀致，否则会出现⽆法初始化的情况；   
+1. 设置SRCI数据的时候需要保持数据的起始地址和RobTask的起始地址一致，否则会出现无法初始化的情况；   
 ![pic](./pic/address-mapping-1.png "address mapping 1")<br>
 ![pic](./pic/address-mapping-2.png "address mapping 2")
 
@@ -537,10 +537,10 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 ## 故障排查
 一般排查顺序
 1. 检查机器人控制器版本和SRCI AddOn版本是否对应；
-2. 检查Addon是否运行；
+2. 检查AddOn是否运行；
 3. 检查机器人和PLC的PROFINET是否建立通讯（PLC功能是否使用了正确的JAKA的GSDML文件）；
-4. 检查PLC的Profinet数据帧是否配置；
-5. 如果依然不行，联系JAKA售后支持（或发邮件至SRCI.Support@jaka.com， 附上Addon导出文件）。
+4. 检查PLC的PROFINET数据帧是否配置；
+5. 如果依然不行，联系JAKA售后支持（或发邮件至SRCI.Support@jaka.com， 附上AddOn导出文件）。
 ![pic](./pic/export_CN.png "export addon")
    
 JSI通讯建立失败的排查顺序为：
