@@ -158,8 +158,8 @@ SRCI定义了三种功能组，这三个组内包含了所有接口功能：
   - `ConfigMode.Wrist=1` ("*No change*")
 
 - 执行任何运动指令前，请确保全局的运行速率和指令的运行速率处于一个可接受的安全范围内。
-- 同时使用APP和SRCI的Addon将不符合“单点控制”的要求，会带来意料外的风险（包括但不限于意料外的运动或者报错信息丢失等等），因此请避免同时使用。
-- 控制器版本和SRCI的Addon版本要严格对应，混用可能带来意料外的风险。
+- 同时使用App和SRCI的AddOn将不符合“单点控制”的要求，会带来意料外的风险（包括但不限于意料外的运动或者报错信息丢失等等），因此请避免同时使用。
+- 控制器版本和SRCI的AddOn版本要严格对应，混用可能带来意料外的风险。
 
 #### 使用JAKA安全设置
 配合JAKA的安全功能以保障操作人员的安全性。JAKA提供如下的安全功能（外部IO触发）：
@@ -536,11 +536,11 @@ GroupJog模式共有JogFrame、JogTool和JogAxes，节卡均支持。
 
 ## 故障排查
 一般排查顺序
-1. 检查机器人控制器版本和SRCI Addon版本是否对应
-2. 检查Addon是否运行
-3. 检查机器人和PLC的Profinet是否建立通讯（PLC功能是否使用了正确的JAKA的GSDML文件）
-4. 检查PLC的Profinet数据帧是否配置
-5. 如果依然不行，联系JAKA售后支持（或发邮件至SRCI.Support@jaka.com， 附上Addon导出文件）  
+1. 检查机器人控制器版本和SRCI AddOn版本是否对应；
+2. 检查Addon是否运行；
+3. 检查机器人和PLC的PROFINET是否建立通讯（PLC功能是否使用了正确的JAKA的GSDML文件）；
+4. 检查PLC的Profinet数据帧是否配置；
+5. 如果依然不行，联系JAKA售后支持（或发邮件至SRCI.Support@jaka.com， 附上Addon导出文件）。
 ![pic](./pic/export_CN.png "export addon")
    
 JSI通讯建立失败的排查顺序为：
