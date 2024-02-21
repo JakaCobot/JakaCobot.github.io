@@ -42,7 +42,7 @@ Note:
 - JAKA part
   - Robot Hardware: no limit（***switch on PROFINET***）
   - The PROFINET GSDML must be upgraded to ***GSDML-V2.41-JAKA-JAKARobot-20231017.xml***
-  - Robot Controller: v1.7.1_25 and above (Controller vesion and SRCI Addon version must match)
+  - Robot Controller: v1.7.1_25 and above (Controller version and SRCI Addon version must match)
   - App: v1.7.1_22 and above
   - AddOn: JSI (1.6.27) and above
 - Siemens PLC part
@@ -145,15 +145,15 @@ Please read through these risks carefully before using JSI commands:
   - `ConfigMode.Elbow=1` ("*No change*")
 
   - `ConfigMode.Wrist=1` ("*No change*")
-- Please make sure the overall speed and command speed are in a safe and acceptable range before the execution of any commands.
-- Using SRCI AddOn with the App simultaneously will violate the requirements of "single point control", which may lead to unexpected risks (such as unexcepeted robot movements or error information loss). Therefore, the SRCI AddOn and the App should not be used at the same time.
+- Please make sure the overall speed and command speed are in a safe and acceptable range before executing any commands.
+- Using SRCI AddOn with the App simultaneously will violate the requirements of "single point control", which may lead to unexpected risks (such as unexpected robot movements or error information loss). Therefore, the SRCI AddOn and the App should not be used at the same time.
 - The version of controller and SRCI AddOn must be strictly matched, otherwise there might be unexpected risks.
 
 #### JAKA Safety IO
-Work with JAKA safety IO functions to ensure operator safety. JAKA support following safety function（safety IO）：
+Work with JAKA safety IO functions to ensure operator safety. JAKA support the following safety functions（external safety IO）：
 1. Additional emergency-stop
 2. Additional protective-stop
-3. Reduced mode（able to set robot TCP speed, etc. ）  
+3. Reduced mode（able to set robot TCP speed, power limit, etc. ）  
 ![pic](./pic/safety-EN.png "safetyIO")
 
 ## Commands Descriptions 
@@ -508,11 +508,11 @@ This function writes the data of the user coordinate system based on ToolNo.
 2. Contact JAKA local sales team for SRCI AddOn, demo, manual and GSDML, etc. 
 
 ### Prepare AddOn
-1. Turn on the Controller PROFINET；  
+1. Turn on the Controller's PROFINET；  
 ![pic](./pic/enable-Profinet-en.png "enable profinet")
 1. For more AddOn information, please refer to (https://jakacobot.github.io/guide/addOn/1.1-AboutAddOn.html).
 2. Install Addon Tool-Kit.
-3. Install SRCI AddOn, and enable it (wait for a few moments for the controller to power on automatically).
+3. Install SRCI AddOn, and enable it (wait a moment to let the controller power on automatically).
 
 
 ### Prepare PLC
@@ -532,25 +532,25 @@ This function writes the data of the user coordinate system based on ToolNo.
 
 ### Troubleshooting
 General debug steps:
-1. Check if controller version and SRCI Addon match or not
-2. Check if Addon is running or not
-3. Check Profinet Status（PLC must use right JAKA GSDML）
-4. Check if PLC Profinet data is configured right or not
-5. Contact JAKA technical support team（send email to SRCI.Support@jaka.com， attaching Addon exported files）  
+1. Check if controller version and SRCI Addon match or not.
+2. Check if AddOn is running or not.
+3. Check the PROFINET status（PLC must use the right JAKA GSDML）
+4. Check if the PLC PROFINET data is configured right or not.
+5. If the above steps still don't work, please contact JAKA technical support team（send an email to SRCI.Support@jaka.com, attaching Addon exported files）.
 ![pic](./pic/export_EN.png "export addon")
 
 Follow the steps below to troubleshoot when JSI communication fails:
 1. Make sure the PROFINET between JAKA and PLC is connected and functioning.
 2. Make sure the PLC configuration is correct.
-3. If the communication often disconnects, please check whether the switch meets the PROFINET requirement. Or directly connect the PLC with controller.
-4. If PROFINET is in normal connection, then the issue might be of the JSI.
+3. If the communication often disconnects, please check whether the switch meets the PROFINET requirement. Or directly connect the PLC to the control cabinet.
+4. If PROFINET is in normal connection, then it might be the issue of the JSI.
 5. If HMI simulation is needed, please set "PG/PC Interface" (contact Siemens for detailed information).
 
 Debug steps when robot not move：
-1. Check overridespeed
-2. Check velocity setting of defaultDynamic and referenceDynamic
-3. Check velocity parameter of command
-4. Check if controller already in interrupted status
+1. Check overridespeed.
+2. Check velocity setting of defaultDynamic and referenceDynamic.
+3. Check velocity and acceleration parameter of the command.
+4. Check if the robot is already in Interrupted status.
 
 ## Appendix #
 
@@ -595,6 +595,6 @@ To enable blending, make sure to set the parameters in usersetting.ini as below 
 
 ![pic](./pic/blending-en.png "blending")
 
-When parameter is too large, the actual blending would happen according to the Mode11 (RampOverlap) in SRCI manual to blend at 100% overlap:<br>
+When parameter is too large, the actual blending would take place according to the Mode11 (RampOverlap) in SRCI manual to blend at 100% overlap:<br>
 ![pic](./pic/RampOverlap-blending.png "RampOverBlending")
 
