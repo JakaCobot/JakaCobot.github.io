@@ -7,7 +7,7 @@ sidebarDepth: 1
 
 | 名词 | 说明 |
 | ---- | ----|
-| SRCI | Standard Robot Control Interface。 |
+| SRCI | Standard Robot Control Interface，标准机器人控制接口。 |
 | JSI | JAKA SIMATIC Interface，节卡SIMATIC接口。 |
 | SRL | SIMATIC Robot Library，西门子在PLC端的机器人库，用于提供对应SRCI的功能块（FB）等。 |
 | EDK | Easy Development Kit，西门子提供的SRCI协议解析器。 |
@@ -551,10 +551,10 @@ JSI通讯建立失败的排查顺序为：
 5. 如果需要HMI仿真的话，要设置“PG/PC接口”（详细情况请咨询西门子）。
 
 下发指令后机器人不动：
-1. 检查overridespeed设置
-2. 检查defaultDynamic和referenceDynamic中的Velocity相关设置
-3. 检查运动指令中的速度和加速度设置
-4. 检查是否处于Interrupted状态
+1. 检查overridespeed设置；
+2. 检查defaultDynamic和referenceDynamic中的Velocity相关设置；
+3. 检查运动指令中的速度和加速度设置；
+4. 检查是否处于Interrupted状态。
 
 
 
